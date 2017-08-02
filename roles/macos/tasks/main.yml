@@ -1,0 +1,22 @@
+---
+
+# Credits:
+# - https://mths.be/macos
+# - https://mths.be/osx
+
+# TODO: Currently avoiding "type: array" commands until they begin to behave.
+# - https://github.com/ansible/ansible/issues/19585
+# - https://github.com/ansible/ansible/pull/19899
+
+- include: activity_monitor.yml
+# - include: dock.yml
+# - include: finder.yml
+# - include: general_ui_ux.yml
+# - include: mission_control.yml
+# - include: safari_webkit.yml
+# - include: screen.yml
+# - include: ssd.yml
+# - include: spotlight.yml
+# - include: textedit.yml
+# - include: time_machine.yml
+- include: trackpad_mouse.yml

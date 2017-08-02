@@ -1,0 +1,27 @@
+---
+
+matrix:
+  include:
+    # macOS 10.12
+    - os: osx
+      osx_image: xcode8.2
+    # macOS 10.11
+    - os: osx
+      osx_image: xcode8
+  fast_finish: true
+
+install:
+  # Debug info
+  - python --version
+  # Run setup script
+  - bash init.sh
+  # Debug info
+  - pip --version
+  - ansible --version
+
+script:
+  # Playbook syntax check
+  - ansible-playbook mac.yml --syntax-check
+  # Run Ansible playbook:
+  # - Skip tasks/roles that we know cause issues in Travis
+  - ansible-playbook mac.yml --skip-tags "no_ci"

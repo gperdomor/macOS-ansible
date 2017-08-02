@@ -1,0 +1,5 @@
+.DS_Store
+*.retry
+ansible.log
+config.local.yml
+ext_roles
