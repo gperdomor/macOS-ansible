@@ -1,0 +1,52 @@
+"*":
+  "atom-beautify":
+    html:
+      beautify_on_save: true
+  core:
+    projectHome: "/Users/gperdomor/Developer"
+    customFileTypes:
+      "source.ini": [
+        ".buckconfig"
+        ".hgrc"
+        ".flowconfig"
+      ]
+      "source.json": [
+        "BUCK.autodeps"
+      ]
+      "source.python": [
+        "BUCK"
+      ]
+    disabledPackages: [
+      "tree-view"
+    ]
+    telemetryConsent: "no"
+    titleBar: "custom"
+  editor:
+    fontSize: 13
+  "exception-reporting":
+    userId: "e22bfd5e-1cd9-4abf-be5c-54602477f527"
+  "file-icons": {}
+  "language-babel":
+    autoIndentJSX: true
+  "linter-ui-default": {}
+  "markdown-preview":
+    useGitHubStyle: true
+  nuclide:
+    "atom-ide-code-format":
+      formatOnSave: true
+    "nuclide-flow": {}
+    "nuclide-swift":
+      swiftToolchainPath: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain"
+  pigments:
+    markerType: "gutter"
+  "prettier-atom":
+    formatOnSaveOptions:
+      enabled: true
+      showInStatusBar: true
+    prettierOptions:
+      singleQuote: true
+  "tool-bar":
+    iconSize: "16px"
+    position: "Left"
+  welcome:
+    showOnStartup: false

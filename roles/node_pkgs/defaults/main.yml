@@ -1,0 +1,18 @@
+---
+
+node_pkgs_list:
+  - "@angular/cli"
+  - bower
+  - create-react-app
+  - create-react-native-app
+  - eslint
+  - grunt-cli
+  - gulp
+  - json-server
+  - localtunnel
+  - prettier
+  - prettier-eslint
+  - serve
+  - typescript
+  - typings
+  - yarn

@@ -1,0 +1,26 @@
+---
+
+- name: Install Vagrant
+  homebrew_cask: name=vagrant state=present
+  notify: brew cask cleanup
+
+# - name: Ensure ~/.ssh/ exists
+#   file:
+#     path: ~/.ssh
+#     state: directory
+
+# TODO: Apparently this isn't required in later versions of Vagrant. Check.
+# - name: SSH config for local Vagrant development
+#   blockinfile:
+#     dest: ~/.ssh/config
+#     content: "Host *.local\n  ForwardAgent yes"
+#     create: yes
+
+- name: Check for installed Vagrant plugins
+  command: vagrant plugin list
+  register: vagrant_plugin_list_results
+
+- name: Install Vagrant plugins
+  command: vagrant plugin install {{ item }}
+  with_items: "{{ vagrant_plugins }}"
+  when: "'{{ item }}' not in vagrant_plugin_list_results.stdout"

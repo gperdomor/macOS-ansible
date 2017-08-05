@@ -1,0 +1,9 @@
+---
+
+- name: Install Node.js
+  homebrew: name={{ item }}
+  with_items:
+    - node
+    - npm
+  notify: brew cleanup
+  tags: node

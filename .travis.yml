@@ -18,6 +18,7 @@ install:
   # Debug info
   - pip --version
   - ansible --version
+  - pip install pexpect
 
 script:
   # Playbook syntax check

@@ -1,0 +1,40 @@
+---
+
+atom_upgrade_packages: true
+
+atom_packages:
+  - atom-beautify
+  - autoclose-html
+  # - autocomplete-plus
+  - autocomplete-modules
+  - autocomplete-paths
+  - autocomplete-swift
+  - busy-signal
+  - double-tag
+  - editorconfig
+  - file-icons
+  - gitlab-integration
+  - go-plus
+  - highlight-line
+  - highlight-selected
+  - intentions
+  - language-ansible
+  - language-babel
+  - language-docker
+  - language-graphql
+  - language-rust
+  - language-swift
+  - linter
+  - linter-eslint
+  - linter-swiftlint
+  - linter-ui-default
+  - nuclide
+  - nuclide-format-js
+  - pigments
+  - prettier-atom
+  - sort-lines
+  - svg-preview
+  - sync-settings
+  - tool-bar
+  - todo-manager
+  - travis-ci-status

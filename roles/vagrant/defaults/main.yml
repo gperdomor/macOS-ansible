@@ -1,0 +1,7 @@
+---
+
+vagrant_plugins:
+  - vagrant-cachier
+  - vagrant-hostsupdater
+  - vagrant-parallels
+  - vagrant-triggers

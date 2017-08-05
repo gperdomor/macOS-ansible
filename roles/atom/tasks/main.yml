@@ -1,0 +1,23 @@
+---
+
+- name: Install Atom
+  homebrew_cask: name=atom state=present
+  notify: brew cask cleanup
+
+- name: Ensure Atom packages are installed
+  command: apm install {{ item }}
+  args:
+    creates: /Users/{{ ansible_env.USER }}/.atom/packages/{{ item }}
+  with_items: "{{ atom_packages }}"
+
+- name: Copy Atom config into place.
+  copy:
+    src: config.cson
+    dest: /Users/{{ ansible_env.USER }}/.atom/config.cson
+    mode: 0644
+
+- name: Upgrade Atom packages
+  command: apm upgrade --no-confirm
+  when: atom_upgrade_packages
+
+# TODO: provision project config & definitions (project-manager).

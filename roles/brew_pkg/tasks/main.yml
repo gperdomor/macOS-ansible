@@ -1,0 +1,9 @@
+---
+
+# This is a re-usable role for a basic package install via Homebrew.
+
+- name: Install {{ brew_pkg_name }}
+  homebrew:
+    name: "{{ brew_pkg_name }}"
+    install_options: "{{ brew_install_options|default() }}"
+  notify: brew cleanup
