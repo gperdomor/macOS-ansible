@@ -32,6 +32,8 @@
     - { cask_app_name: "the-unarchiver", tags: ["the_unarchiver","stage_1"], role: danbohea.cask-app }
     # - { cask_app_name: "keka", tags: ["keka","stage_1"], role: danbohea.cask-app }
     - { cask_app_name: "skype", tags: ["skype","stage_1"], role: danbohea.cask-app }
+    # - { cask_app_name: "spectacle", tags: ["spectacle","stage_1"], role: danbohea.cask-app }
+    # - { cask_app_name: "caffeine", tags: ["caffeine","stage_1","sudo"], role: danbohea.cask-app }
 
     # Stage 2: Essential dev
     # --------------------------------------------------------------------------
@@ -52,7 +54,12 @@
     - { role: tower, tags: ["tower","stage_2"] }
     - { cask_app_name: "sequel-pro", tags: ["sequel_pro","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "postico", tags: ["postico","stage_2"], role: danbohea.cask-app }
+    # - { cask_app_name: "transmit", tags: ["transmit","stage_2"], role: danbohea.cask-app }
+    - { cask_app_name: "imageoptim", tags: ["imageoptim","stage_2"], role: danbohea.cask-app }
+    - { role: sketch, tags: ["sketch","stage_2"] }
+    - { cask_app_name: "xscope", tags: ["xscope","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "intellij-idea", tags: ["intellij_idea","stage_2"], role: danbohea.cask-app }
+    # - { cask_app_name: "toggldesktop", tags: ["toggldesktop","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "docker", tags: ["docker","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "kitematic", tags: ["kitematic","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "launchrocket", tags: ["launchrocket","stage_2"], role: danbohea.cask-app }
@@ -68,16 +75,24 @@
     # --------------------------------------------------------------------------
 
     - { role: transmission, tags: ["transmission","stage_4"] }
+    - { brew_pkg_name: "tree", tags: ["tree","stage_4"], role: brew_pkg }
+    # - { cask_app_name: "firefox", tags: ["firefox","stage_4"], role: danbohea.cask-app }
     - { cask_app_name: "opera", tags: ["opera","stage_4"], role: danbohea.cask-app }
     - { cask_app_name: "riot", tags: ["riot","stage_4"], role: danbohea.cask-app }
+    # - { cask_app_name: "adobe-creative-cloud", tags: ["adobe_creative_cloud","stage_4"], role: danbohea.cask-app }
 
     # Stage 5: No-frills cask installed apps that CI can skip.
     # This makes for faster tests & keeps Travis log verbosity to a minimum.
     # --------------------------------------------------------------------------
 
+    # - { cask_app_name: "hazel", tags: ["hazel","stage_5"], role: danbohea.cask-app }
+    - { cask_app_name: "cakebrew", tags: ["cakebrew","stage_5"], role: danbohea.cask-app }
+    - { cask_app_name: "daisydisk", tags: ["daisydisk","stage_5"], role: danbohea.cask-app }
     - { cask_app_name: "vlc", tags: ["vlc","stage_5"], role: danbohea.cask-app }
     - { cask_app_name: "iina", tags: ["iina","stage_5"], role: danbohea.cask-app }
     - { cask_app_name: "appcleaner", tags: ["appcleaner","stage_5"], role: danbohea.cask-app }
+    - { cask_app_name: "cleanmymac", tags: ["cleanmymac","stage_5"], role: danbohea.cask-app }
+    - { cask_app_name: "bartender", role: danbohea.cask-app, tags: ["bartender","stage_5"] }
 
     # Last
     # --------------------------------------------------------------------------

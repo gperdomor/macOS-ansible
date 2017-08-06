@@ -1,0 +1,17 @@
+---
+
+sketch_apps:
+  - sketch
+  # TODO: Install is currently playing up - investigate
+  # - sketch-tool
+  - sketch-toolbox
+
+sketch_plugins_dir: "/Users/{{ ansible_env.USER }}/Library/Application Support/com.bohemiancoding.sketch3/Plugins"
+
+sketch_plugin_repos:
+  - https://github.com/ddwht/sketch-dynamic-button.git
+  - https://github.com/getflourish/Sketch-Style-Inventory.git
+  - https://github.com/tylergaw/day-player.git
+  - https://github.com/timuric/Content-generator-sketch-plugin.git
+  - https://github.com/bomberstudios/sketch-commands.git
+  - https://github.com/ScottSavarie/Clipboard-Fill.git
