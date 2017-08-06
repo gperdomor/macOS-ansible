@@ -1,0 +1,24 @@
+---
+
+- name: Install Zsh
+  homebrew: name={{ item }}
+  with_items:
+    - zsh
+    - zsh-completions
+  notify: brew cleanup
+  tags: zsh
+
+- name: Install oh-my-zsh
+  shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  args:
+    creates: ~/.oh-my-zsh
+
+- name: Install zsh-completions
+  file: src=/usr/local/share/zsh-completions dest=~/.oh-my-zsh/custom/plugins/zsh-completions state=link
+
+- name: Configure zsh-completions
+  lineinfile:
+    path: ~/.zshrc
+    state: present
+    regexp: '^plugins=\(.*\)$'
+    line: 'plugins=(git zsh-completions)'

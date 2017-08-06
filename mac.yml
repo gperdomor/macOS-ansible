@@ -38,6 +38,7 @@
     # Stage 2: Essential dev
     # --------------------------------------------------------------------------
 
+    - { role: zsh, tags: ["zsh","stage_2"] }
     - { cask_app_name: "parallels-desktop", tags: ["parallels_desktop","stage_2"], role: danbohea.cask-app }
     # - { cask_app_name: "vmware-fusion", tags: ["vmware_fusion","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "virtualbox", tags: ["virtualbox","stage_2"], role: danbohea.cask-app }
