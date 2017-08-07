@@ -28,16 +28,26 @@
     # Stage 1: Essential day-to-day
     # --------------------------------------------------------------------------
 
+    - { mas_app_name: "Pages", mas_app_id: "409201541", tags: ["pages","stage_1"], role: mas_app }
+    - { mas_app_name: "Numbers", mas_app_id: "409203825", tags: ["numbers","stage_1"], role: mas_app }
+    - { mas_app_name: "Keynote", mas_app_id: "409183694", tags: ["keynote","stage_1"], role: mas_app }
+    - { mas_app_name: "Spark Mail", mas_app_id: "1176895641", tags: ["spark_mail","stage_1"], role: mas_app }
+    - { mas_app_name: "Slack", mas_app_id: "803453959", tags: ["slack","stage_1"], role: mas_app }
+    # - { mas_app_name: "Reeder 3", mas_app_id: "880001334", tags: ["reeder","stage_1"], role: mas_app }
+    - { mas_app_name: "Magnet", mas_app_id: "441258766", tags: ["magnet","stage_1"], role: mas_app }
+    # - { mas_app_name: "1Password", mas_app_id: "443987910", tags: ["1Password","stage_1"], role: mas_app }
     - { cask_app_name: "1password", tags: ["1password","stage_1"], role: danbohea.cask-app }
     - { cask_app_name: "the-unarchiver", tags: ["the_unarchiver","stage_1"], role: danbohea.cask-app }
     # - { cask_app_name: "keka", tags: ["keka","stage_1"], role: danbohea.cask-app }
     - { cask_app_name: "skype", tags: ["skype","stage_1"], role: danbohea.cask-app }
     # - { cask_app_name: "spectacle", tags: ["spectacle","stage_1"], role: danbohea.cask-app }
+    - { mas_app_name: "Owly - Display Sleep Prevention", mas_app_id: "882812218", tags: ["owly","stage_1"], role: mas_app }
     # - { cask_app_name: "caffeine", tags: ["caffeine","stage_1","sudo"], role: danbohea.cask-app }
 
     # Stage 2: Essential dev
     # --------------------------------------------------------------------------
 
+    - { role: xcode, tags: ["xcode","stage_2"] }
     - { role: zsh, tags: ["zsh","stage_2"] }
     - { cask_app_name: "parallels-desktop", tags: ["parallels_desktop","stage_2"], role: danbohea.cask-app }
     # - { cask_app_name: "vmware-fusion", tags: ["vmware_fusion","stage_2"], role: danbohea.cask-app }
@@ -54,10 +64,13 @@
     # - { cask_app_name: "kaleidoscope", tags: ["kaleidoscope","stage_2"], role: danbohea.cask-app }
     - { role: tower, tags: ["tower","stage_2"] }
     - { cask_app_name: "sequel-pro", tags: ["sequel_pro","stage_2"], role: danbohea.cask-app }
+    # - { mas_app_name: "Postico", mas_app_id: "1031280567", tags: ["postico","stage_1"], role: mas_app }
     - { cask_app_name: "postico", tags: ["postico","stage_2"], role: danbohea.cask-app }
     # - { cask_app_name: "transmit", tags: ["transmit","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "imageoptim", tags: ["imageoptim","stage_2"], role: danbohea.cask-app }
     - { role: sketch, tags: ["sketch","stage_2"] }
+    - { mas_app_name: "Navicat Data Modeler Essentials", mas_app_id: "532423082", tags: ["navicat_modeler_essential,"stage_1"], role: mas_app }
+    # - { mas_app_name: "xScope 4", mas_app_id: "889428659", tags: ["xscope","stage_1"], role: mas_app }
     - { cask_app_name: "xscope", tags: ["xscope","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "intellij-idea", tags: ["intellij_idea","stage_2"], role: danbohea.cask-app }
     # - { cask_app_name: "toggldesktop", tags: ["toggldesktop","stage_2"], role: danbohea.cask-app }
@@ -81,6 +94,9 @@
     - { cask_app_name: "opera", tags: ["opera","stage_4"], role: danbohea.cask-app }
     - { cask_app_name: "riot", tags: ["riot","stage_4"], role: danbohea.cask-app }
     # - { cask_app_name: "adobe-creative-cloud", tags: ["adobe_creative_cloud","stage_4"], role: danbohea.cask-app }
+    # - { mas_app_name: "Microsoft OneNote", mas_app_id: "784801555", tags: ["one_note","stage_1"], role: mas_app }
+    # - { mas_app_name: "Affinity Designer", mas_app_id: "824171161", tags: ["affinity_designer","stage_1"], role: mas_app }
+    # - { mas_app_name: "Affinity Photo", mas_app_id: "824183456", tags: ["affinity_photo","stage_1"], role: mas_app }
 
     # Stage 5: No-frills cask installed apps that CI can skip.
     # This makes for faster tests & keeps Travis log verbosity to a minimum.
@@ -88,6 +104,7 @@
 
     # - { cask_app_name: "hazel", tags: ["hazel","stage_5"], role: danbohea.cask-app }
     - { cask_app_name: "cakebrew", tags: ["cakebrew","stage_5"], role: danbohea.cask-app }
+    # - { mas_app_name: "DaisyDisk", mas_app_id: "411643860", tags: ["daisydisk","stage_1"], role: mas_app }
     - { cask_app_name: "daisydisk", tags: ["daisydisk","stage_5"], role: danbohea.cask-app }
     - { cask_app_name: "vlc", tags: ["vlc","stage_5"], role: danbohea.cask-app }
     - { cask_app_name: "iina", tags: ["iina","stage_5"], role: danbohea.cask-app }

@@ -1,0 +1,18 @@
+---
+
+- include_role:
+    name: mas_app
+  vars:
+    mas_app_name: Xcode
+    mas_app_id: 497799835
+
+- name: List installed MAS apps again.
+  command: mas list
+  register: mas_list
+  check_mode: no
+  changed_when: false
+
+- name: Accept Xcode License
+  command: xcodebuild -license accept
+  become: true
+  when: "'{{ mas_app_id }}' in mas_list.stdout"
