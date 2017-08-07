@@ -69,7 +69,7 @@
     # - { cask_app_name: "transmit", tags: ["transmit","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "imageoptim", tags: ["imageoptim","stage_2"], role: danbohea.cask-app }
     - { role: sketch, tags: ["sketch","stage_2"] }
-    - { mas_app_name: "Navicat Data Modeler Essentials", mas_app_id: "532423082", tags: ["navicat_modeler_essential,"stage_1"], role: mas_app }
+    - { mas_app_name: "Navicat Data Modeler Essentials", mas_app_id: "532423082", tags: ["navicat_modeler_essential","stage_1"], role: mas_app }
     # - { mas_app_name: "xScope 4", mas_app_id: "889428659", tags: ["xscope","stage_1"], role: mas_app }
     - { cask_app_name: "xscope", tags: ["xscope","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "intellij-idea", tags: ["intellij_idea","stage_2"], role: danbohea.cask-app }

@@ -1,7 +1,10 @@
 ---
 
 - name: Install Git
-  homebrew: name=git
+  homebrew: name={{item}}
+  with_items:
+    - git
+    - git-lfs
   notify: brew cleanup
 
 # Get Git current config
@@ -39,3 +42,6 @@
 - name: Configure user.email
   command: git config --global user.email "{{ git_user_email }}"
   when: git_user_email_result.stdout != "{{ git_user_email }}"
+
+- name: Configure Git LFS
+  command: "/usr/local/bin/git lfs install"
