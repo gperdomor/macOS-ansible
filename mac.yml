@@ -79,6 +79,8 @@
     - { cask_app_name: "launchrocket", tags: ["launchrocket","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "knuff", tags: ["knuff","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "ngrok", tags: ["ngrok","stage_2"], role: danbohea.cask-app }
+    - { cask_app_name: "paw", tags: ["paw","stage_2"], role: danbohea.cask-app }
+    # - { cask_app_name: "insomnia", tags: ["insomnia","stage_2"], role: danbohea.cask-app }
 
     # Stage 3: Projects
     # --------------------------------------------------------------------------
