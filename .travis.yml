@@ -1,14 +1,16 @@
 ---
 
-matrix:
-  include:
-    # macOS 10.12
-    - os: osx
-      osx_image: xcode8.2
-    # macOS 10.11
-    - os: osx
-      osx_image: xcode8
-  fast_finish: true
+osx_image: xcode8.2
+
+# matrix:
+#   include:
+#     # macOS 10.12
+#     - os: osx
+#       osx_image: xcode8.2
+#     # macOS 10.11
+#     - os: osx
+#       osx_image: xcode8
+#   fast_finish: true
 
 jobs:
   include:
@@ -17,19 +19,24 @@ jobs:
       - ansible-playbook mac.yml --syntax-check
   
     - stage: prep
-    - script: ansible-playbook mac.yml --tags "prep" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
+    - script:
+      - ansible-playbook mac.yml --tags "prep" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
 
     - stage: stage_1
-    - script: ansible-playbook mac.yml --tags "stage_1" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
+    - script:
+      - ansible-playbook mac.yml --tags "stage_1" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
 
     - stage: stage_2
-    - script: ansible-playbook mac.yml --tags "stage_2" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
+    - script:
+      - ansible-playbook mac.yml --tags "stage_2" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
 
     - stage: stage_3
-    - script: ansible-playbook mac.yml --tags "stage_3" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
+    - script:
+      - ansible-playbook mac.yml --tags "stage_3" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
 
     - stage: stage_4
-    - script: ansible-playbook mac.yml --tags "stage_4" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
+    - script:
+      - ansible-playbook mac.yml --tags "stage_4" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
 
 install:
   - pip install pexpect
@@ -41,10 +48,10 @@ install:
   - pip --version
   - ansible --version
 
-script:
-  # Playbook syntax check
-  - ansible-playbook mac.yml --syntax-check
-  # Run Ansible playbook:
-  # - Skip tasks/roles that we know cause issues in Travis
-  # - Skip stage 3/4/5 roles as they don't *really* add much to the test
-  - ansible-playbook mac.yml --skip-tags "no_ci,mas,mas_app,xcode,swiftlint,stage_3,stage_4,stage_5"
+# script:
+#   # Playbook syntax check
+#   - ansible-playbook mac.yml --syntax-check
+#   # Run Ansible playbook:
+#   # - Skip tasks/roles that we know cause issues in Travis
+#   # - Skip stage 3/4/5 roles as they don't *really* add much to the test
+#   - ansible-playbook mac.yml --skip-tags "no_ci,mas,mas_app,xcode,swiftlint,stage_3,stage_4,stage_5"
