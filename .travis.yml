@@ -1,4 +1,5 @@
 ---
+language: objective-c
 
 sudo: required
 
@@ -46,6 +47,10 @@ jobs:
     - install: skip
     - script:
       - ansible-playbook mac.yml --tags "stage_4" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
+
+install: skip
+
+script: skip
 
 # install:
 #   - pip install pexpect
