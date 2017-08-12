@@ -49,7 +49,7 @@
     # Stage 2: Essential dev
     # --------------------------------------------------------------------------
 
-    - { role: xcode, tags: ["xcode","stage_2"] }
+    - { role: xcode, tags: ["xcode","stage_2","no_ci"] }
 
     # Git & Diff Tools
     - { role: git, tags: ["git","stage_2"] }
@@ -94,8 +94,8 @@
     # - { brew_pkg_name: "python", tags: ["python","stage_2"], role: brew_pkg }
 
     # Swift + Vapor related 
-    - { role: vapor, tags: ["vapor","stage_2"] }
-    - { role: swiftlint, tags: ["swiftlint","stage_2"] }
+    - { role: vapor, tags: ["vapor","stage_2","no_ci"] }
+    - { role: swiftlint, tags: ["swiftlint","stage_2","no_ci"] }
 
     # Others
     - { brew_pkg_name: "gitlab-ci-multi-runner", brew_install_options: "without-docker", tags: ["gitlab_ci_multi_runner","stage_2"], role: brew_pkg }

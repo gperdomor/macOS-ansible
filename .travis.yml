@@ -3,10 +3,6 @@
 os: osx
 sudo: required
 
-env:
-  global:
-  - SKIP_TAGS=no_ci,mas,mas_app,xcode,swiftlint
-
 matrix:
   include:
     # macOS 10.12
@@ -48,4 +44,4 @@ script:
   - ansible-playbook mac.yml --syntax-check
   # Run Ansible playbook:
   # - Skip tasks/roles that we know cause issues in Travis
-  - ansible-playbook mac.yml --tags "$TAGS" --skip-tags "$SKIP_TAGS"
+  - ansible-playbook mac.yml --tags "$TAGS" --skip-tags "no_ci"
