@@ -1,9 +1,6 @@
 "*":
-  "atom-beautify":
-    html:
-      beautify_on_save: true
   core:
-    projectHome: "/Users/gperdomor/Developer"
+    closeDeletedFileTabs: true
     customFileTypes:
       "source.ini": [
         ".buckconfig"
@@ -19,32 +16,29 @@
     disabledPackages: [
       "tree-view"
     ]
+    projectHome: "/Users/gperdomor/Developer"
     telemetryConsent: "no"
     titleBar: "custom"
   editor:
-    fontSize: 13
+    showIndentGuide: true
   "exception-reporting":
-    userId: "e22bfd5e-1cd9-4abf-be5c-54602477f527"
+    userId: "48e2be23-0d6b-4b96-9498-058104d635a3"
   "file-icons": {}
-  "language-babel":
-    autoIndentJSX: true
-  "linter-ui-default": {}
-  "markdown-preview":
-    useGitHubStyle: true
+  "highlight-selected": {}
+  "linter-ui-default":
+    panelHeight: 69
   nuclide:
-    "atom-ide-code-format":
-      formatOnSave: true
-    "nuclide-flow": {}
-    "nuclide-swift":
-      swiftToolchainPath: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain"
+    "nuclide-flow":
+      canUseFlowBin: true
   pigments:
-    markerType: "gutter"
+    markerType: "native-dot"
   "prettier-atom":
     formatOnSaveOptions:
       enabled: true
       showInStatusBar: true
     prettierOptions:
       singleQuote: true
+    useEslint: true
   "tool-bar":
     iconSize: "16px"
     position: "Left"

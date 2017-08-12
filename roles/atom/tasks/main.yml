@@ -10,11 +10,11 @@
     creates: /Users/{{ ansible_env.USER }}/.atom/packages/{{ item }}
   with_items: "{{ atom_packages }}"
 
-- name: Copy Atom config into place.
-  copy:
-    src: config.cson
-    dest: /Users/{{ ansible_env.USER }}/.atom/config.cson
-    mode: 0644
+# - name: Copy Atom config into place.
+#   copy:
+#     src: config.cson
+#     dest: /Users/{{ ansible_env.USER }}/.atom/config.cson
+#     mode: 0644
 
 - name: Upgrade Atom packages
   command: apm upgrade --no-confirm

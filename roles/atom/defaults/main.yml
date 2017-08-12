@@ -10,7 +10,7 @@ atom_packages:
   - tool-bar
   # Code Editor Improvements
   - highlight-selected
-  # - autocomplete-modules
+  - autocomplete-modules
   # - autocomplete-paths
   # - highlight-line
   - pigments
