@@ -1,66 +1,44 @@
 ---
-language: objective-c
-
 sudo: required
 
 os: osx
 osx_image: xcode8.2
 
-# matrix:
-#   include:
-#     # macOS 10.12
-#     - os: osx
-#       osx_image: xcode8.2
-#     # macOS 10.11
-#     - os: osx
-#       osx_image: xcode8
-#   fast_finish: true
-
 jobs:
   include:
     - stage: syntax check
-    - install: skip
-    - script:
+      script:
       - ansible-playbook mac.yml --syntax-check
   
     - stage: prep
-    - install: skip
-    - script:
+      script:
       - ansible-playbook mac.yml --tags "prep" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
 
     - stage: stage_1
-    - install: skip
-    - script:
+      script:
       - ansible-playbook mac.yml --tags "stage_1" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
 
     - stage: stage_2
-    - install: skip
-    - script:
+      script:
       - ansible-playbook mac.yml --tags "stage_2" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
 
     - stage: stage_3
-    - install: skip
-    - script:
+      script:
       - ansible-playbook mac.yml --tags "stage_3" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
 
     - stage: stage_4
-    - install: skip
-    - script:
+      script:
       - ansible-playbook mac.yml --tags "stage_4" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
 
-install: skip
-
-script: skip
-
-# install:
-#   - pip install pexpect
-#   # Debug info
-#   - python --version
-#   # Run setup script
-#   - bash init.sh
-#   # Debug info
-#   - pip --version
-#   - ansible --version
+install:
+  - pip install pexpect
+  # Debug info
+  - python --version
+  # Run setup script
+  - bash init.sh
+  # Debug info
+  - pip --version
+  - ansible --version
 
 # script:
 #   # Playbook syntax check
