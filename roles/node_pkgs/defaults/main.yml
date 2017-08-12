@@ -1,18 +1,20 @@
 ---
 
 node_pkgs_list:
-  - "@angular/cli"
-  - bower
-  - create-react-app
-  - create-react-native-app
+  # General Utilities
   - eslint
-  - grunt-cli
-  - gulp
   - json-server
-  - localtunnel
   - prettier
   - prettier-eslint
+  # Static Serve
+  - localtunnel
   - serve
+  - json-server
+  # Angular Related
   - typescript
-  - typings
-  - yarn
+  - typings 
+  - "@angular/cli"
+  # React Related  
+  - create-react-app
+  - create-react-native-app
+  - "@storybook/cli"

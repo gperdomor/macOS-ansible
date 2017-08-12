@@ -10,6 +10,27 @@ matrix:
       osx_image: xcode8
   fast_finish: true
 
+jobs:
+  include:
+    - stage: syntax check
+    - script:
+      - ansible-playbook mac.yml --syntax-check
+  
+    - stage: prep
+    - script: ansible-playbook mac.yml --tags "prep" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
+
+    - stage: stage_1
+    - script: ansible-playbook mac.yml --tags "stage_1" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
+
+    - stage: stage_2
+    - script: ansible-playbook mac.yml --tags "stage_2" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
+
+    - stage: stage_3
+    - script: ansible-playbook mac.yml --tags "stage_3" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
+
+    - stage: stage_4
+    - script: ansible-playbook mac.yml --tags "stage_4" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
+
 install:
   - pip install pexpect
   # Debug info

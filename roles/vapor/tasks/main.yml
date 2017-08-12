@@ -1,0 +1,11 @@
+---
+
+- name: Ensure Vapor tap are tapped
+  homebrew_tap: tap=vapor/tap state=present
+
+- name: Install Swiftlint
+  homebrew: name={{items}}
+  with_items:
+    - vapor
+    - cmysql
+  notify: brew cleanup

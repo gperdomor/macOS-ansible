@@ -15,4 +15,4 @@
 - name: Accept Xcode License
   command: xcodebuild -license accept
   become: true
-  when: "'{{ mas_app_id }}' in mas_list.stdout"
+  when: "'497799835' in mas_list.stdout"

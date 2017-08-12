@@ -5,7 +5,6 @@ atom_upgrade_packages: true
 atom_packages:
   - atom-beautify
   - autoclose-html
-  # - autocomplete-plus
   - autocomplete-modules
   - autocomplete-paths
   - autocomplete-swift
@@ -36,5 +35,4 @@ atom_packages:
   - svg-preview
   - sync-settings
   - tool-bar
-  - todo-manager
   - travis-ci-status
