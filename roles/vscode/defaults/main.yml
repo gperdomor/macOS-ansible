@@ -6,6 +6,7 @@ vscode_packages:
   - Tyriar.sort-lines
   - haaaad.ansible
   - EditorConfig.EditorConfig
+  - felixrieseberg.vsc-travis-ci-status
   # Extensions
   - johnpapa.angular-essentials
   # Themes

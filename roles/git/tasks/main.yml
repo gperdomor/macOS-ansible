@@ -5,6 +5,7 @@
   with_items:
     - git
     - git-lfs
+    - diff-so-fancy
   notify: brew cleanup
 
 # Get Git current config
@@ -45,3 +46,7 @@
 
 - name: Configure Git LFS
   command: "/usr/local/bin/git lfs install"
+
+- name: Configure diff-so-fancy
+  command: "/usr/local/bin/git config --global core.pager 'diff-so-fancy | less --tabs=4 -RFX'"
+  

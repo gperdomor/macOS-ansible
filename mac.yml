@@ -48,17 +48,46 @@
 
     - { role: xcode, tags: ["xcode","stage_2"] }
     - { role: zsh, tags: ["zsh","stage_2"] }
+    - { role: git, tags: ["git","stage_2"] }
+
+    # Editors
     - { role: atom, tags: ["atom","stage_2"] }
     - { role: vscode, tags: ["vscode","stage_2"] }
+    # Virtualization
+    - { cask_app_name: "docker", tags: ["docker","stage_2"], role: danbohea.cask-app }
+    - { cask_app_name: "kitematic", tags: ["kitematic","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "parallels-desktop", tags: ["parallels_desktop","stage_2"], role: danbohea.cask-app }
     # - { cask_app_name: "vmware-fusion", tags: ["vmware_fusion","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "virtualbox", tags: ["virtualbox","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "virtualbox-extension-pack", tags: ["virtualbox","stage_2"], role: danbohea.cask-app }
     - { role: vagrant, tags: ["vagrant","stage_2","sudo"] }
-    - { role: git, tags: ["git","stage_2"] }
+
+    - { brew_pkg_name: "cmysql", brew_install_options: "cmysql", tags: ["cmysql","stage_2"], role: brew_pkg }
+
+    - { role: curl, tags: ["curl","stage_2"] }
+
+    - { brew_pkg_name: "go", tags: ["go","stage_2"], role: brew_pkg }
+    - { brew_pkg_name: "gitlab-ci-multi-runner", brew_install_options: "without-docker", tags: ["gitlab_ci_multi_runner","stage_2"], role: brew_pkg }
+    - { brew_pkg_name: "heroku", tags: ["heroku","stage_2"], role: brew_pkg }
+    - { brew_pkg_name: "mysql", tags: ["mysql","stage_2"], role: brew_pkg }
+    - { brew_pkg_name: "openshift-cli", tags: ["openshift_cli","stage_2"], role: brew_pkg }
+    - { brew_pkg_name: "postgresql", tags: ["postgresql","stage_2"], role: brew_pkg }
+    - { brew_pkg_name: "sl", tags: ["sl","stage_2"], role: brew_pkg }
+    - { brew_pkg_name: "sourcekitten", tags: ["sourcekitten","stage_2"], role: brew_pkg }
+    - { brew_pkg_name: "sqlite", tags: ["sqlite","stage_2"], role: brew_pkg }
+    - { brew_pkg_name: "ssh-copy-id", tags: ["ssh-copy-id","stage_2"], role: brew_pkg }
+    - { brew_pkg_name: "openssl", tags: ["openssl","stage_2"], role: brew_pkg }
+    - { brew_pkg_name: "unrar", tags: ["unrar","stage_2"], role: brew_pkg }
+    - { brew_pkg_name: "vapor", tags: ["vapor","stage_2"], role: brew_pkg }
+    - { brew_pkg_name: "watchman", tags: ["watchman","stage_2"], role: brew_pkg }
+
+
+
+
+
+    - { cask_app_name: "github-desktop", tags: ["github_desktop","stage_1"], role: danbohea.cask-app }
     - { role: node_pkgs, tags: ["node_pkgs","stage_2"] }
     - { brew_pkg_name: "python", tags: ["python","stage_2"], role: brew_pkg }
-    - { brew_pkg_name: "yarn", tags: ["yarn","stage_2"], role: brew_pkg }
     - { cask_app_name: "dash", tags: ["dash","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "araxis-merge", tags: ["araxis_merge","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "p4merge", tags: ["p4merge","stage_2"], role: danbohea.cask-app }
@@ -75,8 +104,6 @@
     - { cask_app_name: "xscope", tags: ["xscope","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "intellij-idea", tags: ["intellij_idea","stage_2"], role: danbohea.cask-app }
     # - { cask_app_name: "toggldesktop", tags: ["toggldesktop","stage_2"], role: danbohea.cask-app }
-    - { cask_app_name: "docker", tags: ["docker","stage_2"], role: danbohea.cask-app }
-    - { cask_app_name: "kitematic", tags: ["kitematic","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "launchrocket", tags: ["launchrocket","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "knuff", tags: ["knuff","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "ngrok", tags: ["ngrok","stage_2"], role: danbohea.cask-app }
