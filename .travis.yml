@@ -1,23 +1,36 @@
 ---
 
+os: osx
+sudo: required
+
 env:
-  - TAGS=prep       SKIP_TAGS=no_ci,mas,mas_app,xcode,swiftlint
-  - TAGS=stage_1    SKIP_TAGS=no_ci,mas,mas_app,xcode,swiftlint
-  - TAGS=stage_2    SKIP_TAGS=no_ci,mas,mas_app,xcode,swiftlint
-  - TAGS=stage_3    SKIP_TAGS=no_ci,mas,mas_app,xcode,swiftlint
-  - TAGS=stage_4    SKIP_TAGS=no_ci,mas,mas_app,xcode,swiftlint
+  global:
+  - SKIP_TAGS=no_ci,mas,mas_app,xcode,swiftlint
 
 matrix:
   include:
     # macOS 10.12
-    - os: osx
-      osx_image: xcode8.2
-      sudo: required
-      
+    - osx_image: xcode8.2
+      env: TAGS=prep
+    - osx_image: xcode8.2
+      env: TAGS=stage_1
+    - osx_image: xcode8.2
+      env: TAGS=stage_2
+    - osx_image: xcode8.2
+      env: TAGS=stage_3
+    - osx_image: xcode8.2
+      env: TAGS=stage_4
     # macOS 10.11
-    - os: osx
-      osx_image: xcode8
-      sudo: required
+    - osx_image: xcode8
+      env: TAGS=prep
+    - osx_image: xcode8
+      env: TAGS=stage_1
+    - osx_image: xcode8
+      env: TAGS=stage_2
+    - osx_image: xcode8
+      env: TAGS=stage_3
+    - osx_image: xcode8
+      env: TAGS=stage_4
   fast_finish: true
 
 install:
