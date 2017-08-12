@@ -3,23 +3,31 @@
 - name: Ensure MAS is installed
   homebrew: name=mas state=present
   notify: brew cleanup
-  tags: mas
+  tags:
+    - mas
+    - no_ci
 
 - name: Get MAS account status
   shell: 'mas account'
   register: mas_account_result
   failed_when: mas_account_result.rc > 1
   changed_when: false
-  tags: mas
+  tags:
+    - mas
+    - no_ci
 
 - name: Sign in to MAS when email and password are provided.
   shell: 'mas signin "{{ app_store_email }}" "{{ app_store_password }}"'
   register: mas_signin_result
   when: mas_account_result.rc == 1 and app_store_email != '' and app_store_password != '' and not mas_signin_dialog
-  tags: mas
+  tags:
+    - mas
+    - no_ci
 
 - name: Sign in to MAS when email is provided, and complete password and 2FA using dialog.
   shell: 'mas signin "{{ app_store_email }}" "{{ app_store_password }}" --dialog'
   register: mas_signin_result
   when: mas_signin_dialog and mas_account_result.rc == 1 and app_store_email != ''
-  tags: mas
+  tags:
+    - mas
+    - no_ci

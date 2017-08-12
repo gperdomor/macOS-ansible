@@ -44,4 +44,4 @@ script:
   - ansible-playbook mac.yml --syntax-check
   # Run Ansible playbook:
   # - Skip tasks/roles that we know cause issues in Travis
-  - ansible-playbook mac.yml --tags "$TAGS" --skip-tags "no_ci"
+  - ansible-playbook mac.yml --tags "$TAGS" --skip-tags "no_ci,mas_app"
