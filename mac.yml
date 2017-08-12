@@ -85,7 +85,7 @@
 
 
 
-    - { cask_app_name: "github-desktop", tags: ["github_desktop","stage_1"], role: danbohea.cask-app }
+    - { cask_app_name: "github-desktop", tags: ["github_desktop","stage_2"], role: danbohea.cask-app }
     - { role: node_pkgs, tags: ["node_pkgs","stage_2"] }
     - { brew_pkg_name: "python", tags: ["python","stage_2"], role: brew_pkg }
     - { cask_app_name: "dash", tags: ["dash","stage_2"], role: danbohea.cask-app }
@@ -94,13 +94,13 @@
     # - { cask_app_name: "kaleidoscope", tags: ["kaleidoscope","stage_2"], role: danbohea.cask-app }
     - { role: tower, tags: ["tower","stage_2"] }
     - { cask_app_name: "sequel-pro", tags: ["sequel_pro","stage_2"], role: danbohea.cask-app }
-    # - { mas_app_name: "Postico", mas_app_id: "1031280567", tags: ["postico","stage_1"], role: mas_app }
+    # - { mas_app_name: "Postico", mas_app_id: "1031280567", tags: ["postico","stage_2"], role: mas_app }
     - { cask_app_name: "postico", tags: ["postico","stage_2"], role: danbohea.cask-app }
     # - { cask_app_name: "transmit", tags: ["transmit","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "imageoptim", tags: ["imageoptim","stage_2"], role: danbohea.cask-app }
     - { role: sketch, tags: ["sketch","stage_2"] }
-    - { mas_app_name: "Navicat Data Modeler Essentials", mas_app_id: "532423082", tags: ["navicat_modeler_essential","stage_1"], role: mas_app }
-    # - { mas_app_name: "xScope 4", mas_app_id: "889428659", tags: ["xscope","stage_1"], role: mas_app }
+    - { mas_app_name: "Navicat Data Modeler Essentials", mas_app_id: "532423082", tags: ["navicat_modeler_essential","stage_2"], role: mas_app }
+    # - { mas_app_name: "xScope 4", mas_app_id: "889428659", tags: ["xscope","stage_2"], role: mas_app }
     - { cask_app_name: "xscope", tags: ["xscope","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "intellij-idea", tags: ["intellij_idea","stage_2"], role: danbohea.cask-app }
     # - { cask_app_name: "toggldesktop", tags: ["toggldesktop","stage_2"], role: danbohea.cask-app }
@@ -112,6 +112,7 @@
 
     # Stage 3: Projects
     # --------------------------------------------------------------------------
+    - { role: projects, tags: ["projects","stage_3"] }
 
     # TODO
 
@@ -124,9 +125,9 @@
     - { cask_app_name: "opera", tags: ["opera","stage_4"], role: danbohea.cask-app }
     - { cask_app_name: "riot", tags: ["riot","stage_4"], role: danbohea.cask-app }
     # - { cask_app_name: "adobe-creative-cloud", tags: ["adobe_creative_cloud","stage_4"], role: danbohea.cask-app }
-    # - { mas_app_name: "Microsoft OneNote", mas_app_id: "784801555", tags: ["one_note","stage_1"], role: mas_app }
-    # - { mas_app_name: "Affinity Designer", mas_app_id: "824171161", tags: ["affinity_designer","stage_1"], role: mas_app }
-    # - { mas_app_name: "Affinity Photo", mas_app_id: "824183456", tags: ["affinity_photo","stage_1"], role: mas_app }
+    # - { mas_app_name: "Microsoft OneNote", mas_app_id: "784801555", tags: ["one_note","4"], role: mas_app }
+    # - { mas_app_name: "Affinity Designer", mas_app_id: "824171161", tags: ["affinity_designer","stage_4"], role: mas_app }
+    # - { mas_app_name: "Affinity Photo", mas_app_id: "824183456", tags: ["affinity_photo","stage_4"], role: mas_app }
 
     # Stage 5: No-frills cask installed apps that CI can skip.
     # This makes for faster tests & keeps Travis log verbosity to a minimum.
@@ -134,7 +135,7 @@
 
     # - { cask_app_name: "hazel", tags: ["hazel","stage_5"], role: danbohea.cask-app }
     - { cask_app_name: "cakebrew", tags: ["cakebrew","stage_5"], role: danbohea.cask-app }
-    # - { mas_app_name: "DaisyDisk", mas_app_id: "411643860", tags: ["daisydisk","stage_1"], role: mas_app }
+    # - { mas_app_name: "DaisyDisk", mas_app_id: "411643860", tags: ["daisydisk","stage_5"], role: mas_app }
     - { cask_app_name: "daisydisk", tags: ["daisydisk","stage_5"], role: danbohea.cask-app }
     - { cask_app_name: "vlc", tags: ["vlc","stage_5"], role: danbohea.cask-app }
     - { cask_app_name: "iina", tags: ["iina","stage_5"], role: danbohea.cask-app }
