@@ -18,38 +18,44 @@ osx_image: xcode8.2
 jobs:
   include:
     - stage: syntax check
+    - install: skip
     - script:
       - ansible-playbook mac.yml --syntax-check
   
     - stage: prep
+    - install: skip
     - script:
       - ansible-playbook mac.yml --tags "prep" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
 
     - stage: stage_1
+    - install: skip
     - script:
       - ansible-playbook mac.yml --tags "stage_1" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
 
     - stage: stage_2
+    - install: skip
     - script:
       - ansible-playbook mac.yml --tags "stage_2" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
 
     - stage: stage_3
+    - install: skip
     - script:
       - ansible-playbook mac.yml --tags "stage_3" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
 
     - stage: stage_4
+    - install: skip
     - script:
       - ansible-playbook mac.yml --tags "stage_4" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
 
-install:
-  - pip install pexpect
-  # Debug info
-  - python --version
-  # Run setup script
-  - bash init.sh
-  # Debug info
-  - pip --version
-  - ansible --version
+# install:
+#   - pip install pexpect
+#   # Debug info
+#   - python --version
+#   # Run setup script
+#   - bash init.sh
+#   # Debug info
+#   - pip --version
+#   - ansible --version
 
 # script:
 #   # Playbook syntax check
