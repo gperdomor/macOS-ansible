@@ -1,0 +1,25 @@
+---
+
+vscode_packages:
+  - Shan.code-settings-sync
+  - robertohuertasm.vscode-icons
+  - Tyriar.sort-lines
+  - haaaad.ansible
+  - EditorConfig.EditorConfig
+  # Extensions
+  - johnpapa.angular-essentials
+  # Themes
+  - zhuangtongfa.material-theme
+  # Docker
+  - PeterJausovec.vscode-docker
+  # Go
+  - lukehoban.Go
+  # JS / Typescript
+  - eg2.tslint
+  - kisstkondoros.vscode-codemetrics
+  - dbaeumer.vscode-eslint
+  - esbenp.prettier-vscode
+  - msjsdiag.debugger-for-chrome
+  - flowtype.flow-for-vscode
+  # React
+  - vsmobile.vscode-react-native

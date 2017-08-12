@@ -22,7 +22,6 @@
     - { cask_app_name: "google-chrome", tags: ["google_chrome","prep"], role: danbohea.cask-app }
     - { cask_app_name: "dropbox", tags: ["dropbox","prep"], role: danbohea.cask-app }
     # - { cask_app_name: "google-backup-and-sync", tags: ["google_backup_and_sync","prep"], role: danbohea.cask-app }
-    - { role: atom, tags: ["atom","prep"] }
     - { role: quick_look_plugins, tags: ["quick_look_plugins","prep"] }
 
     # Stage 1: Essential day-to-day
@@ -49,6 +48,8 @@
 
     - { role: xcode, tags: ["xcode","stage_2"] }
     - { role: zsh, tags: ["zsh","stage_2"] }
+    - { role: atom, tags: ["atom","stage_2"] }
+    - { role: vscode, tags: ["vscode","stage_2"] }
     - { cask_app_name: "parallels-desktop", tags: ["parallels_desktop","stage_2"], role: danbohea.cask-app }
     # - { cask_app_name: "vmware-fusion", tags: ["vmware_fusion","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "virtualbox", tags: ["virtualbox","stage_2"], role: danbohea.cask-app }
