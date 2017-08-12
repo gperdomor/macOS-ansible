@@ -1,34 +1,24 @@
 ---
+language: objective-c
+
 sudo: required
 
 os: osx
-osx_image: xcode8.2
 
-jobs:
+env:
+  - TAGS=prep       SKIP_TAGS=no_ci,mas,mas_app,xcode,swiftlint
+  - TAGS=stage_1    SKIP_TAGS=no_ci,mas,mas_app,xcode,swiftlint
+  - TAGS=stage_2    SKIP_TAGS=no_ci,mas,mas_app,xcode,swiftlint
+  - TAGS=stage_3    SKIP_TAGS=no_ci,mas,mas_app,xcode,swiftlint
+  - TAGS=stage_4    SKIP_TAGS=no_ci,mas,mas_app,xcode,swiftlint
+
+matrix:
   include:
-    - stage: syntax check
-      script:
-      - ansible-playbook mac.yml --syntax-check
-  
-    - stage: prep
-      script:
-      - ansible-playbook mac.yml --tags "prep" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
-
-    - stage: stage_1
-      script:
-      - ansible-playbook mac.yml --tags "stage_1" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
-
-    - stage: stage_2
-      script:
-      - ansible-playbook mac.yml --tags "stage_2" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
-
-    - stage: stage_3
-      script:
-      - ansible-playbook mac.yml --tags "stage_3" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
-
-    - stage: stage_4
-      script:
-      - ansible-playbook mac.yml --tags "stage_4" --skip-tags "no_ci,mas,mas_app,xcode,swiftlint"
+    # macOS 10.12
+    - osx_image: xcode8.2
+    # macOS 10.11
+    - osx_image: xcode8
+  fast_finish: true
 
 install:
   - pip install pexpect
@@ -40,10 +30,9 @@ install:
   - pip --version
   - ansible --version
 
-# script:
-#   # Playbook syntax check
-#   - ansible-playbook mac.yml --syntax-check
-#   # Run Ansible playbook:
-#   # - Skip tasks/roles that we know cause issues in Travis
-#   # - Skip stage 3/4/5 roles as they don't *really* add much to the test
-#   - ansible-playbook mac.yml --skip-tags "no_ci,mas,mas_app,xcode,swiftlint,stage_3,stage_4,stage_5"
+script:
+  # Playbook syntax check
+  - ansible-playbook mac.yml --syntax-check
+  # Run Ansible playbook:
+  # - Skip tasks/roles that we know cause issues in Travis
+  - ansible-playbook mac.yml --tags "$TAGS" --skip-tags "$SKIP_TAGS"
