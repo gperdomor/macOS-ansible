@@ -11,6 +11,7 @@ matrix:
   fast_finish: true
 
 install:
+  - pip install pexpect
   # Debug info
   - python --version
   # Run setup script
@@ -18,11 +19,11 @@ install:
   # Debug info
   - pip --version
   - ansible --version
-  - pip install pexpect
 
 script:
   # Playbook syntax check
   - ansible-playbook mac.yml --syntax-check
   # Run Ansible playbook:
   # - Skip tasks/roles that we know cause issues in Travis
-  - ansible-playbook mac.yml --skip-tags "no_ci,mas,mas_app,xcode,swiftlint" --extra-vars "ansible_become_pass=travis"
+  # - Skip stage 3/4/5 roles as they don't *really* add much to the test
+  - ansible-playbook mac.yml --skip-tags "no_ci,mas,mas_app,xcode,swiftlint,stage_3,stage_4,stage_5"
