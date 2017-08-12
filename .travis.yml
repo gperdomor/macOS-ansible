@@ -1,9 +1,4 @@
 ---
-language: objective-c
-
-sudo: required
-
-os: osx
 
 env:
   - TAGS=prep       SKIP_TAGS=no_ci,mas,mas_app,xcode,swiftlint
@@ -15,9 +10,14 @@ env:
 matrix:
   include:
     # macOS 10.12
-    - osx_image: xcode8.2
+    - os: osx
+      osx_image: xcode8.2
+      sudo: required
+      
     # macOS 10.11
-    - osx_image: xcode8
+    - os: osx
+      osx_image: xcode8
+      sudo: required
   fast_finish: true
 
 install:
