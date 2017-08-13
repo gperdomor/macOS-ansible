@@ -1,13 +1,25 @@
-# Macsible
+# macOS-ansible
 
 [![Build Status](https://travis-ci.org/gperdomor/macOS-ansible.svg?branch=master)](https://travis-ci.org/gperdomor/macOS-ansible)
 
+### Goal
+Automate system setup from a clean install of macOS 10.13
+
+...as much as we can.
+
+### Why?
+Why not?... Also...
+- macOS updates are bad xD
+- Manual setup from a clean install takes too long
+- I run more than one system
+- Automization is good!
+- Help normalise systems between developers
 
 ### Requirements
 
 Ensure the following requirements are already installed and working on your local system:
 
-- macOS 10.11 or 10.12
+- macOS 10.11, 10.12, 10.13
 - Command Line Developer Tools
 
 See [here](docs/install_requirements.md) for assistance.
@@ -31,7 +43,7 @@ See [here](docs/install_requirements.md) for assistance.
 
 A script is included to ensure certain dependencies are met:
 
-- Install pip (if not already installed)
+- Install pip and pexpect (if not already installed)
 - Install Ansible (if not already installed)
 - Create required files if not present: config.yml, config.local.yml, mac.yml, requirements.yml
 - Download required Ansible Galaxy roles
