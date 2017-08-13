@@ -13,6 +13,6 @@
   changed_when: false
 
 - name: Accept Xcode License
-  command: xcodebuild -license accept
+  shell: xcodebuild -license accept
   become: true
   when: "'497799835' in mas_list.stdout"

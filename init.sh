@@ -47,6 +47,10 @@ if ! exists ansible; then
   sudo pip install ansible --quiet
 fi
 
+# Install pexpect
+setStatusMessage "Installing pexpect"
+sudo pip install pexpect --quiet
+
 # Create requirements.yml
 setStatusMessage "Creating requirements.yml if absent"
 cp -n src/requirements.yml requirements.yml

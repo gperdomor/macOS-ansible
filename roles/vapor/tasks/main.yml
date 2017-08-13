@@ -3,8 +3,8 @@
 - name: Ensure Vapor tap are tapped
   homebrew_tap: tap=vapor/tap state=present
 
-- name: Install Swiftlint
-  homebrew: name={{items}}
+- name: Install Vapor
+  homebrew: name={{item}}
   with_items:
     - vapor
     - cmysql

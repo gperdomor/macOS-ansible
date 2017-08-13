@@ -4,13 +4,11 @@ vscode_packages:
   - Shan.code-settings-sync
   - robertohuertasm.vscode-icons
   - Tyriar.sort-lines
-  - haaaad.ansible
+  # - haaaad.ansible
   - EditorConfig.EditorConfig
-  - felixrieseberg.vsc-travis-ci-status
-  # Extensions
+  # - felixrieseberg.vsc-travis-ci-status
+  # Extensions Packs
   - johnpapa.angular-essentials
-  # Themes
-  - zhuangtongfa.material-theme
   # Docker
   - PeterJausovec.vscode-docker
   # Go
@@ -23,4 +21,4 @@ vscode_packages:
   - msjsdiag.debugger-for-chrome
   - flowtype.flow-for-vscode
   # React
-  - vsmobile.vscode-react-native
+  # - vsmobile.vscode-react-native

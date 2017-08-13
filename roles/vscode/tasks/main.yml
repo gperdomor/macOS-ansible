@@ -3,10 +3,14 @@
 - name: Install VS Code
   homebrew_cask: name=visual-studio-code state=present
   notify: brew cask cleanup
+  tags:
+    - vscode
 
 - name: Ensure VS Code extensions are installed
   command: code --install-extension {{ item }}
   with_items: "{{ vscode_packages }}"
   register: vscode_result
   changed_when: "'already installed' not in vscode_result.stdout"
-  tags: no_ci
+  tags:
+    - vscode
+    - vscode-extensions
