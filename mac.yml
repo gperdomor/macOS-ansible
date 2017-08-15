@@ -35,7 +35,8 @@
     # --------------------------------------------------------------------------
     - { cask_app_name: "1password", tags: ["1password","stage_1"], role: danbohea.cask-app }
     # - { mas_app_name: "1Password", mas_app_id: "443987910", tags: ["1Password","stage_1"], role: mas_app }
-    - { cask_app_name: "the-unarchiver", tags: ["the_unarchiver","stage_1"], role: danbohea.cask-app }
+    - { cask_app_name: "archiver", tags: ["archiver","stage_1"], role: danbohea.cask-app }
+    # - { cask_app_name: "the-unarchiver", tags: ["the_unarchiver","stage_1"], role: danbohea.cask-app }
     # - { cask_app_name: "keka", tags: ["keka","stage_1"], role: danbohea.cask-app }
     - { mas_app_name: "Pages", mas_app_id: "409201541", tags: ["pages","stage_1"], role: mas_app }
     - { mas_app_name: "Numbers", mas_app_id: "409203825", tags: ["numbers","stage_1"], role: mas_app }
