@@ -47,6 +47,9 @@
 - name: Configure Git LFS
   command: "/usr/local/bin/git lfs install"
 
+- name: Configure Git to sign commits
+  command: "/usr/local/bin/git config --global commit.gpgsign true"
+
 - name: Configure diff-so-fancy
   command: "/usr/local/bin/git config --global core.pager 'diff-so-fancy | less --tabs=4 -RFX'"
   
