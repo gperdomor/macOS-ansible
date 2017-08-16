@@ -33,6 +33,8 @@
   blockinfile:
     path: ~/.ssh/config
     create: yes
+    backup: yes
+    marker: "# {mark} {{ item.name }}"
     content: |
       Host {{item.host}}
        AddKeysToAgent yes

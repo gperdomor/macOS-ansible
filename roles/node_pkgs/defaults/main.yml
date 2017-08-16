@@ -3,7 +3,6 @@
 node_pkgs_list:
   # General Utilities
   - eslint
-  - json-server
   - prettier
   - prettier-eslint
   # Static Serve

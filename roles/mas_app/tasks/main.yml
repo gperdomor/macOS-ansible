@@ -4,7 +4,7 @@
   shell: mas list | grep "{{ mas_app_id }}" || mas install "{{ mas_app_id }}"
   register: result
   changed_when: result.stdout.find('Installed') != -1
-  when: app_store_email is defined and mas_password is defined and app_store_email != '' and mas_password != '' and mac_account is defined
+  when: mas_email is defined and mas_password is defined and mas_email != '' and mas_password != '' and mas_account_result.rc != 1
   tags:
     - mas_app
     - no_ci
@@ -13,7 +13,7 @@
   shell: mas list | grep "{{ mas_app_id }}" || mas upgrade "{{ mas_app_id }}"
   register: result
   changed_when: result.stdout.find('Installed') != -1
-  when: app_store_email is defined and mas_password is defined and mas_email != '' and mas_password != '' and mac_account is defined
+  when: mas_email is defined and mas_password is defined and mas_email != '' and mas_password != '' and mas_account_result.rc != 1
   tags:
     - mas_app
     - no_ci

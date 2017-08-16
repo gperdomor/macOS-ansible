@@ -56,8 +56,8 @@
     - { role: git, tags: ["git","stage_2"] }
     - { role: tower, tags: ["tower","stage_2"] }
     # - { cask_app_name: "github-desktop", tags: ["github_desktop","stage_2"], role: danbohea.cask-app }
-    # - { cask_app_name: "kaleidoscope", tags: ["kaleidoscope","stage_2"], role: danbohea.cask-app }
-    - { cask_app_name: "araxis-merge", tags: ["araxis_merge","stage_2"], role: danbohea.cask-app }
+    - { cask_app_name: "kaleidoscope", tags: ["kaleidoscope","stage_2"], role: danbohea.cask-app }
+    # - { cask_app_name: "araxis-merge", tags: ["araxis_merge","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "p4merge", tags: ["p4merge","stage_2"], role: danbohea.cask-app }
 
     # Editors
@@ -124,7 +124,7 @@
     - { cask_app_name: "kitematic", tags: ["kitematic","stage_4"], role: danbohea.cask-app }
 
     # DB Tools
-    - { mas_app_name: "Navicat Data Modeler Essentials", mas_app_id: "532423082", tags: ["navicat_modeler_essential","stage_4"], role: mas_app }
+    # - { mas_app_name: "Navicat Data Modeler Essentials", mas_app_id: "532423082", tags: ["navicat_modeler_essential","stage_4"], role: mas_app }
 
     # IM
     - { mas_app_name: "Slack", mas_app_id: "803453959", tags: ["slack","stage_4"], role: mas_app }
