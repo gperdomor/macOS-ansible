@@ -1,4 +1,0 @@
----
-
-projects:
-  - { dest: "macsible", repo: "https://github.com/macsible/macsible.git" }

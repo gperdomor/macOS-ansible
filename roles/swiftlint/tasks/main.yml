@@ -1,5 +1,0 @@
----
-
-- name: Install Swiftlint
-  homebrew: name=swiftlint
-  notify: brew cleanup

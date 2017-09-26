@@ -5,28 +5,12 @@ sudo: required
 
 matrix:
   include:
+    # macOS 10.13
+    - osx_image: xcode9
     # macOS 10.12
-    - osx_image: xcode8.2
-      env: TAGS=prep
-    - osx_image: xcode8.2
-      env: TAGS=stage_1
-    - osx_image: xcode8.2
-      env: TAGS=stage_2
-    - osx_image: xcode8.2
-      env: TAGS=stage_3
-    - osx_image: xcode8.2
-      env: TAGS=stage_4
+    - osx_image: xcode8.3
     # macOS 10.11
     - osx_image: xcode8
-      env: TAGS=prep
-    - osx_image: xcode8
-      env: TAGS=stage_1
-    - osx_image: xcode8
-      env: TAGS=stage_2
-    - osx_image: xcode8
-      env: TAGS=stage_3
-    - osx_image: xcode8
-      env: TAGS=stage_4
   fast_finish: true
 
 install:
@@ -41,7 +25,7 @@ install:
 
 script:
   # Playbook syntax check
-  - ansible-playbook mac.yml --syntax-check
+  - ansible-playbook main.yml --syntax-check
   # Run Ansible playbook:
   # - Skip tasks/roles that we know cause issues in Travis
-  - ansible-playbook mac.yml --tags "$TAGS" --skip-tags "no_ci,mas_app,vscode-extensions"
+  - ansible-playbook main.yml --skip-tags "skip_ci"

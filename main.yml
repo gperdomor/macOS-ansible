@@ -1,0 +1,92 @@
+---
+- hosts: all
+  connection: local
+
+  vars_files:
+    - default.config.yml
+
+  pre_tasks:
+    - name: Ensure host is running macOS
+      fail:
+        msg: The host (target) system is not running macOS.
+      when: ansible_os_family != "Darwin"
+      tags:
+        - always
+
+    - include_vars: "{{ item }}"
+      with_fileglob:
+        - ../config.yml
+      tags:
+        - always
+
+  roles:
+    # Install Homebrew
+    - role: danbohea.homebrew
+      tags:
+        - always
+
+    # Install Xcode
+    - role: xcode
+      tags:
+        - xcode
+        - skip_ci
+
+    # Install Homebrew Packages and Cask apps
+    - role: homebrew
+      when: (homebrew_installed_packages|length > 0) or (homebrew_cask_apps|length > 0)
+      tags:
+        - homebrew
+
+    # Install App Store apps
+    - role: geerlingguy.mas
+      when: mas_installed_apps|length > 0
+      tags:
+        - mas
+        - skip_ci
+
+    # Setup dotfiles
+    - role: geerlingguy.dotfiles
+      when: configure_dotfiles
+      tags:
+        - dotfiles
+
+  tasks:
+    - import_tasks: tasks/ansible-setup.yml
+      tags:
+        - always
+
+    # Package Managers
+    - import_tasks: tasks/extra-packages.yml
+      tags:
+        - extra-packages
+
+    # Configure zhs and oh-my-zsh
+    - import_tasks: tasks/terminal.yml
+      when: configure_terminal
+      tags:
+        - terminal
+        - zsh
+
+    # Configure ssh
+    - import_tasks: tasks/ssh.yml
+      when: configure_ssh
+      tags:
+        - ssh
+
+    - import_tasks: tasks/osx.yml
+      when: configure_osx
+      tags:
+        - osx
+
+    # Preferences App
+    - import_tasks: tasks/extra-preferences.yml
+      tags:
+        - extra-preferences
+
+    - name: Run configured post-provision ansible task files.
+      include_tasks: "{{ outer_item }}"
+      loop_control:
+        loop_var: outer_item
+      with_fileglob: "{{ post_provision_tasks|default(omit) }}"
+      tags:
+        - always

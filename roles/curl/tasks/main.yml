@@ -1,9 +1,0 @@
----
-
-- name: Install Curl
-  homebrew: name=curl install_options=with-nghttp2
-  notify: brew cleanup
-
-- name: Configure Curl
-  command: "/usr/local/bin/brew link --force curl"
-  
