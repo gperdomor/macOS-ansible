@@ -5,8 +5,6 @@ sudo: required
 
 matrix:
   include:
-    # macOS 10.13
-    - osx_image: xcode9
     # macOS 10.12
     - osx_image: xcode8.3
     # macOS 10.11
@@ -25,7 +23,7 @@ install:
 
 script:
   # Playbook syntax check
-  - ansible-playbook main.yml --syntax-check
+  - ansible-playbook main.yml -i inventory --syntax-check
   # Run Ansible playbook:
   # - Skip tasks/roles that we know cause issues in Travis
-  - ansible-playbook main.yml --skip-tags "skip_ci"
+  - ansible-playbook main.yml -i inventory --skip-tags "skip_ci"
