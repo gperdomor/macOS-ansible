@@ -20,11 +20,6 @@
         - always
 
   roles:
-    # Install Homebrew
-    - role: danbohea.homebrew
-      tags:
-        - always
-
     # Install Xcode
     - role: xcode
       tags:
@@ -51,10 +46,6 @@
         - dotfiles
 
   tasks:
-    - import_tasks: tasks/ansible-setup.yml
-      tags:
-        - always
-
     # Package Managers
     - import_tasks: tasks/extra-packages.yml
       tags:

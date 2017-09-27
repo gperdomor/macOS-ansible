@@ -16,6 +16,13 @@
   tags:
     - homebrew_packages
 
+- name: Run homebrew postinstall command
+  command: "{{ item.postinstall }}"
+  with_items: "{{ homebrew_installed_packages }}"
+  when: item.postinstall is defined
+  tags:
+    - homebrew_packages
+
 - name: Ensure blacklisted homebrew packages are not installed.
   homebrew:
     name: "{{ item }}"

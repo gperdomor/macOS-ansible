@@ -21,7 +21,7 @@ Ensure the following requirements are already installed and working on your loca
 
 - macOS 10.11, 10.12, 10.13
 - Signin to the App Store
-- Command Line Developer Tools
+- Command Line Developer Tools or Xcode
 
 ## Usage
 

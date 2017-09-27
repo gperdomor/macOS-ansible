@@ -10,4 +10,4 @@
   when: "'atom' in homebrew_cask_apps"
 
 - import_tasks: packages/packages-vscode.yml
-  when: "'vscode' in homebrew_cask_apps"
+  when: "'visual-studio-code' in homebrew_cask_apps"

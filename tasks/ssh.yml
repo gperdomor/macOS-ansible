@@ -5,20 +5,6 @@
     state: directory
     mode: 0700
 
-- name: Ensure ~/.ssh/known_hosts exists
-  file:
-    path: /Users/{{ ansible_env.USER }}/.ssh/known_hosts
-    state: touch
-    mode: 0644
-  changed_when: false
-
-- name: Add hosts to known_hosts
-  known_hosts:
-    path: /Users/{{ ansible_env.USER }}/.ssh/known_hosts
-    name: "{{ item.host }}"
-    key: "{{ item.key }}"
-  with_items: "{{ ssh_known_hosts }}"
-
 - name: Generate ssh keys
   user:
     name: "{{ansible_user}}"

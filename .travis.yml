@@ -18,7 +18,7 @@ install:
   # Debug info
   - python --version
   # Run setup script
-  - bash init.sh
+  - bash install-deps.sh
   # Debug info
   - pip --version
   - ansible --version
