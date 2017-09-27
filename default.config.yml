@@ -101,6 +101,11 @@ homebrew_cask_apps:
   - visual-studio-code
   # - xscope
 
+  # Quicklook Plugins
+  - qlmarkdown
+  - qlimagesize
+  - quicklook-json
+
 # Mac App Store Apps
 # --------------------------------------------------------------------------
 # See `geerlingguy.mas` role documentation for usage instructions.
@@ -213,4 +218,5 @@ atom_packages:
 # Post Provision Tasks
 # --------------------------------------------------------------------------
 # Glob pattern to ansible task files to run after all other tasks are finished.
-post_provision_tasks: []
+post_provision_tasks:
+  - tasks/dotfiles.yml

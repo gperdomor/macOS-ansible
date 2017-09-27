@@ -39,12 +39,6 @@
         - mas
         - skip_ci
 
-    # Setup dotfiles
-    - role: geerlingguy.dotfiles
-      when: configure_dotfiles
-      tags:
-        - dotfiles
-
   tasks:
     # Package Managers
     - import_tasks: tasks/extra-packages.yml
@@ -81,3 +75,4 @@
       with_fileglob: "{{ post_provision_tasks|default(omit) }}"
       tags:
         - always
+        - post_provision

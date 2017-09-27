@@ -1,0 +1,6 @@
+---
+- include_role:
+    name: geerlingguy.dotfiles
+  when: configure_dotfiles
+  tags:
+    - dotfiles
