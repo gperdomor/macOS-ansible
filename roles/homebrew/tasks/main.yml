@@ -1,0 +1,50 @@
+---
+# Tap.
+- name: Ensure configured taps are tapped.
+  homebrew_tap:
+    tap: "{{ item }}"
+    state: present
+  with_items: "{{ homebrew_taps }}"
+
+# Brew.
+- name: Ensure configured homebrew packages are installed.
+  homebrew:
+    name: "{{ item.name | default(item) }}"
+    install_options: "{{ item.install_options | default(omit) }}"
+    state: present
+  with_items: "{{ homebrew_installed_packages }}"
+  tags:
+    - homebrew_packages
+
+- name: Run homebrew postinstall command
+  command: "{{ item.postinstall }}"
+  with_items: "{{ homebrew_installed_packages }}"
+  when: item.postinstall is defined
+  tags:
+    - homebrew_packages
+
+- name: Ensure blacklisted homebrew packages are not installed.
+  homebrew:
+    name: "{{ item }}"
+    state: absent
+  with_items: "{{ homebrew_uninstalled_packages }}"
+  tags:
+    - homebrew_packages
+
+- name: Upgrade all homebrew packages (if configured).
+  homebrew:
+    update_homebrew: yes
+    upgrade_all: yes
+  when: homebrew_upgrade_all_packages
+  tags:
+    - homebrew_packages
+
+# Cask.
+- name: Install configured cask applications.
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+    install_options: "appdir={{ homebrew_cask_appdir }}"
+  with_items: "{{ homebrew_cask_apps }}"
+  tags:
+    - homebrew_cask

@@ -1,0 +1,17 @@
+---
+- include_role:
+    name: geerlingguy.mas
+  vars:
+    mas_installed_apps:
+      - { id: 497799835, name: "Xcode" }
+
+- name: List installed MAS apps again.
+  command: mas list
+  register: mas_list
+  check_mode: no
+  changed_when: false
+
+- name: Accept Xcode License
+  shell: xcodebuild -license accept
+  become: true
+  when: "'497799835' in mas_list.stdout"

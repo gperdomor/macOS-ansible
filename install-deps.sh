@@ -47,21 +47,9 @@ if ! exists ansible; then
   sudo pip install ansible --quiet
 fi
 
-# Create requirements.yml
-setStatusMessage "Creating requirements.yml if absent"
-cp -n src/requirements.yml requirements.yml
-
-# Create mac.yml
-setStatusMessage "Creating mac.yml if absent"
-cp -n src/mac.yml mac.yml
-
-# Create config.yml
-setStatusMessage "Creating config.yml if absent"
-cp -n src/config.yml config.yml
-
-# Create config.local.yml
-setStatusMessage "Creating config.local.yml if absent"
-cp -n src/config.yml config.local.yml
+# Install pexpect
+setStatusMessage "Installing pexpect"
+sudo pip install pexpect --quiet
 
 # Install Ansible Galaxy dependencies:
 setStatusMessage "Installing required Ansible Galaxy roles"

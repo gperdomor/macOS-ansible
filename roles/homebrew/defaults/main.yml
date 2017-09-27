@@ -1,0 +1,14 @@
+---
+homebrew_installed_packages: []
+
+homebrew_uninstalled_packages: []
+
+homebrew_upgrade_all_packages: no
+
+homebrew_taps:
+  - homebrew/core
+  - caskroom/cask
+
+homebrew_cask_apps: []
+
+homebrew_cask_appdir: /Applications

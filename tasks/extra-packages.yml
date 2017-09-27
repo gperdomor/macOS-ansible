@@ -1,0 +1,13 @@
+---
+- import_tasks: packages/packages-pip.yml
+
+- import_tasks: packages/packages-gem.yml
+
+- import_tasks: packages/packages-node.yml
+  when: "'node' in homebrew_cask_apps"
+
+- import_tasks: packages/packages-atom.yml
+  when: "'atom' in homebrew_cask_apps"
+
+- import_tasks: packages/packages-vscode.yml
+  when: "'visual-studio-code' in homebrew_cask_apps"
