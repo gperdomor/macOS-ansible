@@ -26,4 +26,4 @@ script:
   - ansible-playbook main.yml -i inventory --syntax-check
   # Run Ansible playbook:
   # - Skip tasks/roles that we know cause issues in Travis
-  - ansible-playbook main.yml -i inventory --skip-tags "skip_ci,homebrew_cask"
+  - ansible-playbook main.yml -i inventory --extra-vars "@test.config.json" --skip-tags "skip_ci,xcode"
