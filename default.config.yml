@@ -218,7 +218,7 @@ vscode_packages:
   
   # Linter / Formatters
   # - { name: "Eslint", id: "dbaeumer.vscode-eslint" }
-  - { name: "TS List", id: "eg2.tslint" }
+  - { name: "TS Lint", id: "eg2.tslint" }
   - { name: "Prettier", id: "esbenp.prettier-vscode" }
 
   # Others
