@@ -1,6 +1,4 @@
 ---
-downloads: ~/.ansible-downloads/
-
 configure_dotfiles: yes
 configure_terminal: yes
 configure_ssh: yes
@@ -37,68 +35,108 @@ homebrew_taps:
   - kylef/formulae
 
 homebrew_installed_packages:
-  # - ansible # Installed via Pip.
+  # System Utils
   - name: curl
     install_options: with-nghttp2
     postinstall: "/usr/local/bin/brew link --force curl"
-  - diff-so-fancy
-  - docker-clean
-  - git
-  - go
-  - mysql
-  - node
   - openssl
-  - postgresql
-  - sqlite
-  - ssh-copy-id
+
+  # Git
+  - git
+  - diff-so-fancy
+
+  # DB Tools
+  # - mongodb
+  # - mysql
+  # - postgresql
+  # - sqlite
+
+  # Swift Related
   - swiftenv
   - swiftlint
-  - tree
   - vapor
+
+  # Ruby Related
+  # - rbenv
+  # - ruby-build
+
+  # Node Related
+  - node
   - watchman
   - yarn
-  - gitlab-ci-multi-runner
+
+  # Other
+  - docker-clean
+  - go
   # - heroku
   # - openshift-cli
+  # - ssh-copy-id
+  - tree
+  - name: gitlab-runner
+    install_options: without-docker
+
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
-  - 1password
-  - appcleaner
-  # - araxis-merge
-  - archiver
+  # Browser
+  - google-chrome
+  # - opera
+
+  # Editors
   - atom
-  - cleanmymac
-  - daisydisk
-  - docker
+  # - rubymine
+  - visual-studio-code
+  # - webstorm
+
+  # CVS Tools
+  # - araxis-merge
+  - github-desktop
+  - kaleidoscope
+  - tower
+  - p4merge
+
+  # DB Tools
+  # - pgadmin4
+  # - postico
+  # - robo-3t
+  # - sequel-pro
+
+  # Rest Tools
+  - insomnia
+  # - paw
+
+  # IM
+  - riot
+  - skype
+
+  # Share
   - dropbox
   # - google-backup-and-sync
-  - github-desktop
-  - google-chrome
-  - gpgtools
+  # - ngrok
+  - transmission
+  
+  # Video Players
   - iina
-  # - imageoptim
-  # - insomnia
-  - kaleidoscope
-  # - kitematic
+  #- vlc
+
+  # Virtualization Tools
+  - docker
+  # - kitematic  
+  # - parallels-desktop
+  - vmware-fusion
+
+  # Utilities
+  - appcleaner
+  - archiver
+  - authy-desktop
+  #- cleanmymac
+  #- daisydisk
+  - gpgtools
+  - keepingyouawake
   - knuff
   - launchrocket
-  - ngrok
-  - opera
-  - parallels-desktop
-  - p4merge
-  - paw
-  - pgadmin4
-  # - postico
-  - riot
-  - sequel-pro
   # - sketch
-  - skype
-  - tower
-  - transmission
-  - vlc
-  - vmware-fusion
-  - visual-studio-code
+  - spotify
   # - xscope
 
   # Quicklook Plugins
@@ -114,20 +152,18 @@ mas_email: ""
 mas_password: ""
 
 mas_installed_apps:
-  - { id: 497799835, name: "Xcode" } # installed via 'xcode' role
-  - { id: "441258766", name: "Magnet" }
-  - { id: "409201541", name: "Pages" }
-  - { id: "409203825", name: "Numbers" }
-  - { id: "409183694", name: "Keynote" }
-  - { id: "1176895641", name: "Spark" }
-  - { id: "880001334", name: "Reeder" }
-  - { id: "803453959", name: "Slack" }
-  - { id: "1185488696", name: "Money" }
-  - { id: "523620159", name: "CleanMyDrive 2" }
+  # - { id: 497799835, name: "Xcode" } # installed via 'xcode' role
+  - { id: 441258766, name: "Magnet" }
+  - { id: 409201541, name: "Pages" }
+  - { id: 409203825, name: "Numbers" }
+  - { id: 409183694, name: "Keynote" }
+  - { id: 1176895641, name: "Spark" }
+  - { id: 880001334, name: "Reeder" }
+  - { id: 803453959, name: "Slack" }
+  - { id: 1185488696, name: "Money" }
+  - { id: 523620159, name: "CleanMyDrive 2" }
   - { id: 443987910, name: "1Password" }
-  # - { id: "532423082", name: "Navicat Data Modeler Essentials" }
-
-osx_script: "~/.osx --no-restart"
+  # - { id: 532423082, name: "Navicat Data Modeler Essentials" }
 
 # Install packages from other package managers.
 # Note: You are responsible for making sure the required package managers are
@@ -150,18 +186,18 @@ npm_packages:
   # - name: webpack
   #   state: present # present/absent/latest, default: present
   #   version: "^2.6" # default: N/A
-  # General Utilities
-  # - name: eslint
-  # - name: prettier
-  # Angular Related
-  - name: typescript
-  - name: typings
+
+  # Angular
   - name: "@angular/cli"
-  # React Related
+  # React
   - name: create-react-app
-  # Static Serve
-  - name: localtunnel
-  - name: serve
+  - name: create-react-native-app
+  - name: react-native-cli
+  # Other Tools
+  # - name: eslint
+  # - name: localtunnel
+  # - name: prettier
+  # - name: serve
 
 # Python Packages
 # --------------------------------------------------------------------------
@@ -175,27 +211,25 @@ pip_packages: []
 # --------------------------------------------------------------------------
 
 vscode_packages:
-  - Shan.code-settings-sync
-  - robertohuertasm.vscode-icons
-  - EditorConfig.EditorConfig
-  - Tyriar.sort-lines
-  # # - haaaad.ansible
-  # # - felixrieseberg.vsc-travis-ci-status
-  # # Extensions Packs
-  # - johnpapa.angular-essentials
-  # # Docker
-  # - PeterJausovec.vscode-docker
-  # # Go
-  # - lukehoban.Go
-  # # JS / Typescript
-  # - eg2.tslint
-  # - kisstkondoros.vscode-codemetrics
-  # - dbaeumer.vscode-eslint
-  # - esbenp.prettier-vscode
-  # - msjsdiag.debugger-for-chrome
-  # - flowtype.flow-for-vscode
-  # # React
-  # # - vsmobile.vscode-react-native
+  # General
+  - { name: "Debugger for Chrome", id: "msjsdiag.debugger-for-chrome" }
+  - { name: "EditorConfig for VS Code", id: "EditorConfig.EditorConfig" }
+  # - Tyriar.sort-lines
+  
+  # Linter / Formatters
+  # - { name: "Eslint", id: "dbaeumer.vscode-eslint" }
+  - { name: "TS List", id: "eg2.tslint" }
+  - { name: "Prettier", id: "esbenp.prettier-vscode" }
+
+  # Others
+  # - { name: "Docker", id: "PeterJausovec.vscode-docker" }
+  # - { name: "Go", id: "lukehoban.Go" }
+  - { name: "Settings Sync", id: "Shan.code-settings-sync" }
+  - { name: "TODO Highlight", id: "wayou.vscode-todo-highlight" }
+  
+  # Theme
+  - { name: "vscode-icons", id: "robertohuertasm.vscode-icons" }
+  
 
 # Atom Extensions
 # --------------------------------------------------------------------------
@@ -204,13 +238,19 @@ atom_packages:
   # General
   - sync-settings
   - editorconfig
-  - sort-lines
+  # - sort-lines
   - highlight-selected
-  # - prettier-atom
+
   # IDE
   - atom-ide-ui
   - ide-flowtype
   - ide-typescript
+
+  # Linters / Formatters
+  # - linter-eslint
+  # - linter-tslint
+  - prettier-atom
+
   # Themes
   - file-icons
 

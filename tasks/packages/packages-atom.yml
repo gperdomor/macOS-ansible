@@ -1,7 +1,7 @@
 ---
 # Atom Packages.
 - name: Ensure Atom packages are installed
-  command: apm install {{ item }}
+  command: apm install {{ item.id | default(item) }}
   args:
     creates: /Users/{{ ansible_env.USER }}/.atom/packages/{{ item }}
   with_items: "{{ atom_packages }}"
