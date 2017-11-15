@@ -1,0 +1,23 @@
+version: 2
+
+jobs:
+  macos:
+    macos:
+      xcode: "9.0"
+    steps:
+      - checkout
+      - run: bash install-deps.sh
+      # Debug info
+      - run: pip install pexpect
+      - run: python --version
+      - run: pip --version
+      - run: ansible --version
+      # Run
+      - run: ansible-playbook main.yml -i inventory --syntax-check
+      - run: ansible-playbook main.yml -i inventory --extra-vars "@test.config.json" --skip-tags "skip_ci,xcode"
+
+workflows:
+  version: 2
+  tests:
+    jobs:
+      - macos

@@ -1,6 +1,6 @@
 # macOS-ansible
 
-[![Build Status](https://travis-ci.org/gperdomor/macOS-ansible.svg?branch=master)](https://travis-ci.org/gperdomor/macOS-ansible)
+[![Build Status](https://img.shields.io/circleci/project/github/gperdomor/macOS-ansible.svg?label=Build)](https://circleci.com/gh/gperdomor/macOS-ansible)
 
 ### Goal
 Automate system setup from a clean install of macOS 10.13
@@ -19,7 +19,7 @@ Why not?... Also...
 
 Ensure the following requirements are already installed and working on your local system:
 
-- macOS 10.11, 10.12, 10.13
+- macOS 10.12, 10.13
 - Signin to the App Store
 - Command Line Developer Tools or Xcode
 
