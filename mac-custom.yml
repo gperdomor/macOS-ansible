@@ -115,7 +115,7 @@
 
     # Utilities
     - { cask_app_name: "appcleaner", tags: ["appcleaner","stage_4"], role: danbohea.cask-app }
-    - { cask_app_name: "authy-desktop", tags: ["authy-desktop","stage_4"], role: danbohea.cask-app }
+    - { cask_app_name: "authy", tags: ["authy","stage_4"], role: danbohea.cask-app }
     - { mas_app_name: "CleanMyDrive 2", mas_app_id: "523620159" , tags: ["cleanmydrive","stage_4","mas_app"], role: mas_app }
     # - { cask_app_name: "cleanmymac", tags: ["cleanmymac","stage_4"], role: danbohea.cask-app }
     # - { cask_app_name: "daisydisk", tags: ["daisydisk","stage_4"], role: danbohea.cask-app }
