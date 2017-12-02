@@ -56,7 +56,7 @@ fi
 
 # Install pexpect
 setStatusMessage "Installing pexpect"
-pip install pexpect --quiet
+pip2 install pexpect --quiet
 
 # Confirm installed Ansible version
 ansible --version
