@@ -15,9 +15,9 @@
     - { brew_pkg_name: "curl", brew_pkg_install_options: "with-nghttp2", brew_pkg_post_install: "/usr/local/bin/brew link --force curl", tags: ["curl","prep"], role: brew_pkg }
     # - { role: ssh, tags: ["ssh","prep"] }
     - { cask_app_name: "dropbox", tags: ["dropbox","prep"], role: danbohea.cask-app }
-    - { role: atom, tags: ["atom","prep","no_ci"] }
-    - { role: vscode, tags: ["vscode","visual-studio-code","prep","no_ci"] }
-    # - { role: danbohea.quick-look-plugins, tags: ["quick_look_plugins","prep","no_ci"] }
+    - { role: atom, tags: ["atom","prep"] }
+    - { role: vscode, tags: ["vscode","visual-studio-code","prep"] }
+    # - { role: danbohea.quick-look-plugins, tags: ["quick_look_plugins","prep"] }
     # - { role: terminal, tags: ["terminal","prep"] }
 
     # Stage 1: Essential day-to-day
@@ -44,7 +44,7 @@
 
     - { role: git, tags: ["git","stage_2"] }
     - { role: node_pkgs, tags: ["node_pkgs","stage_2"] }
-    - { cask_app_name: "gpgtools", tags: ["gpgtools","stage_2"], role: danbohea.cask-app }
+    - { cask_app_name: "gpg-suite", tags: ["gpg-suite","stage_2"], role: danbohea.cask-app }
     - { brew_pkg_name: "yarn", tags: ["yarn","stage_2"], role: brew_pkg }
     
     - { role: xcode, tags: ["xcode","stage_2"] }
@@ -77,7 +77,7 @@
     # - { cask_app_name: "paw", tags: ["paw","stage_2"], role: danbohea.cask-app }
 
     # Others
-    # - { cask_app_name: "knuff", tags: ["knuff","stage_1"], role: danbohea.cask-app }
+    # - { cask_app_name: "knuff", tags: ["knuff","stage_2"], role: danbohea.cask-app }
     # - { cask_app_name: "xscope", tags: ["xscope","stage_2"], role: danbohea.cask-app }
     # - { role: bash_completion, tags: ["bash_completion","stage_2"] }
 
@@ -116,7 +116,7 @@
     # Utilities
     - { cask_app_name: "appcleaner", tags: ["appcleaner","stage_4"], role: danbohea.cask-app }
     - { cask_app_name: "authy-desktop", tags: ["authy-desktop","stage_4"], role: danbohea.cask-app }
-    - { mas_app_name: "CleanMyDrive 2", mas_app_id: "523620159" , tags: ["cleanmydrive","stage_1","mas_app"], role: mas_app }
+    - { mas_app_name: "CleanMyDrive 2", mas_app_id: "523620159" , tags: ["cleanmydrive","stage_4","mas_app"], role: mas_app }
     # - { cask_app_name: "cleanmymac", tags: ["cleanmymac","stage_4"], role: danbohea.cask-app }
     # - { cask_app_name: "daisydisk", tags: ["daisydisk","stage_4"], role: danbohea.cask-app }
     - { cask_app_name: "launchrocket", tags: ["launchrocket","stage_4"], role: danbohea.cask-app }
