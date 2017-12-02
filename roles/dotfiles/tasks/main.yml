@@ -27,6 +27,8 @@
 - name: Reload .zshrc
   shell: source ~/.zshrc
   changed_when: false
+  tags:
+    - skip_ci
 
 # TODO: Make idempotent
 - name: Set git remote URL to SSH
