@@ -26,13 +26,13 @@
   shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   args:
     creates: ~/.oh-my-zsh
-  # tags:
-    # - skip_ci
+  tags:
+    - skip_ci
 
 - name: Install zsh-completions
   file: src=/usr/local/share/zsh-completions dest=~/.oh-my-zsh/custom/plugins/zsh-completions state=link
-  # tags:
-    # - skip_ci
+  tags:
+    - skip_ci
 
 - name: Configure zsh-completions
   lineinfile:
@@ -40,5 +40,5 @@
     state: present
     regexp: '^plugins=\(.*\)$'
     line: 'plugins=(git zsh-completions)'
-  # tags:
-    # - skip_ci
+  tags:
+    - skip_ci
