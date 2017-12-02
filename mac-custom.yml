@@ -17,7 +17,6 @@
     - { cask_app_name: "dropbox", tags: ["dropbox","prep"], role: danbohea.cask-app }
     - { role: atom, tags: ["atom","prep"] }
     - { role: vscode, tags: ["vscode","visual-studio-code","prep"] }
-    # - { role: danbohea.quick-look-plugins, tags: ["quick_look_plugins","prep"] }
     - { role: terminal, tags: ["terminal","prep"] }
 
     # Stage 1: Essential day-to-day
@@ -37,8 +36,6 @@
     - { cask_app_name: "keepingyouawake", tags: ["keepingyouawake","stage_1"], role: danbohea.cask-app }
     # - { cask_app_name: "spotify", tags: ["spotify","stage_4"], role: danbohea.cask-app }
 
-    # - { role: time_machine, tags: ["time_machine","stage_1"] }
-
     # Stage 2: Essential dev
     # --------------------------------------------------------------------------
 
@@ -46,7 +43,6 @@
     - { role: node_pkgs, tags: ["node_pkgs","stage_2"] }
     - { cask_app_name: "gpg-suite", tags: ["gpg-suite","stage_2"], role: danbohea.cask-app }
     - { brew_pkg_name: "yarn", tags: ["yarn","stage_2"], role: brew_pkg }
-    
     - { role: xcode, tags: ["xcode","stage_2"] }
     
     # IM
@@ -99,6 +95,12 @@
     - { cask_app_name: "dockstation", tags: ["dockstation","stage_4"], role: danbohea.cask-app }
     # - { cask_app_name: "kitematic", tags: ["kitematic","stage_4"], role: danbohea.cask-app }
     - { brew_pkg_name: "docker-clean", tags: ["docker-clean","stage_4"], role: brew_pkg }
+    # - { cask_app_name: "minishift", tags: ["minishift","stage_4"], role: danbohea.cask-app }
+
+    # Kubernetes Tools
+    # - { brew_pkg_name: "kubectl", tags: ["kubectl","stage_4"], role: brew_pkg }
+    # - { brew_pkg_name: "kubernetes-helm", tags: ["kubernetes-helm","stage_4"], role: brew_pkg }
+    # - { cask_app_name: "minikube", tags: ["minikube","stage_4"], role: danbohea.cask-app }
 
     # Virtual Machine
     # - { cask_app_name: "parallels-desktop", tags: ["parallels-desktop","stage_4"], role: danbohea.cask-app }
@@ -148,25 +150,7 @@
     # - { brew_pkg_name: "openshift-cli", tags: ["openshift-cli","stage_4"], role: brew_pkg }
     # - { brew_pkg_name: "gitlab-runner", brew_pkg_install_options: "without-docker", tags: ["gitlab-runner","stage_4"], role: brew_pkg }
     
-    # Last
-    # --------------------------------------------------------------------------
-
-    # - { role: danbohea.dock-items, tags: ["dock_items","last","always"] }
-    # - { role: login_items, tags: ["login_items","last","always"] }
-
   post_tasks:
     - debug:
         msg: "Some changes may not take effect until you've restarted your Mac."
       tags: always
-
-#   # Quicklook Plugins
-#   - qlmarkdown
-#   - qlimagesize
-#   - quicklook-json
-
-
-# # Post Provision Tasks
-# # --------------------------------------------------------------------------
-# # Glob pattern to ansible task files to run after all other tasks are finished.
-# post_provision_tasks:
-#   - tasks/dotfiles.yml
