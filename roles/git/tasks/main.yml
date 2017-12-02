@@ -48,6 +48,6 @@
   command: git config --global user.email "{{ git_user_email }}"
   when: git_user_email_result.stdout != git_user_email
 
-- name: Configure diff-so-fance
+- name: Configure diff-so-fancy
   command: git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
   when: git_core_pager_result.stdout != "diff-so-fancy | less --tabs=4 -RFX"
