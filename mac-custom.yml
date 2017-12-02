@@ -13,17 +13,17 @@
     - { role: macos, tags: ["macos","prep"] }
     - { brew_pkg_name: "openssl", tags: ["openssl","prep"], role: brew_pkg }
     - { brew_pkg_name: "curl", brew_pkg_install_options: "with-nghttp2", brew_pkg_post_install: "/usr/local/bin/brew link --force curl", tags: ["curl","prep"], role: brew_pkg }
-    # - { role: ssh, tags: ["ssh","prep"] }
+    - { role: ssh, tags: ["ssh","prep"] }
     - { cask_app_name: "dropbox", tags: ["dropbox","prep"], role: danbohea.cask-app }
     - { role: atom, tags: ["atom","prep"] }
     - { role: vscode, tags: ["vscode","visual-studio-code","prep"] }
     # - { role: danbohea.quick-look-plugins, tags: ["quick_look_plugins","prep"] }
-    # - { role: terminal, tags: ["terminal","prep"] }
+    - { role: terminal, tags: ["terminal","prep"] }
 
     # Stage 1: Essential day-to-day
     # --------------------------------------------------------------------------
 
-    # - { role: dotfiles, tags: ["dotfiles","stage_1"] }
+    - { role: dotfiles, tags: ["dotfiles","stage_1"] }
     - { mas_app_name: "Magnet", mas_app_id: "441258766" , tags: ["magnet","stage_1","mas_app"], role: mas_app }
     - { mas_app_name: "1 Password", mas_app_id: "443987910" , tags: ["1password","stage_1","mas_app"], role: mas_app }
     - { mas_app_name: "Spark", mas_app_id: "1176895641" , tags: ["spark","stage_1","mas_app"], role: mas_app }

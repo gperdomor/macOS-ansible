@@ -1,9 +1,24 @@
 ---
+
 - name: Ensure ~/.ssh exists
   file:
-    path: /Users/{{ ansible_env.USER }}/.ssh
+    path: "{{ ansible_env.HOME }}/.ssh"
     state: directory
     mode: 0700
+
+- name: Ensure ~/.ssh/known_hosts exists
+  file:
+    path: "{{ ansible_env.HOME }}/.ssh/known_hosts"
+    state: touch
+    mode: 0644
+  changed_when: false
+
+- name: Add hosts to known_hosts
+  known_hosts:
+    path: "{{ ansible_env.HOME }}/.ssh/known_hosts"
+    name: "{{ item.host }}"
+    key: "{{ item.key }}"
+  with_items: "{{ ssh_known_hosts }}"
 
 - name: Generate ssh keys
   user:
@@ -36,5 +51,3 @@
     responses:
       (?i)Enter passphrase: "{{item.passphrase}}"
   items: "{{ssh_keys}}"
-  tags:
-    - skip_ci
