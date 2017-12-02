@@ -5,9 +5,7 @@
   connection: local
 
   vars_files:
-    - config.yml
-    # - config/config.yml
-    # - config/config.local.yml
+    - config/config.yml
 
   pre_tasks:
     - block:

@@ -36,12 +36,12 @@ A script is included to ensure certain dependencies are met:
 To execute this script run:
 
 ```
-bash install-deps.sh
+bash init.sh
 ```
 
 ### Configure
 
-Default variables can be overridden in config.yml.
+Default variables can be overridden in config.yml
 
 ### Updating externally sourced roles
 
@@ -56,11 +56,11 @@ ansible-galaxy install -r requirements.yml --force
 The primary Ansible playbook file is called mac.yml and can be run using the following command (asks for sudo password):
 
 ```
-ansible-playbook main.yml -K -i inventory
+ansible-playbook main.yml -K
 ```
 
-To run only certain tags (e.g. `xcode` and `homebrew`):
+To run only certain tags (e.g. `xcode` and `opera`):
 
 ```
-ansible-playbook main.yml -K -i inventory -t "xcode,homebrew"
+ansible-playbook main.yml -K -t "xcode,opera"
 ```

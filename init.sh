@@ -54,6 +54,10 @@ else
   brew outdated ansible || brew upgrade ansible
 fi
 
+# Install pexpect
+setStatusMessage "Installing pexpect"
+pip install pexpect --quiet
+
 # Confirm installed Ansible version
 ansible --version
 

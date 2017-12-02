@@ -4,7 +4,7 @@
   connection: local
 
   vars_files:
-    - config.yml
+    - config/config.yml
 
   roles:
     # Prep
@@ -158,3 +158,15 @@
     - debug:
         msg: "Some changes may not take effect until you've restarted your Mac."
       tags: always
+
+#   # Quicklook Plugins
+#   - qlmarkdown
+#   - qlimagesize
+#   - quicklook-json
+
+
+# # Post Provision Tasks
+# # --------------------------------------------------------------------------
+# # Glob pattern to ansible task files to run after all other tasks are finished.
+# post_provision_tasks:
+#   - tasks/dotfiles.yml
