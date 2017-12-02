@@ -6,6 +6,10 @@
 # ------------------------------------------------------------------------------
 homebrew_taps:
   - vapor/tap
+  - kylef/formulae
+
+# Atom Packages
+# --------------------------------------------------------------------------
 
 atom_upgrade_packages: true
 atom_packages:
@@ -15,6 +19,7 @@ atom_packages:
   # - sort-lines
   # - highlight-selected
   - pigments
+  - teletype
 
   # IDE
   - atom-ide-ui
@@ -29,7 +34,8 @@ atom_packages:
   # Themes
   - file-icons
 
-  - teletype
+# Visual Studio Code Extensions
+# --------------------------------------------------------------------------
 
 vscode_extensions:
   # General
@@ -51,17 +57,28 @@ vscode_extensions:
   # Theme
   - { name: "vscode-icons", id: "robertohuertasm.vscode-icons" }
 
-# Git  
-git_push_default: "simple"
-git_user_name: "Gustavo Perdomo"
-git_user_email: "gperdomor@gmail.com"
+# Node Packages
+# --------------------------------------------------------------------------
 
-# Node  
 node_pkgs_list:
   - name: "@angular/cli"
   - name: create-react-app
   - name: create-react-native-app
   - name: react-native-cli
+  # - name: eslint
+  # - name: localtunnel
+  # - name: prettier
+  # - name: serve
+
+# Git
+# --------------------------------------------------------------------------
+ 
+git_push_default: "simple"
+git_user_name: "Gustavo Perdomo"
+git_user_email: "gperdomor@gmail.com"
+
+# Mac App Store Config
+# --------------------------------------------------------------------------
 
 mas_email: ""
 mas_password: ""
