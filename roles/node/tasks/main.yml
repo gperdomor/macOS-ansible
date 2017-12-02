@@ -1,0 +1,6 @@
+---
+
+- name: Install Node.js
+  homebrew: name=node
+  notify: brew cleanup
+  tags: node

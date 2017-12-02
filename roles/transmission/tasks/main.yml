@@ -1,7 +1,12 @@
 ---
+
+- name: Install Transmission
+  homebrew_cask: name=transmission state=present
+  notify: brew cask cleanup
+
 - name: Ensure location for incomplete downloads exists
   file:
-    path: /Users/{{ ansible_env.USER }}/Downloads/Torrents/Incomplete
+    path: "{{ ansible_env.HOME }}/Downloads/Torrents/Incomplete"
     state: directory
     follow: yes
 
@@ -11,6 +16,7 @@
     key: UseIncompleteDownloadFolder
     type: bool
     value: true
+  notify: killall Transmission
 
 - name: Set path for incomplete downloads
   osx_defaults:
@@ -18,6 +24,7 @@
     key: IncompleteDownloadFolder
     type: string
     value: "${HOME}/Downloads/Torrents/Incomplete"
+  notify: killall Transmission
 
 - name: "{{ item.name }}"
   osx_defaults:
@@ -30,3 +37,4 @@
     - { name: "Trash original torrent files", key: "DeleteOriginalTorrent", value: "true"}
     - { name: "Hide the donate message", key: "WarningDonate", value: "false"}
     - { name: "Hide the legal disclaimer", key: "WarningLegal", value: "false"}
+  notify: killall Transmission

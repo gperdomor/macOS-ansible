@@ -50,4 +50,15 @@ vscode_extensions:
   
   # Theme
   - { name: "vscode-icons", id: "robertohuertasm.vscode-icons" }
-  
+
+# Git  
+git_push_default: "simple"
+git_user_name: "Gustavo Perdomo"
+git_user_email: "gperdomor@gmail.com"
+
+# Node  
+node_pkgs_list:
+  - name: "@angular/cli"
+  - name: create-react-app
+  - name: create-react-native-app
+  - name: react-native-cli

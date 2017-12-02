@@ -11,15 +11,13 @@
     # --------------------------------------------------------------------------
     - { role: macos, tags: ["macos","prep"] }
     # - { role: ssh, tags: ["ssh","prep"] }
-    # - { brew_pkg_name: "lastpass-cli", brew_pkg_install_options: "with-pinentry", tags: ["lastpass_cli","prep"], role: brew_pkg }
+    # 1 password
     # - { role: danbohea.google-chrome, tags: ["google_chrome","prep"] }
-    # - { cask_app_name: "dropbox", tags: ["dropbox","prep"], role: danbohea.cask-app }
-    # - { cask_app_name: "atext", tags: ["atext","prep"], role: danbohea.cask-app }
-    # - { role: danbohea.atom, tags: ["atom","prep","no_ci"] }
+    - { cask_app_name: "dropbox", tags: ["dropbox","prep"], role: danbohea.cask-app }
+    - { role: atom, tags: ["atom","prep","no_ci"] }
+    - { role: vscode, tags: ["vscode","visual-studio-code","prep","no_ci"] }
     # - { role: danbohea.quick-look-plugins, tags: ["quick_look_plugins","prep","no_ci"] }
-    # - { cask_app_name: "bettertouchtool", tags: ["bettertouchtool","prep"], role: danbohea.cask-app }
     # - { role: terminal, tags: ["terminal","prep"] }
-    # - { role: danbohea.spelling, tags: ["spelling","prep"] }
 
     # # Stage 1: Essential day-to-day
     # # --------------------------------------------------------------------------
@@ -41,16 +39,13 @@
     # # Stage 2: Essential dev
     # # --------------------------------------------------------------------------
 
-    # - { cask_app_name: "virtualbox", tags: ["virtualbox","stage_2"], role: danbohea.cask-app }
-    # - { role: vagrant, tags: ["vagrant","stage_2","sudo"] }
-    # - { role: composer, tags: ["composer","stage_2"] }
-    # - { role: node_pkgs, tags: ["node_pkgs","stage_2"] }
-    # - { brew_pkg_name: "python", tags: ["python","stage_2"], role: brew_pkg }
-    # - { role: pip_pkgs, tags: ["pip_pkgs","stage_2"] }
-    # - { brew_pkg_name: "yarn", tags: ["yarn","stage_2"], role: brew_pkg }
-    # - { cask_app_name: "dash", tags: ["dash","stage_2"], role: danbohea.cask-app }
-    # - { cask_app_name: "kaleidoscope", tags: ["kaleidoscope","stage_2"], role: danbohea.cask-app }
-    # - { role: tower, tags: ["tower","stage_2"] }
+    - { role: git, tags: ["git","stage_2"] }
+    - { role: node_pkgs, tags: ["node_pkgs","stage_2"] }
+    - { brew_pkg_name: "yarn", tags: ["yarn","stage_2"], role: brew_pkg }
+    - { cask_app_name: "kaleidoscope", tags: ["kaleidoscope","stage_2"], role: danbohea.cask-app }
+    - { cask_app_name: "p4merge", tags: ["p4merge","stage_2"], role: danbohea.cask-app }
+    - { cask_app_name: "github", tags: ["github","stage_2"], role: danbohea.cask-app }
+    - { role: tower, tags: ["tower","stage_2"] }
     # - { cask_app_name: "sequel-pro", tags: ["sequel_pro","stage_2"], role: danbohea.cask-app }
     # - { cask_app_name: "transmit", tags: ["transmit","stage_2"], role: danbohea.cask-app }
     # - { cask_app_name: "imageoptim", tags: ["imageoptim","stage_2"], role: danbohea.cask-app }
@@ -73,7 +68,7 @@
     # - { cask_app_name: "toggldesktop", tags: ["toggldesktop","stage_4"], role: danbohea.cask-app }
     # - { cask_app_name: "docker", tags: ["docker","stage_4"], role: danbohea.cask-app }
     # - { cask_app_name: "kitematic", tags: ["kitematic","stage_4"], role: danbohea.cask-app }
-    # - { role: transmission, tags: ["transmission","stage_4"] }
+    - { role: transmission, tags: ["transmission","stage_4"] }
     # - { brew_pkg_name: "tree", tags: ["tree","stage_4"], role: brew_pkg }
     # - { brew_pkg_name: "wget", tags: ["wget","stage_4"], role: brew_pkg }
     # - { brew_pkg_name: "ssh-copy-id", tags: ["ssh-copy-id","stage_4"], role: brew_pkg }
@@ -107,16 +102,6 @@
 
     # - { role: danbohea.dock-items, tags: ["dock_items","last","always"] }
     # - { role: login_items, tags: ["login_items","last","always"] }
-
-
-    # # Passing a variable to a role.
-    # - { role: atom, tags: ["atom"] }
-    # - { role: vscode, tags: ["vscode, visual-studio-code"] }
-    # - { role: danbohea.cask-app, cask_app_name: "github", tags: ["github"] }
-
-  tasks:
-    - name: Say Hi
-      shell: echo "hello world"
 
   post_tasks:
     - debug:

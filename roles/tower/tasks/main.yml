@@ -1,11 +1,16 @@
 ---
+
+- name: Install Tower
+  homebrew_cask: name=tower state=present
+  notify: brew cask cleanup
+
 - name: Use Homebrew Git binary
   osx_defaults:
     domain: com.fournova.Tower2
     key: GTUserDefaultsGitBinary
     type: string
     value: /usr/local/bin/git
-  when: "'git' in homebrew_installed_packages"
+  notify: killall Tower
 
 - name: Set default directory for cloned projects
   osx_defaults:
@@ -13,19 +18,31 @@
     key: GTUserDefaultsDefaultCloningDirectory
     type: string
     value: ${HOME}/Developer
+  notify: killall Tower
 
-- name: Set default diff tool
+- name: Check if Kaleidoscope is installed
+  stat: path=/Applications/Kaleidoscope.app
+  register: kaleidoscope_check
+
+- name: Set diff tool
   osx_defaults:
     domain: com.fournova.Tower2
     key: GTUserDefaultsDiffToolIdentifier
     type: string
     value: kaleidoscope
-  when: "'kaleidoscope' in homebrew_cask_apps"
+  notify: killall Tower
+  when: kaleidoscope_check.stat.exists == True
 
-- name: Set default merge tool
+- name: Check if P4Merge is installed
+  stat: path=/Applications/p4merge.app
+  register: p4merge_check
+
+- name: Set merge tool
   osx_defaults:
     domain: com.fournova.Tower2
     key: GTUserDefaultsMergeToolIdentifier
     type: string
     value: p4merge
-  when: "'p4merge' in homebrew_cask_apps"
+  notify: killall Tower
+  when: p4merge_check.stat.exists == True
+
