@@ -11,23 +11,26 @@
     # --------------------------------------------------------------------------
     - { role: macos, tags: ["macos","prep"] }
     # - { role: ssh, tags: ["ssh","prep"] }
-    # 1 password
+    # 
+    - { mas_app_name: "1 Password", mas_app_id: "443987910" , tags: ["1password","prep","mas_app"], role: mas_app }
+    
     # - { role: danbohea.google-chrome, tags: ["google_chrome","prep"] }
     - { cask_app_name: "dropbox", tags: ["dropbox","prep"], role: danbohea.cask-app }
     - { role: atom, tags: ["atom","prep","no_ci"] }
     - { role: vscode, tags: ["vscode","visual-studio-code","prep","no_ci"] }
     # - { role: danbohea.quick-look-plugins, tags: ["quick_look_plugins","prep","no_ci"] }
     # - { role: terminal, tags: ["terminal","prep"] }
+    - { brew_pkg_name: "openssl", tags: ["openssl","prep"], role: brew_pkg }
+    - { brew_pkg_name: "curl", brew_pkg_install_options: "with-nghttp2", brew_pkg_post_install: "/usr/local/bin/brew link --force curl", tags: ["curl","prep"], role: brew_pkg }
+    
 
     # # Stage 1: Essential day-to-day
     # # --------------------------------------------------------------------------
 
     # - { role: dotfiles, tags: ["dotfiles","stage_1"] }
-    # - { role: duti, tags: ["duti","stage_1"] }
+    - { mas_app_name: "Magnet", mas_app_id: "441258766" , tags: ["magnet","stage_1","mas_app"], role: mas_app }
+    
     # - { role: time_machine, tags: ["time_machine","stage_1"] }
-    # - { role: moom, tags: ["moom","stage_1"] }
-    # - { role: danbohea.flux, tags: ["flux","stage_1","no_ci"] }
-    # - { role: evernote, tags: ["evernote","stage_1"] }
     # - { cask_app_name: "caffeine", tags: ["caffeine","stage_1","sudo"], role: danbohea.cask-app }
     # - { cask_app_name: "alfred", tags: ["alfred","stage_1","sudo"], role: danbohea.cask-app }
     # - { role: path_finder, tags: ["path_finder","stage_1"] }
@@ -47,11 +50,7 @@
     - { cask_app_name: "github", tags: ["github","stage_2"], role: danbohea.cask-app }
     - { role: tower, tags: ["tower","stage_2"] }
     # - { cask_app_name: "sequel-pro", tags: ["sequel_pro","stage_2"], role: danbohea.cask-app }
-    # - { cask_app_name: "transmit", tags: ["transmit","stage_2"], role: danbohea.cask-app }
-    # - { cask_app_name: "imageoptim", tags: ["imageoptim","stage_2"], role: danbohea.cask-app }
-    # - { role: danbohea.sketch, tags: ["sketch","stage_2","no_ci"] }
     # - { cask_app_name: "xscope", tags: ["xscope","stage_2"], role: danbohea.cask-app }
-    # - { cask_app_name: "phpstorm", tags: ["phpstorm","stage_2"], role: danbohea.cask-app }
     # - { cask_app_name: "slack", tags: ["slack","stage_2"], role: danbohea.cask-app }
     # - { role: bash_completion, tags: ["bash_completion","stage_2"] }
 

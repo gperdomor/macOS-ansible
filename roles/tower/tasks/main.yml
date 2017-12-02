@@ -12,6 +12,9 @@
     value: /usr/local/bin/git
   notify: killall Tower
 
+- name: Creates default directory for cloned projects
+  file: path=${HOME}/Developer state=directory
+
 - name: Set default directory for cloned projects
   osx_defaults:
     domain: com.fournova.Tower2

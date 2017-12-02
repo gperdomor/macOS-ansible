@@ -62,3 +62,6 @@ node_pkgs_list:
   - name: create-react-app
   - name: create-react-native-app
   - name: react-native-cli
+
+mas_email: ""
+mas_password: ""
