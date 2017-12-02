@@ -1,0 +1,35 @@
+---
+
+# Restarts a bunch of macOS apps & processes.
+- name: killall
+  command: killall "{{ item }}" > /dev/null 2>&1
+  with_items:
+    - cfprefsd
+    - Finder
+    - Safari
+    - SystemUIServer
+  ignore_errors: yes
+
+- name: killall cfprefsd
+  command: killall cfprefsd
+  ignore_errors: yes
+
+- name: killall Dock
+  command: killall Dock
+  ignore_errors: yes
+
+- name: killall Finder
+  command: killall Finder
+  ignore_errors: yes
+
+- name: killall SystemUIServer
+  command: killall SystemUIServer
+  ignore_errors: yes
+
+- name: killall Safari
+  command: killall Safari
+  ignore_errors: yes
+
+- name: killall Calendar
+  command: killall Calendar
+  ignore_errors: yes

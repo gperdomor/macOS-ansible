@@ -1,0 +1,22 @@
+dependencies:
+  - danbohea.homebrew
+
+galaxy_info:
+  author: gperdomor
+  description: Installs and configures VS Code on macOS.
+  license: MIT
+  min_ansible_version: 2.1
+  platforms:
+  - name: MacOSX
+    versions:
+    - '10.11'
+    - '10.12'
+    - '10.13'
+  galaxy_tags:
+    - vscode
+    - visual-studio-code
+    - cask
+    - homebrew
+    - mac
+    - macos
+    - osx

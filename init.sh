@@ -35,21 +35,27 @@ function exists {
 # Install
 # ------------------------------------------------------------------------------
 
-# Install pip
-if ! exists pip; then
-  setStatusMessage "Installing pip"
-  sudo easy_install pip
+# Install brew
+if ! exists brew; then
+  setStatusMessage "Installing brew"
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+else
+  setStatusMessage "Updating Brew"
+  brew update
 fi
 
 # Install Ansible
+# TODO: We need at least Ansible 2.4.0, upgrade if needed.
 if ! exists ansible; then
   setStatusMessage "Installing Ansible"
-  sudo pip install ansible --quiet
+  brew install ansible
+else
+  setStatusMessage "Updating Ansible"
+  brew outdated ansible || brew upgrade ansible
 fi
 
-# Install pexpect
-setStatusMessage "Installing pexpect"
-sudo pip install pexpect --quiet
+# Confirm installed Ansible version
+ansible --version
 
 # Install Ansible Galaxy dependencies:
 setStatusMessage "Installing required Ansible Galaxy roles"

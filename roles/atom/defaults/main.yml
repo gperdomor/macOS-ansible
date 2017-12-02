@@ -1,0 +1,7 @@
+# # Whether to upgrade existing packages whenever this role runs.
+# atom_upgrade_packages: false
+#
+# # List of Atom packages to install.
+# # Values must be apm package names.
+# # Fill yer boots: https://atom.io/packages
+# atom_packages: []
