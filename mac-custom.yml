@@ -30,7 +30,7 @@
     - { mas_app_name: "Pages", mas_app_id: "409201541" , tags: ["pages","stage_1","mas_app"], role: mas_app }
     - { mas_app_name: "Numbers", mas_app_id: "409203825" , tags: ["numbers","stage_1","mas_app"], role: mas_app }
     - { mas_app_name: "Keynote", mas_app_id: "409183694" , tags: ["cleanmydrive","stage_1","mas_app"], role: mas_app }
-    # - { cask_app_name: "skype", tags: ["skype","stage_1"], role: danbohea.cask-app }
+    - { cask_app_name: "skype", tags: ["skype","stage_1"], role: danbohea.cask-app }
     - { cask_app_name: "archiver", tags: ["archiver","stage_1"], role: danbohea.cask-app }
     # - { cask_app_name: "the-unarchiver", tags: ["the_unarchiver","stage_1"], role: danbohea.cask-app }
     - { cask_app_name: "keepingyouawake", tags: ["keepingyouawake","stage_1"], role: danbohea.cask-app }
@@ -43,7 +43,7 @@
     - { role: node_pkgs, tags: ["node_pkgs","stage_2"] }
     - { cask_app_name: "gpg-suite", tags: ["gpg-suite","stage_2"], role: danbohea.cask-app }
     - { brew_pkg_name: "yarn", tags: ["yarn","stage_2"], role: brew_pkg }
-    - { role: xcode, tags: ["xcode","stage_2"] }
+    # - { role: xcode, tags: ["xcode","stage_2"] }
     
     # IM
     - { mas_app_name: "Slack", mas_app_id: "803453959" , tags: ["slack","stage_2","mas_app"], role: mas_app }
@@ -52,7 +52,7 @@
     # CVS 
     - { cask_app_name: "kaleidoscope", tags: ["kaleidoscope","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "p4merge", tags: ["p4merge","stage_2"], role: danbohea.cask-app }
-    - { cask_app_name: "araxis-merge", tags: ["araxis-merge","stage_2"], role: danbohea.cask-app }
+    # - { cask_app_name: "araxis-merge", tags: ["araxis-merge","stage_2"], role: danbohea.cask-app }
     - { cask_app_name: "github", tags: ["github","stage_2"], role: danbohea.cask-app }
     - { role: tower, tags: ["tower","stage_2"] }
 
@@ -75,32 +75,31 @@
     # Others
     # - { cask_app_name: "knuff", tags: ["knuff","stage_2"], role: danbohea.cask-app }
     # - { cask_app_name: "xscope", tags: ["xscope","stage_2"], role: danbohea.cask-app }
-    # - { role: bash_completion, tags: ["bash_completion","stage_2"] }
 
     # Stage 3: Projects
     # --------------------------------------------------------------------------
 
-    # - { role: projects, tags: ["projects","stage_3"] }
+    - { role: projects, tags: ["projects","stage_3"] }
 
     # Stage 4: Remaining apps.
     # --------------------------------------------------------------------------
 
     # Browsers
     - { cask_app_name: "google-chrome", tags: ["google-chrome","stage_4"], role: danbohea.cask-app }
-    - { cask_app_name: "opera", tags: ["opera","stage_4"], role: danbohea.cask-app }
-    - { cask_app_name: "firefox", tags: ["firefox","stage_4"], role: danbohea.cask-app }
+    # - { cask_app_name: "opera", tags: ["opera","stage_4"], role: danbohea.cask-app }
+    # - { cask_app_name: "firefox", tags: ["firefox","stage_4"], role: danbohea.cask-app }
    
     # Docker Tools
     - { cask_app_name: "docker", tags: ["docker","stage_4"], role: danbohea.cask-app }
     - { cask_app_name: "dockstation", tags: ["dockstation","stage_4"], role: danbohea.cask-app }
     # - { cask_app_name: "kitematic", tags: ["kitematic","stage_4"], role: danbohea.cask-app }
     - { brew_pkg_name: "docker-clean", tags: ["docker-clean","stage_4"], role: brew_pkg }
-    # - { cask_app_name: "minishift", tags: ["minishift","stage_4"], role: danbohea.cask-app }
 
     # Kubernetes Tools
     # - { brew_pkg_name: "kubectl", tags: ["kubectl","stage_4"], role: brew_pkg }
     # - { brew_pkg_name: "kubernetes-helm", tags: ["kubernetes-helm","stage_4"], role: brew_pkg }
     # - { cask_app_name: "minikube", tags: ["minikube","stage_4"], role: danbohea.cask-app }
+    # - { cask_app_name: "minishift", tags: ["minishift","stage_4"], role: danbohea.cask-app }
 
     # Virtual Machine
     # - { cask_app_name: "parallels-desktop", tags: ["parallels-desktop","stage_4"], role: danbohea.cask-app }
@@ -118,7 +117,7 @@
     # Utilities
     - { cask_app_name: "appcleaner", tags: ["appcleaner","stage_4"], role: danbohea.cask-app }
     - { cask_app_name: "authy", tags: ["authy","stage_4"], role: danbohea.cask-app }
-    - { mas_app_name: "CleanMyDrive 2", mas_app_id: "523620159" , tags: ["cleanmydrive","stage_4","mas_app"], role: mas_app }
+    # - { mas_app_name: "CleanMyDrive 2", mas_app_id: "523620159" , tags: ["cleanmydrive","stage_4","mas_app"], role: mas_app }
     # - { cask_app_name: "cleanmymac", tags: ["cleanmymac","stage_4"], role: danbohea.cask-app }
     # - { cask_app_name: "daisydisk", tags: ["daisydisk","stage_4"], role: danbohea.cask-app }
     - { cask_app_name: "launchrocket", tags: ["launchrocket","stage_4"], role: danbohea.cask-app }

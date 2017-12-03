@@ -93,3 +93,19 @@ ssh_keys:
   - name: gitlab
     host: gitlab.com
     passphrase: ""
+
+# -----------
+# SSH Config
+# --------------------------------------------------------------------------
+projects:
+  - dest: "vapor"
+    repo_https: "https://github.com/vapor/vapor.git"
+    repo_ssh: "git@github.com:vapor/vapor.git"
+  
+  - dest: "sanitize"
+    repo_https: "https://github.com/gperdomor/sanitize.git"
+    repo_ssh: "git@github.com:gperdomor/sanitize.git"
+  
+  - dest: "swiftybeaver-provider"
+    repo_https: "https://github.com/vapor-community/swiftybeaver-provider.git"
+    repo_ssh: "git@github.com:vapor-community/swiftybeaver-provider.git"
