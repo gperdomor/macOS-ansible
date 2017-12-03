@@ -1,0 +1,17 @@
+---
+
+- name: Install Atom.
+  homebrew_cask: name=atom state=present
+  notify: brew cask cleanup
+
+- name: Install Atom packages.
+  command: apm install {{ item }}
+  args:
+    creates: "{{ ansible_env.HOME }}/.atom/packages/{{ item }}"
+  with_items: "{{ atom_packages }}"
+
+- name: Upgrade Atom packages.
+  command: apm upgrade --no-confirm
+  register: apm_upgrade
+  changed_when: not apm_upgrade.stdout_lines[0] | regex_search('(Package Updates Available.*\(0\))')
+  when: atom_upgrade_packages

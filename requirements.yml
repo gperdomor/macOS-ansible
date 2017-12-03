@@ -1,4 +1,4 @@
 ---
-- name: danbohea.homebrew
-- name: geerlingguy.mas
-- name: geerlingguy.dotfiles
+
+- src: danbohea.cask-app
+  version: master

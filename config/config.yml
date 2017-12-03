@@ -1,0 +1,111 @@
+---
+
+# Override default role variables here.
+
+# homebrew
+# ------------------------------------------------------------------------------
+homebrew_taps:
+  - vapor/tap
+  - kylef/formulae
+
+# Atom Packages
+# --------------------------------------------------------------------------
+
+atom_upgrade_packages: true
+atom_packages:
+  # General
+  - editorconfig
+  # - sync-settings
+  # - sort-lines
+  # - highlight-selected
+  - pigments
+  - teletype
+
+  # IDE
+  - atom-ide-ui
+  # - ide-flowtype
+  - ide-typescript
+
+  # Linters / Formatters
+  # - linter-eslint
+  # - linter-tslint
+  # - prettier-atom
+
+  # Themes
+  - file-icons
+
+# Visual Studio Code Extensions
+# --------------------------------------------------------------------------
+
+vscode_extensions:
+  # General
+  - { name: "Debugger for Chrome", id: "msjsdiag.debugger-for-chrome" }
+  - { name: "EditorConfig for VS Code", id: "EditorConfig.EditorConfig" }
+  # - Tyriar.sort-lines
+  
+  # Linter / Formatters
+  # - { name: "Eslint", id: "dbaeumer.vscode-eslint" }
+  - { name: "TS Lint", id: "eg2.tslint" }
+  - { name: "Prettier", id: "esbenp.prettier-vscode" }
+
+  # Others
+  # - { name: "Docker", id: "PeterJausovec.vscode-docker" }
+  # - { name: "Go", id: "lukehoban.Go" }
+  - { name: "Settings Sync", id: "Shan.code-settings-sync" }
+  - { name: "TODO Highlight", id: "wayou.vscode-todo-highlight" }
+  
+  # Theme
+  - { name: "vscode-icons", id: "robertohuertasm.vscode-icons" }
+
+# Node Packages
+# --------------------------------------------------------------------------
+
+node_pkgs_list:
+  - name: "@angular/cli"
+  - name: create-react-app
+  - name: create-react-native-app
+  - name: react-native-cli
+  # - name: eslint
+  # - name: localtunnel
+  # - name: prettier
+  # - name: serve
+
+# Git
+# --------------------------------------------------------------------------
+ 
+git_push_default: "simple"
+git_user_name: "Gustavo Perdomo"
+git_user_email: "gperdomor@gmail.com"
+
+# Mac App Store Config
+# --------------------------------------------------------------------------
+
+mas_email: ""
+mas_password: ""
+
+# -----------
+# SSH Config
+# --------------------------------------------------------------------------
+ssh_keys:
+  - name: github
+    host: github.com
+    passphrase: ""
+  - name: gitlab
+    host: gitlab.com
+    passphrase: ""
+
+# -----------
+# SSH Config
+# --------------------------------------------------------------------------
+projects:
+  - dest: "vapor"
+    repo_https: "https://github.com/vapor/vapor.git"
+    repo_ssh: "git@github.com:vapor/vapor.git"
+  
+  - dest: "sanitize"
+    repo_https: "https://github.com/gperdomor/sanitize.git"
+    repo_ssh: "git@github.com:gperdomor/sanitize.git"
+  
+  - dest: "swiftybeaver-provider"
+    repo_https: "https://github.com/vapor-community/swiftybeaver-provider.git"
+    repo_ssh: "git@github.com:vapor-community/swiftybeaver-provider.git"

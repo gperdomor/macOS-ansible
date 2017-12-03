@@ -1,7 +1,0 @@
----
-# Visual Studio Code Extensions.
-- name: Ensure VS Code extensions are installed
-  command: code --install-extension {{ item.id | default(item) }}
-  with_items: "{{ vscode_packages }}"
-  register: vscode_result
-  changed_when: "'already installed' not in vscode_result.stdout"

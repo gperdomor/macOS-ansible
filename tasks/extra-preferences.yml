@@ -1,8 +1,0 @@
----
-# Tower Preferences
-- import_tasks: preferences/preferences-tower.yml
-  when: "'tower' in homebrew_cask_apps"
-
-# Transmission Preferences
-- import_tasks: preferences/preferences-transmission.yml
-  when: "'transmission' in homebrew_cask_apps"
