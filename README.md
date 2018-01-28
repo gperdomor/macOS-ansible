@@ -56,11 +56,11 @@ ansible-galaxy install -r requirements.yml --force
 The primary Ansible playbook file is called mac.yml and can be run using the following command (asks for sudo password):
 
 ```
-ansible-playbook main.yml -K
+ansible-playbook playbook.yml -K
 ```
 
 To run only certain tags (e.g. `xcode` and `opera`):
 
 ```
-ansible-playbook main.yml -K -t "xcode,opera"
+ansible-playbook playbook.yml -K -t "xcode,opera"
 ```

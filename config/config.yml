@@ -17,19 +17,19 @@ atom_packages:
   - editorconfig
   # - sync-settings
   # - sort-lines
-  # - highlight-selected
+  - highlight-selected
   - pigments
   - teletype
 
   # IDE
   - atom-ide-ui
-  # - ide-flowtype
-  - ide-typescript
+  - ide-flowtype
+  # - ide-typescript
 
   # Linters / Formatters
   # - linter-eslint
   # - linter-tslint
-  # - prettier-atom
+  - prettier-atom
 
   # Themes
   - file-icons
@@ -47,15 +47,19 @@ vscode_extensions:
   # - { name: "Eslint", id: "dbaeumer.vscode-eslint" }
   - { name: "TS Lint", id: "eg2.tslint" }
   - { name: "Prettier", id: "esbenp.prettier-vscode" }
+  - { name: "Flow Language Support", id: "flowtype.flow-for-vscode" }
 
   # Others
-  # - { name: "Docker", id: "PeterJausovec.vscode-docker" }
+  - { name: "Docker", id: "PeterJausovec.vscode-docker" }
+  # - { name: "Jest", id: "Orta.vscode-jest" }
   # - { name: "Go", id: "lukehoban.Go" }
-  - { name: "Settings Sync", id: "Shan.code-settings-sync" }
+  # - { name: "Settings Sync", id: "Shan.code-settings-sync" }
   - { name: "TODO Highlight", id: "wayou.vscode-todo-highlight" }
+  - { name: "Path Intellisense", id: "christian-kohler.path-intellisense" }
   
   # Theme
   - { name: "vscode-icons", id: "robertohuertasm.vscode-icons" }
+  - { name: "One Dark Pro", id: "zhuangtongfa.material-theme" }
 
 # Node Packages
 # --------------------------------------------------------------------------
@@ -63,7 +67,7 @@ vscode_extensions:
 node_pkgs_list:
   - name: "@angular/cli"
   - name: create-react-app
-  - name: create-react-native-app
+  # - name: create-react-native-app
   - name: react-native-cli
   # - name: eslint
   # - name: localtunnel
@@ -98,10 +102,6 @@ ssh_keys:
 # SSH Config
 # --------------------------------------------------------------------------
 projects:
-  - dest: "vapor"
-    repo_https: "https://github.com/vapor/vapor.git"
-    repo_ssh: "git@github.com:vapor/vapor.git"
-  
   - dest: "sanitize"
     repo_https: "https://github.com/gperdomor/sanitize.git"
     repo_ssh: "git@github.com:gperdomor/sanitize.git"

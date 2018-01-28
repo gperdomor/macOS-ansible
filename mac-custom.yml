@@ -29,8 +29,8 @@
     - { mas_app_name: "Reeder", mas_app_id: "880001334" , tags: ["reeder","stage_1","mas_app"], role: mas_app }
     - { mas_app_name: "Pages", mas_app_id: "409201541" , tags: ["pages","stage_1","mas_app"], role: mas_app }
     - { mas_app_name: "Numbers", mas_app_id: "409203825" , tags: ["numbers","stage_1","mas_app"], role: mas_app }
-    - { mas_app_name: "Keynote", mas_app_id: "409183694" , tags: ["cleanmydrive","stage_1","mas_app"], role: mas_app }
-    - { cask_app_name: "skype", tags: ["skype","stage_1"], role: danbohea.cask-app }
+    # - { mas_app_name: "Keynote", mas_app_id: "409183694" , tags: ["cleanmydrive","stage_1","mas_app"], role: mas_app }
+    # - { cask_app_name: "skype", tags: ["skype","stage_1"], role: danbohea.cask-app }
     - { cask_app_name: "archiver", tags: ["archiver","stage_1"], role: danbohea.cask-app }
     # - { cask_app_name: "the-unarchiver", tags: ["the_unarchiver","stage_1"], role: danbohea.cask-app }
     - { cask_app_name: "keepingyouawake", tags: ["keepingyouawake","stage_1"], role: danbohea.cask-app }
@@ -86,12 +86,12 @@
 
     # Browsers
     - { cask_app_name: "google-chrome", tags: ["google-chrome","stage_4"], role: danbohea.cask-app }
-    # - { cask_app_name: "opera", tags: ["opera","stage_4"], role: danbohea.cask-app }
-    # - { cask_app_name: "firefox", tags: ["firefox","stage_4"], role: danbohea.cask-app }
+    - { cask_app_name: "opera", tags: ["opera","stage_4"], role: danbohea.cask-app }
+    - { cask_app_name: "firefox", tags: ["firefox","stage_4"], role: danbohea.cask-app }
    
     # Docker Tools
-    - { cask_app_name: "docker", tags: ["docker","stage_4"], role: danbohea.cask-app }
-    - { cask_app_name: "dockstation", tags: ["dockstation","stage_4"], role: danbohea.cask-app }
+    - { role: docker, tags: ["docker","stage_4"] }
+    # - { cask_app_name: "dockstation", tags: ["dockstation","stage_4"], role: danbohea.cask-app }
     # - { cask_app_name: "kitematic", tags: ["kitematic","stage_4"], role: danbohea.cask-app }
     - { brew_pkg_name: "docker-clean", tags: ["docker-clean","stage_4"], role: brew_pkg }
 
@@ -121,11 +121,12 @@
     # - { cask_app_name: "cleanmymac", tags: ["cleanmymac","stage_4"], role: danbohea.cask-app }
     # - { cask_app_name: "daisydisk", tags: ["daisydisk","stage_4"], role: danbohea.cask-app }
     - { cask_app_name: "launchrocket", tags: ["launchrocket","stage_4"], role: danbohea.cask-app }
+    - { cask_app_name: "hosts", tags: ["hosts","stage_4"], role: danbohea.cask-app }
 
     # Swift Related
     - { brew_pkg_name: "vapor", tags: ["vapor","stage_4"], role: brew_pkg }
     - { brew_pkg_name: "swiftlint", tags: ["swiftlint","stage_4"], role: brew_pkg }
-    - { brew_pkg_name: "swiftenv", tags: ["swiftenv","stage_4"], role: brew_pkg }
+    # - { brew_pkg_name: "swiftenv", tags: ["swiftenv","stage_4"], role: brew_pkg }
     
     # Ruby Related
     # - { brew_pkg_name: "rbenv", tags: ["rbenv","stage_4"], role: brew_pkg }
@@ -136,7 +137,7 @@
 
     # Others
     - { mas_app_name: "Money", mas_app_id: "1185488696" , tags: ["money","stage_4","mas_app"], role: mas_app }
-    - { cask_app_name: "cakebrew", tags: ["cakebrew","stage_4"], role: danbohea.cask-app }
+    # - { cask_app_name: "cakebrew", tags: ["cakebrew","stage_4"], role: danbohea.cask-app }
     # - { cask_app_name: "daisydisk", tags: ["daisydisk","stage_4"], role: danbohea.cask-app }
     # - { cask_app_name: "bartender", role: danbohea.cask-app, tags: ["bartender","stage_4"] }
     # - { cask_app_name: "omnigraffle", tags: ["omnigraffle","stage_4"], role: danbohea.cask-app }

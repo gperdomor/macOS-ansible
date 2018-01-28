@@ -26,6 +26,14 @@
     value: "${HOME}/Downloads/Torrents/Incomplete"
   notify: killall Transmission
 
+- name: Set path for downloads
+  osx_defaults:
+    domain: org.m0k.transmission
+    key: NSNavLastRootDirectory
+    type: string
+    value: "${HOME}/Downloads/Torrents"
+  notify: killall Transmission
+
 - name: "{{ item.name }}"
   osx_defaults:
     domain: org.m0k.transmission

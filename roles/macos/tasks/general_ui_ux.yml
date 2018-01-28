@@ -10,13 +10,13 @@
   notify:
     - killall
 
-- name: Minimize window when double-clicking its title bar
-  osx_defaults:
-    key: AppleActionOnDoubleClick
-    type: string
-    value: "Minimize"
-  notify:
-    - killall
+# - name: Minimize window when double-clicking its title bar
+#   osx_defaults:
+#     key: AppleActionOnDoubleClick
+#     type: string
+#     value: "Minimize"
+#   notify:
+#     - killall
 
 - name: Expand save panel by default
   osx_defaults:
