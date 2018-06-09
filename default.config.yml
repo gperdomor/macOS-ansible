@@ -113,7 +113,7 @@ homebrew_cask_apps:
 # Mac App Store
 # --------------------------------------------------------------------------
 # See `geerlingguy.mas` role documentation for usage instructions.
-mas_installed_apps: []
+mas_installed_apps:
   # - id: 409201541
   #   name: Pages
   # - { name: "1 Password", id: "443987910" }
@@ -156,7 +156,7 @@ atom_packages:
 
 # VS Code Packages
 # --------------------------------------------------------------------------
-vscode_packages: []
+vscode_packages:
   # - name: Debugger for Chrome
   #   id: msjsdiag.debugger-for-chrome
   - { name: "Debugger for Chrome", id: "msjsdiag.debugger-for-chrome" }
