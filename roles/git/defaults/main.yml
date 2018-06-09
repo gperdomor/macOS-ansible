@@ -1,5 +1,0 @@
----
-
-git_push_default: "simple"
-git_user_name: "User Name"
-git_user_email: "user@example.com"

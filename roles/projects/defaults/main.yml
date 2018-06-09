@@ -1,6 +1,0 @@
----
-
-projects:
-  - dest: "macsible"
-    repo_https: "https://github.com/macsible/macsible.git"
-    repo_ssh: "git@github.com:macsible/macsible.git"

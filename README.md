@@ -2,6 +2,10 @@
 
 [![Build Status](https://img.shields.io/circleci/project/github/gperdomor/macOS-ansible.svg?label=Build)](https://circleci.com/gh/gperdomor/macOS-ansible)
 
+This playbook installs and configures most of the software I use on my Mac for web and software development. Some things in macOS are slightly difficult to automate, so I still have some manual installation steps, but at least it's all documented here.
+
+This is a work in progress, and is mostly a means for me to document my current Mac's setup. I'll be evolving this set of playbooks over time.
+
 ### Goal
 Automate system setup from a clean install of macOS 10.13
 
@@ -23,44 +27,156 @@ Ensure the following requirements are already installed and working on your loca
 - Signin to the App Store
 - Command Line Developer Tools or Xcode
 
-## Usage
+## Installation
 
-### Install dependencies
+  1. Ensure Apple's command line tools are installed (`xcode-select --install` to launch the installer).
+  2. Install ansible.
+    * Run `sudo easy_install pip`
+    * Run `sudo pip install ansible -U`
+    * Run `sudo pip install pexpect -U --quiet`
+  3. Clone this repository to your local drive.
+  4. Run `ansible-galaxy install -r requirements.yml` inside this directory to install required Ansible roles.
+  5. Run `ansible-playbook main.yml -i inventory -K` inside this directory. Enter your account password when prompted.
 
-A script is included to ensure certain dependencies are met:
+> Note: If some Homebrew commands fail, you might need to agree to Xcode's license or fix some other Brew issue. Run `brew doctor` to see if this is the case.
 
-- Install pip and pexpect (if not already installed)
-- Install Ansible (if not already installed)
-- Download required Ansible Galaxy roles
+### Running a specific set of tagged tasks
 
-To execute this script run:
+You can filter which part of the provisioning process to run by specifying a set of tags using `ansible-playbook`'s `--tags` flag. The tags available are `dotfiles`, `homebrew`, `mas`, `extra-packages`, `terminal`, `ssh`, `projects` and `osx`.
 
-```
-bash init.sh
-```
+    ansible-playbook main.yml -i inventory -K --tags "dotfiles,homebrew"
 
-### Configure
+## Overriding Defaults
 
-Default variables can be overridden in config.yml
+Not everyone's development environment and preferred software configuration is the same.
 
-### Updating externally sourced roles
+You can override any of the defaults configured in `default.config.yml` by creating a `config.yml` file and setting the overrides in that file. For example, you can customize the installed packages and apps with something like:
 
-If you decide to add/edit the roles listed in requirements.yml (highly encouraged!) then you'll need to make sure that those dependencies are in place before running your playbook. After editing requirements.yml you'll want to run the following command before running your playbook:
+    homebrew_installed_packages:
+      - cowsay
+      - git
+      - go
 
-```
-ansible-galaxy install -r requirements.yml --force
-```
+    mas_installed_apps:
+      - { id: 443987910, name: "1Password" }
+      - { id: 498486288, name: "Quick Resizer" }
+      - { id: 557168941, name: "Tweetbot" }
+      - { id: 497799835, name: "Xcode" }
 
-### Run the Ansible playbook
+    composer_packages:
+      - name: hirak/prestissimo
+      - name: drush/drush
+        version: '^8.1'
 
-The primary Ansible playbook file is called mac.yml and can be run using the following command (asks for sudo password):
+    gem_packages:
+      - name: bundler
+        state: latest
 
-```
-ansible-playbook playbook.yml -K
-```
+    npm_packages:
+      - name: webpack
 
-To run only certain tags (e.g. `xcode` and `opera`):
+    pip_packages:
+      - name: mkdocs
 
-```
-ansible-playbook playbook.yml -K -t "xcode,opera"
-```
+Any variable can be overridden in `config.yml`; see the supporting roles' documentation for a complete list of available variables.
+
+## Included Applications / Configuration (Default)
+
+Applications (installed with Homebrew Cask):
+
+  - [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/)
+  - [Docker](https://www.docker.com/)
+  - [Dropbox](https://www.dropbox.com/)
+  - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
+  - [Google Chrome](https://www.google.com/chrome/)
+  - [Handbrake](https://handbrake.fr/)
+  - [Homebrew](http://brew.sh/)
+  - [LICEcap](http://www.cockos.com/licecap/)
+  - [LimeChat](http://limechat.net/mac/)
+  - [MacVim](http://macvim-dev.github.io/macvim/)
+  - [nvALT](http://brettterpstra.com/projects/nvalt/)
+  - [Sequel Pro](https://www.sequelpro.com/) (MySQL client)
+  - [Skitch](https://evernote.com/skitch/)
+  - [Slack](https://slack.com/)
+  - [Sublime Text](https://www.sublimetext.com/)
+  - [Transmit](https://panic.com/transmit/) (S/FTP client)
+  - [Vagrant](https://www.vagrantup.com/)
+
+Packages (installed with Homebrew):
+
+  - autoconf
+  - bash-completion
+  - doxygen
+  - gettext
+  - gifsicle
+  - git
+  - go
+  - gpg
+  - hub
+  - httpie
+  - iperf
+  - libevent
+  - sqlite
+  - mcrypt
+  - nmap
+  - node
+  - nvm
+  - php
+  - ssh-copy-id
+  - cowsay
+  - readline
+  - openssl
+  - pv
+  - wget
+  - wrk
+
+My [dotfiles](https://github.com/geerlingguy/dotfiles) are also installed into the current user's home directory, including the `.osx` dotfile for configuring many aspects of macOS for better performance and ease of use. You can disable dotfiles management by setting `configure_dotfiles: no` in your configuration.
+
+Finally, there are a few other preferences and settings added on for various apps and services.
+
+## Future additions
+
+### Things that still need to be done manually
+
+It's my hope that I can get the rest of these things wrapped up into Ansible playbooks soon, but for now, these steps need to be completed manually (assuming you already have Xcode and Ansible installed, and have run this playbook).
+
+  1. Set JJG-Term as the default Terminal theme (it's installed, but not set as default automatically).
+  2. Install [Sublime Package Manager](http://sublime.wbond.net/installation).
+  3. Install all the apps that aren't yet in this setup (see below).
+  4. Remap Caps Lock to Escape (requires macOS Sierra 10.12.1+).
+  5. Set trackpad tracking rate.
+  6. Set mouse tracking rate.
+  7. Configure extra Mail and/or Calendar accounts (e.g. Google, Exchange, etc.).
+
+### Applications/packages to be added:
+
+These are mostly direct download links, some are more difficult to install because of custom installers or other nonstandard install quirks:
+
+  - [iShowU HD](http://www.shinywhitebox.com/downloads/iShowU_HD_2.3.20.dmg)
+  - [Adobe Creative Cloud](http://www.adobe.com/creativecloud.html)
+
+### Configuration to be added:
+
+  - I have vim configuration in the repo, but I still need to add the actual installation:
+    ```
+    mkdir -p ~/.vim/autoload
+    mkdir -p ~/.vim/bundle
+    cd ~/.vim/autoload
+    curl https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim > pathogen.vim
+    cd ~/.vim/bundle
+    git clone git://github.com/scrooloose/nerdtree.git
+    ```
+
+## Testing the Playbook
+
+Many people have asked me if I often wipe my entire workstation and start from scratch just to test changes to the playbook. Nope! Instead, I posted instructions for how I build a [Mac OS X VirtualBox VM](https://github.com/geerlingguy/mac-osx-virtualbox-vm), on which I can continually run and re-run this playbook to test changes and make sure things work correctly.
+
+Additionally, this project is [continuously tested on Travis CI's macOS infrastructure](https://travis-ci.org/geerlingguy/mac-dev-playbook).
+
+## Ansible for DevOps
+
+Check out [Ansible for DevOps](https://www.ansiblefordevops.com/), which teaches you how to automate almost anything with Ansible.
+
+## Author
+
+[Jeff Geerling](https://www.jeffgeerling.com/), 2014 (originally inspired by [MWGriffin/ansible-playbooks](https://github.com/MWGriffin/ansible-playbooks)).
