@@ -1,16 +1,36 @@
 ---
 
 - name: Show the main window when launching Activity Monitor
-  command: defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
+  osx_defaults:
+    domain: com.apple.ActivityMonitor
+    key: OpenMainWindow
+    type: bool
+    value: true
 
-- name: Visualize CPU usage in the Activity Monitor Dock icon
-  command: defaults write com.apple.ActivityMonitor IconType -int 5
+- name: "{{ item.name }}"
+  osx_defaults:
+    domain: com.apple.ActivityMonitor
+    key: "{{ item.key }}"
+    type: int
+    value: "{{ item.value }}"
+  with_items:
+    - name: Visualize CPU usage in the Activity Monitor Dock icon
+      key: IconType
+      value: 5
+    - name: Show all processes in Activity Monitor
+      key: ShowCategory
+      value: 0
 
-- name: Show all processes in Activity Monitor
-  command: defaults write com.apple.ActivityMonitor ShowCategory -int 0
-
-- name: Sort Activity Monitor results by CPU usage (1/2)
-  command: defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
-
-- name: Sort Activity Monitor results by CPU usage (2/2)
-  command: defaults write com.apple.ActivityMonitor SortDirection -int 0
+- name: Sort Activity Monitor results by CPU usage
+  osx_defaults:
+    domain: com.apple.ActivityMonitor
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+  with_items:
+    - key: SortColumn
+      type: string
+      value: CPUUsage
+    - key: SortDirection
+      type: int
+      value: 0

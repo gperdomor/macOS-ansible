@@ -47,7 +47,7 @@ homebrew_installed_packages:
   # - go
   - heroku
   - httpie
-  - kubectl
+  - kubernetes-cli
   # - mysql
   # - nmap
   - node
@@ -81,7 +81,6 @@ homebrew_cask_apps:
   # - firefox
   - google-chrome
   - gpg-suite
-  - hosts
   # - iina
   - insomnia
   - kaleidoscope
@@ -100,6 +99,7 @@ homebrew_cask_apps:
   # - skype
   # - spotify
   # - sublime-text
+  - switchhosts
   - tableplus
   # - the-unarchiver
   - tower
@@ -116,16 +116,16 @@ homebrew_cask_apps:
 mas_installed_apps:
   # - id: 409201541
   #   name: Pages
-  # - { name: "1 Password", id: "443987910" }
-  - { name: "Keynote", id: "409183694" }
-  - { name: "Magnet", id: "441258766" }
-  - { name: "Money", id: "1185488696" }
-  - { name: "Numbers", id: "409203825" }
-  - { name: "Pages", id: "409201541" }
-  - { name: "Reeder", id: "880001334" }
-  - { name: "Slack", id: "803453959" }
-  - { name: "Spark", id: "1176895641" }
-  - { name: "Xcode", id: "497799835" }
+  - { id: "1333542190", name: "1Password 7" }
+  - { id: "409183694",  name: "Keynote" }
+  - { id: "441258766",  name: "Magnet" }
+  - { id: "1185488696", name: "Money" }
+  - { id: "409203825",  name: "Numbers" }
+  - { id: "409201541",  name: "Pages" }
+  - { id: "880001334",  name: "Reeder" }
+  - { id: "803453959",  name: "Slack" }
+  - { id: "1176895641", name: "Spark" }
+  - { id: "497799835",  name: "Xcode" }
 
 mas_email: ""
 mas_password: ""
@@ -211,8 +211,8 @@ projects: []
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks:
-  - tasks/post/chrome.yml
-  - tasks/post/curl.yml
-  - tasks/post/dotfiles.yml
-  - tasks/post/tower.yml
-  - tasks/post/transmission.yml
+  - tasks/posts-provision/chrome.yml
+  - tasks/posts-provision/curl.yml
+  - tasks/posts-provision/dotfiles.yml
+  - tasks/posts-provision/tower.yml
+  - tasks/posts-provision/transmission.yml

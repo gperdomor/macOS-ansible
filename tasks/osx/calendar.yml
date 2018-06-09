@@ -1,4 +1,8 @@
 ---
 
 - name: Show sidebar
-  command: defaults write com.apple.iCal CalendarSidebarShown -int 1
+  osx_defaults:
+    domain: com.apple.iCal
+    key: CalendarSidebarShown
+    type: int
+    value: 1

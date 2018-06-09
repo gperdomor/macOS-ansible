@@ -4,7 +4,11 @@
 #   command: defaults write com.apple.Safari HomePage -string "about:blank"
 
 - name: "{{ item.name }}"
-  command: defaults write com.apple.Safari {{ item.key }} -bool {{ item.value }}
+  osx_defaults:
+    domain: com.apple.Safari
+    key: "{{ item.key }}"
+    type: bool
+    value: "{{ item.value }}"
   with_items:
     # - { name: "Don't send search queries to Apple (1/2)", key: "UniversalSearchEnabled", value: "false" }
     # - { name: "Don't send search queries to Apple (2/2)", key: "SuppressSearchSuggestions", value: "true" }
@@ -27,22 +31,44 @@
 
 - name: Remove useless icons from Safari’s bookmarks bar
   command: defaults write com.apple.Safari ProxiesInBookmarksBar "()"
+  changed_when: false
+  # osx_defaults:
+  #   domain: com.apple.Safari
+  #   key: ProxiesInBookmarksBar
+  #   type: string
+  #   value: "()"
 
 - name: Disable Safari’s thumbnail cache for History and Top Sites
-  command: defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+  osx_defaults:
+    domain: com.apple.Safari
+    key: DebugSnapshotsUpdatePolicy
+    type: int
+    value: 2
 
 - name: Add a context menu item for showing the Web Inspector in web views
-  command: defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: WebKitDeveloperExtras
+    type: bool
+    value: true
 
 - name: Enable the Develop menu and the Web Inspector in Safari
-  command: defaults write com.apple.Safari {{ item }} -bool true
+  osx_defaults:
+    domain: com.apple.Safari
+    key: "{{ item }}"
+    type: bool
+    value: true
   with_items:
     - IncludeDevelopMenu
     - WebKitDeveloperExtrasEnabledPreferenceKey
     - com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled
 
 - name: Disable AutoFill
-  command: defaults write com.apple.Safari {{ item }} -bool false
+  osx_defaults:
+    domain: com.apple.Safari
+    key: "{{ item }}"
+    type: bool
+    value: false
   with_items:
     - AutoFillFromAddressBook
     - AutoFillPasswords
@@ -50,19 +76,31 @@
     - AutoFillMiscellaneousForms
 
 - name: Disable plug-ins
-  command: defaults write com.apple.Safari {{ item }} -bool false
+  osx_defaults:
+    domain: com.apple.Safari
+    key: "{{ item }}"
+    type: bool
+    value: false
   with_items:
     - WebKitPluginsEnabled
     - com.apple.Safari.ContentPageGroupIdentifier.WebKit2PluginsEnabled
 
 - name: Disable Java
-  command: defaults write com.apple.Safari {{ item }} -bool false
+  osx_defaults:
+    domain: com.apple.Safari
+    key: "{{ item }}"
+    type: bool
+    value: false
   with_items:
     - WebKitJavaEnabled
     - com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled
 
 - name: Block pop-up windows
-  command: defaults write com.apple.Safari {{ item }} -bool false
+  osx_defaults:
+    domain: com.apple.Safari
+    key: "{{ item }}"
+    type: bool
+    value: false
   with_items:
     - WebKitJavaScriptCanOpenWindowsAutomatically
     - com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically

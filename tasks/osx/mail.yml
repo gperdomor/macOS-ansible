@@ -1,24 +1,49 @@
 ---
 
 # - name: Disable send and reply animations in Mail.app
-#   command: defaults write com.apple.mail {{ item }} -bool true
+#   osx_defaults:
+#     domain: com.apple.mail
+#     key: "{{ item }}"
+#     type: bool
+#     value: true
 #   with_items:
 #     - DisableReplyAnimations
 #     - DisableSendAnimations
 
-# - name: Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app
-#   command: defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
-
-# - name: Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
-#   command: defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" -string "@\\U21a9"
-
 - name: Display emails in threaded mode
-  command: defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
-  # defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "yes"
-  # defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
+  osx_defaults:
+    domain: com.apple.mail
+    key: "{{ item.key }}"
+    type: string
+    value: "{{ item.value }}"
+  with_items:
+    - key: 'DraftsViewerAttributes -dict-add "DisplayInThreadedMode"'
+      value: yes
+    # - key: 'DraftsViewerAttributes -dict-add "SortedDescending"'
+    #   value: yes
+    # - key: 'DraftsViewerAttributes -dict-add "SortOrder"'
+    #   value: received-date
 
-# - name: Disable inline attachments (just show the icons)
-#   command: defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
-
-# - name: Disable spell checking
-#   command: defaults write com.apple.mail SpellCheckingBehavior -string "NoSpellCheckingEnabled"
+- name: "{{ item.name }}"
+  osx_defaults:
+    domain: com.apple.mail
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+  with_items: []
+    # - name: Disable inline attachments (just show the icons)
+    #   key: DisableInlineAttachmentViewing
+    #   type: bool
+    #   value: true
+    # - name: Disable spell checking
+    #   key: SpellCheckingBehavior
+    #   type: string
+    #   value: NoSpellCheckingEnabled
+    # - name: Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app
+    #   key: AddressesIncludeNameOnPasteboard
+    #   type: bool
+    #   value: false
+    # - name: Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
+    #   key: 'NSUserKeyEquivalents -dict-add "Send"'
+    #   type: string
+    #   value: "@\\U21a9"
