@@ -6,10 +6,10 @@
 - name: "{{ item.name }}"
   command: defaults write com.apple.Safari {{ item.key }} -bool {{ item.value }}
   with_items:
-    # - { name: "Don't send search queries to Apple (1)", key: "UniversalSearchEnabled", value: "false" }
-    # - { name: "Don't send search queries to Apple (2)", key: "SuppressSearchSuggestions", value: "true" }
-    # - { name: "Press Tab to highlight each item on a web page (1)", key: "WebKitTabToLinksPreferenceKey", value: "true" }
-    # - { name: "Press Tab to highlight each item on a web page (2)", key: "com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks", value: "true" }
+    # - { name: "Don't send search queries to Apple (1/2)", key: "UniversalSearchEnabled", value: "false" }
+    # - { name: "Don't send search queries to Apple (2/2)", key: "SuppressSearchSuggestions", value: "true" }
+    # - { name: "Press Tab to highlight each item on a web page (1/2)", key: "WebKitTabToLinksPreferenceKey", value: "true" }
+    # - { name: "Press Tab to highlight each item on a web page (2/2)", key: "com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks", value: "true" }
     - { name: "Prevent Safari from opening ‘safe’ files automatically after downloading", key: "AutoOpenSafeDownloads", value: "false" }
     - { name: "Open windows from last session", key: "AlwaysRestoreSessionAtLaunch", value: "true" }
     # - { name: "Show the full URL in the address bar (note: this still hides the scheme)", key: "ShowFullURLInSmartSearchField", value: "true" }
