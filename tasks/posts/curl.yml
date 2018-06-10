@@ -1,0 +1,5 @@
+---
+- name: Linking curl
+  command: /usr/local/bin/brew link --force curl
+  when: '"curl" in homebrew_installed_packages'
+  tags: ['homebrew']

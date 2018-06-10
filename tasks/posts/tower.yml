@@ -1,0 +1,37 @@
+---
+- name: Use Homebrew Git binary
+  command: defaults write com.fournova.Tower2 GTUserDefaultsGitBinary -string "/usr/local/bin/git"
+  when: '"tower" in homebrew_cask_apps and "curl" in homebrew_installed_packages'
+  tags: ['homebrew']
+
+- name: Creates default directory for cloned projects
+  file: path=${HOME}/Developer state=directory
+  when: '"tower" in homebrew_cask_apps'
+  tags: ['homebrew']
+
+- name: Set default directory for cloned projects
+  command: defaults write com.fournova.Tower2 GTUserDefaultsDefaultCloningDirectory -string "${HOME}/Developer"
+  when: '"tower" in homebrew_cask_apps'
+  tags: ['homebrew']
+
+- name: Check if Kaleidoscope is installed
+  stat: path=/Applications/Kaleidoscope.app
+  register: kaleidoscope_check
+  when: '"tower" in homebrew_cask_apps'
+  tags: ['homebrew']
+
+- name: Set diff tool
+  command: defaults write com.fournova.Tower2 GTUserDefaultsDiffToolIdentifier -string "kaleidoscope"
+  when: '"tower" in homebrew_cask_apps and kaleidoscope_check.stat.exists == True'
+  tags: ['homebrew']
+
+- name: Check if P4Merge is installed
+  stat: path=/Applications/p4merge.app
+  register: p4merge_check
+  when: '"tower" in homebrew_cask_apps'
+  tags: ['homebrew']
+
+- name: Set merge tool
+  command: defaults write com.fournova.Tower2 GTUserDefaultsMergeToolIdentifier -string "p4merge"
+  when: '"tower" in homebrew_cask_apps and p4merge_check.stat.exists == True'
+  tags: ['homebrew']

@@ -1,0 +1,10 @@
+---
+- name: "{{ item.name }}"
+  command: defaults write com.google.Chrome {{ item.key }} -bool {{ item.value }}
+  with_items:
+    - { name: "Disable the all too sensitive backswipe on trackpads", key: "AppleEnableSwipeNavigateWithScrolls", value: "false" }
+    - { name: "Disable the all too sensitive backswipe on Magic Mouse", key: "AppleEnableMouseSwipeNavigateWithScrolls", value: "false" }
+    - { name: "Use the system-native print preview dialog", key: "DisablePrintPreview", value: "true" }
+    - { name: "Expand the print dialog by default", key: "PMPrintingExpandedStateForPrint2", value: "true" }
+  when: '"google-chrome" in homebrew_cask_apps'
+  tags: ['homebrew']

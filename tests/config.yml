@@ -1,0 +1,12 @@
+homebrew_installed_packages:
+  - autoconf
+  - gettext
+  - sqlite
+  - ssh-copy-id
+  - vapor
+  - wget
+
+homebrew_cask_apps:
+  - google-chrome
+  - tower
+  - transmission

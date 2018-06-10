@@ -1,0 +1,29 @@
+---
+
+- name: Set the icon size of Dock items
+  command: defaults write com.apple.dock tilesize -int 42
+
+# - name: Enable spring loading for all Dock items
+#   command: defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
+
+# - name: Don’t animate opening applications from the Dock
+#   command: defaults write com.apple.dock launchanim -bool false
+
+- name: Speed up Mission Control animations
+  command: defaults write com.apple.dock expose-animation-duration -float 0.15
+
+# - name: Automatically hide and show the Dock
+#   command: defaults write com.apple.dock autohide -bool true
+
+- name: Make Dock icons of hidden applications translucent
+  command: defaults write com.apple.dock showhidden -bool true
+
+# - name: Enable the 'reduce transparency' option on Yosemite. Save GPU cycles.
+#   command: defaults write com.apple.universalaccess reduceTransparency -bool true
+
+# - name: Set Dock orientation.
+#   command: defaults write com.apple.dock orientation -string "bottom"
+
+# - name: Add iOS Simulator to Applications folder
+#   command: ln -sf /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app /Applications/Simulator.app
+#   become: true

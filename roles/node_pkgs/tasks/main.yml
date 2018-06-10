@@ -1,9 +1,0 @@
----
-
-- name: Install global node packages
-  npm:
-    name: "{{ item.name | default(item) }}"
-    state: "{{ item.state | default('present') }}"
-    version: "{{ item.version | default(omit) }}"
-    global: yes
-  with_items: "{{ node_pkgs_list }}"

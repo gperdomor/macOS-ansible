@@ -1,0 +1,52 @@
+---
+# - name: Configure scrollbars. Options "Always", "Automatic", "WhenScrolling"
+#   command: defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
+
+# - name: Minimize window when double-clicking its title bar
+#   command: defaults write NSGlobalDomain AppleActionOnDoubleClick -string Minimize
+
+- name: Expand save panel by default
+  command: defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+
+- name: Expand print panel by default
+  command: defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+
+- name: Save to disk (not to iCloud) by default
+  command: defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+- name: Automatically quit printer app once the print jobs complete
+  command: defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+# - name: Disable the “Are you sure you want to open this application?” dialog
+#   command: defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+# - name: Remove duplicates in the “Open With” menu
+#   command: /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
+
+- name: Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window
+  command: defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+  become: true
+
+# - name: Restart automatically if the computer freezes
+#   command: systemsetup -setrestartfreeze on
+#   become: true
+
+- name: Disable smart quotes as they're annoying when typing code
+  command: defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
+- name: Disable smart dashes as they're annoying when typing code
+  command: defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+# - name: Disable Notification Center
+#   command: launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+#   # To re-enable, run:
+#   # launchctl load -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist && open /System/Library/CoreServices/NotificationCenter.app/
+
+# - name: Disable game center. Who uses that thing?
+#   command: launchctl unload /System/Library/LaunchAgents/com.apple.gamed.plist 2> /dev/null
+
+# - name: Reduce transparency
+#   command: defaults write com.apple.universalaccess reduceTransparency -bool true
+
+# - name: Set interface style to Dark
+#   command: defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"

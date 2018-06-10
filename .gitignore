@@ -1,5 +1,6 @@
 .DS_Store
 *.retry
 ansible.log
-config.local.yml
-ext_roles
+roles*
+config.yml
+!tests/config.yml

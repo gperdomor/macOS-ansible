@@ -1,0 +1,16 @@
+---
+
+- name: Use plain text mode for new TextEdit documents
+  command: defaults write com.apple.TextEdit RichText -int 0
+
+- name: Open and save files as UTF-8 in TextEdit
+  command: defaults write com.apple.TextEdit {{ item }} -int 4
+  with_items:
+    - PlainTextEncoding
+    - PlainTextEncodingForWrite
+
+- name: Disable smart quotes & smart dashes in TextEdit
+  command: defaults write com.apple.TextEdit {{ item }} -bool false
+  with_items:
+    - SmartQuotes
+    - SmartDashes
