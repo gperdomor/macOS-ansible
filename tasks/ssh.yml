@@ -26,7 +26,7 @@
     ssh_key_bits: 4096
     ssh_key_passphrase: "{{item.passphrase}}"
     ssh_key_file: ".ssh/{{item.name}}"
-  items: "{{ssh_keys}}"
+  with_items: "{{ ssh_keys }}"
 
 - name: Add {{item.host}} ssh config into config file
   blockinfile:
@@ -39,7 +39,7 @@
        AddKeysToAgent yes
        UseKeychain yes
        IdentityFile ~/.ssh/{{item.name}}
-  items: "{{ssh_keys}}"
+  with_items: "{{ ssh_keys }}"
 
 - name: Enable ssh agent
   shell: eval `ssh-agent -s`
@@ -49,4 +49,4 @@
     command: "ssh-add -K /Users/{{ansible_user}}/.ssh/{{item.name}}"
     responses:
       (?i)Enter passphrase: "{{item.passphrase}}"
-  items: "{{ssh_keys}}"
+  with_items: "{{ ssh_keys }}"
