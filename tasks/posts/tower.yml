@@ -1,10 +1,6 @@
 ---
 - name: Use Homebrew Git binary
-  osx_defaults:
-    domain: com.fournova.Tower2
-    key: GTUserDefaultsGitBinary
-    type: string
-    value: /usr/local/bin/git
+  command: defaults write com.fournova.Tower2 GTUserDefaultsGitBinary -string "/usr/local/bin/git"
   when: '"tower" in homebrew_cask_apps and "curl" in homebrew_installed_packages'
   tags: ['homebrew']
 
@@ -14,11 +10,7 @@
   tags: ['homebrew']
 
 - name: Set default directory for cloned projects
-  osx_defaults:
-    domain: com.fournova.Tower2
-    key: GTUserDefaultsDefaultCloningDirectory
-    type: string
-    value: ${HOME}/Developer
+  command: defaults write com.fournova.Tower2 GTUserDefaultsDefaultCloningDirectory -string "${HOME}/Developer"
   when: '"tower" in homebrew_cask_apps'
   tags: ['homebrew']
 
@@ -29,11 +21,7 @@
   tags: ['homebrew']
 
 - name: Set diff tool
-  osx_defaults:
-    domain: com.fournova.Tower2
-    key: GTUserDefaultsDiffToolIdentifier
-    type: string
-    value: kaleidoscope
+  command: defaults write com.fournova.Tower2 GTUserDefaultsDiffToolIdentifier -string "kaleidoscope"
   when: '"tower" in homebrew_cask_apps and kaleidoscope_check.stat.exists == True'
   tags: ['homebrew']
 
@@ -44,10 +32,6 @@
   tags: ['homebrew']
 
 - name: Set merge tool
-  osx_defaults:
-    domain: com.fournova.Tower2
-    key: GTUserDefaultsMergeToolIdentifier
-    type: string
-    value: p4merge
+  command: defaults write com.fournova.Tower2 GTUserDefaultsMergeToolIdentifier -string "p4merge"
   when: '"tower" in homebrew_cask_apps and p4merge_check.stat.exists == True'
   tags: ['homebrew']
