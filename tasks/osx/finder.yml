@@ -47,20 +47,16 @@
 - name: Automatically open a new Finder window when a volume is mounted (3/3)
   command: defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 
-# - name: Enable snap-to-grid for icons on the desktop and in other icon views (1/3)
-#   command: /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-#
-# - name: Enable snap-to-grid for icons on the desktop and in other icon views (2/3)
-#   command: /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-#
-# - name: Enable snap-to-grid for icons on the desktop and in other icon views (3/3)
-#   command: /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+- name: Enable snap-to-grid for icons on the desktop and in other icon views
+  command: /usr/libexec/PlistBuddy -c "Set :{{ item }} grid" ~/Library/Preferences/com.apple.finder.plist
+  with_items:
+    - DesktopViewSettings:IconViewSettings:arrangeBy
+    - StandardViewSettings:IconViewSettings:arrangeBy
 
 - name: Set the size of icons on the desktop and in other icon views
   command: /usr/libexec/PlistBuddy -c "Set :{{ item }} 64" ~/Library/Preferences/com.apple.finder.plist
   with_items:
     - DesktopViewSettings:IconViewSettings:iconSize
-    - FK_StandardViewSettings:IconViewSettings:iconSize
     - StandardViewSettings:IconViewSettings:iconSize
 
 # Four-letter codes for the other view modes: `icnv`, `Nlsv`, `clmv`, `Flwv`

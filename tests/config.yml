@@ -1,16 +1,13 @@
 homebrew_installed_packages:
   - autoconf
-  - bash-completion
   - gettext
   - sqlite
   - ssh-copy-id
-  - cowsay
-  - readline
-  - pv
+  - vapor
   - wget
-  - wrk
 
 homebrew_cask_apps:
   - firefox
-  - limechat
+  - google-chrome
   - macvim
+  - transmission
