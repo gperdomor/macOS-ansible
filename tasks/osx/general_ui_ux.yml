@@ -68,13 +68,6 @@
 #   command: systemsetup -setrestartfreeze on
 #   become: true
 
-# - name: Check for software updates daily, not just once per week
-#   osx_defaults:
-#     domain: com.apple.SoftwareUpdate
-#     key: ScheduleFrequency
-#     type: int
-#     value: 1
-
 - name: Disable smart quotes as they're annoying when typing code
   osx_defaults:
     domain: NSGlobalDomain

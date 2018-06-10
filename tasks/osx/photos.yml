@@ -1,0 +1,4 @@
+---
+
+- name: Prevent Photos from opening automatically when devices are plugged in
+  command: defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true

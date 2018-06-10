@@ -1,16 +1,18 @@
 ---
 
-- import_tasks: osx/activity_monitor.yml
-- import_tasks: osx/calendar.yml
-- import_tasks: osx/dock.yml
-- import_tasks: osx/finder.yml
-- import_tasks: osx/general_ui_ux.yml
-- import_tasks: osx/mail.yml
-- import_tasks: osx/messages.yml
-- import_tasks: osx/safari_webkit.yml
-- import_tasks: osx/screen.yml
-- import_tasks: osx/spotlight.yml
-- import_tasks: osx/terminal.yml
-- import_tasks: osx/textedit.yml
-- import_tasks: osx/time_machine.yml
-- import_tasks: osx/trackpad_mouse_keyboard.yml
+- include_tasks: osx/activity_monitor.yml
+- include_tasks: osx/app_store.yml
+- include_tasks: osx/calendar.yml
+- include_tasks: osx/dock.yml
+- include_tasks: osx/finder.yml
+- include_tasks: osx/general_ui_ux.yml
+- include_tasks: osx/mail.yml
+- include_tasks: osx/messages.yml
+- include_tasks: osx/photos.yml
+- include_tasks: osx/safari_webkit.yml
+- include_tasks: osx/screen.yml
+- include_tasks: osx/spotlight.yml
+- include_tasks: osx/terminal.yml
+- include_tasks: osx/textedit.yml
+- include_tasks: osx/time_machine.yml
+- include_tasks: osx/trackpad_mouse_keyboard.yml

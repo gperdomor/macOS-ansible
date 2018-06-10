@@ -7,43 +7,23 @@
   when: '"transmission" in homebrew_cask_apps'
   tags: ['homebrew']
 
-- name: Keep incomplete downloads
-  osx_defaults:
-    domain: org.m0k.transmission
-    key: UseIncompleteDownloadFolder
-    type: bool
-    value: true
-  when: '"transmission" in homebrew_cask_apps'
-  tags: ['homebrew']
-
-- name: Set path for incomplete downloads
-  osx_defaults:
-    domain: org.m0k.transmission
-    key: IncompleteDownloadFolder
-    type: string
-    value: "${HOME}/Downloads/Torrents/Incomplete"
-  when: '"transmission" in homebrew_cask_apps'
-  tags: ['homebrew']
-
-- name: Set path for downloads
-  osx_defaults:
-    domain: org.m0k.transmission
-    key: NSNavLastRootDirectory
-    type: string
-    value: "${HOME}/Downloads/Torrents"
+- name: "{{ item.name }}"
+  command: defaults write org.m0k.transmission {{ item.key }} -bool {{ item.value }}
+  with_items:
+    - { name: "Keep incomplete downloads", key: "UseIncompleteDownloadFolder", value: "true" }
+    - { name: "Don't prompt for confirmation before downloading (1)", key: "DownloadAsk", value: "false" }
+    - { name: "Don't prompt for confirmation before downloading (2)", key: "MagnetOpenAsk", value: "false" }
+    - { name: "Trash original torrent files", key: "DeleteOriginalTorrent", value: "true" }
+    - { name: "Hide the donate message", key: "WarningDonate", value: "false" }
+    - { name: "Hide the legal disclaimer", key: "WarningLegal", value: "false" }
+    - { name: "Randomize port on launch", key: "RandomPort", value: "true" }
   when: '"transmission" in homebrew_cask_apps'
   tags: ['homebrew']
 
 - name: "{{ item.name }}"
-  osx_defaults:
-    domain: org.m0k.transmission
-    key: "{{ item.key }}"
-    type: bool
-    value: "{{ item.value }}"
+  command: defaults write org.m0k.transmission {{ item.key }} -string "{{ item.value }}"
   with_items:
-    - { name: "Don't prompt for confirmation before downloading", key: "DownloadAsk", value: "false"}
-    - { name: "Trash original torrent files", key: "DeleteOriginalTorrent", value: "true"}
-    - { name: "Hide the donate message", key: "WarningDonate", value: "false"}
-    - { name: "Hide the legal disclaimer", key: "WarningLegal", value: "false"}
+    - { name: "Set path for incomplete downloads", key: "IncompleteDownloadFolder", value: "${HOME}/Downloads/Torrents/Incomplete" }
+    - { name: "Set path for downloads", key: "NSNavLastRootDirectory", value: "${HOME}/Downloads/Torrents" }
   when: '"transmission" in homebrew_cask_apps'
   tags: ['homebrew']

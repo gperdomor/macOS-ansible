@@ -5,3 +5,6 @@
 
 # - name: Disable continuous spell checking
 #   command: defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
+
+# - name: Disable automatic emoji substitution (i.e. use plain text smileys)
+#   command: defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
