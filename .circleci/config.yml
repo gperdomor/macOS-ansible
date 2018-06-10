@@ -16,12 +16,8 @@ jobs:
           name: Install pexpect.
           command: pip install pexpect -U --quiet
       - run:
-          name: Add ansible.cfg to pick up roles path
-          command: "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
-      - run:
           name: Install dependencies
           command: ansible-galaxy install -r requirements.yml
-
       - run:
           name: Checking the role/playbook's syntax
           command: ansible-playbook main.yml --syntax-check
@@ -30,7 +26,7 @@ jobs:
           command: cp tests/config.yml config.yml
       - run:
           name: Run playbook
-          command: ansible-playbook main.yml --skip-tags "mas"
+          command: ansible-playbook main.yml -i inventory --skip-tags "mas"
       # Test the playbook's idempotence.
       - run: idempotence=$(mktemp)
       - run: "ansible-playbook --extra-vars '{\"configure_terminal\":\"false\"}' main.yml | tee -a ${idempotence}"
