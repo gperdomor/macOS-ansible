@@ -1,0 +1,10 @@
+---
+
+- name: Show the main window when launching Activity Monitor
+  command: defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
+
+- name: Visualize CPU usage in the Activity Monitor Dock icon
+  command: defaults write com.apple.ActivityMonitor IconType -int 5
+
+- name: Show all processes in Activity Monitor
+  command: defaults write com.apple.ActivityMonitor ShowCategory -int 0

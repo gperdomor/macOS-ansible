@@ -1,0 +1,19 @@
+---
+
+- name: Require password immediately after sleep or screen saver begins
+  command: defaults write com.apple.screensaver {{ item.key }} -int {{ item.value }}
+  with_items:
+    - { key: "askForPassword", value: 1 }
+    - { key: "askForPasswordDelay", value: 0 }
+
+- name: Save screenshots to the desktop
+  command: defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+
+- name: Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
+  command: defaults write com.apple.screencapture type -string "png"
+
+- name: Disable shadow in screenshots
+  command: defaults write com.apple.screencapture disable-shadow -bool true
+
+- name: Enable subpixel font rendering on non-Apple LCDs
+  command: defaults write NSGlobalDomain AppleFontSmoothing -int 2

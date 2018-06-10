@@ -1,0 +1,27 @@
+---
+
+# - name: Set Safari’s home page to `about:blank` for faster loading
+#   command: defaults write com.apple.Safari HomePage -string "about:blank"
+
+- name: "{{ item.name }}"
+  command: defaults write com.apple.Safari {{ item.key }} -bool {{ item.value }}
+  with_items:
+    - { name: "Prevent Safari from opening ‘safe’ files automatically after downloading", key: "AutoOpenSafeDownloads", value: "false" }
+    - { name: "Open windows from last session", key: "AlwaysRestoreSessionAtLaunch", value: "true" }
+    # - { name: "Don't send search queries to Apple", key: "UniversalSearchEnabled", value: "false" }
+    # - { name: "Show the full URL in the address bar (note: this still hides the scheme)", key: "ShowFullURLInSmartSearchField", value: "true" }
+    # - { name: "Allow hitting the Backspace key to go to the previous page in history", key: "com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled", value: "true" }
+    - { name: "Hide Safari's bookmarks bar by default", key: "ShowFavoritesBar", value: "false"}
+    - { name: "Hide Safari's sidebar in Top Sites", key: "ShowSidebarInTopSites", value: "false"}
+    - { name: "Show Safari's status bar", key: "ShowOverlayStatusBar", value: "true"}
+    - { name: "Make Safari's search banners default to Contains instead of Starts With", key: "FindOnPageMatchesWordStartsOnly", value: "false"}
+    - { name: "Enable Safari's debug menu", key: "IncludeInternalDebugMenu", value: "true" }
+    - { name: "Enable the Develop menu and the Web Inspector in Safari (1)", key: "IncludeDevelopMenu", value: "true" }
+    - { name: "Enable the Develop menu and the Web Inspector in Safari (2)", key: "WebKitDeveloperExtrasEnabledPreferenceKey", value: "true" }
+    - { name: "Enable the Develop menu and the Web Inspector in Safari (3)", key: "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled", value: "true" }
+
+# - name: Disable Safari’s thumbnail cache for History and Top Sites
+#   command: defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+
+- name: Add a context menu item for showing the Web Inspector in web views
+  command: defaults write NSGlobalDomain WebKitDeveloperExtras -bool true

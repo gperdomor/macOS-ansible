@@ -44,9 +44,9 @@
       when: configure_terminal
       tags: ['terminal']
 
-    # - include_tasks: tasks/osx.yml
-    #   when: configure_osx
-    #   tags: ['osx']
+    - include_tasks: tasks/osx.yml
+      when: configure_osx
+      tags: ['osx']
 
     - include_tasks: tasks/extra-packages.yml
       tags: ['extra-packages']

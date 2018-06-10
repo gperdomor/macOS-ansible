@@ -2,4 +2,5 @@
 *.retry
 ansible.log
 roles*
-#config.yml
+config.yml
+!tests/config.yml

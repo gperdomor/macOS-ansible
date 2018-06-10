@@ -1,0 +1,4 @@
+---
+
+- name: Show sidebar
+  command: defaults write com.apple.iCal CalendarSidebarShown -int 1

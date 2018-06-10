@@ -1,0 +1,83 @@
+---
+- name: Set Desktop as the default location for new Finder windows
+  command: defaults write com.apple.finder {{ item.key }} -string "{{ item.value }}"
+  with_items:
+    - { key: "NewWindowTarget", value: "PfHm" }
+    - { key: "NewWindowTargetPath", value: "file://${HOME}/" }
+
+- name: "{{ item.name }}"
+  command: defaults write com.apple.finder {{ item.key }} -bool true
+  with_items:
+    - { name: 'Show external hard drives on the desktop', key: 'ShowExternalHardDrivesOnDesktop' }
+    # - { name: 'Show internal hard drives on the desktop', key: 'ShowHardDrivesOnDesktop' }
+    - { name: 'Show mounted servers on the desktop', key: 'ShowMountedServersOnDesktop' }
+    - { name: 'Show removable media on the desktop', key: 'ShowRemovableMediaOnDesktop' }
+    # - { name: 'Show hidden files by default', key: 'AppleShowAllFiles' }
+    - { name: 'Show status bar', key: 'ShowStatusBar' }
+    # - { name: 'Show path bar', key: 'ShowPathbar' }
+    - { name: 'Allow text selection in Quick Look', key: 'QLEnableTextSelection' }
+    - { name: 'Display full POSIX path as Finder window title', key: '_FXShowPosixPathInTitle' }
+#     - { name: 'Avoid creating .DS_Store files on network volumes', key: 'DSDontWriteNetworkStores' }
+
+
+- name: When performing a search, search the current folder by default
+  command: defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+# - name: Disable the warning when changing a file extension
+#   command: defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+- name:
+  command: defaults write NSGlobalDomain {{ item.key }} -bool true
+  with_items:
+    - { name: "Show all filename extensions", key: "AppleShowAllExtensions" }
+    - { name: "Enable spring loading for directories", key: "com.apple.springing.enabled" }
+
+- name: Remove the spring loading delay for directories
+  command: defaults write NSGlobalDomain com.apple.springing.delay -float 0.1
+
+- name: Avoid creating .DS_Store files on network volumes
+  command: defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+- name: Automatically open a new Finder window when a volume is mounted (1/3)
+  command: defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
+
+- name: Automatically open a new Finder window when a volume is mounted (2/3)
+  command: defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
+
+- name: Automatically open a new Finder window when a volume is mounted (3/3)
+  command: defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
+
+- name: Enable snap-to-grid for icons on the desktop and in other icon views
+  command: /usr/libexec/PlistBuddy -c "Set :{{ item }} grid" ~/Library/Preferences/com.apple.finder.plist
+  with_items:
+    - DesktopViewSettings:IconViewSettings:arrangeBy
+    - FK_StandardViewSettings:IconViewSettings:arrangeBy
+    - StandardViewSettings:IconViewSettings:arrangeBy
+
+- name: Set the size of icons on the desktop and in other icon views
+  command: /usr/libexec/PlistBuddy -c "Set :{{ item }} 64" ~/Library/Preferences/com.apple.finder.plist
+  with_items:
+    - DesktopViewSettings:IconViewSettings:iconSize
+    - FK_StandardViewSettings:IconViewSettings:iconSize
+    - StandardViewSettings:IconViewSettings:iconSize
+
+# Four-letter codes for the other view modes: `icnv`, `Nlsv`, `clmv`, `Flwv`
+- name: Use column view in all Finder windows by default
+  command: defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+
+# - name: Disable the warning before emptying the Trash
+#   command: defaults write com.apple.finder WarnOnEmptyTrash -bool false
+
+# - name: Empty Trash securely by default
+#   command: defaults write com.apple.finder EmptyTrashSecurely -bool true
+
+- name: Show the ~/Library folder
+  command: chflags nohidden ~/Library
+
+- name: 'Expand the following File Info panes: "General", "Open with", "Sharing & Permissions"'
+  command: >
+    defaults write com.apple.finder FXInfoPanesExpanded -dict \
+      General -bool true \
+      OpenWith -bool true \
+      Preview -bool false \
+      Privileges -bool true
