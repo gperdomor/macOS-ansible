@@ -29,7 +29,7 @@ jobs:
           command: ansible-playbook main.yml -i inventory --skip-tags "mas"
       # Test the playbook's idempotence.
       - run: idempotence=$(mktemp)
-      - run: "ansible-playbook --extra-vars '{\"configure_terminal\":\"false\"}' main.yml | tee -a ${idempotence}"
+      - run: ansible-playbook --extra-vars '{"configure_terminal":"false"}' main.yml -i inventory --skip-tags "mas" | tee -a ${idempotence}
       - run: >
           tail ${idempotence}
           | grep -q 'changed=0.*failed=0'

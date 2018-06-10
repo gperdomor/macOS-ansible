@@ -43,7 +43,7 @@ homebrew_installed_packages:
   - diff-so-fancy
   - docker-clean
   - git
-  - { name: gitlab-runner, install_options: "without-docker" }
+  # - { name: gitlab-runner, install_options: "without-docker" }
   # - go
   - heroku
   - httpie
@@ -93,10 +93,10 @@ homebrew_cask_apps:
   # - ngrok
   # - opera
   - p4merge
-  - parallels
+  # - parallels
   - paw
-  - sequel-pro
-  - skitch
+  # - sequel-pro
+  # - skitch
   # - skype
   # - spotify
   # - sublime-text
@@ -104,7 +104,7 @@ homebrew_cask_apps:
   # - the-unarchiver
   - tower
   - transmission
-  - vagrant
+  # - vagrant
   - visual-studio-code
   - vlc
   - vmware-fusion
