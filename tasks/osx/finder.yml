@@ -44,8 +44,8 @@
     #   key: ShowPathbar
     - name: Allow text selection in Quick Look
       key: QLEnableTextSelection
-    - name: Display full POSIX path as Finder window title
-      key: _FXShowPosixPathInTitle
+    # - name: Display full POSIX path as Finder window title
+    #   key: _FXShowPosixPathInTitle
     # - name: Avoid creating .DS_Store files on network volumes
     #   key: DSDontWriteNetworkStores
 

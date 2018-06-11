@@ -14,11 +14,11 @@
   tags: ['homebrew']
 
 - name: Set default directory for cloned projects
-    osx_defaults:
-      domain: com.fournova.Tower2
-      key: GTUserDefaultsDefaultCloningDirectory
-      type: string
-      value: "${HOME}/Developer"
+  osx_defaults:
+    domain: com.fournova.Tower2
+    key: GTUserDefaultsDefaultCloningDirectory
+    type: string
+    value: "${HOME}/Developer"
   when: '"tower" in homebrew_cask_apps'
   changed_when: false
   tags: ['homebrew']
