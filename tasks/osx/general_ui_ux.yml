@@ -10,12 +10,12 @@
     - name: Configure scrollbars
       key: AppleShowScrollBars
       value: WhenScrolling # Options: "Always", "Automatic", "WhenScrolling"
-    - name: Minimize window when double-clicking its title bar
-      key: AppleActionOnDoubleClick
-      value: Minimize
-    # - name: Set interface style to Dark
-    #   key: AppleInterfaceStyle
-    #   value: Dark
+    # - name: Minimize window when double-clicking its title bar
+    #   key: AppleActionOnDoubleClick
+    #   value: Minimize
+    - name: Set interface style to Dark
+      key: AppleInterfaceStyle
+      value: Dark
 
 - name: "{{ item.name }}"
   osx_defaults:
@@ -82,7 +82,7 @@
 #   command: launchctl unload /System/Library/LaunchAgents/com.apple.gamed.plist 2> /dev/null
 #   changed_when: false
 
-# - name: Reduce transparency
+# - name: Enable the 'reduce transparency' option on Yosemite. Save GPU cycles.
 #   osx_defaults:
 #     domain: com.apple.universalaccess
 #     key: reduceTransparency

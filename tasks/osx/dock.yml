@@ -41,13 +41,6 @@
 #     type: string
 #     value: "bottom"
 
-# - name: Enable the 'reduce transparency' option on Yosemite. Save GPU cycles.
-#   osx_defaults:
-#     domain: com.apple.universalaccess
-#     key: reduceTransparency
-#     type: bool
-#     value: true
-
 # - name: Add iOS Simulator to Applications folder
 #   command: ln -sf /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app /Applications/Simulator.app
 #   become: true

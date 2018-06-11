@@ -20,12 +20,12 @@
     type: bool
     value: "{{ item.value | default(true) }}"
   with_items:
-    - name: Disable the warning before emptying the Trash
-      key: WarnOnEmptyTrash
-      value: false
-    - name: Disable the warning when changing a file extension
-      key: FXEnableExtensionChangeWarning
-      value: false
+    # - name: Disable the warning before emptying the Trash
+    #   key: WarnOnEmptyTrash
+    #   value: false
+    # - name: Disable the warning when changing a file extension
+    #   key: FXEnableExtensionChangeWarning
+    #   value: false
     - name: Empty Trash securely by default
       key: EmptyTrashSecurely
     - name: Show external hard drives on the desktop
@@ -98,12 +98,12 @@
 
 
 # Four-letter codes for the other view modes: `icnv`, `Nlsv`, `clmv`, `Flwv`
-- name: Use column view in all Finder windows by default
-  osx_defaults:
-    domain: com.apple.finder
-    key: FXPreferredViewStyle
-    type: string
-    value: clmv
+# - name: Use column view in all Finder windows by default
+#   osx_defaults:
+#     domain: com.apple.finder
+#     key: FXPreferredViewStyle
+#     type: string
+#     value: clmv
 
 - name: Enable snap-to-grid for icons on the desktop and in other icon views
   command: /usr/libexec/PlistBuddy -c "Set :{{ item }} grid" ~/Library/Preferences/com.apple.finder.plist
@@ -119,9 +119,9 @@
     - StandardViewSettings:IconViewSettings:iconSize
   changed_when: false
 
-- name: Show the ~/Library folder
-  command: chflags nohidden ~/Library
-  changed_when: false
+# - name: Show the ~/Library folder
+#   command: chflags nohidden ~/Library
+#   changed_when: false
 
 - name: 'Expand the following File Info panes: "General", "Open with", "Sharing & Permissions"'
   command: >
