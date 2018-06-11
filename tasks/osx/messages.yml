@@ -1,10 +1,15 @@
 ---
 
-- name: Disable smart quotes as it’s annoying for messages that contain code
-  command: defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
-
-# - name: Disable continuous spell checking
-#   command: defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
-
-# - name: Disable automatic emoji substitution (i.e. use plain text smileys)
-#   command: defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
+- name: "{{ item.name }}"
+  osx_defaults:
+    domain: com.apple.messageshelper.MessageController
+    key: "{{ item.key }}"
+    type: bool
+    value: false
+  with_items:
+    - name: Disable smart quotes as it’s annoying for messages that contain code
+      key: 'SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled"'
+    # - name: Disable continuous spell checking
+    #   key: 'SOInputLineSettings -dict-add "continuousSpellCheckingEnabled"'
+    # - name: Disable automatic emoji substitution (i.e. use plain text smileys)
+    #   key: 'SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage"'

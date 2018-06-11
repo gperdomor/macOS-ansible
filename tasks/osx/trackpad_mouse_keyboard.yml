@@ -1,14 +1,31 @@
 ---
 
 - name: Disable auto-correct
-  command: defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: NSAutomaticSpellingCorrectionEnabled
+    type: bool
+    value: false
 
 # (e.g. enable Tab in modal dialogs - 0 = text boxes and lists, 2/3 = all controls)
 - name: Enable full keyboard access for all controls
-  command: defaults write NSGlobalDomain AppleKeyboardUIMode -int 0
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleKeyboardUIMode
+    type: int
+    value: 0
 
 - name: Set scroll direction
-  command: defaults write -g com.apple.swipescrolldirection -bool true
+  osx_defaults:
+    domain: -g
+    key: com.apple.swipescrolldirection
+    type: bool
+    value: true
 
 - name: Enable secondary click
-  command: defaults -currentHost write -g com.apple.trackpad.enableSecondaryClick -bool YES
+  osx_defaults:
+    host: currentHost
+    domain: -g
+    key: com.apple.trackpad.enableSecondaryClick
+    type: bool
+    value: YES

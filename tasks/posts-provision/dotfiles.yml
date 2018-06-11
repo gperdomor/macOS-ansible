@@ -1,0 +1,8 @@
+---
+- name: Set git remote URL to SSH to dotfiles repository
+  shell: git remote set-url origin {{ dotfiles_repo_ssh }}
+  args:
+    chdir: "{{ dotfiles_repo_local_destination }}"
+    warn: false
+  changed_when: false
+  tags: ['dotfiles']

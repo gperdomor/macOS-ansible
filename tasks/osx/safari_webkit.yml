@@ -4,45 +4,66 @@
 #   command: defaults write com.apple.Safari HomePage -string "about:blank"
 
 - name: "{{ item.name }}"
-  command: defaults write com.apple.Safari {{ item.key }} -bool {{ item.value }}
+  osx_defaults:
+    domain: com.apple.Safari
+    key: "{{ item.key }}"
+    type: bool
+    value: "{{ item.value }}"
   with_items:
+    # - { name: "Allow hitting the Backspace key to go to the previous page in history", key: "com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled", value: "true" }
+    - { name: "Disable auto-correct", key: "WebAutomaticSpellingCorrectionEnabled", value: "false" }
     # - { name: "Don't send search queries to Apple (1/2)", key: "UniversalSearchEnabled", value: "false" }
     # - { name: "Don't send search queries to Apple (2/2)", key: "SuppressSearchSuggestions", value: "true" }
+    - { name: "Enable continuous spellchecking", key: "WebContinuousSpellCheckingEnabled", value: "true" }
+    - { name: "Enable Do Not Track", key: "SendDoNotTrackHTTPHeader", value: "true" }
+    - { name: "Enable Safari's debug menu", key: "IncludeInternalDebugMenu", value: "true" }
+    - { name: "Hide Safari's bookmarks bar by default", key: "ShowFavoritesBar", value: "false"}
+    - { name: "Hide Safari's sidebar in Top Sites", key: "ShowSidebarInTopSites", value: "false"}
+    - { name: "Make Safari's search banners default to Contains instead of Starts With", key: "FindOnPageMatchesWordStartsOnly", value: "false"}
+    - { name: "Open windows from last session", key: "AlwaysRestoreSessionAtLaunch", value: "true" }
     # - { name: "Press Tab to highlight each item on a web page (1/2)", key: "WebKitTabToLinksPreferenceKey", value: "true" }
     # - { name: "Press Tab to highlight each item on a web page (2/2)", key: "com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks", value: "true" }
     - { name: "Prevent Safari from opening ‘safe’ files automatically after downloading", key: "AutoOpenSafeDownloads", value: "false" }
-    - { name: "Open windows from last session", key: "AlwaysRestoreSessionAtLaunch", value: "true" }
-    # - { name: "Show the full URL in the address bar (note: this still hides the scheme)", key: "ShowFullURLInSmartSearchField", value: "true" }
-    # - { name: "Allow hitting the Backspace key to go to the previous page in history", key: "com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled", value: "true" }
-    - { name: "Hide Safari's bookmarks bar by default", key: "ShowFavoritesBar", value: "false"}
-    - { name: "Hide Safari's sidebar in Top Sites", key: "ShowSidebarInTopSites", value: "false"}
     - { name: "Show Safari's status bar", key: "ShowOverlayStatusBar", value: "true"}
-    - { name: "Make Safari's search banners default to Contains instead of Starts With", key: "FindOnPageMatchesWordStartsOnly", value: "false"}
-    - { name: "Enable Safari's debug menu", key: "IncludeInternalDebugMenu", value: "true" }
-    - { name: "Enable continuous spellchecking", key: "WebContinuousSpellCheckingEnabled", value: "true" }
-    - { name: "Disable auto-correct", key: "WebAutomaticSpellingCorrectionEnabled", value: "false" }
-    - { name: "Warn about fraudulent websites", key: "WarnAboutFraudulentWebsites", value: "true" }
-    - { name: "Enable Do Not Track", key: "SendDoNotTrackHTTPHeader", value: "true" }
+    # - { name: "Show the full URL in the address bar (note: this still hides the scheme)", key: "ShowFullURLInSmartSearchField", value: "true" }
     - { name: "Update extensions automatically", key: "InstallExtensionUpdatesAutomatically", value: "true" }
+    - { name: "Warn about fraudulent websites", key: "WarnAboutFraudulentWebsites", value: "true" }
 
 - name: Remove useless icons from Safari’s bookmarks bar
   command: defaults write com.apple.Safari ProxiesInBookmarksBar "()"
+  changed_when: false
 
 - name: Disable Safari’s thumbnail cache for History and Top Sites
-  command: defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+  osx_defaults:
+    domain: com.apple.Safari
+    key: DebugSnapshotsUpdatePolicy
+    type: int
+    value: 2
 
 - name: Add a context menu item for showing the Web Inspector in web views
-  command: defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: WebKitDeveloperExtras
+    type: bool
+    value: true
 
 - name: Enable the Develop menu and the Web Inspector in Safari
-  command: defaults write com.apple.Safari {{ item }} -bool true
+  osx_defaults:
+    domain: com.apple.Safari
+    key: "{{ item }}"
+    type: bool
+    value: true
   with_items:
     - IncludeDevelopMenu
     - WebKitDeveloperExtrasEnabledPreferenceKey
     - com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled
 
 - name: Disable AutoFill
-  command: defaults write com.apple.Safari {{ item }} -bool false
+  osx_defaults:
+    domain: com.apple.Safari
+    key: "{{ item }}"
+    type: bool
+    value: false
   with_items:
     - AutoFillFromAddressBook
     - AutoFillPasswords
@@ -50,19 +71,31 @@
     - AutoFillMiscellaneousForms
 
 - name: Disable plug-ins
-  command: defaults write com.apple.Safari {{ item }} -bool false
+  osx_defaults:
+    domain: com.apple.Safari
+    key: "{{ item }}"
+    type: bool
+    value: false
   with_items:
     - WebKitPluginsEnabled
     - com.apple.Safari.ContentPageGroupIdentifier.WebKit2PluginsEnabled
 
 - name: Disable Java
-  command: defaults write com.apple.Safari {{ item }} -bool false
+  osx_defaults:
+    domain: com.apple.Safari
+    key: "{{ item }}"
+    type: bool
+    value: false
   with_items:
     - WebKitJavaEnabled
     - com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled
 
 - name: Block pop-up windows
-  command: defaults write com.apple.Safari {{ item }} -bool false
+  osx_defaults:
+    domain: com.apple.Safari
+    key: "{{ item }}"
+    type: bool
+    value: false
   with_items:
     - WebKitJavaScriptCanOpenWindowsAutomatically
     - com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically

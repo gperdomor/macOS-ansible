@@ -1,4 +1,25 @@
 ---
 
-- name: Show sidebar
-  command: defaults write com.apple.iCal CalendarSidebarShown -int 1
+- name: "{{ item.name}}"
+  osx_defaults:
+    domain: com.apple.iCal
+    key: "{{ item.key }}"
+    type: int
+    value: "{{ item.value }}"
+  with_items:
+    - name: Show sidebar
+      key: CalendarSidebarShown
+      value: 1
+    # - name: Hide Holidays calendar
+    #   key: "add holiday calendar"
+    #   value: 0
+    # - name: Hide Birthdays calendar
+    #   key: "display birthdays calendar"
+    #   value: 0
+
+# - name: Hide Found in Mail calendar
+#   osx_defaults:
+#     domain: com.apple.suggestions
+#     key: SuggestionsShowEventsFoundInMail
+#     type: int
+#     value: 0

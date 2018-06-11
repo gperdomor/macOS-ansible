@@ -7,20 +7,46 @@
 #     - { name: "Enable Debug Menu in the Mac App Store", key: "ShowDebugMenu", value: "true" }
 
 - name: "{{ item.name }}"
-  command: defaults write com.apple.SoftwareUpdate {{ item.key }} -bool {{ item.value }}
+  osx_defaults:
+    domain: com.apple.SoftwareUpdate
+    key: "{{ item.key }}"
+    type: bool
+    value: "{{ item.value }}"
   with_items:
-    - { name: "Enable the automatic update check", key: "AutomaticCheckEnabled", value: "true" }
+    - name: Enable the automatic update check
+      key: AutomaticCheckEnabled
+      value: true
 
 - name: "{{ item.name }}"
-  command: defaults write com.apple.SoftwareUpdate {{ item.key }} -int {{ item.value }}
+  osx_defaults:
+    domain: com.apple.SoftwareUpdate
+    key: "{{ item.key }}"
+    type: int
+    value: "{{ item.value }}"
   with_items:
-    - { name: "Check for software updates daily, not just once per week", key: "ScheduleFrequency", value: "1" }
-    - { name: "Download newly available updates in background", key: "AutomaticDownload", value: "1" }
-    - { name: "Install System data files & security updates", key: "CriticalUpdateInstall", value: "1" }
-    - { name: "Automatically download apps purchased on other Macs", key: "ConfigDataInstall", value: "1" }
+    - name: Check for software updates daily, not just once per week
+      key: ScheduleFrequency
+      value: 1
+    - name: Download newly available updates in background
+      key: AutomaticDownload
+      value: 1
+    - name: Install System data files & security updates
+      key: CriticalUpdateInstall
+      value: 1
+    - name: Automatically download apps purchased on other Macs
+      key: ConfigDataInstall
+      value: 1
 
 - name: "{{ item.name }}"
-  command: defaults write com.apple.commerce {{ item.key }} -bool {{ item.value }}
+  osx_defaults:
+    domain: com.apple.commerce
+    key: "{{ item.key }}"
+    type: bool
+    value: "{{ item.value }}"
   with_items:
-    - { name: "Turn on app auto-update", key: "AutoUpdate", value: "true" }
-    - { name: "Allow the App Store to reboot machine on macOS updates", key: "AutoUpdateRestartRequired", value: "true" }
+    - name: Turn on app auto-update
+      key: AutoUpdate
+      value: true
+    # - name: Allow the App Store to reboot machine on macOS updates
+    #   key: AutoUpdateRestartRequired
+    #   value: true
