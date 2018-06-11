@@ -4,11 +4,15 @@
   osx_defaults:
     domain: com.apple.screensaver
     key: "{{ item.key }}"
-    type: int
+    type: "{{ item.type }}"
     value: "{{ item.value }}"
   with_items:
-    - { key: "askForPassword", value: 1 }
-    - { key: "askForPasswordDelay", value: 0 }
+    - key: askForPassword
+      type: int
+      value: 1
+    - key: askForPasswordDelay
+      type: float
+      value: 0
 
 - name: Save screenshots to the desktop
   osx_defaults:
