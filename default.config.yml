@@ -59,13 +59,11 @@ homebrew_installed_packages:
   # - sqlite
   - ssh-copy-id
   # - swiftenv
-  - swiftlint
+  # - swiftlint # Require Xcode
   - tree
   - vapor
   - wget
   - yarn
-  - zsh
-  - zsh-completions
 
 homebrew_cask_apps:
   # - appcleaner

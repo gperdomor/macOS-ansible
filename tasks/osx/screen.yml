@@ -1,16 +1,16 @@
 ---
 
-- name: Require password immediately after sleep or screen saver begins
-  osx_defaults:
-    domain: com.apple.screensaver
-    key: "{{ item.key }}"
-    type: int
-    value: "{{ item.value }}"
-  with_items:
-    - key: askForPassword
-      value: 1
-    - key: askForPasswordDelay
-      value: 0
+# - name: Require password immediately after sleep or screen saver begins
+#   osx_defaults:
+#     domain: com.apple.screensaver
+#     key: "{{ item.key }}"
+#     type: int
+#     value: "{{ item.value }}"
+#   with_items:
+#     - key: askForPassword
+#       value: 1
+#     - key: askForPasswordDelay
+#       value: 0
 
 - name: Save screenshots to the desktop
   osx_defaults:
