@@ -32,121 +32,127 @@ ssh_keys: []
 # Homebrew
 # --------------------------------------------------------------------------
 homebrew_taps:
-  - homebrew/cask
   - homebrew/core
-  - kylef/formulae
+  - homebrew/cask
   - vapor/tap
+  - kylef/formulae
+  - adoptopenjdk/openjdk
 
 homebrew_installed_packages:
   # - ansible # Installed via Pip.
-  - { name: curl, install_options: "with-nghttp2" }
+  # - cowsay
+  - curl
   - diff-so-fancy
-  - docker-clean
+  # - docker-machine
+  # - docker-machine-driver-hyperkit
+  # - docker-machine-parallels
   - git
-  # - { name: gitlab-runner, install_options: "without-docker" }
+  # - gitlab-runner
   # - go
-  - heroku
+  # - gpg
+  # - heroku
   - httpie
-  - kubernetes-cli
-  # - mysql
-  # - nmap
+  # - hub
+  # - kubernetes-cli
+  - nmap
   - node
   # - nvm
   - openssl
+  - pgcli
   # - postgresql
+  # - python
   # - rbenv
   # - ruby-build
   # - sqlite
-  - ssh-copy-id
+  # - ssh-copy-id
   # - swiftenv
+  # - swiftformat
   # - swiftlint # Require Xcode
   - tree
   - vapor
+  # - watchman
   - wget
-  - yarn
+  # - yarn
+  - zsh
+  - zsh-completions
 
+homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
-  # - appcleaner
+  - android-studio
+  - angular-console
   # - araxis-merge
-  # - archiver
-  - atom
-  # - cakebrew
+  # - atom
   # - cleanmymac
-  # - daisydisk
+  - discord
   - docker
   - dockstation
   - dropbox
-  # - firefox
+  - duet
+  - firefox
+  # - gemini
   - google-chrome
   - gpg-suite
-  # - iina
+  - iina
   - insomnia
   - kaleidoscope
   - keepingyouawake
   - kitematic
   # - knuff
-  - launchrocket
   - minikube
-  # - ngrok
-  # - opera
-  - p4merge
+  - navicat-premium
+  - ngrok
+  - opera
+  - p4v
   # - parallels
-  - paw
-  # - sequel-pro
-  # - skitch
-  # - skype
-  # - spotify
-  # - sublime-text
-  - switchhosts
+  # - paw
+  - pgadmin4
+  - postman
+  - skype
   - tableplus
   # - the-unarchiver
   - tower
   - transmission
   # - vagrant
   - visual-studio-code
-  - vlc
+  # - vlc
   - vmware-fusion
+  # - webstorm
   # - xscope
 
 # Mac App Store
 # --------------------------------------------------------------------------
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps:
-  # - id: 409201541
-  #   name: Pages
-  - { id: "1333542190", name: "1Password 7" }
-  - { id: "409183694",  name: "Keynote" }
-  - { id: "441258766",  name: "Magnet" }
-  - { id: "1185488696", name: "Money" }
-  - { id: "409203825",  name: "Numbers" }
-  - { id: "409201541",  name: "Pages" }
-  - { id: "880001334",  name: "Reeder" }
-  - { id: "803453959",  name: "Slack" }
-  - { id: "1176895641", name: "Spark" }
-  - { id: "497799835",  name: "Xcode" }
+  - { name: '1Password 7', id: 1333542190 }
+  # - { name: "Affinity Designer", id: 824171161 }
+  # - { name: "Affinity Photo" id: 824183456 }
+  - { name: 'Agenda', id: 1287445660 }
+  - { name: 'Keynote', id: 409183694 }
+  - { name: 'Magnet', id: 441258766 }
+  - { name: 'Money', id: 1185488696 }
+  - { name: 'Numbers', id: 409203825 }
+  - { name: 'Pages', id: 409201541 }
+  # # - { name: "Pixelmator Pro", id: 1289583905 }
+  # # - { name: "Pixelmator", id: 407963104 }
+  - { name: 'Reeder', id: 880001334 }
+  - { name: 'Slack', id: 803453959 }
+  - { name: 'Spark', id: 1176895641 }
+  - { name: 'The Unarchiver', id: 425424353 }
+  - { name: 'Xcode', id: 497799835 }
 
-mas_email: ""
-mas_password: ""
+mas_email: ''
+mas_password: ''
 
-# osx_script: "~/.osx --no-restart"
-#
-# # Install packages from other package managers.
-# # Note: You are responsible for making sure the required package managers are
-# # installed, eg. through homebrew.
+# Install packages from other package managers.
+# Note: You are responsible for making sure the required package managers are
+# installed, eg. through homebrew.
 
 # Atom Packages
 # --------------------------------------------------------------------------
 atom_packages:
-  - atom-ide-ui
   - editorconfig
   - file-icons
   - highlight-selected
-  - ide-docker
-  # - ide-flowtype
-  - ide-json
-  - ide-typescript
-  # - linter-eslint
-  - linter-tslint
   - pigments
   - prettier-atom
   - sort-lines
@@ -155,17 +161,25 @@ atom_packages:
 # VS Code Packages
 # --------------------------------------------------------------------------
 vscode_packages:
-  # - name: Debugger for Chrome
-  #   id: msjsdiag.debugger-for-chrome
-  - { name: "Debugger for Chrome", id: "msjsdiag.debugger-for-chrome" }
-  - { name: "Docker", id: "PeterJausovec.vscode-docker" }
-  - { name: "EditorConfig for VS Code", id: "EditorConfig.EditorConfig" }
-  # - { name: "Path Intellisense", id: "christian-kohler.path-intellisense" }
-  - { name: "Prettier", id: "esbenp.prettier-vscode" }
-  - { name: "Sort Lines", id: "Tyriar.sort-lines" }
-  - { name: "TODO Highlight", id: "wayou.vscode-todo-highlight" }
-  - { name: "TS Lint", id: "eg2.tslint" }
-  - { name: "vscode-icons", id: "robertohuertasm.vscode-icons" }
+  # - { name: 'Angular Console', id: 'nrwl.angular-console' }
+  # - { name: 'Angular Languiase Service', id: 'Angular.ng-template' }
+  # - { name: 'Copilot', id: 'Metatype.copilot-vscode' }
+  # - { name: 'Debugger for Chrome', id: 'msjsdiag.debugger-for-chrome' }
+  # - { name: 'Docker', id: 'PeterJausovec.vscode-docker' }
+  # - { name: 'Dot Env', id: 'mikestead.dotenv' }
+  # - { name: 'EditorConfig for VS Code', id: 'EditorConfig.EditorConfig' }
+  # - { name: 'Git Lens', id: 'eamodio.gitlens' }
+  # - { name: 'Jest', id: 'Orta.vscode-jest' }
+  # - { name: 'Live Share', id: 'ms-vsliveshare.vsliveshare' }
+  # - { name: 'Markdown All in One', id: 'yzhang.markdown-all-in-one' }
+  # - { name: 'One Dark Pro', id: 'yzhzhuangtongfa.Material-theme' }
+  # - { name: 'Prettier', id: 'esbenp.prettier-vscode' }
+  - { name: 'Settings Sync', id: 'shan.code-settings-sync' }
+  # - { name: 'Sort Lines', id: 'Tyriar.sort-lines' }
+  # - { name: 'Sort Typescript Imports', id: 'miclo.sort-typescript-imports' }
+  # - { name: 'TODO Tree', id: 'Gruntfuggly.todo-tree' }
+  # - { name: 'TS Lint', id: 'ms-vscode.vscode-typescript-tslint-plugin' }
+  # - { name: 'vscode-icons', id: 'vscode-icons-team.vscode-icons' }
 
 # Composer Packages
 # --------------------------------------------------------------------------
@@ -187,16 +201,24 @@ npm_packages:
   # - name: webpack
   #   state: present # present/absent/latest, default: present
   #   version: "^2.6" # default: N/A
-  - "@angular/cli"
-  # - create-react-app
-  # - create-react-native-app
-  # - eslint
-  - json-server
-  # - localtunnel
-  - prettier
-  - react-native-cli
-  # - serve
+  - name: '@angular/cli'
+  - name: '@nestjs/cli'
+  - name: '@nrwl/schematics'
+  - name: create-react-app
+  - name: expo-cli
+  - name: json-server
+  - name: nodemon
+  - name: npm
+    version: 6.8.0
+  - name: npm-check
+  - name: oclif
+  - name: prettier
+  - name: react-native-cli
+  - name: serve
+  - name: typescript
 
+# Python Packages
+# --------------------------------------------------------------------------
 pip_packages: []
   # - name: mkdocs
   #   state: present # present/absent/latest, default: present
