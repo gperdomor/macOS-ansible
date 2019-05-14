@@ -2,6 +2,6 @@
 .DS_Store
 *.retry
 ansible.log
-roles*
 config.yml
 !tests/config.yml
+roles/external

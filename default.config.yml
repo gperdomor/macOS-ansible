@@ -1,6 +1,4 @@
 ---
-downloads: ~/.ansible-downloads/
-
 configure_dotfiles: yes
 configure_terminal: yes
 configure_osx: yes
@@ -28,6 +26,11 @@ ssh_keys: []
   # - name: github
   #   host: github.com
   #   passphrase: ""
+  #   type: rsa
+  # - name: gitlab
+  #   host: gitlab.com
+  #   passphrase: ""
+  #   type: ed25519
 
 # Homebrew
 # --------------------------------------------------------------------------
@@ -123,25 +126,25 @@ homebrew_cask_apps:
 # --------------------------------------------------------------------------
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps:
-  - { name: '1Password 7', id: 1333542190 }
+  - { name: "1Password 7", id: 1333542190 }
   # - { name: "Affinity Designer", id: 824171161 }
   # - { name: "Affinity Photo" id: 824183456 }
-  - { name: 'Agenda', id: 1287445660 }
-  - { name: 'Keynote', id: 409183694 }
-  - { name: 'Magnet', id: 441258766 }
-  - { name: 'Money', id: 1185488696 }
-  - { name: 'Numbers', id: 409203825 }
-  - { name: 'Pages', id: 409201541 }
+  - { name: "Agenda", id: 1287445660 }
+  - { name: "Keynote", id: 409183694 }
+  - { name: "Magnet", id: 441258766 }
+  - { name: "Money", id: 1185488696 }
+  - { name: "Numbers", id: 409203825 }
+  - { name: "Pages", id: 409201541 }
   # # - { name: "Pixelmator Pro", id: 1289583905 }
   # # - { name: "Pixelmator", id: 407963104 }
-  - { name: 'Reeder', id: 880001334 }
-  - { name: 'Slack', id: 803453959 }
-  - { name: 'Spark', id: 1176895641 }
-  - { name: 'The Unarchiver', id: 425424353 }
-  - { name: 'Xcode', id: 497799835 }
+  - { name: "Reeder", id: 880001334 }
+  - { name: "Slack", id: 803453959 }
+  - { name: "Spark", id: 1176895641 }
+  - { name: "The Unarchiver", id: 425424353 }
+  - { name: "Xcode", id: 497799835 }
 
-mas_email: ''
-mas_password: ''
+mas_email: ""
+mas_password: ""
 
 # Install packages from other package managers.
 # Note: You are responsible for making sure the required package managers are
@@ -161,25 +164,25 @@ atom_packages:
 # VS Code Packages
 # --------------------------------------------------------------------------
 vscode_packages:
-  # - { name: 'Angular Console', id: 'nrwl.angular-console' }
-  # - { name: 'Angular Languiase Service', id: 'Angular.ng-template' }
-  # - { name: 'Copilot', id: 'Metatype.copilot-vscode' }
-  # - { name: 'Debugger for Chrome', id: 'msjsdiag.debugger-for-chrome' }
-  # - { name: 'Docker', id: 'PeterJausovec.vscode-docker' }
-  # - { name: 'Dot Env', id: 'mikestead.dotenv' }
-  # - { name: 'EditorConfig for VS Code', id: 'EditorConfig.EditorConfig' }
-  # - { name: 'Git Lens', id: 'eamodio.gitlens' }
-  # - { name: 'Jest', id: 'Orta.vscode-jest' }
-  # - { name: 'Live Share', id: 'ms-vsliveshare.vsliveshare' }
-  # - { name: 'Markdown All in One', id: 'yzhang.markdown-all-in-one' }
-  # - { name: 'One Dark Pro', id: 'yzhzhuangtongfa.Material-theme' }
-  # - { name: 'Prettier', id: 'esbenp.prettier-vscode' }
-  - { name: 'Settings Sync', id: 'shan.code-settings-sync' }
-  # - { name: 'Sort Lines', id: 'Tyriar.sort-lines' }
-  # - { name: 'Sort Typescript Imports', id: 'miclo.sort-typescript-imports' }
-  # - { name: 'TODO Tree', id: 'Gruntfuggly.todo-tree' }
-  # - { name: 'TS Lint', id: 'ms-vscode.vscode-typescript-tslint-plugin' }
-  # - { name: 'vscode-icons', id: 'vscode-icons-team.vscode-icons' }
+  # - { name: "Angular Console", id: "nrwl.angular-console" }
+  # - { name: "Angular Languiase Service", id: "Angular.ng-template" }
+  # - { name: "Copilot", id: "Metatype.copilot-vscode" }
+  # - { name: "Debugger for Chrome", id: "msjsdiag.debugger-for-chrome" }
+  # - { name: "Docker", id: "PeterJausovec.vscode-docker" }
+  # - { name: "Dot Env", id: "mikestead.dotenv" }
+  # - { name: "EditorConfig for VS Code", id: "EditorConfig.EditorConfig" }
+  # - { name: "Git Lens", id: "eamodio.gitlens" }
+  # - { name: "Jest", id: "Orta.vscode-jest" }
+  # - { name: "Live Share", id: "ms-vsliveshare.vsliveshare" }
+  # - { name: "Markdown All in One", id: "yzhang.markdown-all-in-one" }
+  # - { name: "One Dark Pro", id: "yzhzhuangtongfa.Material-theme" }
+  # - { name: "Prettier", id: "esbenp.prettier-vscode" }
+  - { name: "Settings Sync", id: "shan.code-settings-sync" }
+  # - { name: "Sort Lines", id: "Tyriar.sort-lines" }
+  # - { name: "Sort Typescript Imports", id: "miclo.sort-typescript-imports" }
+  # - { name: "TODO Tree", id: "Gruntfuggly.todo-tree" }
+  # - { name: "TS Lint", id: "ms-vscode.vscode-typescript-tslint-plugin" }
+  # - { name: "vscode-icons", id: "vscode-icons-team.vscode-icons" }
 
 # Composer Packages
 # --------------------------------------------------------------------------
@@ -201,9 +204,9 @@ npm_packages:
   # - name: webpack
   #   state: present # present/absent/latest, default: present
   #   version: "^2.6" # default: N/A
-  - name: '@angular/cli'
-  - name: '@nestjs/cli'
-  - name: '@nrwl/schematics'
+  - name: "@angular/cli"
+  - name: "@nestjs/cli"
+  - name: "@nrwl/schematics"
   - name: create-react-app
   - name: expo-cli
   - name: json-server
@@ -224,15 +227,28 @@ pip_packages: []
   #   state: present # present/absent/latest, default: present
   #   version: "0.16.3" # default: N/A
 
-projects: []
+# Projects
+# --------------------------------------------------------------------------
+projects_oss:
+  # - dest: "oss-repo"
+  #   repo_https: "https://{{ githubuser | urlencode }}:{{ githubpassword }}@github.com/private-repo.git"
+  #   repo_ssh: "git@github.com:githubuser/private-repo.git"
+  - { dest: "macOs-ansible", repo: "https://github.com/gperdomor/macOs-ansible.git" }
+projects_internal:
   # - dest: "private-repo"
   #   repo_https: "https://{{ githubuser | urlencode }}:{{ githubpassword }}@github.com/private-repo.git"
   #   repo_ssh: "git@github.com:githubuser/private-repo.git"
+  - { dest: "macOs-ansible", repo: "https://github.com/gperdomor/macOs-ansible.git" }
+projects_client:
+  # - dest: "client-repo"
+  #   repo_https: "https://{{ githubuser | urlencode }}:{{ githubpassword }}@github.com/private-repo.git"
+  #   repo_ssh: "git@github.com:githubuser/private-repo.git"
+  - { dest: "macOs-ansible", repo: "https://github.com/gperdomor/macOs-ansible.git" }
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
-post_provision_tasks:
-  - tasks/posts-provision/chrome.yml
-  - tasks/posts-provision/curl.yml
-  - tasks/posts-provision/dotfiles.yml
-  - tasks/posts-provision/tower.yml
-  - tasks/posts-provision/transmission.yml
+# post_provision_tasks:
+#   - tasks/posts-provision/chrome.yml
+#   - tasks/posts-provision/curl.yml
+#   - tasks/posts-provision/dotfiles.yml
+#   - tasks/posts-provision/tower.yml
+#   - tasks/posts-provision/transmission.yml

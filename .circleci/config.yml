@@ -23,15 +23,15 @@ jobs:
       - run:
           name: Checking the role/playbook's syntax
           command: ansible-playbook main.yml --syntax-check
-      # - run:
-      #     name: Copy test config.yml into place.
-      #     command: cp tests/config.yml config.yml
+      - run:
+          name: Copy test config.yml into place.
+          command: cp tests/config.yml config.yml
       - run:
           name: Run playbook
-          command: ansible-playbook main.yml --skip-tags "mas, no_ci"
+          command: ansible-playbook main.yml --skip-tags "mas,no_ci"
       # Test the playbook's idempotence.
       # - run: idempotence=$(mktemp)
-      # - run: ansible-playbook --extra-vars '{"configure_terminal":"false"}' main.yml -i inventory --skip-tags "mas" | tee -a ${idempotence}
+      # - run: ansible-playbook --extra-vars '{"configure_terminal":"false"}' main.yml --skip-tags "mas" | tee -a ${idempotence}
       # - run: >
       #     tail ${idempotence}
       #     | grep -q 'changed=0.*failed=0'
@@ -42,6 +42,7 @@ jobs:
           paths:
             - '$HOME/Library/Caches/pip'
             - '$HOME/Library/Caches/Homebrew'
+
 workflows:
   version: 2
   tests:
