@@ -1,10 +1,10 @@
 ---
 
 projects_oss:
-  - { dest: "macsible", repo: "https://github.com/macsible/macsible.git" }
+  - { dest: "macOs-ansible", repo: "https://github.com/gperdomor/macOs-ansible.git", repo_ssh: "git@github.com:gperdomor/macOs-ansible.git" }
 
 projects_internal:
-  - { dest: "macsible", repo: "https://github.com/macsible/macsible.git" }
+  - { dest: "macOs-ansible", repo: "https://github.com/gperdomor/macOs-ansible.git", repo_ssh: "git@github.com:gperdomor/macOs-ansible.git" }
 
 projects_client:
-  - { dest: "macsible", repo: "https://github.com/macsible/macsible.git" }
+  - { dest: "macOs-ansible", repo: "https://github.com/gperdomor/macOs-ansible.git", repo_ssh: "git@github.com:gperdomor/macOs-ansible.git" }
