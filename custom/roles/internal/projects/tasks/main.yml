@@ -1,0 +1,37 @@
+---
+
+- name: Ensure ~/Projects directory exists
+  file:
+    path: ~/Projects
+    state: directory
+    follow: yes
+
+# OSS projects
+
+- name: Clone OSS project repos
+  git:
+    repo: "{{ item.repo }}"
+    dest: ~/Projects/oss/{{ item.dest }}
+    accept_hostkey: yes
+    version: master
+  with_items: "{{ projects_oss }}"
+
+# Internal projects
+
+- name: Clone internal project repos
+  git:
+    repo: "{{ item.repo }}"
+    dest: ~/Projects/internal/{{ item.dest }}
+    accept_hostkey: yes
+    version: master
+  with_items: "{{ projects_internal }}"
+
+# Client projects
+
+- name: Clone client project repos
+  git:
+    repo: "{{ item.repo }}"
+    dest: ~/Projects/client/{{ item.dest }}/docroot
+    accept_hostkey: yes
+    version: master
+  with_items: "{{ projects_client }}"

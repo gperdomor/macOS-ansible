@@ -1,0 +1,24 @@
+---
+- name: Custom - Day to day
+  hosts: localhost
+
+  vars_files:
+    - config.yml
+    - config.local.yml
+
+  roles:
+
+    - { role: dotfiles, tags: "dotfiles" }
+    - { role: duti, tags: "duti" }
+    - { role: time_machine, tags: "time_machine" }
+    - { role: moom, tags: "moom" }
+    - { role: evernote, tags: "evernote" }
+    - { role: path_finder, tags: "path_finder" }
+    - { role: danbohea.skype, tags: ["skype","no_ci"] }
+    - { cask_app_name: "inkdrop", tags: "inkdrop", role: danbohea.cask-app }
+    - { cask_app_name: "caffeine", tags: ["caffeine","sudo"], role: danbohea.cask-app }
+    - { cask_app_name: "alfred", tags: ["alfred","sudo"], role: danbohea.cask-app }
+    - { cask_app_name: "nordvpn", tags: "nordvpn", role: danbohea.cask-app }
+    # TODO: Failing builds.
+    # - { cask_app_name: "the-unarchiver", tags: "the_unarchiver", role: danbohea.cask-app }
+    # - { cask_app_name: "muzzle", tags: "muzzle", role: danbohea.cask-app }

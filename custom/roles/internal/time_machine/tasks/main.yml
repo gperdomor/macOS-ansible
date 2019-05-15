@@ -1,0 +1,29 @@
+---
+
+- name: Ensure excluded directory exists
+  file:
+    path: "{{ ansible_env.HOME }}/{{ time_machine_ex_dir_name }}"
+    state: directory
+
+# TODO: Adding Time Machine exclusions using tmutil doesn't seem to add anything
+# to the Time Machine GUI list of exclusions :(
+
+# TODO: Make idempotent
+
+# - name: Exclude certain directories from Time Machine backups (desktop)
+#   shell: tmutil addexclusion {{ item }}
+#   with_items: "{{ time_machine_exclusions_desktop }}"
+#   # TODO: Variable no longer available, use another condition
+#   when: system_type == "desktop"
+
+# TODO: Make idempotent
+
+# - name: Exclude certain directories from Time Machine backups (laptop)
+#   shell: tmutil addexclusion {{ item }}
+#   with_items: "{{ time_machine_exclusions_laptop }}"
+#   # TODO: Variable no longer available, use another condition
+#   when: system_type == "laptop"
+
+- name: Show Time Machine in menu bar
+  command: defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/CoreServices/Menu Extras/TimeMachine.menu"
+  notify: killall SystemUIServer

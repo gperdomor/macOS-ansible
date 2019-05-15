@@ -1,0 +1,8 @@
+---
+
+- src: danbohea.cask-app
+  version: 2.0.0
+- src: danbohea.macos-dock
+  version: 1.0.0
+- src: danbohea.macos-spelling
+  version: 1.0.0

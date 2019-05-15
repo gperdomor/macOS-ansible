@@ -1,0 +1,40 @@
+---
+
+- name: Set save location for screenshots
+  # shell: defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+  osx_defaults:
+    domain: com.apple.screencapture
+    key: location
+    type: string
+    # TODO: Verify that we can use a shell variable like this here or whether we need an Ansible variable
+    value: "${HOME}/Desktop"
+  notify:
+    - killall
+
+# Options: bmp, gif, jpg, pdf, png, tiff
+- name: Set format for saved screenshots
+  osx_defaults:
+    domain: com.apple.screencapture
+    key: type
+    type: string
+    value: "png"
+  notify:
+    - killall
+
+- name: Disable shadow in screenshots
+  osx_defaults:
+    domain: com.apple.screencapture
+    key: disable-shadow
+    type: bool
+    value: true
+  notify:
+    - killall
+
+- name: Enable subpixel font rendering on non-Apple LCDs
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleFontSmoothing
+    type: int
+    value: 2
+  notify:
+    - killall

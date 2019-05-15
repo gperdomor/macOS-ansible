@@ -1,0 +1,126 @@
+---
+
+- name: Always show scrollbars
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleShowScrollBars
+    type: string
+    # Options: "Always", "Automatic", "WhenScrolling"
+    value: "Always"
+  notify:
+    - killall
+
+- name: Minimize window when double-clicking its title bar
+  osx_defaults:
+    key: AppleActionOnDoubleClick
+    type: string
+    value: "Minimize"
+  notify:
+    - killall
+
+- name: Expand save panel by default
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: NSNavPanelExpandedStateForSaveMode
+    type: bool
+    value: true
+  notify:
+    - killall
+
+- name: Expand print panel by default
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: PMPrintingExpandedStateForPrint
+    type: bool
+    value: true
+  notify:
+    - killall
+
+- name: Save to disk (not to iCloud) by default
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: NSDocumentSaveNewDocumentsToCloud
+    type: bool
+    value: false
+  notify:
+    - killall
+
+- name: Automatically quit printer app once the print jobs complete
+  osx_defaults:
+    domain: com.apple.print.PrintingPrefs
+    key: "Quit When Finished"
+    type: bool
+    value: true
+  notify:
+    - killall
+
+- name: Disable the “Are you sure you want to open this application?” dialog
+  osx_defaults:
+    domain: com.apple.LaunchServices
+    key: LSQuarantine
+    type: bool
+    value: false
+  notify:
+    - killall
+
+- name: Remove duplicates in the “Open With” menu
+  command: /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
+  notify:
+    - killall
+
+- name: Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window
+  command: defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+#   osx_defaults:
+#     domain: /Library/Preferences/com.apple.loginwindow
+#     key: AdminHostInfo
+#     type: string
+#     value: HostName
+  become: true
+  notify:
+    - killall
+
+- name: Check for software updates daily, not just once per week
+  osx_defaults:
+    domain: com.apple.SoftwareUpdate
+    key: ScheduleFrequency
+    type: int
+    value: 1
+  notify:
+    - killall
+
+- name: Disable smart quotes as they're annoying when typing code
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: NSAutomaticQuoteSubstitutionEnabled
+    type: bool
+    value: false
+  notify:
+    - killall
+
+- name: Disable smart dashes as they're annoying when typing code
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: NSAutomaticDashSubstitutionEnabled
+    type: bool
+    value: false
+  notify:
+    - killall
+
+# TODO: Fails in macOS 10.14
+# - name: Reduce transparency
+#   osx_defaults:
+#     domain: com.apple.universalaccess
+#     key: reduceTransparency
+#     type: bool
+#     value: true
+#   notify:
+#     - killall
+
+- name: Set interface style to Dark
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleInterfaceStyle
+    type: string
+    value: Dark
+  notify:
+    - killall

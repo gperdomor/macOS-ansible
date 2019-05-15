@@ -1,0 +1,12 @@
+# Only supports specific version numbers without the `v` prefix.
+# Run `nvm ls-remote` to see the full list of available versions.
+node_default_version: 8.11.3
+
+node_global_pkgs:
+  - bower
+  - git-version-bumper
+  - grunt-cli
+  - gulp-cli
+  - imageoptim-cli
+
+node_install_yarn: true

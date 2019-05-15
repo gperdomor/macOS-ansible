@@ -1,0 +1,38 @@
+---
+
+- name: Only use UTF-8 in Terminal.app
+  command: defaults write com.apple.terminal StringEncodings -array 4
+#   osx_defaults:
+#     domain: com.apple.terminal
+#     key: StringEncodings
+#     type: array
+#     value: [ 4 ]
+
+- name: Get current default Terminal profile.
+  command: defaults read com.apple.terminal 'Default Window Settings'
+  register: terminal_profile
+  changed_when: false
+
+- name: Ensure custom Terminal profile is added.
+  shell: open {{ terminal_profile_file }}
+  changed_when: false
+  when: terminal_profile_name not in terminal_profile.stdout
+
+# TODO: This doesn't seem to work in Sierra anymore.
+- name: Ensure custom Terminal profile is set as default.
+  osx_defaults:
+    domain: com.apple.terminal
+    key: "{{ item }}"
+    type: string
+    value: "{{ terminal_profile_name }}"
+  with_items:
+    - Default Window Settings
+    - Startup Window Settings
+  changed_when: false
+  when: terminal_profile_name not in terminal_profile.stdout
+
+# We can't restart Terminal via a handler as it will kill the playbook run
+# prematurely. Let's just remind the user to instead.
+# TODO: Let's not presume this. Add condition to handler to help decide.
+- debug:
+    msg: "Please restart Terminal.app to see any change in preferences."

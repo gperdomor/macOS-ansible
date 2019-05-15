@@ -1,0 +1,11 @@
+---
+
+# TODO: [DEPRECATION WARNING]: Invoking "pip" only once while using a loop via squash_actions is deprecated. Instead of using a loop to supply multiple items and specifying `name: {{ item }}`, please use `name: u'{{ pip_pkgs_list }}'` and remove the loop. This feature will be removed in version 2.11.
+
+# SEE: https://docs.ansible.com/ansible/2.7/porting_guides/porting_guide_2.7.html#using-a-loop-on-a-package-module-via-squash-actions
+
+- name: Install pip packages
+  pip:
+    name: "{{ item }}"
+    extra_args: "--user"
+  with_items: "{{ pip_pkgs_list }}"

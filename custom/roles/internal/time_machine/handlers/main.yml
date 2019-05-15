@@ -1,0 +1,5 @@
+---
+
+- name: killall SystemUIServer
+  command: killall SystemUIServer
+  ignore_errors: yes

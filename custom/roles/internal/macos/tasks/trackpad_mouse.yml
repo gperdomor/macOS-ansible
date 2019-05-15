@@ -1,0 +1,34 @@
+---
+
+- name: "Trackpad: enable tap to click (1)"
+  osx_defaults:
+    domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: Clicking
+    type: int
+    value: 1
+  notify:
+    - killall
+
+- name: "Trackpad: enable tap to click (2)"
+  command: defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+  notify:
+    - killall
+
+- name: "Trackpad: enable tap to click (3)"
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.mouse.tapBehavior
+    type: int
+    value: 1
+  notify:
+    - killall
+
+- name: Set scroll direction
+  command: defaults write -g com.apple.swipescrolldirection -bool FALSE
+  notify:
+    - killall
+
+- name: Enable secondary click
+  command: defaults -currentHost write -g com.apple.trackpad.enableSecondaryClick -bool YES
+  notify:
+    - killall

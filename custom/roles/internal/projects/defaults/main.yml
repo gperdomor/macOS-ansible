@@ -1,0 +1,10 @@
+---
+
+projects_oss:
+  - { dest: "macsible", repo: "https://github.com/macsible/macsible.git" }
+
+projects_internal:
+  - { dest: "macsible", repo: "https://github.com/macsible/macsible.git" }
+
+projects_client:
+  - { dest: "macsible", repo: "https://github.com/macsible/macsible.git" }

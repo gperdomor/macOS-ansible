@@ -1,0 +1,14 @@
+---
+
+# Filenames must include .app extension.
+login_items_apps:
+  - Alfred 3.app
+  - Bartender 2.app
+  - BetterTouchTool.app
+  - Dropbox.app
+  - Flux.app
+  - HazelHelper.app
+  - Keyboard Maestro Engine.app
+  - Moom.app
+  - Muzzle.app
+  - Path Finder.app
