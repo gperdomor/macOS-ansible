@@ -24,7 +24,7 @@
     - killall
 
 - name: Set scroll direction
-  command: defaults write -g com.apple.swipescrolldirection -bool FALSE
+  command: defaults write -g com.apple.swipescrolldirection -bool TRUE
   notify:
     - killall
 

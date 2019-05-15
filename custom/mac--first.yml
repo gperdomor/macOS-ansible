@@ -7,7 +7,7 @@
     - config.local.yml
 
   roles:
-    # - { role: macos, tags: "macos" }
+    - { role: macos, tags: "macos" }
     - { role: ssh, tags: "ssh" }
     # - { role: quick-look-plugins, tags: ["quick_look_plugins"] }
     # - { role: danbohea.atom, tags: ["atom","no_ci"] }

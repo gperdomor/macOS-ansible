@@ -17,7 +17,7 @@
     value: "Minimize"
   notify:
     - killall
-
+    
 - name: Expand save panel by default
   osx_defaults:
     domain: NSGlobalDomain

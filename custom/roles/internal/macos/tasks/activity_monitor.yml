@@ -18,6 +18,15 @@
   notify:
     - killall
 
+- name: Visualize CPU usage in the Activity Monitor Dock icon
+  osx_defaults:
+    domain: com.apple.ActivityMonitor
+    key: IconType
+    type: int
+    value: 5
+  notify:
+    - killall
+
 - name: Sort Activity Monitor results by CPU usage (1)
   osx_defaults:
     domain: com.apple.ActivityMonitor
