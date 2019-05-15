@@ -1,5 +1,5 @@
 ---
 
 dependencies:
-  - danbohea.homebrew
+  - geerlingguy.homebrew
   - role: git

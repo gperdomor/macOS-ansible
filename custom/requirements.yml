@@ -1,18 +1,15 @@
 ---
-
-- src: danbohea.atom
-  version: 2.0.0
-- src: danbohea.cask-app
-  version: 2.0.0
-- src: danbohea.google-chrome
-  version: master
-- src: danbohea.homebrew
-  version: 2.0.0
-- src: danbohea.macos-dock
-  version: 2.0.0
-- src: danbohea.sketch
-  version: master
-- src: danbohea.skype
-  version: master
-- src: danbohea.macos-spelling
-  version: 1.0.0
+# - src: danbohea.atom
+#   version: 2.0.0
+# - src: danbohea.cask-app
+#   version: 2.0.0
+# - src: danbohea.google-chrome
+#   version: master
+- src: geerlingguy.homebrew
+  version: 2.9.0
+# - src: danbohea.macos-dock
+#   version: 2.0.0
+# - src: danbohea.sketch
+#   version: master
+# - src: danbohea.skype
+#   version: master

@@ -3,4 +3,4 @@
 # more than once in the same play.
 allow_duplicates: yes
 dependencies:
-  - danbohea.homebrew
+  - geerlingguy.homebrew

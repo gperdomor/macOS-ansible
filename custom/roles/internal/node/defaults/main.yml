@@ -3,10 +3,19 @@
 node_default_version: 8.11.3
 
 node_global_pkgs:
-  - bower
+  - "@angular/cli"
+  - "@nestjs/cli"
+  - "@nrwl/schematics"
+  - create-react-app
+  - expo-cli
   - git-version-bumper
-  - grunt-cli
-  - gulp-cli
-  - imageoptim-cli
+  - json-server
+  - nodemon
+  - npm-check
+  - oclif
+  - prettier
+  - react-native-cli
+  - serve
+  - typescript
 
-node_install_yarn: true
+node_install_yarn: false

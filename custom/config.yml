@@ -17,88 +17,95 @@ ssh_keys: []
 # Atom Packages
 # --------------------------------------------------------------------------
 atom_packages:
-  - afterglow-monokai-syntax
-  - atom-beautify
+  # - atom-beautify
   - atom-ide-ui
-  - atom-json-color
-  - atom-jinja2
-  - atom-terminal-tab
-  - atom-twig
-  - atom-wrap-in-tag
+  # - atom-json-color
+  # - atom-jinja2
+  # - atom-terminal-tab
+  # - atom-twig
+  # - atom-wrap-in-tag
   - autoclose-html
   - autocomplete-paths
   - autocomplete-plus
-  - docblockr
-  - double-tag
+  # - docblockr
+  # - double-tag
   - editorconfig
-  - emmet
+  # - emmet
   - file-icons
-  - fix-indent-on-paste
-  - git-time-machine
+  # - fix-indent-on-paste
+  # - git-time-machine
   - highlight-line
   - highlight-selected
-  - ide-css
-  - ide-html
+  # - ide-css
+  # - ide-html
   - ide-json
-  - ide-vue
+  # - ide-vue
   - ide-yaml
-  - isotope-ui
-  - language-ansible
+  # - isotope-ui
+  # - language-ansible
   - language-docker
   - language-ignore
-  - language-nunjucks
+  # - language-nunjucks
   - language-patch
-  - language-vue
-  - less-than-slash
-  - linter-ansible-syntax
-  - linter-eslint
-  - linter-htmlhint
-  - linter-jsonlint
-  - local-history
-  - markdown-writer
+  # - language-vue
+  # - less-than-slash
+  # - linter-ansible-syntax
+  # - linter-eslint
+  # - linter-htmlhint
+  # - linter-jsonlint
+  # - local-history
+  # - markdown-writer
   - minimap
   - minimap-linter
-  - open-recent
-  - open-terminal-here
+  # - open-recent
+  # - open-terminal-here
   - pigments
-  - project-manager
+  # - project-manager
+  - prettier-atom
   - sort-lines
   - svg-preview
-  - tabs-to-spaces
-  - todo-show
-  - toggle-quotes
-  - travis-ci-status
-  - tree-view-autoresize
-  - tree-view-copy-relative-path
+  # - tabs-to-spaces
+  - teletype
+  # - todo-show
+  # - toggle-quotes
+  # - travis-ci-status
+  # - tree-view-autoresize
+  # - tree-view-copy-relative-path
 
-# dock items
-# ------------------------------------------------------------------------------
+# VS Code Packages
+# --------------------------------------------------------------------------
+vscode_packages:
+  # - { name: "Angular Console", id: "nrwl.angular-console" }
+  # - { name: "Angular Languiase Service", id: "Angular.ng-template" }
+  # - { name: "Copilot", id: "Metatype.copilot-vscode" }
+  # - { name: "Debugger for Chrome", id: "msjsdiag.debugger-for-chrome" }
+  # - { name: "Docker", id: "PeterJausovec.vscode-docker" }
+  # - { name: "Dot Env", id: "mikestead.dotenv" }
+  # - { name: "EditorConfig for VS Code", id: "EditorConfig.EditorConfig" }
+  # - { name: "Git Lens", id: "eamodio.gitlens" }
+  # - { name: "Jest", id: "Orta.vscode-jest" }
+  # - { name: "Live Share", id: "ms-vsliveshare.vsliveshare" }
+  # - { name: "Markdown All in One", id: "yzhang.markdown-all-in-one" }
+  # - { name: "One Dark Pro", id: "yzhzhuangtongfa.Material-theme" }
+  # - { name: "Prettier", id: "esbenp.prettier-vscode" }
+  - { name: "Settings Sync", id: "shan.code-settings-sync" }
+  # - { name: "Sort Lines", id: "Tyriar.sort-lines" }
+  # - { name: "Sort Typescript Imports", id: "miclo.sort-typescript-imports" }
+  # - { name: "TODO Tree", id: "Gruntfuggly.todo-tree" }
+  # - { name: "TS Lint", id: "ms-vscode.vscode-typescript-tslint-plugin" }
+  # - { name: "vscode-icons", id: "vscode-icons-team.vscode-icons" }
 
-# Filenames must include .app extension.
-macos_dock_apps:
-  - /Applications/Path Finder.app
-  - /Applications/Slack.app
-  - /Applications/Firefox.app
-  - /Applications/Inkdrop.app
-  - /Applications/Evernote.app
-  - /Applications/Skitch.app
-  - /Applications/Calendar.app
-  - /Applications/Atom.app
-  - /Applications/PhpStorm.app
-  - /Applications/Todoist.app
-  - /Applications/System Preferences.app
-  - /Applications/xScope.app
-  - /Applications/Tower.app
-  - /Applications/iTerm.app
-
-# sketch
-# ------------------------------------------------------------------------------
-
-sketch_plugin_repos:
-  - https://github.com/bomberstudios/sketch-commands.git
-  - https://github.com/ddwht/sketch-dynamic-button.git
-  - https://github.com/getflourish/Sketch-Style-Inventory.git
-  - https://github.com/marcosvidal/Sketch-Notebook
-  - https://github.com/ScottSavarie/Clipboard-Fill.git
-  - https://github.com/timuric/Content-generator-sketch-plugin.git
-  - https://github.com/tylergaw/day-player.git
+# Dock Items
+# --------------------------------------------------------------------------
+# # Filenames must include .app extension.
+# macos_dock_apps:
+#   - /Applications/Slack.app
+#   - /Applications/Firefox.app
+#   - /Applications/Skitch.app
+#   - /Applications/Calendar.app
+#   - /Applications/Atom.app
+#   - /Applications/PhpStorm.app
+#   - /Applications/Todoist.app
+#   - /Applications/System Preferences.app
+#   - /Applications/xScope.app
+#   - /Applications/Tower.app
