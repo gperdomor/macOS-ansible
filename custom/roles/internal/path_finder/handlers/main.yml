@@ -1,5 +1,0 @@
----
-
-- name: killall Path Finder
-  command: killall Path Finder
-  ignore_errors: yes

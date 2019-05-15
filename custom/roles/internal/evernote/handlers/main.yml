@@ -1,5 +1,0 @@
----
-
-- name: killall Evernote
-  command: killall Evernote
-  ignore_errors: yes
