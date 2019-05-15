@@ -2,9 +2,20 @@
 
 # Override default role variables here.
 
-# atom
-# ------------------------------------------------------------------------------
+# SSH
+# --------------------------------------------------------------------------
+ssh_keys: []
+  # - name: github
+  #   host: github.com
+  #   passphrase: ""
+  #   type: rsa
+  # - name: gitlab
+  #   host: gitlab.com
+  #   passphrase: ""
+  #   type: ed25519
 
+# Atom Packages
+# --------------------------------------------------------------------------
 atom_packages:
   - afterglow-monokai-syntax
   - atom-beautify
