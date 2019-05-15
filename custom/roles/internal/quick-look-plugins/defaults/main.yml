@@ -5,11 +5,8 @@
 quick_look_plugins_list:
   - qlcolorcode
   - qlmarkdown
-  - qlmobi
-  - qlprettypatch
   - qlstephen
   - quicklookase
-  - quicklook-csv
   - quicklook-json
   - suspicious-package
   - webpquicklook

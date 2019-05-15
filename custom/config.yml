@@ -109,3 +109,5 @@ vscode_packages:
 #   - /Applications/System Preferences.app
 #   - /Applications/xScope.app
 #   - /Applications/Tower.app
+
+homebrew_clear_cache: true
