@@ -7,13 +7,8 @@
     - config.local.yml
 
   roles:
-
     - { role: dotfiles, tags: "dotfiles" }
-    - { role: duti, tags: "duti" }
     - { role: time_machine, tags: "time_machine" }
-    - { role: moom, tags: "moom" }
-    - { role: evernote, tags: "evernote" }
-    - { role: path_finder, tags: "path_finder" }
     - { role: danbohea.skype, tags: ["skype","no_ci"] }
     - { cask_app_name: "inkdrop", tags: "inkdrop", role: danbohea.cask-app }
     - { cask_app_name: "caffeine", tags: ["caffeine","sudo"], role: danbohea.cask-app }

@@ -11,8 +11,13 @@
     - { role: ssh, tags: "ssh" }
     - { role: quick-look-plugins, tags: ["quick_look_plugins"] }
     # - { role: danbohea.atom, tags: ["atom","no_ci"] }
-    # - { cask_app_name: "bitwarden", tags: "bitwarden", role: danbohea.cask-app }
-    # - { cask_app_name: "alfred", tags: ["alfred","sudo"], role: danbohea.cask-app }
-    # - { cask_app_name: "firefox", tags: "firefox", role: danbohea.cask-app }
-    # - { cask_app_name: "dropbox", tags: "dropbox", role: danbohea.cask-app }
-    # - { cask_app_name: "bettertouchtool", tags: "bettertouchtool", role: danbohea.cask-app }
+  
+  tasks:
+    - name: "Installing Cask App {{ item.name }}"
+      homebrew_cask:
+        name:
+          - bitwarden
+          - firefox
+          - dropbox
+        state: present
+        greedy: True

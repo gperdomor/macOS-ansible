@@ -1,32 +1,35 @@
 ---
-- name: Use Homebrew Git binary
+
+- name: Install Tower
+  homebrew_cask: name=tower state=present
+  notify: brew cleanup
+
+# Use Homebrew git binary
+- name: Set default Git binary
   osx_defaults:
     domain: com.fournova.Tower2
     key: GTUserDefaultsGitBinary
     type: string
     value: /usr/local/bin/git
-  when: '"tower" in homebrew_cask_apps and "curl" in homebrew_installed_packages'
-  tags: ['homebrew']
+  notify: killall Tower
 
-- name: Creates default directory for cloned projects
-  file: path=${HOME}/Developer state=directory
-  when: '"tower" in homebrew_cask_apps'
-  tags: ['homebrew']
+- name: Ensure ~/Developer directory exists
+  file:
+    path: ${HOME}/Developer
+    state: directory
+    follow: yes
 
 - name: Set default directory for cloned projects
   osx_defaults:
     domain: com.fournova.Tower2
     key: GTUserDefaultsDefaultCloningDirectory
     type: string
-    value: "${HOME}/Developer"
-  when: '"tower" in homebrew_cask_apps'
-  changed_when: false
-  tags: ['homebrew']
+    value: ${HOME}/Developer
+  notify: killall Tower
 
 - name: Check if Kaleidoscope is installed
   stat: path=/Applications/Kaleidoscope.app
   register: kaleidoscope_check
-  when: '"tower" in homebrew_cask_apps'
   tags: ['homebrew']
 
 - name: Set diff tool
@@ -35,14 +38,12 @@
     key: GTUserDefaultsDiffToolIdentifier
     type: string
     value: kaleidoscope
-  when: '"tower" in homebrew_cask_apps and kaleidoscope_check.stat.exists == True'
-  tags: ['homebrew']
+  when: 'kaleidoscope_check.stat.exists == True'
+  notify: killall Tower
 
 - name: Check if P4Merge is installed
   stat: path=/Applications/p4merge.app
   register: p4merge_check
-  when: '"tower" in homebrew_cask_apps'
-  tags: ['homebrew']
 
 - name: Set merge tool
   osx_defaults:
@@ -50,5 +51,5 @@
     key: GTUserDefaultsMergeToolIdentifier
     type: string
     value: p4merge
-  when: '"tower" in homebrew_cask_apps and p4merge_check.stat.exists == True'
-  tags: ['homebrew']
+  when: 'p4merge_check.stat.exists == True'
+  notify: killall Tower
