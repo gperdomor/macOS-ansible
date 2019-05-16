@@ -20,7 +20,7 @@
 
 # Remaining setup.
 - import_playbook: mac--remaining.yml
-  tags: ["mac__remaining", "no_ci"]
+  tags: ["mac__remaining"]
 
 # # Setup that really must be run last.
 # - import_playbook: mac--last.yml
