@@ -6,4 +6,3 @@
   homebrew:
     name: "{{ brew_pkg_name }}"
     install_options: "{{ brew_pkg_install_options }}"
-  notify: brew cleanup

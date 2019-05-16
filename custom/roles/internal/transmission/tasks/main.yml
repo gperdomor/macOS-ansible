@@ -1,14 +1,20 @@
 ---
+
+- name: Install Transmission
+  homebrew_cask: name=transmission state=present
+
 - name: Ensure location for incomplete downloads exists
   file:
     path: "{{ ansible_env.HOME }}/Downloads/Torrents/Incomplete"
     state: directory
     follow: yes
-  when: '"transmission" in homebrew_cask_apps'
-  tags: ['homebrew']
 
 - name: "{{ item.name }}"
-  command: defaults write org.m0k.transmission {{ item.key }} -bool {{ item.value }}
+  osx_defaults:
+    domain: org.m0k.transmission
+    key: "{{ item.key }}"
+    type: bool
+    value: "{{ item.value }}"
   with_items:
     - { name: "Keep incomplete downloads", key: "UseIncompleteDownloadFolder", value: "true" }
     - { name: "Don't prompt for confirmation before downloading (1/2)", key: "DownloadAsk", value: "false" }
@@ -17,13 +23,15 @@
     - { name: "Hide the donate message", key: "WarningDonate", value: "false" }
     - { name: "Hide the legal disclaimer", key: "WarningLegal", value: "false" }
     - { name: "Randomize port on launch", key: "RandomPort", value: "true" }
-  when: '"transmission" in homebrew_cask_apps'
-  tags: ['homebrew']
+  notify: killall Transmission
 
 - name: "{{ item.name }}"
-  command: defaults write org.m0k.transmission {{ item.key }} -string "{{ item.value }}"
+  osx_defaults:
+    domain: org.m0k.transmission
+    key: "{{ item.key }}"
+    type: string
+    value: "{{ item.value }}"
   with_items:
     - { name: "Set path for incomplete downloads", key: "IncompleteDownloadFolder", value: "${HOME}/Downloads/Torrents/Incomplete" }
     - { name: "Set path for downloads", key: "NSNavLastRootDirectory", value: "${HOME}/Downloads/Torrents" }
-  when: '"transmission" in homebrew_cask_apps'
-  tags: ['homebrew']
+  notify: killall Transmission
