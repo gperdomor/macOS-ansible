@@ -1,4 +1,0 @@
-terminal_profile_name: Bohea
-# Path to your custom profile's .terminal file
-# (relative to the location of your playbook).
-terminal_profile_file: "{{ role_path }}/files/Bohea.terminal"

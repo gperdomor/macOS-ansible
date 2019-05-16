@@ -29,7 +29,6 @@
 - name: Check if Kaleidoscope is installed
   stat: path=/Applications/Kaleidoscope.app
   register: kaleidoscope_check
-  tags: ['homebrew']
 
 - name: Set diff tool
   osx_defaults:
