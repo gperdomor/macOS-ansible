@@ -11,7 +11,7 @@
     # - { role: vagrant, tags: ["vagrant","sudo"] }
     # - { role: composer, tags: "composer" }
     # - { role: node, tags: "node" }
-    # - { role: pip_pkgs, tags: "pip_pkgs" }
+    - { role: pip_pkgs, tags: "pip_pkgs" }
     - { role: tower, tags: "tower" }
     # - { brew_pkg_name: "bash-completion", tags: "bash_completion", role: brew_pkg }
     # - { brew_pkg_name: "python", tags: "python", role: brew_pkg }

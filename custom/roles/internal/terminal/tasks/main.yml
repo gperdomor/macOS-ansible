@@ -16,15 +16,21 @@
 - name: Test for line
   shell: grep "^/usr/local/bin/zsh" /etc/shells
   register: test_grep
+  check_mode: no
+  ignore_errors: yes
+  changed_when: no
 
 - name: Add zsh to /etc/shells
   lineinfile:
     path: /etc/shells
     line: /usr/local/bin/zsh
-  when: test_grep.stdout != ""
+  become: yes
+  when: '"/usr/local/bin/zsh" not in test_grep.stdout_lines'
 
 - name: Changing shell to zsh
   shell: chsh -s /usr/local/bin/zsh
+  become: yes
+  when: '"/usr/local/bin/zsh" not in test_grep.stdout_lines'
 
 - name: Install oh-my-zsh
   shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

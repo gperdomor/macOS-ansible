@@ -19,7 +19,7 @@
       homebrew_cask:
         name:
           - bitwarden
-          - firefox
+          - google-chrome
           - dropbox
         state: present
         greedy: True

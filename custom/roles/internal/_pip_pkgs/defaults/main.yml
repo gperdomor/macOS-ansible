@@ -1,7 +1,0 @@
----
-
-pip_pkgs_list:
-  - ansible-lint
-  - awscli
-  - mkdocs
-  - passlib

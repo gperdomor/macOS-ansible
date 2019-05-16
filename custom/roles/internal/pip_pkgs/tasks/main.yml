@@ -1,0 +1,6 @@
+---
+
+- name: Install pip packages
+  pip:
+    name: "{{ pip_pkgs_list }}"
+    extra_args: "--user"
