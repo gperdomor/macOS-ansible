@@ -9,6 +9,7 @@
   roles:
     # - { role: dotfiles, tags: "dotfiles" }
     - role: mas
+      tags: ["mas", "no_ci"]
       mas_installed_apps:
         - { name: 'Pages', id: 409201541 }
         - { name: "Numbers", id: 409203825 }
@@ -17,4 +18,11 @@
         - { name: "Magnet", id: 441258766 }
         - { name: "Reeder", id: 880001334 }
         - { name: "Spark", id: 1176895641 }
-        - { name: "The Unarchiver", id: 425424353 }
+  
+  tasks:
+    - name: "Installing Cask App {{ item }}"
+      homebrew_cask:
+        state: present
+        name:
+          - keepingyouawake
+

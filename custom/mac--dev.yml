@@ -7,14 +7,35 @@
     - config.local.yml
 
   roles:
-    # - { role: vagrant, tags: ["vagrant","sudo"] }
-    # - { role: composer, tags: "composer" }
     # - { role: node, tags: "node" }
     - { role: pip_pkgs, tags: "pip_pkgs" }
     - { role: tower, tags: "tower" }
-    # - { cask_app_name: "xscope", tags: "xscope", role: danbohea.cask-app }
-    # - { cask_app_name: "slack", tags: "slack", role: danbohea.cask-app }
-    # - { cask_app_name: "browserstacklocal", tags: "browserstacklocal", role: danbohea.cask-app }
-    # TODO: Failing builds.
-    # - { cask_app_name: "virtualbox", tags: "virtualbox", role: danbohea.cask-app }
-    # - { cask_app_name: "kaleidoscope", tags: "kaleidoscope", role: danbohea.cask-app }
+
+    - role: mas
+      tags: ["mas", "no_ci"]
+      mas_installed_apps:
+        - { name: "Xcode", id: 497799835 }
+        - { name: "Slack", id: 803453959 }
+      
+  tasks:
+    - name: "Installing Cask App {{ item }}"
+      homebrew_cask:
+        state: present
+        name:
+          - android-studio
+          - angular-console
+          # - araxis-merge
+          # - atom # Installed using atom role
+          # - browserstacklocal
+          - discord
+          - kaleidoscope
+          - p4v
+          # - parallels
+          # - slack # Installed using MAS role
+          - tableplus
+          # - tower # Installed using custom role
+          # - vagrant
+          - visual-studio-code
+          # - vmware-fusion
+          # - webstorm
+          - xscope

@@ -11,14 +11,15 @@
     - { role: ssh, tags: ["ssh","no_ci"] }
     - { role: terminal, tags: ["terminal"] }
     - { role: quick-look-plugins, tags: ["quick_look_plugins"] }
-    # - { role: geerlingguy.mas, tags: ["mas","no_ci"] }
-  
+    - { role: vscode, tags: ["vscode"] }
+    # - { role: danbohea.atom, tags: ["atom"] }
+
   # TODO CHECK THIS
   tasks:
     - name: "Installing Cask App {{ item }}"
       homebrew_cask:
-        name:
-          - google-chrome
-          - dropbox
         state: present
-        # greedy: True
+        name:
+          - dropbox
+          - google-chrome
+          - gpg-suite
