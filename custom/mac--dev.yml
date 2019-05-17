@@ -8,20 +8,35 @@
 
   roles:
     # - { role: node, tags: "node" }
-    - { role: pip_pkgs, tags: "pip_pkgs" }
-    - { role: tower, tags: "tower" }
+    - { role: git, tags: "git" }
 
     - role: mas
       tags: ["mas", "no_ci"]
       mas_installed_apps:
         - { name: "Xcode", id: 497799835 }
         - { name: "Slack", id: 803453959 }
-      
+
   tasks:
-    - name: "Installing Cask App {{ item }}"
-      homebrew_cask:
+    - name: Installing Homebrew packages
+      homebrew:
         state: present
         name:
+          - curl
+          - diff-so-fancy
+          - git
+          # - gpg
+          # - heroku
+          - httpie
+          - openssl
+          # - ssh-copy-id
+          - tree
+          - wget
+
+    - name: Installing Cask Apps
+      homebrew_cask:
+        state: present
+        name: "{{ item }}"
+      with_items:
           - android-studio
           - angular-console
           # - araxis-merge

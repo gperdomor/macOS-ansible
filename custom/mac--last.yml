@@ -8,7 +8,6 @@
 
   # roles:
   #   - { role: danbohea.macos-dock, tags: "dock" }
-  #   - { role: login_items, tags: "login_items" }
 
   post_tasks:
     - debug:

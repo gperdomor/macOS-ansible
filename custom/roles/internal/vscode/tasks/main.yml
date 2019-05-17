@@ -1,9 +1,7 @@
 ---
 
 - name: Install Visual Studio Code.
-  homebrew_cask:
-    name: visual-studio-code
-    state: present
+  homebrew_cask: name=visual-studio-code state=present
   notify: brew cleanup
 
 - name: Install Visual Studio Code extensions.

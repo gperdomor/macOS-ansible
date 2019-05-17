@@ -7,6 +7,7 @@
     - config.local.yml
 
   roles:
+    - { role: tower, tags: "tower" }
     - { role: transmission, tags: "transmission" }
     - role: mas
       tags: ["mas", "no_ci"]
@@ -20,10 +21,11 @@
         - { name: "The Unarchiver", id: 425424353 }
 
   tasks:
-    - name: "Installing Cask App {{ item }}"
+    - name: Installing Cask Apps
       homebrew_cask:
         state: present
-        name:
+        name: "{{ item }}"
+      with_items:
           # - cakebrew
           # - cleanmymac
           # - daisydisk
@@ -51,11 +53,29 @@
           # - transmission # Installed using custom role
           - vlc
 
-    - name: Install homebrew packages
+    - name: Installing Homebrew packages
       homebrew:
         state: present
         name:
-          - tree 
-          - wget 
-          - ssh-copy-id 
-
+          # - docker-machine
+          # - docker-machine-driver-hyperkit
+          # - docker-machine-parallels
+          # - gitlab-runner
+          # - go
+          # - gpg
+          # - hub
+          # - kubernetes-cli
+          - nmap
+          # - node
+          - pgcli
+          # - postgresql
+          # - python
+          # - rbenv
+          # - ruby-build
+          # - sqlite
+          # - swiftenv
+          # - swiftformat
+          # - swiftlint # Require Xcode
+          - vapor
+          # - watchman
+          # - yarn

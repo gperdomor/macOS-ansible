@@ -23,6 +23,7 @@
     - name: "Installing Cask App {{ item }}"
       homebrew_cask:
         state: present
-        name:
+        name: "{{ item }}"
+      with_items:
           - keepingyouawake
 

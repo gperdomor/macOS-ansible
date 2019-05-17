@@ -1,6 +1,10 @@
 ---
 
-# Override default role variables here.
+# SSH
+# --------------------------------------------------------------------------
+git_push_default: "simple"
+git_user_name: "User Name"
+git_user_email: "user@example.com"
 
 # SSH
 # --------------------------------------------------------------------------
@@ -43,6 +47,8 @@ dotfiles_files:
   - .gitignore
   - .zshrc
 
+# Homebrew
+# --------------------------------------------------------------------------
 homebrew_taps:
   - homebrew/core
   - homebrew/cask
@@ -59,6 +65,29 @@ homebrew_installed_packages:
   # - docker-machine-driver-hyperkit
   # - docker-machine-parallels
   - git
+
+# VS Code Packages
+# --------------------------------------------------------------------------
+vscode_extensions:
+  # - { name: "Angular Console", id: "nrwl.angular-console" }
+  # - { name: "Angular Languiase Service", id: "Angular.ng-template" }
+  # - { name: "Copilot", id: "Metatype.copilot-vscode" }
+  # - { name: "Debugger for Chrome", id: "msjsdiag.debugger-for-chrome" }
+  # - { name: "Docker", id: "PeterJausovec.vscode-docker" }
+  # - { name: "Dot Env", id: "mikestead.dotenv" }
+  # - { name: "EditorConfig for VS Code", id: "EditorConfig.EditorConfig" }
+  # - { name: "Git Lens", id: "eamodio.gitlens" }
+  # - { name: "Jest", id: "Orta.vscode-jest" }
+  # - { name: "Live Share", id: "ms-vsliveshare.vsliveshare" }
+  # - { name: "Markdown All in One", id: "yzhang.markdown-all-in-one" }
+  # - { name: "One Dark Pro", id: "yzhzhuangtongfa.Material-theme" }
+  # - { name: "Prettier", id: "esbenp.prettier-vscode" }
+  - { name: "Settings Sync", id: "shan.code-settings-sync" }
+  # - { name: "Sort Lines", id: "Tyriar.sort-lines" }
+  # - { name: "Sort Typescript Imports", id: "miclo.sort-typescript-imports" }
+  # - { name: "TODO Tree", id: "Gruntfuggly.todo-tree" }
+  # - { name: "TS Lint", id: "ms-vscode.vscode-typescript-tslint-plugin" }
+  # - { name: "vscode-icons", id: "vscode-icons-team.vscode-icons" }
 
 # Atom Packages
 # --------------------------------------------------------------------------
@@ -117,41 +146,3 @@ atom_packages:
   # - travis-ci-status
   # - tree-view-autoresize
   # - tree-view-copy-relative-path
-
-# VS Code Packages
-# --------------------------------------------------------------------------
-vscode_extensions:
-  # - { name: "Angular Console", id: "nrwl.angular-console" }
-  # - { name: "Angular Languiase Service", id: "Angular.ng-template" }
-  # - { name: "Copilot", id: "Metatype.copilot-vscode" }
-  # - { name: "Debugger for Chrome", id: "msjsdiag.debugger-for-chrome" }
-  # - { name: "Docker", id: "PeterJausovec.vscode-docker" }
-  # - { name: "Dot Env", id: "mikestead.dotenv" }
-  # - { name: "EditorConfig for VS Code", id: "EditorConfig.EditorConfig" }
-  # - { name: "Git Lens", id: "eamodio.gitlens" }
-  # - { name: "Jest", id: "Orta.vscode-jest" }
-  # - { name: "Live Share", id: "ms-vsliveshare.vsliveshare" }
-  # - { name: "Markdown All in One", id: "yzhang.markdown-all-in-one" }
-  # - { name: "One Dark Pro", id: "yzhzhuangtongfa.Material-theme" }
-  # - { name: "Prettier", id: "esbenp.prettier-vscode" }
-  - { name: "Settings Sync", id: "shan.code-settings-sync" }
-  # - { name: "Sort Lines", id: "Tyriar.sort-lines" }
-  # - { name: "Sort Typescript Imports", id: "miclo.sort-typescript-imports" }
-  # - { name: "TODO Tree", id: "Gruntfuggly.todo-tree" }
-  # - { name: "TS Lint", id: "ms-vscode.vscode-typescript-tslint-plugin" }
-  # - { name: "vscode-icons", id: "vscode-icons-team.vscode-icons" }
-
-# Dock Items
-# --------------------------------------------------------------------------
-# # Filenames must include .app extension.
-# macos_dock_apps:
-#   - /Applications/Slack.app
-#   - /Applications/Firefox.app
-#   - /Applications/Skitch.app
-#   - /Applications/Calendar.app
-#   - /Applications/Atom.app
-#   - /Applications/PhpStorm.app
-#   - /Applications/Todoist.app
-#   - /Applications/System Preferences.app
-#   - /Applications/xScope.app
-#   - /Applications/Tower.app

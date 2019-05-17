@@ -1,48 +1,46 @@
-# Macsible
+# macOS-ansible
 
-[![Build Status](https://travis-ci.org/danbohea/macsible.svg?branch=master)](https://travis-ci.org/danbohea/macsible)
+[![Build Status](https://img.shields.io/circleci/project/github/gperdomor/macOS-ansible.svg?label=Build)](https://circleci.com/gh/gperdomor/macOS-ansible)
+
+This playbook installs and configures most of the software I use on my Mac for web and software development. Some things in macOS are slightly difficult to automate, so I still have some manual installation steps, but at least it's all documented here.
+
+This is a work in progress, and is mostly a means for me to document my current Mac's setup. I'll be evolving this set of playbooks over time.
+
+### Goal
+
+Automate system setup from a clean install of macOS 10.13+
+
+...as much as we can.
+
+### Why?
+
+Why not?... Also...
+- macOS updates are bad xD
+- Manual setup from a clean install takes too long
+- I run more than one system
+- Automization is good!
+- Help normalise systems between developers
 
 ### Requirements
 
 Ensure the following requirements are already installed and working on your local system:
 
-- macOS 10.13 ([help](https://support.apple.com/en-us/HT201372)).
+- macOS 10.13, 10.14 ([help](https://support.apple.com/en-us/HT201372)).
+- Signin to the App Store
 - Command Line Developer Tools ([help](docs/install_command_line_developer_tools.md)).
 - Ansible >= 2.4 ([help](docs/install_ansible.md)).
 
-## Forking and customisation overview
+## Installation
 
-1. Fork the repository at [https://github.com/macsible/macsible](https://github.com/macsible/macsible).
-2. Clone the fork to your local system (this is now the repository you will use to store your own customisations).
-3. Navigate to the local clone using your terminal app of choice.
-4. Follow the usage instructions below.
-5. Commit and push any customisations to your local clone back upstream to your fork.
+  1. Ensure Apple's command line tools are installed (`xcode-select --install` to launch the installer).
+  2. Run `bash scripts/install_deps.sh`
+  3. Clone this repository to your local drive.
+  4. Run `ansible-galaxy install -r custom/requirements.yml --force` inside this directory to install required Ansible roles.
+  5. Run `ansible-playbook main.yml -K` inside this directory. Enter your account password when prompted.
 
-You can see a working example of a forked and customised repository at [https://github.com/danbohea/macsible](https://github.com/danbohea/macsible).
+> Note: If some Homebrew commands fail, you might need to agree to Xcode's license or fix some other Brew issue. Run `brew doctor` to see if this is the case.
 
 ## Usage
-
-### Create required additional files
-
-You'll need to create some additional required files before you begin your customisations. A script has been included to automate this:
-
-```sh
-bash scripts/copy_starter_files.sh
-```
-
-This will create the following files (copied from the `starter_files` directory):
-
-```
-.
-├── ansible.cfg
-└── custom
-    ├── config.local.yml
-    ├── config.yml
-    ├── inventory.yml
-    ├── mac.yml
-    └── requirements.yml
-
-```
 
 ### Download externally sourced roles
 
@@ -62,14 +60,14 @@ Default variables can be overridden in `custom/config.yml`.
 
 ### Run the Ansible playbook
 
-The primary Ansible playbook file is `macsible.yml` and can be run using the following command (asks for sudo password):
+The primary Ansible playbook file is `playbook.yml` and can be run using the following command (asks for sudo password):
 
 ```sh
-ansible-playbook macsible.yml -K
+ansible-playbook playbook.yml -K
 ```
 
-To run only certain tags (e.g. `firefox` and `dev_apps`):
+To run only certain tags (e.g. `firefox` and `mac__dev`):
 
 ```sh
-ansible-playbook macsible.yml -K -t "firefox,dev_apps"
+ansible-playbook playbook.yml -K -t "firefox,mac__dev"
 ```
