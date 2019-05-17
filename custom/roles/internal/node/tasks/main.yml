@@ -2,15 +2,11 @@
 
 # https://github.com/creationix/nvm
 
-- name: Clone nvm project.
-  git:
-    repo: "https://github.com/creationix/nvm.git"
-    dest: "{{ ansible_user_dir }}/.nvm"
-    version: v0.33.11
-
-# TODO: Make idempotent.
-- name: Install nvm.
-  shell: "bash {{ ansible_user_dir }}/.nvm/install.sh"
+- name: Install nvm
+  shell: >
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+  args:
+    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
 
 # TODO: Add support for nvm aliases e.g. "node" & "lts/*".
 

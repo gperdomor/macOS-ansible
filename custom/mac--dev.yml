@@ -7,8 +7,8 @@
     - config.local.yml
 
   roles:
-    # - { role: node, tags: "node" }
     - { role: git, tags: "git" }
+    - { role: node, tags: "node" }
 
     - role: mas
       tags: ["mas", "no_ci"]
@@ -37,6 +37,7 @@
         state: present
         name: "{{ item }}"
       with_items:
+          - adoptopenjdk8
           - android-studio
           - angular-console
           # - araxis-merge
