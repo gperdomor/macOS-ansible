@@ -7,32 +7,27 @@
     - config.local.yml
 
   roles:
-
-    # - { role: danbohea.google-chrome, tags: "google_chrome" }
     - { role: transmission, tags: "transmission" }
-    # - { role: danbohea.sketch, tags: ["sketch"] }
-    # - { brew_pkg_name: "asciinema", tags: "asciinema", role: brew_pkg }
-    # - { brew_pkg_name: "tree", tags: "tree", role: brew_pkg }
-    # - { brew_pkg_name: "wget", tags: "wget", role: brew_pkg }
-    # - { brew_pkg_name: "ssh-copy-id", tags: "ssh-copy-id", role: brew_pkg }
-    # - { cask_app_name: "docker", tags: "docker", role: danbohea.cask-app }
-    # - { cask_app_name: "istat-menus", role: danbohea.cask-app, tags: ["istat_menus","no_ci"] }
-    # - { cask_app_name: "opera", tags: "opera", role: danbohea.cask-app }
-    # - { cask_app_name: "opera-mobile-emulator", tags: "opera_mobile_emulator", role: danbohea.cask-app }
-    # - { cask_app_name: "adobe-creative-cloud", tags: "adobe_creative_cloud", role: danbohea.cask-app }
-    # - { cask_app_name: "malwarebytes", tags: "malwarebytes", role: danbohea.cask-app }
-    # - { cask_app_name: "hazel", tags: "hazel", role: danbohea.cask-app }
-    # - { cask_app_name: "cakebrew", tags: "cakebrew", role: danbohea.cask-app }
-    # - { cask_app_name: "daisydisk", tags: "daisydisk", role: danbohea.cask-app }
-    # - { cask_app_name: "flash-player", tags: "flash_player", role: danbohea.cask-app }
-    # - { cask_app_name: "name-mangler", tags: "name_mangler", role: danbohea.cask-app }
-    # - { cask_app_name: "skitch", tags: "skitch", role: danbohea.cask-app }
-    # - { cask_app_name: "vlc", tags: "vlc", role: danbohea.cask-app }
-    # - { cask_app_name: "google-backup-and-sync", role: danbohea.cask-app, tags: "google_backup_and_sync" }
-    # - { cask_app_name: "sketchup", role: danbohea.cask-app, tags: "sketchup" }
-    # - { cask_app_name: "bartender", role: danbohea.cask-app, tags: "bartender" }
-    # - { cask_app_name: "doxie", tags: "doxie", role: danbohea.cask-app }
-    # - { cask_app_name: "appcleaner", tags: "appcleaner", role: danbohea.cask-app }
-    # - { cask_app_name: "licecap", tags: "licecap", role: danbohea.cask-app }
-    # - { cask_app_name: "resilio-sync", tags: "resilio_sync", role: danbohea.cask-app }
-    # - { cask_app_name: "gifox", tags: "gifox", role: danbohea.cask-app }
+
+  tasks:
+    - name: Install homebrew cask packages
+      homebrew_cask:
+        state: present
+        name:
+          - cakebrew
+          - daisydisk
+          - docker 
+          - hazel
+          - malwarebytes
+          - name-mangler
+          - opera 
+          - vlc
+
+    - name: Install homebrew packages
+      homebrew:
+        state: present
+        name:
+          - tree 
+          - wget 
+          - ssh-copy-id 
+
