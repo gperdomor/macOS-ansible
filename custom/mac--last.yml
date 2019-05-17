@@ -6,13 +6,11 @@
     - config.yml
     - config.local.yml
 
-  roles:
-
-    - { role: danbohea.macos-dock, tags: "dock" }
-    - { role: login_items, tags: "login_items" }
+  # roles:
+  #   - { role: danbohea.macos-dock, tags: "dock" }
+  #   - { role: login_items, tags: "login_items" }
 
   post_tasks:
-
     - debug:
         msg: "Some changes may not take effect until you've restarted your Mac."
       tags: always

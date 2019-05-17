@@ -16,10 +16,11 @@
 
   # TODO CHECK THIS
   tasks:
-    - name: "Installing Cask App {{ item }}"
+    - name: Installing Cask Apps
       homebrew_cask:
         state: present
-        name:
-          - dropbox
-          - google-chrome
-          - gpg-suite
+        name: "{{ item }}"
+      with_items:
+        # - dropbox
+        - google-chrome
+        - gpg-suite

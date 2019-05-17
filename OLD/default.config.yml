@@ -1,16 +1,4 @@
 ---
-configure_dotfiles: yes
-
-# dotfiles
-# --------------------------------------------------------------------------
-dotfiles_repo: https://gitlab.com/gperdomor/dotfiles.git
-dotfiles_repo_ssh: git@gitlab.com:gperdomor/dotfiles.git
-dotfiles_repo_accept_hostkey: yes
-dotfiles_repo_local_destination: ~/.dotfiles
-dotfiles_files:
-  - .gitconfig
-  - .gitignore
-  - .zshrc
 
 # Homebrew
 # --------------------------------------------------------------------------

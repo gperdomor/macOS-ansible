@@ -32,6 +32,17 @@ projects_client:
   #   repo_ssh: "git@github.com:githubuser/private-repo.git"
   - { dest: "macOS-ansible", repo: "https://github.com/gperdomor/macOS-ansible.git", repo_ssh: "git@github.com:gperdomor/macOS-ansible.git" }
 
+# Dotfiles
+# --------------------------------------------------------------------------
+dotfiles_repo: https://gitlab.com/gperdomor/dotfiles.git
+dotfiles_repo_ssh: git@gitlab.com:gperdomor/dotfiles.git
+dotfiles_repo_accept_hostkey: yes
+dotfiles_repo_local_destination: ~/.dotfiles
+dotfiles_files:
+  - .gitconfig
+  - .gitignore
+  - .zshrc
+
 homebrew_taps:
   - homebrew/core
   - homebrew/cask

@@ -1,7 +1,0 @@
----
-
-dotfiles_repo_ssh: "git@github.com:danbohea/dotfiles.git"
-
-dotfiles_repo_https: "https://github.com/danbohea/dotfiles.git"
-
-dotfiles_dir: "~/.dotfiles"
