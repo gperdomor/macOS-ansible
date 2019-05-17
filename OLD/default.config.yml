@@ -1,9 +1,5 @@
 ---
 configure_dotfiles: yes
-configure_terminal: yes
-configure_osx: yes
-configure_ssh: yes
-configure_projects: yes
 
 # dotfiles
 # --------------------------------------------------------------------------

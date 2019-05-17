@@ -14,6 +14,44 @@ ssh_keys: []
   #   passphrase: ""
   #   type: ed25519
 
+# Mac App Store
+# --------------------------------------------------------------------------
+# See `geerlingguy.mas` role documentation for usage instructions.
+mas_installed_apps:
+  - { name: "1Password 7", id: 1333542190 }
+  # - { name: "Affinity Designer", id: 824171161 }
+  # - { name: "Affinity Photo" id: 824183456 }
+  - { name: "Agenda", id: 1287445660 }
+  - { name: "Keynote", id: 409183694 }
+  - { name: "Magnet", id: 441258766 }
+  - { name: "Money", id: 1185488696 }
+  - { name: "Numbers", id: 409203825 }
+  - { name: "Pages", id: 409201541 }
+  # # - { name: "Pixelmator Pro", id: 1289583905 }
+  # # - { name: "Pixelmator", id: 407963104 }
+  - { name: "Reeder", id: 880001334 }
+  - { name: "Slack", id: 803453959 }
+  - { name: "Spark", id: 1176895641 }
+  - { name: "The Unarchiver", id: 425424353 }
+  - { name: "Xcode", id: 497799835 }
+
+homebrew_taps:
+  - homebrew/core
+  - homebrew/cask
+  - vapor/tap
+  - kylef/formulae
+  - adoptopenjdk/openjdk
+
+homebrew_installed_packages:
+  # - ansible # Installed via Pip.
+  # - cowsay
+  - curl
+  - diff-so-fancy
+  # - docker-machine
+  # - docker-machine-driver-hyperkit
+  # - docker-machine-parallels
+  - git
+
 # Atom Packages
 # --------------------------------------------------------------------------
 atom_packages:
