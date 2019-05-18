@@ -34,13 +34,13 @@
           - duet
           - firefox
           # - gemini
-          - hazel
+          # - hazel
           - iina
           - insomnia
           - kitematic
           # - knuff
-          - malwarebytes
-          - minikube
+          # - malwarebytes
+          # - minikube
           # - name-mangler
           # - navicat-premium
           - ngrok

@@ -21,7 +21,7 @@
       homebrew:
         state: present
         name:
-          - curl
+          # - curl
           - diff-so-fancy
           - git
           # - gpg

@@ -43,4 +43,4 @@
     name: yarn
     install_options: without-node
   notify: brew cleanup
-  when: node_install_yarn
+  when: node_install_yarn == True

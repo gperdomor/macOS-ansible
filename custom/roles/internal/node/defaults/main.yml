@@ -18,4 +18,4 @@ node_global_pkgs:
   - serve
   - typescript
 
-node_install_yarn: false
+node_install_yarn: False
