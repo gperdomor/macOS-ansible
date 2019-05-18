@@ -50,11 +50,12 @@ dotfiles_files:
 # Homebrew
 # --------------------------------------------------------------------------
 homebrew_taps:
-  - homebrew/core
-  - homebrew/cask
-  - vapor/tap
-  - kylef/formulae
   # - adoptopenjdk/openjdk
+  - heroku/brew
+  - homebrew/cask
+  - homebrew/core
+  - kylef/formulae
+  - vapor/tap
 
 homebrew_installed_packages:
   # - ansible # Installed via Pip.
