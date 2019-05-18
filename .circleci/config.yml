@@ -5,11 +5,11 @@ jobs:
     macos:
       xcode: '10.2.1'
     steps:
-      # - restore_cache:
-      #     keys:
-      #       - packages-{{ .Branch }}-{{ .Revision }}
-      #       - packages-{{ .Branch }}-
-      #       - packages-
+      - restore_cache:
+          keys:
+            - packages-{{ .Branch }}-{{ .Revision }}
+            - packages-{{ .Branch }}-
+            - packages-
       - checkout
       - run:
           name: Install dependencies.
@@ -40,11 +40,11 @@ jobs:
       #     | grep -q 'changed=0.*failed=0'
       #     && (echo 'Idempotence test: pass' && exit 0)
       #     || (echo 'Idempotence test: fail' && exit 1)
-      # - save_cache:
-      #     key: packages-{{ .Branch }}-{{ .Revision }}
-      #     paths:
-      #       - '$HOME/Library/Caches/pip'
-      #       - '$HOME/Library/Caches/Homebrew'
+      - save_cache:
+          key: packages-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - '$HOME/Library/Caches/pip'
+            - '$HOME/Library/Caches/Homebrew'
 
 workflows:
   version: 2
