@@ -25,7 +25,7 @@
           - diff-so-fancy
           - git
           # - gpg
-          # - heroku
+          - heroku
           - httpie
           - openssl
           # - ssh-copy-id
@@ -45,13 +45,14 @@
           # - browserstacklocal
           - discord
           - kaleidoscope
+          # - node # Installed using node role
           - p4v
           # - parallels
           # - slack # Installed using MAS role
           - tableplus
-          # - tower # Installed using custom role
+          # - tower # Installed using tower role
           # - vagrant
-          - visual-studio-code
+          # - visual-studio-code # Installed using vscode role
           # - vmware-fusion
           # - webstorm
           - xscope
