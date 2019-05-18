@@ -38,7 +38,7 @@
         state: present
         name: "{{ item }}"
       with_items:
-          # - adoptopenjdk8
+          - adoptopenjdk8
           - android-studio
           - angular-console
           # - araxis-merge
