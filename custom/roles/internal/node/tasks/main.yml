@@ -1,0 +1,46 @@
+---
+
+# https://github.com/creationix/nvm
+
+- name: Install nvm
+  shell: >
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+  args:
+    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+
+# TODO: Add support for nvm aliases e.g. "node" & "lts/*".
+
+- name: Install default node version.
+  shell: ". {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install {{ node_default_version }}"
+  args:
+    creates: "{{ ansible_env.HOME }}/.nvm/versions/node/v{{ node_default_version }}"
+    executable: /bin/bash
+
+# TODO: Make idempotent.
+- name: Set default node version.
+  shell: ". {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm alias default {{ node_default_version }}"
+  args:
+    executable: /bin/bash
+
+# TODO: Support installing default global packages from file
+# See: https://github.com/creationix/nvm#default-global-packages-from-file-while-installing
+
+- name: Install global npm packages.
+  npm:
+    name: "{{ item }}"
+    global: yes
+    executable: "{{ ansible_env.HOME }}/.nvm/versions/node/v{{ node_default_version }}/bin/npm"
+  # TODO: Was using `loop` but got errors when run on local system. Probably not running a new enough version of Ansible.
+  with_items: "{{ node_global_pkgs }}"
+
+# Tip: List global packages with `npm list -g --depth=0`
+
+# Yarn docs recommend installing without Node.js if using nvm hence why we're
+# using the `without-node` option below.
+# https://yarnpkg.com/en/docs/install#mac-stable
+- name: Install Yarn.
+  homebrew:
+    name: yarn
+    install_options: without-node
+  notify: brew cleanup
+  when: node_install_yarn == True

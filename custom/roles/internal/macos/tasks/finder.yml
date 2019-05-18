@@ -1,0 +1,109 @@
+---
+
+- name: Set HOME as the default location for new Finder windows (1)
+  osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTarget
+    type: string
+    value: "PfLo"
+  notify:
+    - killall Finder
+
+- name: Set HOME as the default location for new Finder windows (2)
+  osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTargetPath
+    type: string
+    value: "file://${HOME}/"
+  notify:
+    - killall Finder
+
+- name: "{{ item.name }}"
+  osx_defaults:
+    domain: com.apple.finder
+    key: "{{ item.key }}"
+    type: bool
+    value: true
+  with_items:
+    - { name: 'Show external hard drives on the desktop', key: 'ShowExternalHardDrivesOnDesktop' }
+    - { name: 'Show internal hard drives on the desktop', key: 'ShowHardDrivesOnDesktop' }
+    - { name: 'Show mounted servers on the desktop', key: 'ShowMountedServersOnDesktop' }
+    - { name: 'Show removable media on the desktop', key: 'ShowRemovableMediaOnDesktop' }
+    - { name: 'Show hidden files by default', key: 'AppleShowAllFiles' }
+    - { name: 'Show status bar', key: 'ShowStatusBar' }
+    - { name: 'Show path bar', key: 'ShowPathbar' }
+    - { name: 'Allow text selection in Quick Look', key: 'QLEnableTextSelection' }
+    - { name: 'Display full POSIX path as Finder window title', key: '_FXShowPosixPathInTitle' }
+    - { name: 'Enable spring loading for directories', key: 'com.apple.springing.enabled' }
+    - { name: 'Avoid creating .DS_Store files on network volumes', key: 'DSDontWriteNetworkStores' }
+    - { name: 'Empty Trash securely by default', key: 'EmptyTrashSecurely' }
+  notify:
+    - killall Finder
+
+- name: When performing a search, search the current folder by default
+  osx_defaults:
+    domain: com.apple.finder
+    key: FXDefaultSearchScope
+    type: string
+    value: "SCcf"
+  notify:
+    - killall Finder
+
+- name: Show all filename extensions
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleShowAllExtensions
+    type: bool
+    value: true
+  notify:
+    - killall Finder
+
+- name: Disable the warning when changing a file extension
+  osx_defaults:
+    domain: com.apple.finder
+    key: FXEnableExtensionChangeWarning
+    type: bool
+    value: false
+  notify:
+    - killall Finder
+
+- name: Enable snap-to-grid for icons on the desktop and in other icon views
+  command: /usr/libexec/PlistBuddy -c "Set :{{ item }} grid" ~/Library/Preferences/com.apple.finder.plist
+  with_items:
+    - DesktopViewSettings:IconViewSettings:arrangeBy
+    - StandardViewSettings:IconViewSettings:arrangeBy
+  notify:
+    - killall Finder
+
+- name: Set the size of icons on the desktop and in other icon views
+  command: /usr/libexec/PlistBuddy -c "Set :{{ item }} 48" ~/Library/Preferences/com.apple.finder.plist
+  with_items:
+    - DesktopViewSettings:IconViewSettings:iconSize
+    - StandardViewSettings:IconViewSettings:iconSize
+  notify:
+    - killall Finder
+
+# Four-letter codes for the other view modes: `icnv`, `Nlsv`, `clmv`, `Flwv`
+- name: Use column view in all Finder windows by default
+  osx_defaults:
+    domain: com.apple.finder
+    key: FXPreferredViewStyle
+    type: string
+    value: "clmv"
+  notify:
+    - killall Finder
+
+- name: Show the ~/Library folder
+  shell: chflags nohidden ~/Library
+  notify:
+    - killall
+
+- name: 'Expand the following File Info panes: "General", "Open with", "Sharing & Permissions"'
+  command: >
+    defaults write com.apple.finder FXInfoPanesExpanded -dict \
+      General -bool true \
+      OpenWith -bool true \
+      Preview -bool false \
+      Privileges -bool true
+  notify:
+    - killall Finder

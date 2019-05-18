@@ -1,0 +1,5 @@
+---
+
+- name: killall Transmission
+  command: killall Transmission
+  ignore_errors: yes

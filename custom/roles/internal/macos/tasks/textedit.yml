@@ -1,0 +1,34 @@
+---
+
+- name: Use plain text mode for new TextEdit documents
+  osx_defaults:
+    domain: com.apple.TextEdit
+    key: RichText
+    type: int
+    value: 0
+  notify:
+    - killall
+
+- name: Open and save files as UTF-8 in TextEdit
+  osx_defaults:
+    domain: com.apple.TextEdit
+    key: "{{ item }}"
+    type: int
+    value: 4
+  with_items:
+    - PlainTextEncoding
+    - PlainTextEncodingForWrite
+  notify:
+    - killall
+
+- name: Disable smart quotes & smart dashes in TextEdit
+  osx_defaults:
+    domain: com.apple.TextEdit
+    key: "{{ item }}"
+    type: bool
+    value: false
+  with_items:
+    - SmartQuotes
+    - SmartDashes
+  notify:
+    - killall

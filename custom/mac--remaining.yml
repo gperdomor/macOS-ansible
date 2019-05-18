@@ -1,0 +1,83 @@
+---
+- name: Custom - Remaining
+  hosts: localhost
+
+  vars_files:
+    - config.yml
+    - config.local.yml
+
+  roles:
+    - { role: tower, tags: "tower" }
+    - { role: transmission, tags: "transmission" }
+    - role: mas
+      tags: ["mas", "no_ci"]
+      mas_installed_apps:
+        # - { name: "Affinity Designer", id: 824171161 }
+        # - { name: "Affinity Photo" id: 824183456 }
+        - { name: "Agenda", id: 1287445660 }
+        - { name: "Money", id: 1185488696 }
+        # - { name: "Pixelmator Pro", id: 1289583905 }
+        # - { name: "Pixelmator", id: 407963104 }
+        - { name: "The Unarchiver", id: 425424353 }
+
+  tasks:
+    - name: Installing Cask Apps
+      homebrew_cask:
+        state: present
+        name: "{{ item }}"
+      with_items:
+          # - cakebrew
+          # - cleanmymac
+          # - daisydisk
+          - docker
+          - dockstation
+          - duet
+          - firefox
+          # - gemini
+          # - hazel
+          - iina
+          # - insomnia
+          - kitematic
+          # - knuff
+          # - malwarebytes
+          # - minikube
+          # - name-mangler
+          # - navicat-premium
+          - ngrok
+          - opera
+          # - paw
+          # - pgadmin4
+          - postman
+          - skype
+          # - the-unarchiver # Installed using MAS role
+          # - transmission # Installed using custom role
+          - vlc
+      notify: brew cleanup
+
+    - name: Installing Homebrew packages
+      homebrew:
+        state: present
+        name:
+          # - docker-machine
+          # - docker-machine-driver-hyperkit
+          # - docker-machine-parallels
+          # - gitlab-runner
+          # - go
+          # - gpg
+          # - hub
+          # - kubernetes-cli
+          - nmap
+          # - node
+          - pgcli
+          # - postgresql
+          # - python
+          # - rbenv
+          # - ruby-build
+          # - sqlite
+          # - swiftenv
+          # - swiftformat
+          # - swiftlint # Require Xcode
+          - vapor
+          # - watchman
+          # - yarn
+      notify: brew cleanup

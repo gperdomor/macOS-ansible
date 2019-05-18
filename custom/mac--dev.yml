@@ -1,0 +1,60 @@
+---
+- name: Custom - Dev
+  hosts: localhost
+
+  vars_files:
+    - config.yml
+    - config.local.yml
+
+  roles:
+    - { role: git, tags: "git" }
+    - { role: node, tags: "node" }
+
+    - role: mas
+      tags: ["mas", "no_ci"]
+      mas_installed_apps:
+        - { name: "Xcode", id: 497799835 }
+        - { name: "Slack", id: 803453959 }
+
+  tasks:
+    - name: Installing Homebrew packages
+      homebrew:
+        state: present
+        name:
+          # - curl
+          - diff-so-fancy
+          - git
+          # - gpg
+          - heroku
+          - httpie
+          - openssl
+          # - ssh-copy-id
+          - tree
+          - wget
+      notify: brew cleanup
+
+    - name: Installing Cask Apps
+      homebrew_cask:
+        state: present
+        name: "{{ item }}"
+      with_items:
+          - adoptopenjdk8
+          - android-studio
+          - angular-console
+          # - araxis-merge
+          # - atom # Installed using atom role
+          # - browserstacklocal
+          - discord
+          - kaleidoscope
+          # - node # Installed using node role
+          - p4v
+          # - parallels
+          # - slack # Installed using MAS role
+          - tableplus
+          # - tower # Installed using tower role
+          # - vagrant
+          # - visual-studio-code # Installed using vscode role
+          # - vmware-fusion
+          # - webstorm
+          - xscope
+      notify: brew cleanup

@@ -1,0 +1,39 @@
+---
+
+- name: Set the icon size of Dock items
+  osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    type: int
+    value: 42
+
+- name: "{{ item.name }}"
+  osx_defaults:
+    domain: com.apple.dock
+    key: "{{ item.key }}"
+    type: bool
+    value: "{{ item.value }}"
+  with_items:
+    - name: Make Dock icons of hidden applications translucent
+      key: showhidden
+      value: true
+    # - name: Enable spring loading for all Dock items
+    #   key: enable-spring-load-actions-on-all-items
+    #   value: true
+    # - name: Don’t animate opening applications from the Dock
+    #   key: launchanim
+    #   value: false
+    # - name: Automatically hide and show the Dock
+    #   key: autohide
+    #   value: true
+
+# - name: Set Dock orientation.
+#   osx_defaults:
+#     domain: com.apple.dock
+#     key: orientation
+#     type: string
+#     value: "bottom"
+
+# - name: Add iOS Simulator to Applications folder
+#   command: ln -sf /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app /Applications/Simulator.app
+#   become: true

@@ -1,0 +1,46 @@
+---
+
+- name: Only use UTF-8 in Terminal.app
+  command: defaults write com.apple.terminal StringEncodings -array 4
+#   osx_defaults:
+#     domain: com.apple.terminal
+#     key: StringEncodings
+#     type: array
+#     value: [ 4 ]
+
+- name: Installing zsh
+  homebrew:
+    name: ['zsh', 'zsh-completions']
+    state: present
+  notify: brew cleanup
+
+- name: Test for line
+  shell: grep "^/usr/local/bin/zsh" /etc/shells
+  register: test_grep
+  check_mode: no
+  ignore_errors: yes
+  changed_when: no
+
+- name: Add zsh to /etc/shells
+  lineinfile:
+    path: /etc/shells
+    line: /usr/local/bin/zsh
+  become: yes
+  when: '"/usr/local/bin/zsh" not in test_grep.stdout_lines'
+
+- name: Changing shell to zsh
+  shell: chsh -s /usr/local/bin/zsh
+  become: yes
+  when: '"/usr/local/bin/zsh" not in test_grep.stdout_lines'
+
+- name: Install oh-my-zsh
+  shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  args:
+    creates: ~/.oh-my-zsh
+  become: true
+
+# We can't restart Terminal via a handler as it will kill the playbook run
+# prematurely. Let's just remind the user to instead.
+# TODO: Let's not presume this. Add condition to handler to help decide.
+- debug:
+    msg: "Please restart Terminal.app to see any change in preferences."

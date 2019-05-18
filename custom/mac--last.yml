@@ -1,0 +1,15 @@
+---
+- name: Custom - Last
+  hosts: localhost
+
+  vars_files:
+    - config.yml
+    - config.local.yml
+
+  # roles:
+  #   - { role: danbohea.macos-dock, tags: "dock" }
+
+  post_tasks:
+    - debug:
+        msg: "Some changes may not take effect until you've restarted your Mac."
+      tags: always
