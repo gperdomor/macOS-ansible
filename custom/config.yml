@@ -54,7 +54,7 @@ homebrew_taps:
   - homebrew/cask
   - vapor/tap
   - kylef/formulae
-  - adoptopenjdk/openjdk
+  # - adoptopenjdk/openjdk
 
 homebrew_installed_packages:
   # - ansible # Installed via Pip.
