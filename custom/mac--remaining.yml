@@ -52,6 +52,7 @@
           # - the-unarchiver # Installed using MAS role
           # - transmission # Installed using custom role
           - vlc
+      notify: brew cleanup
 
     - name: Installing Homebrew packages
       homebrew:
@@ -79,3 +80,4 @@
           - vapor
           # - watchman
           # - yarn
+      notify: brew cleanup

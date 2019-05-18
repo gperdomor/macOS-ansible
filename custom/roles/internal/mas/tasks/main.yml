@@ -1,6 +1,7 @@
 ---
 - name: Ensure MAS is installed.
   homebrew: name=mas state=present
+  notify: brew cleanup
 
 - name: List installed MAS apps.
   command: mas list

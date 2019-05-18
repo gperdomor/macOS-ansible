@@ -12,6 +12,7 @@
   homebrew:
     name: ['zsh', 'zsh-completions']
     state: present
+  notify: brew cleanup
 
 - name: Test for line
   shell: grep "^/usr/local/bin/zsh" /etc/shells

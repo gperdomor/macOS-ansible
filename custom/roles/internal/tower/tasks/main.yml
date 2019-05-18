@@ -2,6 +2,7 @@
 
 - name: Install Tower
   homebrew_cask: name=tower state=present
+  notify: brew cleanup
 
 # Use Homebrew git binary
 - name: Set default Git binary

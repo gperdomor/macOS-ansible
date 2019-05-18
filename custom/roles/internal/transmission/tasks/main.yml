@@ -2,6 +2,7 @@
 
 - name: Install Transmission
   homebrew_cask: name=transmission state=present
+  notify: brew cleanup
 
 - name: Ensure location for incomplete downloads exists
   file:

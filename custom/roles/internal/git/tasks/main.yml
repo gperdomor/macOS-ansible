@@ -2,6 +2,7 @@
 
 - name: Install Git
   homebrew: name=git
+  notify: brew cleanup
 
 ## Get Git current config
 
