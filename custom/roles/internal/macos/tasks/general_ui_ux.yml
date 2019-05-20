@@ -1,12 +1,12 @@
 ---
 
-- name: Always show scrollbars
+- name: Set scroll scrollbars
   osx_defaults:
     domain: NSGlobalDomain
     key: AppleShowScrollBars
     type: string
     # Options: "Always", "Automatic", "WhenScrolling"
-    value: "Always"
+    value: "Automatic"
   notify:
     - killall
 

@@ -26,4 +26,3 @@
         name: "{{ item }}"
       with_items:
           - keepingyouawake
-      notify: brew cleanup

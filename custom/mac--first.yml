@@ -24,4 +24,3 @@
         # - dropbox
         - google-chrome
         - gpg-suite
-      notify: brew cleanup

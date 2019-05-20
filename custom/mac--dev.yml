@@ -56,5 +56,4 @@
           # - visual-studio-code # Installed using vscode role
           # - vmware-fusion
           # - webstorm
-          - xscope
-      notify: brew cleanup
+          # - xscope
