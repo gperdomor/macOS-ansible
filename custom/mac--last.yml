@@ -10,9 +10,6 @@
   #   - { role: danbohea.macos-dock, tags: "dock" }
 
   post_tasks:
-    - name: cleanup homebrew
-      command: brew cleanup
-
     - debug:
         msg: "Some changes may not take effect until you've restarted your Mac."
       tags: always
