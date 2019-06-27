@@ -15,13 +15,6 @@
     # - { role: danbohea.atom, tags: ["atom"] }
 
   # TODO CHECK THIS
-  tasks:
-    - name: Installing Cask Apps
-      homebrew_cask:
-        state: present
-        name: "{{ item }}"
-      with_items:
-        # - dropbox
-        - google-chrome
-        - gpg-suite
-      notify: brew cleanup
+    # - { cask_app_name: "dropbox", tags: "dropbox", role: danbohea.cask-app }
+    - { cask_app_name: "google-chrome", tags: "google-chrome", role: danbohea.cask-app }
+    - { cask_app_name: "gpg-suite", tags: "gpg-suite", role: danbohea.cask-app }

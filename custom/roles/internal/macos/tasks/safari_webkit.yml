@@ -15,7 +15,7 @@
     - { name: "Hide Safari's bookmarks bar by default", key: "ShowFavoritesBar", value: "false" }
     - { name: "Hide Safari's sidebar in Top Sites", key: "ShowSidebarInTopSites", value: "false" }
     - { name: "Enable Safari's debug menu", key: "IncludeInternalDebugMenu", value: "true" }
-    - { name: "Make Safari's search banners default to Contains instead of Starts With", key: "FindOnPageMatchesWordStartsOnly", value: "false" }
+    # - { name: "Make Safari's search banners default to Contains instead of Starts With", key: "FindOnPageMatchesWordStartsOnly", value: "false" }
     - { name: "Open windows from last session", key: "AlwaysRestoreSessionAtLaunch", value: "true" }
     - { name: "Show Safari's status bar", key: "ShowOverlayStatusBar", value: "true" }
     - { name: "Enable the Develop menu and the Web Inspector in Safari (1)", key: "IncludeDevelopMenu", value: "true"}
@@ -24,14 +24,14 @@
   notify:
     - killall Safari
 
-- name: Set Safari's home page to "about:blank" for faster loading
-  osx_defaults:
-    domain: com.apple.Safari
-    key: HomePage
-    type: string
-    value: "about:blank"
-  notify:
-    - killall Safari
+# - name: Set Safari's home page to "about:blank" for faster loading
+#   osx_defaults:
+#     domain: com.apple.Safari
+#     key: HomePage
+#     type: string
+#     value: "about:blank"
+#   notify:
+#     - killall Safari
 
 - name: Disable Safari's thumbnail cache for History and Top Sites
   osx_defaults:
@@ -42,10 +42,10 @@
   notify:
     - killall Safari
 
-- name: Remove useless icons from Safari's bookmarks bar
-  command: defaults write com.apple.Safari ProxiesInBookmarksBar "()"
-  notify:
-    - killall Safari
+# - name: Remove useless icons from Safari's bookmarks bar
+#   command: defaults write com.apple.Safari ProxiesInBookmarksBar "()"
+#   notify:
+#     - killall Safari
 
 - name: Add a context menu item for showing the Web Inspector in web views
   osx_defaults:

@@ -7,16 +7,13 @@ jobs:
     steps:
       - restore_cache:
           keys:
-            - packages-{{ .Branch }}-{{ .Revision }}
-            - packages-{{ .Branch }}-
-            - packages-
+            - macos-ansible-{{ .Branch }}-{{ .Revision }}
+            - macos-ansible-{{ .Branch }}-
+            - macos-ansible-
       - checkout
       - run:
           name: Install dependencies.
           command: bash scripts/install_deps.sh
-      # - run:
-      #     name: Install pexpect.
-      #     command: pip install pexpect -U --quiet
       - run:
           name: Install dependencies
           command: ansible-galaxy install -r custom/requirements.yml --force
@@ -41,7 +38,7 @@ jobs:
       #     && (echo 'Idempotence test: pass' && exit 0)
       #     || (echo 'Idempotence test: fail' && exit 1)
       - save_cache:
-          key: packages-{{ .Branch }}-{{ .Revision }}
+          key: macos-ansible-{{ .Branch }}-{{ .Revision }}
           paths:
             - '$HOME/Library/Caches/pip'
             - '$HOME/Library/Caches/Homebrew'

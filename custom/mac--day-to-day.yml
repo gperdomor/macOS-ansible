@@ -18,12 +18,5 @@
         - { name: "Magnet", id: 441258766 }
         - { name: "Reeder", id: 880001334 }
         - { name: "Spark", id: 1176895641 }
-  
-  tasks:
-    - name: "Installing Cask App {{ item }}"
-      homebrew_cask:
-        state: present
-        name: "{{ item }}"
-      with_items:
-          - keepingyouawake
-      notify: brew cleanup
+    
+    - { cask_app_name: "keepingyouawake", tags: "keepingyouawake", role: danbohea.cask-app }
