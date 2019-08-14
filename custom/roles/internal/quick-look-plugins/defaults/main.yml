@@ -6,7 +6,5 @@ quick_look_plugins_list:
   - qlcolorcode
   - qlmarkdown
   - qlstephen
-  - quicklookase
   - quicklook-json
-  - suspicious-package
   - webpquicklook
