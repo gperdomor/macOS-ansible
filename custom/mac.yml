@@ -14,14 +14,13 @@
 # - import_playbook: mac--dev.yml
 #   tags: 'mac__dev'
 
-# # Project work.
-# - import_playbook: mac--projects.yml
-#   tags: ['mac__projects', 'no_ci']
-
-# # Remaining setup.
+# Project work.
+- import_playbook: mac--projects.yml
+  tags: ['mac__projects', 'no_ci']
+# Remaining setup.
 # - import_playbook: mac--remaining.yml
 #   tags: ['mac__remaining', 'no_ci']
 
-# # Setup that really must be run last.
+# Setup that really must be run last.
 # - import_playbook: mac--last.yml
 #   tags: ['mac__last', 'always']

@@ -14,5 +14,5 @@
     - { role: vscode, tags: ['vscode'] }
     # TODO CHECK THIS
     # - { cask_app_name: 'dropbox', tags: 'dropbox', role: danbohea.cask-app }
-    # - { cask_app_name: 'google-chrome', tags: 'google-chrome', role: danbohea.cask-app }
-    # - { cask_app_name: 'gpg-suite', tags: 'gpg-suite', role: danbohea.cask-app }
+    - { cask_app_name: 'google-chrome', tags: 'google-chrome', role: danbohea.cask-app }
+    - { cask_app_name: 'gpg-suite', tags: 'gpg-suite', role: danbohea.cask-app }
