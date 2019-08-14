@@ -7,14 +7,13 @@
     - config.local.yml
 
   roles:
-    - { role: macos, tags: "macos" }
-    - { role: ssh, tags: ["ssh","no_ci"] }
-    - { role: terminal, tags: ["terminal"] }
-    - { role: quick-look-plugins, tags: ["quick_look_plugins"] }
-    - { role: vscode, tags: ["vscode"] }
+    # - { role: macos, tags: 'macos' }
+    - { role: ssh, tags: ['ssh', 'no_ci'] }
+    - { role: terminal, tags: ['terminal'] }
+    # - { role: quick-look-plugins, tags: ['quick_look_plugins'] }
+    # - { role: vscode, tags: ['vscode'] }
     # - { role: danbohea.atom, tags: ["atom"] }
-
-  # TODO CHECK THIS
-    # - { cask_app_name: "dropbox", tags: "dropbox", role: danbohea.cask-app }
-    - { cask_app_name: "google-chrome", tags: "google-chrome", role: danbohea.cask-app }
-    - { cask_app_name: "gpg-suite", tags: "gpg-suite", role: danbohea.cask-app }
+    # TODO CHECK THIS
+    # - { cask_app_name: 'dropbox', tags: 'dropbox', role: danbohea.cask-app }
+    # - { cask_app_name: 'google-chrome', tags: 'google-chrome', role: danbohea.cask-app }
+    # - { cask_app_name: 'gpg-suite', tags: 'gpg-suite', role: danbohea.cask-app }
