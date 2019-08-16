@@ -8,7 +8,7 @@
 # Use Homebrew git binary
 - name: Set default Git binary
   osx_defaults:
-    domain: com.fournova.Tower2
+    domain: com.fournova.Tower3
     key: GTUserDefaultsGitBinary
     type: string
     value: /usr/local/bin/git
@@ -22,7 +22,7 @@
 
 - name: Set default directory for cloned projects
   osx_defaults:
-    domain: com.fournova.Tower2
+    domain: com.fournova.Tower3
     key: GTUserDefaultsDefaultCloningDirectory
     type: string
     value: ${HOME}/Developer
@@ -35,7 +35,7 @@
 
 - name: Set diff tool
   osx_defaults:
-    domain: com.fournova.Tower2
+    domain: com.fournova.Tower3
     key: GTUserDefaultsDiffToolIdentifier
     type: string
     value: kaleidoscope
@@ -49,7 +49,7 @@
 
 - name: Set merge tool
   osx_defaults:
-    domain: com.fournova.Tower2
+    domain: com.fournova.Tower3
     key: GTUserDefaultsMergeToolIdentifier
     type: string
     value: p4merge
