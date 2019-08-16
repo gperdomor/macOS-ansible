@@ -3,7 +3,7 @@ version: 2
 jobs:
   macos:
     macos:
-      xcode: '10.2.1'
+      xcode: "10.2.1"
     steps:
       - restore_cache:
           keys:
@@ -40,8 +40,8 @@ jobs:
       - save_cache:
           key: macos-ansible-{{ .Branch }}-{{ .Revision }}
           paths:
-            - '$HOME/Library/Caches/pip'
-            - '$HOME/Library/Caches/Homebrew'
+            - "$HOME/Library/Caches/pip"
+            - "$HOME/Library/Caches/Homebrew"
 
 workflows:
   version: 2

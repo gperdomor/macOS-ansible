@@ -15,6 +15,7 @@ Automate system setup from a clean install of macOS 10.13+
 ### Why?
 
 Why not?... Also...
+
 - macOS updates are bad xD
 - Manual setup from a clean install takes too long
 - I run more than one system
@@ -32,11 +33,11 @@ Ensure the following requirements are already installed and working on your loca
 
 ## Installation
 
-  1. Ensure Apple's command line tools are installed (`xcode-select --install` to launch the installer).
-  2. Run `bash scripts/install_deps.sh`
-  3. Clone this repository to your local drive.
-  4. Run `ansible-galaxy install -r custom/requirements.yml --force` inside this directory to install required Ansible roles.
-  5. Run `ansible-playbook main.yml -K` inside this directory. Enter your account password when prompted.
+1. Ensure Apple's command line tools are installed (`xcode-select --install` to launch the installer).
+2. Run `bash scripts/install_deps.sh`
+3. Clone this repository to your local drive.
+4. Run `ansible-galaxy install -r custom/requirements.yml --force` inside this directory to install required Ansible roles.
+5. Run `ansible-playbook main.yml -K` inside this directory. Enter your account password when prompted.
 
 > Note: If some Homebrew commands fail, you might need to agree to Xcode's license or fix some other Brew issue. Run `brew doctor` to see if this is the case.
 

@@ -7,7 +7,7 @@
     - config.local.yml
 
   roles:
-    # - { role: dotfiles, tags: 'dotfiles' }
+    # - { role: dotfiles, tags: "dotfiles" }
     - role: mas
       tags: ["mas", "no_ci"]
       mas_installed_apps:

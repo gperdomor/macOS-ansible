@@ -17,10 +17,11 @@
 # Project work.
 - import_playbook: mac--projects.yml
   tags: ["mac__projects", "no_ci"]
+
 # Remaining setup.
-# - import_playbook: mac--remaining.yml
-#   tags: ['mac__remaining', 'no_ci']
+- import_playbook: mac--remaining.yml
+  tags: ["mac__remaining", "no_ci"]
 
 # Setup that really must be run last.
-# - import_playbook: mac--last.yml
-#   tags: ['mac__last', 'always']
+- import_playbook: mac--last.yml
+  tags: ["mac__last", "always"]
