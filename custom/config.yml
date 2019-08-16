@@ -1,14 +1,14 @@
 ---
-
 # GIT
 # --------------------------------------------------------------------------
-git_push_default: "simple"
-git_user_name: "User Name"
-git_user_email: "user@example.com"
+git_push_default: 'simple'
+git_user_name: 'User Name'
+git_user_email: 'user@example.com'
 
 # SSH
 # --------------------------------------------------------------------------
-ssh_keys: []
+ssh_keys:
+  []
   # - name: github
   #   host: github.com
   #   passphrase: ""
@@ -24,17 +24,25 @@ projects_oss:
   # - dest: "oss-repo"
   #   repo_https: "https://{{ githubuser | urlencode }}:{{ githubpassword }}@github.com/private-repo.git"
   #   repo_ssh: "git@github.com:githubuser/private-repo.git"
-  - { dest: "macOS-ansible", repo: "https://github.com/gperdomor/macOS-ansible.git", repo_ssh: "git@github.com:gperdomor/macOS-ansible.git" }
+  - dest: 'macOS-ansible'
+    repo: 'https://github.com/gperdomor/macOS-ansible.git'
+    repo_ssh: 'git@github.com:gperdomor/macOS-ansible.git'
+
 projects_internal:
   # - dest: "private-repo"
   #   repo_https: "https://{{ githubuser | urlencode }}:{{ githubpassword }}@github.com/private-repo.git"
   #   repo_ssh: "git@github.com:githubuser/private-repo.git"
-  - { dest: "macOS-ansible", repo: "https://github.com/gperdomor/macOS-ansible.git", repo_ssh: "git@github.com:gperdomor/macOS-ansible.git" }
+  - dest: 'macOS-ansible'
+    repo: 'https://github.com/gperdomor/macOS-ansible.git'
+    repo_ssh: 'git@github.com:gperdomor/macOS-ansible.git'
+
 projects_client:
   # - dest: "client-repo"
   #   repo_https: "https://{{ githubuser | urlencode }}:{{ githubpassword }}@github.com/private-repo.git"
   #   repo_ssh: "git@github.com:githubuser/private-repo.git"
-  - { dest: "macOS-ansible", repo: "https://github.com/gperdomor/macOS-ansible.git", repo_ssh: "git@github.com:gperdomor/macOS-ansible.git" }
+  - dest: 'macOS-ansible'
+    repo: 'https://github.com/gperdomor/macOS-ansible.git'
+    repo_ssh: 'git@github.com:gperdomor/macOS-ansible.git'
 
 # Dotfiles
 # --------------------------------------------------------------------------
@@ -50,7 +58,7 @@ dotfiles_files:
 # Homebrew
 # --------------------------------------------------------------------------
 homebrew_taps:
-  # - adoptopenjdk/openjdk
+  - AdoptOpenJDK/openjdk
   - heroku/brew
   - homebrew/cask
   - homebrew/core
@@ -70,80 +78,4 @@ homebrew_installed_packages:
 # VS Code Packages
 # --------------------------------------------------------------------------
 vscode_extensions:
-  # - { name: "Angular Console", id: "nrwl.angular-console" }
-  # - { name: "Angular Languiase Service", id: "Angular.ng-template" }
-  # - { name: "Copilot", id: "Metatype.copilot-vscode" }
-  # - { name: "Debugger for Chrome", id: "msjsdiag.debugger-for-chrome" }
-  # - { name: "Docker", id: "PeterJausovec.vscode-docker" }
-  # - { name: "Dot Env", id: "mikestead.dotenv" }
-  # - { name: "EditorConfig for VS Code", id: "EditorConfig.EditorConfig" }
-  # - { name: "Git Lens", id: "eamodio.gitlens" }
-  # - { name: "Jest", id: "Orta.vscode-jest" }
-  # - { name: "Live Share", id: "ms-vsliveshare.vsliveshare" }
-  # - { name: "Markdown All in One", id: "yzhang.markdown-all-in-one" }
-  # - { name: "One Dark Pro", id: "yzhzhuangtongfa.Material-theme" }
-  # - { name: "Prettier", id: "esbenp.prettier-vscode" }
-  - { name: "Settings Sync", id: "shan.code-settings-sync" }
-  # - { name: "Sort Lines", id: "Tyriar.sort-lines" }
-  # - { name: "Sort Typescript Imports", id: "miclo.sort-typescript-imports" }
-  # - { name: "TODO Tree", id: "Gruntfuggly.todo-tree" }
-  # - { name: "TS Lint", id: "ms-vscode.vscode-typescript-tslint-plugin" }
-  # - { name: "vscode-icons", id: "vscode-icons-team.vscode-icons" }
-
-# Atom Packages
-# --------------------------------------------------------------------------
-atom_packages:
-  # - atom-beautify
-  - atom-ide-ui
-  # - atom-json-color
-  # - atom-jinja2
-  # - atom-terminal-tab
-  # - atom-twig
-  # - atom-wrap-in-tag
-  - autoclose-html
-  - autocomplete-paths
-  - autocomplete-plus
-  # - docblockr
-  # - double-tag
-  - editorconfig
-  # - emmet
-  - file-icons
-  # - fix-indent-on-paste
-  # - git-time-machine
-  - highlight-line
-  - highlight-selected
-  # - ide-css
-  # - ide-html
-  - ide-json
-  # - ide-vue
-  - ide-yaml
-  # - isotope-ui
-  # - language-ansible
-  - language-docker
-  - language-ignore
-  # - language-nunjucks
-  - language-patch
-  # - language-vue
-  # - less-than-slash
-  # - linter-ansible-syntax
-  # - linter-eslint
-  # - linter-htmlhint
-  # - linter-jsonlint
-  # - local-history
-  # - markdown-writer
-  - minimap
-  - minimap-linter
-  # - open-recent
-  # - open-terminal-here
-  - pigments
-  # - project-manager
-  - prettier-atom
-  - sort-lines
-  - svg-preview
-  # - tabs-to-spaces
-  - teletype
-  # - todo-show
-  # - toggle-quotes
-  # - travis-ci-status
-  # - tree-view-autoresize
-  # - tree-view-copy-relative-path
+  - { name: 'Settings Sync', id: 'shan.code-settings-sync' }

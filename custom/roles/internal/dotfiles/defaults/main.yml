@@ -5,7 +5,7 @@ dotfiles_repo_ssh: git@gitlab.com:gperdomor/dotfiles.git
 dotfiles_repo_version: master
 dotfiles_repo_accept_hostkey: false
 dotfiles_repo_local_destination: ~/.dotfiles
-dotfiles_home: "~"
+dotfiles_home: '~'
 dotfiles_files:
   - .gitconfig
   - .gitignore

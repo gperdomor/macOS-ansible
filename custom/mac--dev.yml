@@ -7,40 +7,35 @@
     - config.local.yml
 
   roles:
-    - { role: git, tags: "git" }
-    - { role: node, tags: "node" }
+    - { role: git, tags: 'git' }
+    - { role: node, tags: 'node' }
 
     - role: mas
-      tags: ["mas", "no_ci"]
+      tags: ['mas', 'no_ci']
       mas_installed_apps:
-        - { name: "Xcode", id: 497799835 }
-        - { name: "Slack", id: 803453959 }
+        - { name: 'Xcode', id: 497799835 }
+        - { name: 'Slack', id: 803453959 }
 
-    # - { brew_pkg_name: "curl", tags: "curl", role: brew_pkg }
-    - { brew_pkg_name: "diff-so-fancy", tags: "diff-so-fancy", role: brew_pkg }
-    # - { brew_pkg_name: "gpg", tags: "gpg", role: brew_pkg }
-    - { brew_pkg_name: "heroku", tags: "heroku", role: brew_pkg }
-    - { brew_pkg_name: "httpie", tags: "httpie", role: brew_pkg }
-    # - { brew_pkg_name: "openssl", tags: "openssl", role: brew_pkg }
-    # - { brew_pkg_name: "ssh-copy-id", tags: "ssh-copy-id", role: brew_pkg }
-    - { brew_pkg_name: "tree", tags: "tree", role: brew_pkg }
-    - { brew_pkg_name: "wget", tags: "wget", role: brew_pkg }
-    
-    - { cask_app_name: "adoptopenjdk8", tags: "adoptopenjdk8", role: danbohea.cask-app }
-    - { cask_app_name: "android-studio", tags: "android-studio", role: danbohea.cask-app }
-    - { cask_app_name: "angular-console", tags: "angular-console", role: danbohea.cask-app }
-    # - { cask_app_name: "araxis-merge", tags: "araxis-merge", role: danbohea.cask-app }
-    # - { cask_app_name: "atom", tags: "atom", role: danbohea.cask-app }
-    # - { cask_app_name: "browserstacklocal", tags: "browserstacklocal", role: danbohea.cask-app }
-    - { cask_app_name: "discord", tags: "discord", role: danbohea.cask-app }
-    - { cask_app_name: "kaleidoscope", tags: "kaleidoscope", role: danbohea.cask-app }
-    - { cask_app_name: "p4v", tags: "p4v", role: danbohea.cask-app }
-    # - { cask_app_name: "parallels", tags: "parallels", role: danbohea.cask-app }
-    - { cask_app_name: "slack", tags: "slack", role: danbohea.cask-app } # Installed using MAS role
-    - { cask_app_name: "tableplus", tags: "tableplus", role: danbohea.cask-app }
-    - { cask_app_name: "tower", tags: "tower", role: danbohea.cask-app } #  Installed using tower role
-    - { cask_app_name: "vagrant", tags: "vagrant", role: danbohea.cask-app }
-    - { cask_app_name: "visual-studio-code", tags: "visual-studio-code", role: danbohea.cask-app } # Installed using vscode role
-    - { cask_app_name: "vmware-fusion", tags: "vmware-fusion", role: danbohea.cask-app }
-    - { cask_app_name: "webstorm", tags: "webstorm", role: danbohea.cask-app }
-    - { cask_app_name: "xscope", tags: "xscope", role: danbohea.cask-app }
+    - { brew_pkg_name: 'diff-so-fancy', tags: 'diff-so-fancy', role: brew_pkg }
+    # - { brew_pkg_name: 'gpg', tags: 'gpg', role: brew_pkg }
+    - { brew_pkg_name: 'heroku', tags: 'heroku', role: brew_pkg }
+    - { brew_pkg_name: 'httpie', tags: 'httpie', role: brew_pkg }
+    # - { brew_pkg_name: 'openssl', tags: 'openssl', role: brew_pkg }
+    # - { brew_pkg_name: 'ssh-copy-id', tags: 'ssh-copy-id', role: brew_pkg }
+    - { brew_pkg_name: 'tree', tags: 'tree', role: brew_pkg }
+    - { brew_pkg_name: 'wget', tags: 'wget', role: brew_pkg }
+
+    - { cask_app_name: 'adoptopenjdk8', tags: 'adoptopenjdk8', role: danbohea.cask-app }
+    # - { cask_app_name: 'android-studio', tags: 'android-studio', role: danbohea.cask-app }
+    - { cask_app_name: 'araxis-merge', tags: 'araxis-merge', role: danbohea.cask-app }
+    # - { cask_app_name: 'browserstacklocal', tags: 'browserstacklocal', role: danbohea.cask-app }
+    - { cask_app_name: 'discord', tags: 'discord', role: danbohea.cask-app }
+    - { cask_app_name: 'kaleidoscope', tags: 'kaleidoscope', role: danbohea.cask-app }
+    - { cask_app_name: 'p4v', tags: 'p4v', role: danbohea.cask-app }
+    # - { cask_app_name: 'parallels', tags: 'parallels', role: danbohea.cask-app }
+    # - { cask_app_name: 'slack', tags: 'slack', role: danbohea.cask-app } # Installed using MAS role
+    - { cask_app_name: 'tableplus', tags: 'tableplus', role: danbohea.cask-app }
+    # - { cask_app_name: 'vagrant', tags: 'vagrant', role: danbohea.cask-app }
+    # - { cask_app_name: 'vmware-fusion', tags: 'vmware-fusion', role: danbohea.cask-app }
+    # - { cask_app_name: 'webstorm', tags: 'webstorm', role: danbohea.cask-app }
+    - { cask_app_name: 'xscope', tags: 'xscope', role: danbohea.cask-app }
