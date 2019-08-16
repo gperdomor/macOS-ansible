@@ -58,7 +58,7 @@ dotfiles_files:
 # Homebrew
 # --------------------------------------------------------------------------
 homebrew_taps:
-  - AdoptOpenJDK/openjdk
+  # - AdoptOpenJDK/openjdk
   - heroku/brew
   - homebrew/cask
   - homebrew/core
