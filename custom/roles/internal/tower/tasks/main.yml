@@ -1,5 +1,4 @@
 ---
-
 - name: Install Tower
   homebrew_cask: name=tower state=present
   notify: brew cleanup
@@ -37,7 +36,7 @@
     key: GTUserDefaultsDiffToolIdentifier
     type: string
     value: kaleidoscope
-  when: 'kaleidoscope_check.stat.exists == True'
+  when: "kaleidoscope_check.stat.exists == True"
   notify: killall Tower
 
 - name: Check if P4Merge is installed
@@ -50,5 +49,5 @@
     key: GTUserDefaultsMergeToolIdentifier
     type: string
     value: p4merge
-  when: 'p4merge_check.stat.exists == True'
+  when: "p4merge_check.stat.exists == True"
   notify: killall Tower

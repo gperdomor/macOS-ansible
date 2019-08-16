@@ -3,10 +3,10 @@
 node_default_version: 12.8.1
 
 node_global_pkgs:
-  - '@angular/cli'
-  - '@electron-forge/cli'
-  - '@nestjs/cli'
-  - '@nrwl/cli'
+  - "@angular/cli"
+  - "@electron-forge/cli"
+  - "@nestjs/cli"
+  - "@nrwl/cli"
   - create-nx-workspace
   - npm-check
   - oclif

@@ -1,9 +1,9 @@
 ---
 # GIT
 # --------------------------------------------------------------------------
-git_push_default: 'simple'
-git_user_name: 'User Name'
-git_user_email: 'user@example.com'
+git_push_default: "simple"
+git_user_name: "User Name"
+git_user_email: "user@example.com"
 
 # SSH
 # --------------------------------------------------------------------------
@@ -24,25 +24,25 @@ projects_oss:
   # - dest: "oss-repo"
   #   repo_https: "https://{{ githubuser | urlencode }}:{{ githubpassword }}@github.com/private-repo.git"
   #   repo_ssh: "git@github.com:githubuser/private-repo.git"
-  - dest: 'macOS-ansible'
-    repo: 'https://github.com/gperdomor/macOS-ansible.git'
-    repo_ssh: 'git@github.com:gperdomor/macOS-ansible.git'
+  - dest: "macOS-ansible"
+    repo: "https://github.com/gperdomor/macOS-ansible.git"
+    repo_ssh: "git@github.com:gperdomor/macOS-ansible.git"
 
 projects_internal:
   # - dest: "private-repo"
   #   repo_https: "https://{{ githubuser | urlencode }}:{{ githubpassword }}@github.com/private-repo.git"
   #   repo_ssh: "git@github.com:githubuser/private-repo.git"
-  - dest: 'macOS-ansible'
-    repo: 'https://github.com/gperdomor/macOS-ansible.git'
-    repo_ssh: 'git@github.com:gperdomor/macOS-ansible.git'
+  - dest: "macOS-ansible"
+    repo: "https://github.com/gperdomor/macOS-ansible.git"
+    repo_ssh: "git@github.com:gperdomor/macOS-ansible.git"
 
 projects_client:
   # - dest: "client-repo"
   #   repo_https: "https://{{ githubuser | urlencode }}:{{ githubpassword }}@github.com/private-repo.git"
   #   repo_ssh: "git@github.com:githubuser/private-repo.git"
-  - dest: 'macOS-ansible'
-    repo: 'https://github.com/gperdomor/macOS-ansible.git'
-    repo_ssh: 'git@github.com:gperdomor/macOS-ansible.git'
+  - dest: "macOS-ansible"
+    repo: "https://github.com/gperdomor/macOS-ansible.git"
+    repo_ssh: "git@github.com:gperdomor/macOS-ansible.git"
 
 # Dotfiles
 # --------------------------------------------------------------------------
@@ -78,4 +78,4 @@ homebrew_installed_packages:
 # VS Code Packages
 # --------------------------------------------------------------------------
 vscode_extensions:
-  - { name: 'Settings Sync', id: 'shan.code-settings-sync' }
+  - { name: "Settings Sync", id: "shan.code-settings-sync" }

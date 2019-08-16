@@ -19,7 +19,7 @@
         # - { name: "Pixelmator Pro", id: 1289583905 }
         # - { name: "Pixelmator", id: 407963104 }
         - { name: "The Unarchiver", id: 425424353 }
-    
+
     # Brew Casks
 
     # - { cask_app_name: "cakebrew", tags: "cakebrew", role: danbohea.cask-app }

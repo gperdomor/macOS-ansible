@@ -1,7 +1,7 @@
 ---
 - name: Installing zsh
   homebrew:
-    name: ['zsh', 'zsh-completions']
+    name: ["zsh", "zsh-completions"]
     state: present
   notify: brew cleanup
 
@@ -33,4 +33,4 @@
 # prematurely. Let's just remind the user to instead.
 # TODO: Let's not presume this. Add condition to handler to help decide.
 - debug:
-    msg: 'Please restart Terminal.app to see any change in preferences.'
+    msg: "Please restart Terminal.app to see any change in preferences."
