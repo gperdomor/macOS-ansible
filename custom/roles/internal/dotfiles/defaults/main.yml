@@ -1,6 +1,6 @@
 ---
-dotfiles_repo: https://gitlab.com/gperdomor/dotfiles.git
-dotfiles_repo_ssh: git@gitlab.com:gperdomor/dotfiles.git
+dotfiles_repo: https://github.com/gperdomor/dotfiles.git
+dotfiles_repo_ssh: git@github.com:gperdomor/dotfiles.git
 
 dotfiles_repo_version: master
 dotfiles_repo_accept_hostkey: false
