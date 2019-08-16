@@ -1,6 +1,8 @@
 ---
 - name: Install Tower
-  homebrew_cask: name=tower state=present
+  homebrew_cask:
+    name: tower
+    state: present
   notify: brew cleanup
 
 # Use Homebrew git binary
@@ -27,7 +29,8 @@
   notify: killall Tower
 
 - name: Check if Kaleidoscope is installed
-  stat: path=/Applications/Kaleidoscope.app
+  stat:
+    path: /Applications/Kaleidoscope.app
   register: kaleidoscope_check
 
 - name: Set diff tool
@@ -40,7 +43,8 @@
   notify: killall Tower
 
 - name: Check if P4Merge is installed
-  stat: path=/Applications/p4merge.app
+  stat:
+    path: /Applications/p4merge.app
   register: p4merge_check
 
 - name: Set merge tool
