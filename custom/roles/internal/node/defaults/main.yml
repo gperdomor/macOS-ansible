@@ -1,6 +1,6 @@
 # Only supports specific version numbers without the `v` prefix.
 # Run `nvm ls-remote` to see the full list of available versions.
-node_default_version: 12.8.1
+node_default_version: 12.10.0
 
 node_global_pkgs:
   - "@angular/cli"
@@ -8,6 +8,7 @@ node_global_pkgs:
   - "@nestjs/cli"
   - "@nrwl/cli"
   - create-nx-workspace
+  - eslint
   - npm-check
   - oclif
   - prettier

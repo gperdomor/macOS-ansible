@@ -65,16 +65,6 @@ homebrew_taps:
   - kylef/formulae
   - vapor/tap
 
-homebrew_installed_packages:
-  # - ansible # Installed via Pip.
-  # - cowsay
-  - curl
-  - diff-so-fancy
-  # - docker-machine
-  # - docker-machine-driver-hyperkit
-  # - docker-machine-parallels
-  - git
-
 # VS Code Packages
 # --------------------------------------------------------------------------
 vscode_extensions:

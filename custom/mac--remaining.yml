@@ -35,7 +35,6 @@
     # - { cask_app_name: "insomnia", tags: "insomnia", role: danbohea.cask-app }
     - { cask_app_name: "kitematic", tags: "kitematic", role: danbohea.cask-app }
     # - { cask_app_name: "knuff", tags: "knuff", role: danbohea.cask-app }
-    # - { cask_app_name: "malwarebytes", tags: "malwarebytes", role: danbohea.cask-app }
     # - { cask_app_name: "minikube", tags: "minikube", role: danbohea.cask-app }
     # - { cask_app_name: "name-mangler", tags: "name-mangler", role: danbohea.cask-app }
     # - { cask_app_name: "navicat-premium", tags: "navicat-premium", role: danbohea.cask-app }
@@ -45,8 +44,6 @@
     # - { cask_app_name: "pgadmin4", tags: "pgadmin4", role: danbohea.cask-app }
     - { cask_app_name: "postman", tags: "postman", role: danbohea.cask-app }
     # - { cask_app_name: "skype", tags: "skype", role: danbohea.cask-app }
-    # - { cask_app_name: "the-unarchiver", tags: "the-unarchiver", role: danbohea.cask-app } # Installed using MAS role
-    # - { cask_app_name: "transmission", tags: "transmission", role: danbohea.cask-app } # Installed using transmission role
     # - { cask_app_name: "vlc", tags: "vlc", role: danbohea.cask-app }
 
     # Brew Packages
@@ -58,7 +55,6 @@
     # - { brew_pkg_name: "go", tags: "go", role: brew_pkg }
     # - { brew_pkg_name: "kubernetes-cli", tags: "kubernetes-cli", role: brew_pkg }
     # - { brew_pkg_name: "nmap", tags: "nmap", role: brew_pkg }
-    # - { brew_pkg_name: "node", tags: "node", role: brew_pkg } # Installed using node role
     - { brew_pkg_name: "pgcli", tags: "pgcli", role: brew_pkg }
     # - { brew_pkg_name: "postgresql", tags: "postgresql", role: brew_pkg }
     # - { brew_pkg_name: "python", tags: "python", role: brew_pkg }

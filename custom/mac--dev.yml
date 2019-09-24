@@ -33,7 +33,6 @@
     - { cask_app_name: "kaleidoscope", tags: "kaleidoscope", role: danbohea.cask-app }
     - { cask_app_name: "p4v", tags: "p4v", role: danbohea.cask-app }
     # - { cask_app_name: "parallels", tags: "parallels", role: danbohea.cask-app }
-    # - { cask_app_name: "slack", tags: "slack", role: danbohea.cask-app } # Installed using MAS role
     - { cask_app_name: "tableplus", tags: "tableplus", role: danbohea.cask-app }
     # - { cask_app_name: "vagrant", tags: "vagrant", role: danbohea.cask-app }
     # - { cask_app_name: "vmware-fusion", tags: "vmware-fusion", role: danbohea.cask-app }
