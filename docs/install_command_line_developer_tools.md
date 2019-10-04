@@ -7,4 +7,5 @@ xcode-select --install
 ```
 
 You will need to interact with the prompts that follow:
+
 - Install > Agree > Done.
