@@ -1,0 +1,28 @@
+---
+
+# https://docs.travis-ci.com/user/reference/osx
+
+os: osx
+
+cache:
+  directories:
+    - $HOME/Library/Caches/pip
+    - $HOME/Library/Caches/Homebrew
+
+matrix:
+  include:
+    # macOS 10.13
+    - osx_image: xcode9.4
+
+install:
+  - bash scripts/install_deps.sh
+  - bash scripts/copy_starter_files.sh
+  - ansible-galaxy install -r custom/requirements.yml --force
+
+script:
+  # Syntax check
+  - ansible-playbook macsible.yml --syntax-check
+  
+  # Run Ansible playbook:
+  # - Skip tasks/roles that we know cause issues in Travis
+  - ansible-playbook macsible.yml --skip-tags "no_ci"
