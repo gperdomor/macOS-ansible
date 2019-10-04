@@ -1,6 +1,0 @@
----
-# 'allow_duplicates' is required to allow this role to be run as a dependency
-# more than once in the same play.
-allow_duplicates: yes
-dependencies:
-  - danbohea.homebrew
