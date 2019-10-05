@@ -1,9 +1,10 @@
 ---
 - name: Installing zsh
   homebrew:
-    name: ["zsh", "zsh-completions"]
+    name: ["zsh"]
     state: present
   notify: brew cleanup
+  when: ansible_distribution_version is version_compare('10.15', '<')
 
 - name: Test for line
   shell: grep "^/usr/local/bin/zsh" /etc/shells
@@ -11,6 +12,7 @@
   check_mode: no
   ignore_errors: yes
   changed_when: no
+  when: ansible_distribution_version is version_compare('10.15', '<')
 
 - name: Add zsh to /etc/shells
   lineinfile:
@@ -18,11 +20,13 @@
     line: /usr/local/bin/zsh
   become: yes
   when: '"/usr/local/bin/zsh" not in test_grep.stdout_lines'
+  when: ansible_distribution_version is version_compare('10.15', '<')
 
 - name: Changing shell to zsh
   shell: chsh -s /usr/local/bin/zsh
   become: yes
   when: '"/usr/local/bin/zsh" not in test_grep.stdout_lines'
+  when: ansible_distribution_version is version_compare('10.15', '<')
 
 - name: Install oh-my-zsh
   shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
