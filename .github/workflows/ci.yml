@@ -21,4 +21,4 @@ jobs:
       - name: Checking the role/playbook's syntax
         run: ansible-playbook macsible.yml --syntax-check
       - name: Run playbook
-        run: ansible-playbook macsible.yml --skip-tags "no_ci"
+        run: ansible-playbook macsible.yml --skip-tags "no_ci, node"
