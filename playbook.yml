@@ -1,7 +1,7 @@
 ---
 # Do not customise this file.
 
-- name: Macsible
+- name: macOS-ansible
   hosts: all
 
   pre_tasks:
@@ -9,7 +9,7 @@
         - name: Verify Ansible version.
           assert:
             that: "ansible_version.full is version_compare('2.4', '>=')"
-            msg: "You must update Ansible to at least 2.4 to use this version of Macsible."
+            msg: "You must update Ansible to at least 2.4 to use this version of macOS-ansible."
 
         - name: Verify target system is running macOS.
           assert:
@@ -19,7 +19,7 @@
         - name: Verify macOS version.
           assert:
             that: "ansible_distribution_version is version_compare('10.14', '>=')"
-            msg: "The target system must be running macOS 10.14 or higher to use this version of Macsible."
+            msg: "The target system must be running macOS 10.14 or higher to use this version of macOS-ansible."
 
       tags: always
 

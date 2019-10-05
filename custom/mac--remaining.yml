@@ -1,0 +1,37 @@
+---
+- name: Custom - Remaining
+  hosts: localhost
+
+  vars_files:
+    - config.yml
+    - config.local.yml
+
+  roles:
+    - { role: transmission, tags: "transmission" }
+    - role: mas
+      tags: ["mas", "no_ci"]
+      mas_installed_apps:
+        # - { name: "Affinity Designer", id: 824171161 }
+        # - { name: "Affinity Photo" id: 824183456 }
+        - { name: "Agenda", id: 1287445660 }
+        - { name: "Money", id: 1185488696 }
+        # - { name: "Pixelmator Pro", id: 1289583905 }
+        # - { name: "Pixelmator", id: 407963104 }
+        - { name: "The Unarchiver", id: 425424353 }
+
+    # - { brew_pkg_name: "ssh-copy-id", tags: "ssh-copy-id", role: brew_pkg }
+    - { brew_pkg_name: "tree", tags: "tree", role: brew_pkg }
+    # - { brew_pkg_name: "wget", tags: "wget", role: brew_pkg }
+    # - { cask_app_name: "cleanmymac", tags: "cleanmymac", role: danbohea.cask-app }
+    # - { cask_app_name: "daisydisk", tags: "daisydisk", role: danbohea.cask-app }
+    - { cask_app_name: "docker", tags: "docker", role: danbohea.cask-app }
+    - { cask_app_name: "dockstation", tags: "dockstation", role: danbohea.cask-app }
+    - { cask_app_name: "iina", tags: "iina", role: danbohea.cask-app }
+    - { cask_app_name: "insomnia", tags: "insomnia", role: danbohea.cask-app }
+    - { cask_app_name: "kitematic", tags: "kitematic", role: danbohea.cask-app }
+    # - { cask_app_name: "knuff", tags: "knuff", role: danbohea.cask-app }
+    # - { cask_app_name: "minikube", tags: "minikube", role: danbohea.cask-app }
+    # - { cask_app_name: "navicat-premium", tags: "navicat-premium", role: danbohea.cask-app }
+    - { cask_app_name: "ngrok", tags: "ngrok", role: danbohea.cask-app }
+    - { cask_app_name: "postman", tags: "postman", role: danbohea.cask-app }
+    # - { cask_app_name: "vlc", tags: "vlc", role: danbohea.cask-app }

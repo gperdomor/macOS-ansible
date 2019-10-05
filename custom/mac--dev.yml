@@ -8,15 +8,10 @@
 
   roles:
     - { role: git, tags: "git" }
-
     - { role: node, tags: "node" }
-
     - { cask_app_name: "araxis-merge", tags: "araxis-merge", role: danbohea.cask-app }
-
     # - { cask_app_name: "kaleidoscope", tags: "kaleidoscope", role: danbohea.cask-app }
-
     - { cask_app_name: "p4v", tags: "p4v", role: danbohea.cask-app }
-
     - { role: tower, tags: "tower" }
 
     - role: mas
