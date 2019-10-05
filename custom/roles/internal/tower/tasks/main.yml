@@ -38,7 +38,7 @@
 
 - name: Check if Araxis Merge is installed
   stat:
-    path: /Applications/Araxis\ Merge.app
+    path: /Applications/Araxis Merge.app
   register: araxis_merge_check
 
 - name: Set diff tool

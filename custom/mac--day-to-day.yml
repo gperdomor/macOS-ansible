@@ -7,7 +7,7 @@
     - config.local.yml
 
   roles:
-    - { role: dotfiles, tags: "dotfiles" }
+    - { role: dotfiles, tags: ["dotfiles", "no_ci"] }
 
     - role: mas
       tags: ["mas", "no_ci"]

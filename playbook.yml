@@ -18,8 +18,8 @@
 
         - name: Verify macOS version.
           assert:
-            that: "ansible_distribution_version is version_compare('10.14', '>=')"
-            msg: "The target system must be running macOS 10.14 or higher to use this version of macOS-ansible."
+            that: "ansible_distribution_version is version_compare('10.12', '>=')"
+            msg: "The target system must be running macOS 10.12 or higher to use this version of macOS-ansible."
 
       tags: always
 

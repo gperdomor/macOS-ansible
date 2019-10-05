@@ -24,14 +24,14 @@
     # - { brew_pkg_name: "wget", tags: "wget", role: brew_pkg }
     # - { cask_app_name: "cleanmymac", tags: "cleanmymac", role: danbohea.cask-app }
     # - { cask_app_name: "daisydisk", tags: "daisydisk", role: danbohea.cask-app }
-    - { cask_app_name: "docker", tags: "docker", role: danbohea.cask-app }
-    - { cask_app_name: "dockstation", tags: "dockstation", role: danbohea.cask-app }
+    - { cask_app_name: "docker", tags: ["docker", "no_ci"], role: danbohea.cask-app }
+    - { cask_app_name: "dockstation", tags: ["dockstation", "no_ci"], role: danbohea.cask-app }
     - { cask_app_name: "iina", tags: "iina", role: danbohea.cask-app }
     - { cask_app_name: "insomnia", tags: "insomnia", role: danbohea.cask-app }
     - { cask_app_name: "kitematic", tags: "kitematic", role: danbohea.cask-app }
     # - { cask_app_name: "knuff", tags: "knuff", role: danbohea.cask-app }
     # - { cask_app_name: "minikube", tags: "minikube", role: danbohea.cask-app }
-    # - { cask_app_name: "navicat-premium", tags: "navicat-premium", role: danbohea.cask-app }
+    # - { cask_app_name: "navicat-premium", tags: ["navicat-premium", "no_ci"], role: danbohea.cask-app }
     - { cask_app_name: "ngrok", tags: "ngrok", role: danbohea.cask-app }
     - { cask_app_name: "postman", tags: "postman", role: danbohea.cask-app }
     # - { cask_app_name: "vlc", tags: "vlc", role: danbohea.cask-app }

@@ -27,8 +27,8 @@
     - { cask_app_name: "discord", tags: "discord", role: danbohea.cask-app }
     # - { cask_app_name: "figma", tags: "figma", role: danbohea.cask-app }
     # - { cask_app_name: "imageoptim", tags: "imageoptim", role: danbohea.cask-app }
-    # - { cask_app_name: "parallels", tags: "parallels", role: danbohea.cask-app }
+    # - { cask_app_name: "parallels", tags: ["parallels", "no_ci"], role: danbohea.cask-app }
     - { cask_app_name: "tableplus", tags: "tableplus", role: danbohea.cask-app }
-    # - { cask_app_name: "vagrant", tags: "vagrant", role: danbohea.cask-app }
-    # - { cask_app_name: "vmware-fusion", tags: "vmware-fusion", role: danbohea.cask-app }
+    # - { cask_app_name: "vagrant", tags: ["vagrant", "no_ci"], role: danbohea.cask-app }
+    # - { cask_app_name: "vmware-fusion", tags: ["vmware-fusion", "no_ci"], role: danbohea.cask-app }
     - { cask_app_name: "xscope", tags: "xscope", role: danbohea.cask-app }
