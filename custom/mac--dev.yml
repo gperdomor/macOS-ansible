@@ -1,0 +1,12 @@
+---
+- name: Custom - Dev
+  hosts: localhost
+
+  vars_files:
+    - config.yml
+    - config.local.yml
+
+  roles:
+    - { role: git, tags: "git" }
+
+    - { role: node, tags: "node" }

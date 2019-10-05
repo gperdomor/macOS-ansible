@@ -1,0 +1,39 @@
+---
+# https://github.com/creationix/nvm
+
+- name: Install nvm
+  shell: >
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+  args:
+    executable: /bin/bash
+    chdir: "{{ ansible_env.HOME }}"
+    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+
+- name: Install default node version.
+  shell: >
+    . {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install {{ node_default_version }}
+  args:
+    executable: /bin/bash
+    chdir: "{{ ansible_env.HOME }}"
+    creates: "{{ ansible_env.HOME }}/.nvm/versions/node/v{{ node_default_version }}"
+
+- name: Set default node version.
+  shell: >
+    . {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm alias default {{ node_default_version }}
+  args:
+    executable: /bin/bash
+
+- name: Install global npm packages.
+  shell: >
+    . {{ ansible_env.HOME }}/.nvm/nvm.sh && {{ ansible_env.HOME }}/.nvm/versions/node/v{{ node_default_version }}/bin/npm -g i {{ item }}
+  loop: "{{ node_global_pkgs }}"
+
+# Yarn docs recommend installing without Node.js if using nvm hence why we're
+# using the `ignore-dependencies` option below.
+# https://yarnpkg.com/en/docs/install#mac-stable
+- name: Install Yarn.
+  homebrew:
+    name: yarn
+    install_options: ignore-dependencies
+  notify: brew cleanup
+  when: node_install_yarn
