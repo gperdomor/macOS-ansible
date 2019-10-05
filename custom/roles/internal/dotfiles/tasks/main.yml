@@ -1,0 +1,38 @@
+---
+- name: Ensure dotfiles repository is cloned locally.
+  git:
+    repo: "{{ dotfiles_repo }}"
+    dest: "{{ dotfiles_repo_local_destination }}"
+    version: "{{ dotfiles_repo_version }}"
+    accept_hostkey: "{{ dotfiles_repo_accept_hostkey }}"
+  become: false
+
+- name: Ensure all configured dotfiles are links.
+  command: "ls -F {{ dotfiles_home }}/{{ item }}"
+  register: existing_dotfile_info
+  failed_when: false
+  check_mode: false
+  changed_when: false
+  with_items: "{{ dotfiles_files }}"
+
+- name: Remove existing dotfiles file if a replacement is being linked.
+  file:
+    path: "{{ dotfiles_home }}/{{ dotfiles_files[item.0] }}"
+    state: absent
+  when: "'@' not in item.1.stdout"
+  with_indexed_items: "{{ existing_dotfile_info.results }}"
+
+- name: Link dotfiles into home folder.
+  file:
+    src: "{{ dotfiles_repo_local_destination }}/{{ item }}"
+    dest: "{{ dotfiles_home }}/{{ item }}"
+    state: link
+  become: false
+  with_items: "{{ dotfiles_files }}"
+
+# TODO: Make idempotent
+- name: Set git remote URL to SSH
+  shell: git remote set-url origin {{ dotfiles_repo_ssh }}
+  args:
+    chdir: "{{ dotfiles_repo_local_destination }}"
+    warn: false
