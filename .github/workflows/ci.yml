@@ -14,10 +14,10 @@ jobs:
       - uses: actions/checkout@v1
       - name: Install dependencies.
         run: bash scripts/install_deps.sh
-      - name: Copy starter files
-        run: bash scripts/copy_starter_files.sh
       - name: Install dependencies
         run: ansible-galaxy install -r custom/requirements.yml --force
+      - name: Create config.local file
+        run: touch custom/config.local.yml
       - name: Checking the role/playbook's syntax
         run: ansible-playbook playbook.yml --syntax-check
       - name: Run playbook
