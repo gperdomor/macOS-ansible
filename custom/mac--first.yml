@@ -1,0 +1,14 @@
+---
+- name: Custom - First
+  hosts: localhost
+
+  vars_files:
+    - config.yml
+    - config.local.yml
+
+  roles:
+    - { role: ssh, tags: ["ssh", "no_ci"] }
+    - { role: terminal, tags: ["terminal"] }
+    - { role: vscode, tags: ["vscode"] }
+    - { cask_app_name: "google-chrome", tags: "google-chrome", role: danbohea.cask-app }
+    - { cask_app_name: "gpg-suite", tags: "gpg-suite", role: danbohea.cask-app }
