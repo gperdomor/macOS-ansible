@@ -1,5 +1,0 @@
----
-
-- name: Disable the sudden motion sensor as it's not useful for SSDs
-  command: pmset -a sms 0
-  become: true

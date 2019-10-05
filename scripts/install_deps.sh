@@ -20,12 +20,6 @@ if ! exists ansible; then
   sudo pip install ansible --quiet
 fi
 
-# Install pexpect
-if ! exists pexpect; then
-  setStatusMessage "Installing pexpect"
-  sudo pip install pexpect --quiet
-fi
-
 # Confirm installed versions
 pip --version
 ansible --version

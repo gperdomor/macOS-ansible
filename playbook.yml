@@ -2,7 +2,7 @@
 # Do not customise this file.
 
 - name: macOS-ansible
-  hosts: localhost
+  hosts: all
 
   pre_tasks:
     - block:
@@ -18,8 +18,9 @@
 
         - name: Verify macOS version.
           assert:
-            that: "ansible_distribution_version is version_compare('10.13', '>=')"
-            msg: "The target system must be running macOS 10.13 or higher to use this version of macOS-ansible."
+            that: "ansible_distribution_version is version_compare('10.14', '>=')"
+            msg: "The target system must be running macOS 10.14 or higher to use this version of macOS-ansible."
+
       tags: always
 
 - import_playbook: custom/mac.yml

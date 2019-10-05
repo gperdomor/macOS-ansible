@@ -10,9 +10,13 @@
     # - { role: macos, tags: "macos" }
     - { role: ssh, tags: ["ssh", "no_ci"] }
     - { role: terminal, tags: ["terminal"] }
-    # - { role: quick-look-plugins, tags: ["quick_look_plugins"] }
     - { role: vscode, tags: ["vscode"] }
-    # TODO CHECK THIS
+
+    - role: mas
+      tags: ["mas", "no_ci"]
+      mas_installed_apps:
+        - { name: "1Password 7", id: 1333542190 }
+
     # - { cask_app_name: "dropbox", tags: "dropbox", role: danbohea.cask-app }
     - { cask_app_name: "google-chrome", tags: "google-chrome", role: danbohea.cask-app }
     - { cask_app_name: "gpg-suite", tags: "gpg-suite", role: danbohea.cask-app }

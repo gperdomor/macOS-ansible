@@ -1,6 +1,6 @@
 # Only supports specific version numbers without the `v` prefix.
 # Run `nvm ls-remote` to see the full list of available versions.
-node_default_version: 12.10.0
+node_default_version: 12.11.1
 
 node_global_pkgs:
   - "@angular/cli"
@@ -13,4 +13,4 @@ node_global_pkgs:
   - oclif
   - prettier
 
-node_install_yarn: False
+node_install_yarn: false

@@ -26,7 +26,7 @@ Why not?... Also...
 
 Ensure the following requirements are already installed and working on your local system:
 
-- macOS 10.13, 10.14 ([help](https://support.apple.com/en-us/HT201372)).
+- macOS 10.14, 10.15 ([help](https://support.apple.com/en-us/HT201372)).
 - Signin to the App Store
 - Command Line Developer Tools ([help](docs/install_command_line_developer_tools.md)).
 - Ansible >= 2.4 ([help](docs/install_ansible.md)).

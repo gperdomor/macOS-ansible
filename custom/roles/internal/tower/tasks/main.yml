@@ -28,18 +28,26 @@
     value: ${HOME}/Developer
   notify: killall Tower
 
-- name: Check if Kaleidoscope is installed
+- name: Set git binary
+  osx_defaults:
+    domain: com.fournova.Tower3
+    key: GTUserDefaultsGitBinary
+    type: string
+    value: /usr/local/bin/git
+  notify: killall Tower
+
+- name: Check if Araxis Merge is installed
   stat:
-    path: /Applications/Kaleidoscope.app
-  register: kaleidoscope_check
+    path: /Applications/Araxis\ Merge.app
+  register: araxis_merge_check
 
 - name: Set diff tool
   osx_defaults:
     domain: com.fournova.Tower3
     key: GTUserDefaultsDiffToolIdentifier
     type: string
-    value: kaleidoscope
-  when: "kaleidoscope_check.stat.exists == True"
+    value: araxismerge
+  when: "araxis_merge_check.stat.exists == True"
   notify: killall Tower
 
 - name: Check if P4Merge is installed
