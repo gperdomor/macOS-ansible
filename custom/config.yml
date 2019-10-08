@@ -60,8 +60,7 @@ dotfiles_files:
 homebrew_taps:
   - AdoptOpenJDK/openjdk
   - heroku/brew
-  - homebrew/cask
-  - homebrew/core
+  - homebrew/cask-fonts
   - kylef/formulae
   - vapor/tap
 

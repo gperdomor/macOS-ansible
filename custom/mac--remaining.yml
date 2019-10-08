@@ -19,9 +19,8 @@
         # - { name: "Pixelmator", id: 407963104 }
         - { name: "The Unarchiver", id: 425424353 }
 
-    # - { brew_pkg_name: "ssh-copy-id", tags: "ssh-copy-id", role: brew_pkg }
-    - { brew_pkg_name: "tree", tags: "tree", role: brew_pkg }
-    # - { brew_pkg_name: "wget", tags: "wget", role: brew_pkg }
+    # Brew Casks
+
     # - { cask_app_name: "cleanmymac", tags: "cleanmymac", role: danbohea.cask-app }
     # - { cask_app_name: "daisydisk", tags: "daisydisk", role: danbohea.cask-app }
     - { cask_app_name: "docker", tags: ["docker", "no_ci"], role: danbohea.cask-app }
@@ -35,3 +34,16 @@
     - { cask_app_name: "ngrok", tags: "ngrok", role: danbohea.cask-app }
     - { cask_app_name: "postman", tags: "postman", role: danbohea.cask-app }
     # - { cask_app_name: "vlc", tags: "vlc", role: danbohea.cask-app }
+
+    # Brew Packages
+
+    # - { brew_pkg_name: "gitlab-runner", tags: "gitlab-runner", role: brew_pkg }
+    # - { brew_pkg_name: "rbenv", tags: "rbenv", role: brew_pkg }
+    # - { brew_pkg_name: "ruby-build", tags: "ruby-build", role: brew_pkg }
+    # - { brew_pkg_name: "ssh-copy-id", tags: "ssh-copy-id", role: brew_pkg }
+    # - { brew_pkg_name: "swiftenv", tags: "swiftenv", role: brew_pkg }
+    # - { brew_pkg_name: "swiftformat", tags: "swiftformat", role: brew_pkg }
+    # - { brew_pkg_name: "swiftlint", tags: "swiftlint", role: brew_pkg } # Require Xcode
+    - { brew_pkg_name: "tree", tags: "tree", role: brew_pkg }
+    # - { brew_pkg_name: "watchman", tags: "watchman", role: brew_pkg }
+    # - { brew_pkg_name: "wget", tags: "wget", role: brew_pkg }

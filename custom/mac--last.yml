@@ -6,8 +6,8 @@
     - config.yml
     - config.local.yml
 
-  # roles:
-  #   - { role: danbohea.macos-dock, tags: "dock" }
+  roles:
+    - { cask_app_name: "font-cascadia", tags: ["font", "font-cascadia"], role: danbohea.cask-app }
 
   post_tasks:
     - debug:
