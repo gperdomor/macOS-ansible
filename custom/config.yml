@@ -62,7 +62,8 @@ homebrew_taps:
   - heroku/brew
   - homebrew/cask-fonts
   - kylef/formulae
-  - vapor/tap
+  # TODO: Fix vapor
+  # - vapor/tap
 
 # VS Code Packages
 # --------------------------------------------------------------------------

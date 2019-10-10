@@ -19,14 +19,16 @@
     path: /etc/shells
     line: /usr/local/bin/zsh
   become: yes
-  when: '"/usr/local/bin/zsh" not in test_grep.stdout_lines'
-  when: ansible_distribution_version is version_compare('10.15', '<')
+  when:
+    - ansible_distribution_version is version_compare('10.15', '<')
+    - '"/usr/local/bin/zsh" not in test_grep.stdout_lines'
 
 - name: Changing shell to zsh
   shell: chsh -s /usr/local/bin/zsh
   become: yes
-  when: '"/usr/local/bin/zsh" not in test_grep.stdout_lines'
-  when: ansible_distribution_version is version_compare('10.15', '<')
+  when:
+    - ansible_distribution_version is version_compare('10.15', '<')
+    - '"/usr/local/bin/zsh" not in test_grep.stdout_lines'
 
 - name: Install oh-my-zsh
   shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
