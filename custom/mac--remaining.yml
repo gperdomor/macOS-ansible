@@ -26,7 +26,7 @@
     - { cask_app_name: "docker", tags: ["docker", "no_ci"], role: danbohea.cask-app }
     - { cask_app_name: "dockstation", tags: ["dockstation", "no_ci"], role: danbohea.cask-app }
     - { cask_app_name: "iina", tags: "iina", role: danbohea.cask-app }
-    - { cask_app_name: "insomnia", tags: "insomnia", role: danbohea.cask-app }
+    # - { cask_app_name: "insomnia", tags: "insomnia", role: danbohea.cask-app }
     - { cask_app_name: "kitematic", tags: "kitematic", role: danbohea.cask-app }
     # - { cask_app_name: "knuff", tags: "knuff", role: danbohea.cask-app }
     # - { cask_app_name: "minikube", tags: "minikube", role: danbohea.cask-app }

@@ -37,7 +37,7 @@ Ensure the following requirements are already installed and working on your loca
 2. Run `bash scripts/install_deps.sh`
 3. Clone this repository to your local drive.
 4. Run `ansible-galaxy install -r custom/requirements.yml --force` inside this directory to install required Ansible roles.
-5. Run `ansible-playbook main.yml -K` inside this directory. Enter your account password when prompted.
+5. Run `ansible-playbook playbook.yml` inside this directory. Enter your account password when prompted.
 
 > Note: If some Homebrew commands fail, you might need to agree to Xcode's license or fix some other Brew issue. Run `brew doctor` to see if this is the case.
 
