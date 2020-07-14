@@ -17,7 +17,7 @@ fi
 # TODO: We need at least Ansible 2.4.0, upgrade if needed
 if ! exists ansible; then
   setStatusMessage "Installing Ansible"
-  sudo pip install ansible --quiet
+  sudo pip install ansible
 fi
 
 # Install pexpect
