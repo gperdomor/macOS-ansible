@@ -28,7 +28,6 @@ jobs:
         run: cp tests/config.yml config.yml
       - name: Run playbook
         run: ansible-playbook playbook.yml
-        # run: ansible-playbook --extra-vars '{\"configure_sudoers\":\"false\"}' playbook.yml"
       - name: Test the playbook's idempotence
         run: |
           idempotence=$(mktemp)

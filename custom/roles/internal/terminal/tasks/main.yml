@@ -1,0 +1,41 @@
+---
+- name: Installing zsh
+  homebrew:
+    name: ["zsh"]
+    state: present
+  notify: brew cleanup
+  when: ansible_distribution_version is version_compare('10.15', '<')
+
+- name: Test for line
+  shell: grep "^/usr/local/bin/zsh" /etc/shells
+  register: test_grep
+  check_mode: no
+  ignore_errors: yes
+  changed_when: no
+  when: ansible_distribution_version is version_compare('10.15', '<')
+
+- name: Add zsh to /etc/shells
+  lineinfile:
+    path: /etc/shells
+    line: /usr/local/bin/zsh
+  become: yes
+  when:
+    - ansible_distribution_version is version_compare('10.15', '<')
+    - '"/usr/local/bin/zsh" not in test_grep.stdout_lines'
+
+- name: Changing shell to zsh
+  shell: chsh -s /usr/local/bin/zsh
+  become: yes
+  when:
+    - ansible_distribution_version is version_compare('10.15', '<')
+    - '"/usr/local/bin/zsh" not in test_grep.stdout_lines'
+
+- name: Check if .oh-my-zsh exists
+  stat:
+    path: ~/.oh-my-zsh
+  register: stat_oh_my_zsh_result
+  changed_when: false
+
+- name: Install oh-my-zsh
+  shell: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  when: not stat_oh_my_zsh_result.stat.exists

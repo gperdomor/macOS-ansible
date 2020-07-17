@@ -4,4 +4,4 @@
 ansible.log
 config.yml
 !tests/config.yml
-roles*
+custom/roles/external

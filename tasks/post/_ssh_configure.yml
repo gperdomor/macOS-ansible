@@ -1,0 +1,20 @@
+---
+- name: Checking ssh directory
+  stat:
+    path: "{{ ssh_config.destination }}"
+  register: ssh_config_dir
+  changed_when: false
+
+- name: Create ssh config directory
+  file:
+    path: "{{ ssh_config.destination }}"
+    state: directory
+    mode: "0700"
+  when: not ssh_config_dir.stat.exists
+
+- name: Configure the users ssh config file
+  template:
+    src: "config.j2"
+    dest: "{{ ssh_config.destination }}/config"
+    mode: "0600"
+  when: ssh_config.keys

@@ -1,0 +1,7 @@
+---
+- include_tasks: _ssh_configure.yml
+  when: configure_ssh
+
+- include: _ssh_keys.yml
+  with_items: "{{ ssh_config.sshKeys }}"
+  when: configure_ssh

@@ -27,5 +27,6 @@ if ! exists pexpect; then
 fi
 
 # Confirm installed versions
+setStatusMessage "Confirm installed versions"
 pip --version
 ansible --version
