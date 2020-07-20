@@ -64,8 +64,3 @@ homebrew_taps:
   - kylef/formulae
   # TODO: Fix vapor
   # - vapor/tap
-
-# VS Code Packages
-# --------------------------------------------------------------------------
-vscode_extensions:
-  - { name: "Settings Sync", id: "shan.code-settings-sync" }
