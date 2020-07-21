@@ -14,6 +14,7 @@
     accept_hostkey: yes
     version: master
   with_items: "{{ projects_oss }}"
+  changed_when: false
 
 - name: Set git remote URL to SSH on oss projects
   shell: git remote set-url origin {{ item.repo_ssh }}
@@ -21,6 +22,7 @@
   args:
     chdir: "~/Developer/oss/{{ item.dest }}"
     warn: false
+  changed_when: false
 
 # Internal projects
 
@@ -31,6 +33,7 @@
     accept_hostkey: yes
     version: master
   with_items: "{{ projects_internal }}"
+  changed_when: false
 
 - name: Set git remote URL to SSH on internal projects
   shell: git remote set-url origin {{ item.repo_ssh }}
@@ -38,6 +41,7 @@
   args:
     chdir: "~/Developer/internal/{{ item.dest }}"
     warn: false
+  changed_when: false
 
 # Client projects
 
@@ -48,6 +52,7 @@
     accept_hostkey: yes
     version: master
   with_items: "{{ projects_client }}"
+  changed_when: false
 
 - name: Set git remote URL to SSH  on client projects
   shell: git remote set-url origin {{ item.repo_ssh }}
@@ -55,3 +60,4 @@
   args:
     chdir: "~/Developer/client/{{ item.dest }}"
     warn: false
+  changed_when: false
