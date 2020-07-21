@@ -21,9 +21,9 @@ jobs:
       - name: Copy test config.yml into place
         run: cp tests/config.yml config.yml
       - name: Run playbook
-        run: ansible-playbook playbook.yml
+        run: ansible-playbook playbook.yml -i inventory
       - name: Test the playbook's idempotence
         run: |
           idempotence=$(mktemp)
-          ansible-playbook playbook.yml | tee -a ${idempotence}
+          ansible-playbook playbook.yml -i inventory | tee -a ${idempotence}
           tail ${idempotence} | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)
