@@ -26,24 +26,25 @@ mas_installed_apps: []
 
 homebrew_taps:
   - homebrew/cask-fonts
-  - heroku/brew
 
 homebrew_installed_packages:
   - git
-  - heroku
-  - minikube
-  - nvm
   - node
   - wget
 
 homebrew_cask_apps:
   - font-cascadia
-  - font-jetbrains-mono
   - google-chrome
-  - transmission
 
 npm_packages:
   - eslint
   - prettier
 
-post_provision_tasks: []
+projects_oss:
+  - dest: "macOS-ansible"
+    repo: "https://github.com/gperdomor/macOS-ansible.git"
+    repo_ssh: "git@github.com:gperdomor/macOS-ansible.git"
+
+projects_internal: []
+
+projects_client: []

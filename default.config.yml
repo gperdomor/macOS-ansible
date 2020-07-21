@@ -177,6 +177,5 @@ pip_packages:
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks:
-  []
-  # - tasks/post/ssh.yml
-  # - tasks/post/projects.yml
+  - tasks/post/ssh.yml
+  - tasks/post/projects.yml
