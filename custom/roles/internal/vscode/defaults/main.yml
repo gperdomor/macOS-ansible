@@ -1,3 +1,0 @@
-# List of VSCode extensions to install.
-vscode_extensions:
-  - { name: "Settings Sync", id: "shan.code-settings-sync" }

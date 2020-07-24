@@ -1,0 +1,180 @@
+---
+downloads: ~/.ansible-downloads/
+
+configure_dotfiles: yes
+configure_ssh: yes
+# configure_sudoers: yes
+# configure_terminal: yes
+# configure_osx: yes
+
+dotfiles_repo: https://github.com/gperdomor/dotfiles.git
+# dotfiles_repo_ssh: git@github.com:gperdomor/dotfiles.git
+dotfiles_repo_accept_hostkey: yes
+dotfiles_repo_local_destination: ~/.dotfiles
+dotfiles_files:
+  - .gitconfig
+  - .gitignore
+  - .zshrc
+
+ssh_config:
+  # Destination directory of the config file
+  destination: "{{ ansible_env.HOME + '/.ssh' }}"
+  # SSH key pairs to publish
+  sshKeys:
+    []
+    # - {
+    #     # The filename prefix of the key
+    #     prefix: "example",
+    #     # The filename prefix of the key
+    #     host: "domain.com",
+    #     # Private ssh key, multiline terminated with \n
+    #     private: "PRIVATE SSH KEY",
+    #     # Public ssh key, multiline terminated with \n
+    #     public: "PUBLICK SSH KEY",
+    #   }
+
+# See `geerlingguy.mas` role documentation for usage instructions.
+mas_email: ""
+mas_password: ""
+mas_installed_apps:
+  - { name: "1Password 7", id: 1333542190 }
+  # - { name: "Affinity Designer", id: 824171161 }
+  # - { name: "Affinity Photo", id: 824183456 }
+  - { name: "Agenda", id: 1287445660 }
+  - { name: "Amphetamine", id: 937984704 }
+  - { name: "Keynote", id: 409183694 }
+  - { name: "Magnet", id: 441258766 }
+  - { name: "Money", id: 1185488696 }
+  - { name: "Numbers", id: 409203825 }
+  - { name: "Pages", id: 409201541 }
+  # - { name: "Pixelmator Pro", id: 1289583905 }
+  # - { name: "Pixelmator", id: 407963104 }
+  - { name: "Reeder", id: 1449412482 }
+  - { name: "Slack", id: 803453959 }
+  - { name: "Spark", id: 1176895641 }
+  - { name: "The Unarchiver", id: 425424353 }
+  - { name: "Xcode", id: 497799835 }
+
+homebrew_taps:
+  - AdoptOpenJDK/openjdk
+  - azure/draft
+  - heroku/brew
+  - homebrew/cask
+  - homebrew/cask-fonts
+  - homebrew/core
+  - kylef/formulae
+  - microsoft/git
+  - vapor/tap
+
+homebrew_installed_packages:
+  - diff-so-fancy
+  - git
+  # - gitlab-runner
+  # - gpg
+  - heroku
+  - httpie
+  - minikube
+  - nvm
+  # - rbenv
+  # - ruby-build
+  - ssh-copy-id
+  # - swiftenv
+  # - swiftformat
+  # - swiftlint
+  - tree
+  # - watchman
+  - wget
+
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps:
+  - adoptopenjdk8
+  - araxis-merge
+  # - cleanmymac
+  # - daisydisk
+  # - discord
+  - docker
+  # - dockstation
+  - dropbox
+  - figma
+  - font-cascadia
+  - font-jetbrains-mono
+  - google-chrome
+  - gpg-suite
+  - iina
+  # - imageoptim
+  - insomnia
+  - insomnia-designer
+  # - kaleidoscope
+  # - keepingyouawake
+  # - knuff
+  - microsoft-edge
+  - navicat-premium
+  - ngrok
+  - p4v
+  # - parallels
+  # - postman
+  - tableplus
+  - tower
+  - transmission
+  - visual-studio-code
+  # - vlc
+  # - vmware-fusion
+  # - xscope
+
+# osx_script: "~/.osx --no-restart"
+
+projects_oss:
+  - dest: "macOS-ansible"
+    repo: "https://github.com/gperdomor/macOS-ansible.git"
+    repo_ssh: "git@github.com:gperdomor/macOS-ansible.git"
+
+projects_internal:
+  - dest: "macOS-ansible"
+    repo: "https://github.com/gperdomor/macOS-ansible.git"
+    repo_ssh: "git@github.com:gperdomor/macOS-ansible.git"
+
+projects_client:
+  - dest: "macOS-ansible"
+    repo: "https://github.com/gperdomor/macOS-ansible.git"
+    repo_ssh: "git@github.com:gperdomor/macOS-ansible.git"
+
+# Install packages from other package managers.
+# Note: You are responsible for making sure the required package managers are
+# installed, eg. through homebrew.
+composer_packages:
+  []
+  # - name: drush
+  #   state: present # present/absent, default: present
+  #   version: "^8.1" # default: N/A
+
+gem_packages:
+  []
+  # - name: bundler
+  #   state: present # present/absent/latest, default: present
+  #   version: "~> 1.15.1" # default: N/A
+
+node_default_version: 14.6.0
+npm_packages:
+  - "@angular/cli"
+  - "@electron-forge/cli"
+  - "@nestjs/cli"
+  - "@nrwl/cli"
+  - create-nx-workspace
+  - eslint
+  - npm-check-updates
+  - oclif
+  - prettier
+  # - name: webpack
+  #   state: present # present/absent/latest, default: present
+  #   version: "^2.6" # default: N/A
+
+pip_packages:
+  []
+  # - name: mkdocs
+  #   state: present # present/absent/latest, default: present
+  #   version: "0.16.3" # default: N/A
+
+# Glob pattern to ansible task files to run after all other tasks are finished.
+post_provision_tasks:
+  - tasks/post/ssh.yml
+  - tasks/post/projects.yml

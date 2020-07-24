@@ -1,4 +1,7 @@
+.DS_Store
 *.retry
+*.vagrant
 ansible.log
-custom/config.local.yml
+config.yml
+!tests/config.yml
 custom/roles/external

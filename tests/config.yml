@@ -1,0 +1,49 @@
+configure_ssh: no
+
+ssh_config:
+  # Destination directory of the config file
+  destination: "{{ ansible_env.HOME + '/.ssh' }}"
+  # SSH key pairs to publish
+  sshKeys:
+    - {
+        # The filename prefix of the key
+        prefix: "example",
+        # The filename prefix of the key
+        host: "domain.com",
+        # Private ssh key, multiline terminated with \n
+        private: "-----BEGIN OPENSSH PRIVATE KEY-----\n
+          b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW\n
+          QyNTUxOQAAACDkyAFNrG5J3fc+rK0gg3KR7rdPu0NtMCSfEoTFgig4ZQAAAJjTFi7S0xYu\n
+          0gAAAAtzc2gtZWQyNTUxOQAAACDkyAFNrG5J3fc+rK0gg3KR7rdPu0NtMCSfEoTFgig4ZQ\n
+          AAAEDPSJRJPkAQOvEm54mwbRKpVK99x2HPCdUQQTDHI/BQF+TIAU2sbknd9z6srSCDcpHu\n
+          t0+7Q20wJJ8ShMWCKDhlAAAAEmV4YW1wbGVAZG9tYWluLmNvbQECAw==\n
+          -----END OPENSSH PRIVATE KEY-----\n",
+        # Public ssh key, multiline terminated with \n
+        public: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOTIAU2sbknd9z6srSCDcpHut0+7Q20wJJ8ShMWCKDhl example@domain.com\n",
+      }
+
+mas_installed_apps: []
+
+homebrew_taps:
+  - homebrew/cask-fonts
+
+homebrew_installed_packages:
+  - git
+  - wget
+
+homebrew_cask_apps:
+  - font-cascadia
+  - google-chrome
+
+npm_packages:
+  - eslint
+  - prettier
+
+projects_oss:
+  - dest: "macOS-ansible"
+    repo: "https://github.com/gperdomor/macOS-ansible.git"
+    repo_ssh: "git@github.com:gperdomor/macOS-ansible.git"
+
+projects_internal: []
+
+projects_client: []

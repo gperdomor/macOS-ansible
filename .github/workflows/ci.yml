@@ -1,0 +1,29 @@
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+  tests:
+    name: Test on macOS
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macOS-latest]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install dependencies.
+        run: bash scripts/install_deps.sh
+      - name: Install dependencies
+        run: ansible-galaxy install -r requirements.yml --force
+      - name: Checking the role/playbook's syntax
+        run: ansible-playbook playbook.yml --syntax-check
+      - name: Copy test config.yml into place
+        run: cp tests/config.yml config.yml
+      - name: Run playbook
+        run: ansible-playbook playbook.yml -i inventory
+      - name: Test the playbook's idempotence
+        run: |
+          idempotence=$(mktemp)
+          ansible-playbook playbook.yml -i inventory | tee -a ${idempotence}
+          tail ${idempotence} | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)
