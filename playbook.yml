@@ -46,6 +46,9 @@
     #   when: configure_osx
     #   tags: ["osx"]
 
+    - include_tasks: tasks/node.yml
+      tags: ["node"]
+
     - include_tasks: tasks/extra-packages.yml
       tags: ["extra-packages"]
 

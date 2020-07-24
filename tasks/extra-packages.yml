@@ -7,15 +7,6 @@
     working_dir: "{{ lookup('env', 'COMPOSER_HOME') | default('~/.composer', true) }}"
   with_items: "{{ composer_packages }}"
 
-- name: Install global NPM packages.
-  npm:
-    name: "{{ item.name | default(item) }}"
-    state: "{{ item.state | default('present') }}"
-    version: "{{ item.version | default(omit) }}"
-    global: yes
-    executable: "{{ item.executable | default(omit) }}"
-  with_items: "{{ npm_packages }}"
-
 - name: Install global Pip packages.
   pip:
     name: "{{ item.name | default(item) }}"

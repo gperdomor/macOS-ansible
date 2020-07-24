@@ -74,7 +74,6 @@ homebrew_installed_packages:
   - heroku
   - httpie
   - minikube
-  - node
   - nvm
   # - rbenv
   # - ruby-build
@@ -85,7 +84,6 @@ homebrew_installed_packages:
   - tree
   # - watchman
   - wget
-  - yarn
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
@@ -155,6 +153,7 @@ gem_packages:
   #   state: present # present/absent/latest, default: present
   #   version: "~> 1.15.1" # default: N/A
 
+node_default_version: 14.6.0
 npm_packages:
   - "@angular/cli"
   - "@electron-forge/cli"

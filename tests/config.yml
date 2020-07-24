@@ -29,7 +29,6 @@ homebrew_taps:
 
 homebrew_installed_packages:
   - git
-  - node
   - wget
 
 homebrew_cask_apps:
