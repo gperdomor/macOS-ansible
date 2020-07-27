@@ -1,27 +1,27 @@
 ---
-- name: Ensure NVM is installed.
-  homebrew:
-    name: nvm
-    state: present
+# https://github.com/nvm-sh/nvm
+- name: Install nvm
+  shell: >
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+  args:
+    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
 
 - name: Install default node version.
-  shell: >
-    . {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install {{ node_default_version }}
+  shell: ". {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install {{ node_default_version }}"
+  args:
+    creates: "{{ ansible_env.HOME }}/.nvm/versions/node/v{{ node_default_version }}"
+    executable: /bin/bash
+
+- name: Set default node version.
+  shell: ". {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm alias default {{ node_default_version }}"
   args:
     executable: /bin/bash
-    chdir: "{{ ansible_env.HOME }}"
-    creates: "{{ ansible_env.HOME }}/.nvm/versions/node/v{{ node_default_version }}"
-
-- name: Make Node {{ node_default_version }} as default.
-  shell: >
-    . {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm alias default {{ node_default_version }}
   changed_when: false
 
-- name: Install global NPM packages.
+- name: Install global npm packages.
   npm:
-    name: "{{ item.name | default(item) }}"
-    state: "{{ item.state | default('present') }}"
-    version: "{{ item.version | default(omit) }}"
+    name: "{{ item }}"
     global: yes
-    executable: "{{ item.executable | default(omit) }}"
+    executable: "{{ ansible_env.HOME }}/.nvm/versions/node/v{{ node_default_version }}/bin/npm"
+  # TODO: Was using `loop` but got errors when run on local system. Probably not running a new enough version of Ansible.
   with_items: "{{ npm_packages }}"
