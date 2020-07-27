@@ -74,7 +74,6 @@ homebrew_installed_packages:
   - heroku
   - httpie
   - minikube
-  - nvm
   # - rbenv
   # - ruby-build
   - ssh-copy-id
@@ -108,14 +107,14 @@ homebrew_cask_apps:
   # - keepingyouawake
   # - knuff
   - microsoft-edge
-  - navicat-premium
-  - ngrok
-  - p4v
+  #- navicat-premium
+  #- ngrok
+  #- p4v
   # - parallels
   # - postman
-  - tableplus
-  - tower
-  - transmission
+  #- tableplus
+  #- tower
+  #- transmission
   - visual-studio-code
   # - vlc
   # - vmware-fusion
