@@ -14,6 +14,7 @@ dotfiles_repo_local_destination: ~/.dotfiles
 dotfiles_files:
   - .gitconfig
   - .gitignore
+  - .npmrc
   - .zshrc
 
 ssh_config:

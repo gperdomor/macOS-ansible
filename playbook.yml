@@ -40,8 +40,6 @@
       tags: ["mas"]
 
   tasks:
-    - include_tasks: tasks/ansible-setup.yml
-
     # - include_tasks: tasks/osx.yml
     #   when: configure_osx
     #   tags: ["osx"]

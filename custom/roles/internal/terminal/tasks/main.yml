@@ -8,3 +8,10 @@
 - name: Install oh-my-zsh
   shell: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   when: not stat_oh_my_zsh_result.stat.exists
+
+- name: Install oh-my-zsh nvm plugin
+  git:
+    repo: https://github.com/lukechilds/zsh-nvm
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-nvm
+    accept_hostkey: yes
+  when: not stat_oh_my_zsh_result.stat.exists
