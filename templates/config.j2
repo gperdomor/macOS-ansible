@@ -1,8 +1,8 @@
 #jinja2:lstrip_blocks: True
 
-{% for key in ssh_config.sshKeys %}
+{% for key in ssh_keys %}
 Host {{ key.host }}
   AddKeysToAgent yes
   UseKeychain yes
-  IdentityFile {{ ssh_config.destination + '/' + key.prefix }}
+  IdentityFile {{ ansible_env.HOME + '/.ssh/' + key.name }}
 {% endfor %}

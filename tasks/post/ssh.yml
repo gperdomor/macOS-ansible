@@ -1,7 +1,22 @@
 ---
-- include_tasks: _ssh_configure.yml
+- name: Ensure ~/.ssh existsssss
+  file:
+    path: "{{ ansible_env.HOME }}/.ssh"
+    state: directory
+    mode: '0700'
   when: configure_ssh
 
-- include: _ssh_keys.yml
-  with_items: "{{ ssh_config.sshKeys }}"
+- name: Generate ssh keys
+  openssh_keypair:
+    path: "{{ ansible_env.HOME }}/.ssh/{{item.name}}"
+    type: "{{ item.type | default('ed25519')}}"
+    comment: "{{ item.comment | default(omit)}}"
+  with_items: "{{ ssh_keys }}"
   when: configure_ssh
+
+- name: Configure the users ssh config file
+  template:
+    src: "config.j2"
+    dest: "{{ ansible_env.HOME }}/.ssh/config"
+    mode: "0600"
+  when: configure_ssh and ssh_keys | bool
