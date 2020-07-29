@@ -68,7 +68,6 @@ homebrew_installed_packages:
   - heroku
   - httpie
   - minikube
-  - nvm
   # - rbenv
   # - ruby-build
   - ssh-copy-id
@@ -174,3 +173,5 @@ pip_packages:
 post_provision_tasks:
   - tasks/post/ssh.yml
   - tasks/post/projects.yml
+  - tasks/post/tower.yml
+  - tasks/post/transmission.yml

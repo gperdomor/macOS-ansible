@@ -3,7 +3,7 @@
   file:
     path: "{{ ansible_env.HOME }}/.ssh"
     state: directory
-    mode: '0700'
+    mode: "0700"
   when: configure_ssh
 
 - name: Generate ssh keys
@@ -20,3 +20,12 @@
     dest: "{{ ansible_env.HOME }}/.ssh/config"
     mode: "0600"
   when: configure_ssh and ssh_keys | bool
+
+- name: Enable ssh agent
+  shell: eval `ssh-agent -s`
+  changed_when: false
+
+- name: Add ssh private keys to ssh agent
+  shell: "ssh-add -K {{ ansible_env.HOME }}/.ssh/{{item.name}}"
+  with_items: "{{ ssh_keys }}"
+  changed_when: false
