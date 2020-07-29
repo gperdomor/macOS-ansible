@@ -3,8 +3,7 @@ downloads: ~/.ansible-downloads/
 
 configure_dotfiles: yes
 configure_ssh: yes
-# configure_sudoers: yes
-# configure_terminal: yes
+configure_terminal: yes
 # configure_osx: yes
 
 dotfiles_repo: https://github.com/gperdomor/dotfiles.git
@@ -17,22 +16,15 @@ dotfiles_files:
   - .npmrc
   - .zshrc
 
-ssh_config:
-  # Destination directory of the config file
-  destination: "{{ ansible_env.HOME + '/.ssh' }}"
-  # SSH key pairs to publish
-  sshKeys:
-    []
-    # - {
-    #     # The filename prefix of the key
-    #     prefix: "example",
-    #     # The filename prefix of the key
-    #     host: "domain.com",
-    #     # Private ssh key, multiline terminated with \n
-    #     private: "PRIVATE SSH KEY",
-    #     # Public ssh key, multiline terminated with \n
-    #     public: "PUBLICK SSH KEY",
-    #   }
+ssh_keys: []
+  # - name: "example"
+  #   host: "example.com"
+  #   type: "ed25519"
+  #   comment: "some comment"
+  # - name: "example-2"
+  #   host: "example-2.com"
+  #   type: "rsa"
+  #   comment: "some comment"
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_email: ""
@@ -67,6 +59,7 @@ homebrew_taps:
   - microsoft/git
   - vapor/tap
 
+homebrew_uninstalled_packages: []
 homebrew_installed_packages:
   - diff-so-fancy
   - git
@@ -87,6 +80,8 @@ homebrew_installed_packages:
   - wget
 
 homebrew_cask_appdir: /Applications
+homebrew_cask_accept_external_apps: false
+homebrew_cask_uninstalled_apps: []
 homebrew_cask_apps:
   - adoptopenjdk8
   - araxis-merge
