@@ -16,7 +16,8 @@ dotfiles_files:
   - .npmrc
   - .zshrc
 
-ssh_keys: []
+ssh_keys:
+  []
   # - name: "example"
   #   host: "example.com"
   #   type: "ed25519"
@@ -46,6 +47,7 @@ mas_installed_apps:
   - { name: "Slack", id: 803453959 }
   - { name: "Spark", id: 1176895641 }
   - { name: "The Unarchiver", id: 425424353 }
+  - { name: "Twitter", id: 1482454543 }
   - { name: "Xcode", id: 497799835 }
 
 homebrew_taps:
@@ -82,7 +84,7 @@ homebrew_cask_appdir: /Applications
 homebrew_cask_accept_external_apps: false
 homebrew_cask_uninstalled_apps: []
 homebrew_cask_apps:
-  - adoptopenjdk8
+  - adoptopenjdk/openjdk/adoptopenjdk8
   - araxis-merge
   # - cleanmymac
   # - daisydisk
@@ -148,15 +150,17 @@ gem_packages:
   #   state: present # present/absent/latest, default: present
   #   version: "~> 1.15.1" # default: N/A
 
-node_default_version: 14.6.0
+node_default_version: 14.9.0
 npm_packages:
   - "@angular/cli"
   - "@electron-forge/cli"
   - "@nestjs/cli"
   - "@nrwl/cli"
   - create-nx-workspace
+  - devspace
   - eslint
   - npm-check-updates
+  - nx
   - oclif
   - prettier
   # - name: webpack
