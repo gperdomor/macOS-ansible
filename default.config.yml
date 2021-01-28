@@ -43,7 +43,7 @@ mas_installed_apps:
   - { name: "Pages", id: 409201541 }
   # - { name: "Pixelmator Pro", id: 1289583905 }
   # - { name: "Pixelmator", id: 407963104 }
-  - { name: "Reeder", id: 1449412482 }
+  - { name: "Reeder", id: 1529448980 }
   - { name: "Slack", id: 803453959 }
   - { name: "Spark", id: 1176895641 }
   - { name: "The Unarchiver", id: 425424353 }
@@ -91,7 +91,7 @@ homebrew_cask_apps:
   # - discord
   - docker
   # - dockstation
-  - dropbox
+  # - dropbox
   - figma
   - font-cascadia
   - font-jetbrains-mono
@@ -105,7 +105,7 @@ homebrew_cask_apps:
   # - keepingyouawake
   # - knuff
   - microsoft-edge
-  - navicat-premium
+  # - navicat-premium
   - ngrok
   - p4v
   # - parallels
@@ -150,12 +150,13 @@ gem_packages:
   #   state: present # present/absent/latest, default: present
   #   version: "~> 1.15.1" # default: N/A
 
-node_default_version: 14.9.0
+node_default_version: 14.15.4
 npm_packages:
   - "@angular/cli"
   - "@electron-forge/cli"
+  - "@maizzle/cli"
   - "@nestjs/cli"
-  - "@nrwl/cli"
+  - autocannon
   - create-nx-workspace
   - devspace
   - eslint
@@ -163,6 +164,7 @@ npm_packages:
   - nx
   - oclif
   - prettier
+  - verdaccio
   # - name: webpack
   #   state: present # present/absent/latest, default: present
   #   version: "^2.6" # default: N/A
