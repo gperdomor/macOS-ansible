@@ -6,7 +6,7 @@
     key: "{{ item.key }}"
     type: "{{ item.type }}"
     value: "{{ item.value }}"
-  with_items:
+  loop:
     - host: currentHost
       domain: NSGlobalDomain
       key: com.apple.mouse.tapBehavior
