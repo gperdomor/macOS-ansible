@@ -1,6 +1,10 @@
-configure_ssh: no
+---
+####################################################################
+### Role: Settings
 
-ssh_config:
+# Ssh
+configure_ssh: yes
+ssh_keys:
   # Destination directory of the config file
   destination: "{{ ansible_env.HOME + '/.ssh' }}"
   # SSH key pairs to publish
@@ -22,28 +26,37 @@ ssh_config:
         public: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOTIAU2sbknd9z6srSCDcpHut0+7Q20wJJ8ShMWCKDhl example@domain.com\n",
       }
 
-mas_installed_apps: []
+####################################################################
+### Role: Homebrew
 
 homebrew_taps:
   - homebrew/cask-fonts
 
-homebrew_installed_packages:
+homebrew_apps:
+  - font-cascadia-code
+  - google-chrome
+  - transmission
+
+homebrew_packages:
   - git
   - wget
 
-homebrew_cask_apps:
-  - font-cascadia
-  - google-chrome
+####################################################################
+### Role: MAS
 
+mas_apps: []
+
+####################################################################
+### Role: NVM
+
+nvm_version: 0.37.2
+node_version: 15.8.0
 npm_packages:
   - eslint
+  - nx
   - prettier
 
-projects_oss:
-  - dest: "macOS-ansible"
-    repo: "https://github.com/gperdomor/macOS-ansible.git"
-    repo_ssh: "git@github.com:gperdomor/macOS-ansible.git"
+####################################################################
+### Role: dotfiles
 
-projects_internal: []
-
-projects_client: []
+configure_dotfiles: no

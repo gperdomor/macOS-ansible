@@ -1,7 +1,8 @@
+.ansible
 .DS_Store
 *.retry
 *.vagrant
 ansible.log
 config.yml
 !tests/config.yml
-custom/roles/external
+/roles/geerlingguy.dotfiles

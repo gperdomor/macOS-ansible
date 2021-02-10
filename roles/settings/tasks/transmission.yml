@@ -4,6 +4,7 @@
     path: "{{ ansible_env.HOME }}/Downloads/Torrents/Incomplete"
     state: directory
     follow: yes
+  notify: Restart Transmission
 
 - name: "Configure Transmission - Phase 1"
   osx_defaults:
@@ -19,6 +20,7 @@
     - { name: "Hide the donate message", key: "WarningDonate", value: "false" }
     - { name: "Hide the legal disclaimer", key: "WarningLegal", value: "false" }
     - { name: "Randomize port on launch", key: "RandomPort", value: "true" }
+  notify: Restart Transmission
 
 - name: "Configure Transmission - Phase 2"
   osx_defaults:
@@ -37,3 +39,4 @@
         key: "NSNavLastRootDirectory",
         value: "{{ ansible_env.HOME }}/Downloads/Torrents",
       }
+  notify: Restart Transmission

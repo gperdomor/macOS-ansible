@@ -1,0 +1,37 @@
+---
+- name: Install Homebrew
+  shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  args:
+    creates: /usr/local/bin/brew
+
+- name: Update homebrew
+  homebrew:
+    update_homebrew: yes
+
+- name: Ensure taps
+  homebrew_tap:
+    name: "{{ item.name|default(item) }}"
+    state: "{{ item.state|default('present') }}"
+  loop: "{{ homebrew_taps }}"
+  when: homebrew_taps|default([])|count > 0
+
+- name: Ensure packages
+  homebrew:
+    name: "{{ item.name|default(item) }}"
+    state: "{{ item.state|default('present') }}"
+    install_options: "{{ item.install_options | default(omit) }}"
+  loop: "{{ homebrew_packages }}"
+  when: homebrew_packages|default([])|count > 0
+
+- name: Ensure apps
+  homebrew_cask:
+    name: "{{ item.name|default(item) }}"
+    state: "{{ item.state|default('present') }}"
+    install_options: "{{ item.install_options | default(omit) }}"
+    accept_external_apps: yes
+  loop: "{{ homebrew_apps }}"
+  when: homebrew_apps|default([])|count > 0
+
+- name: Disable analytics
+  shell: brew analytics off
+  when: not homebrew_analytics
