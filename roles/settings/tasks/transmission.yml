@@ -11,7 +11,7 @@
     domain: org.m0k.transmission
     key: "{{ item.key }}"
     type: bool
-    value: "{{ item.value }}"
+    value: "{{ item.value | bool }}"
   loop:
     - { name: "Keep incomplete downloads", key: "UseIncompleteDownloadFolder", value: "true" }
     - { name: "Don't prompt for confirmation before downloading (1/2)", key: "DownloadAsk", value: "false" }

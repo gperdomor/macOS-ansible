@@ -5,7 +5,7 @@
     domain: com.apple.dock
     key: showhidden
     type: bool
-    value: "{{ dock_make_hidden_apps_translucent|bool }}"
+    value: "{{ dock_make_hidden_apps_translucent | bool }}"
   notify: Restart Dock
 
 - name: Show indicator lights for open applications in the Dock.
@@ -14,7 +14,7 @@
     domain: com.apple.dock
     key: show-process-indicators
     type: bool
-    value: "{{ dock_show_indicator_lights_for_open_apps|bool }}"
+    value: "{{ dock_show_indicator_lights_for_open_apps | bool }}"
   notify: Restart Dock
 
 - name: Set the icon size of Dock items to {{ dock_tilesize }}px.

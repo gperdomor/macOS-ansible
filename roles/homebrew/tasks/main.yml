@@ -7,6 +7,7 @@
 - name: Update homebrew
   homebrew:
     update_homebrew: yes
+  changed_when: false
 
 - name: Ensure taps
   homebrew_tap:
@@ -35,3 +36,4 @@
 - name: Disable analytics
   shell: brew analytics off
   when: not homebrew_analytics
+  changed_when: false
