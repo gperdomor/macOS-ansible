@@ -1,0 +1,22 @@
+---
+- name: Enable tap to click ({{ trackpad_tap_to_click }})
+  osx_defaults:
+    domain: "{{ item.domain|default(omit) }}"
+    host: "{{ item.host|default(omit) }}"
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+  loop:
+    - host: currentHost
+      domain: NSGlobalDomain
+      key: com.apple.mouse.tapBehavior
+      type: int
+      value: "{{ trackpad_tap_to_click|int }}"
+    - domain: NSGlobalDomain
+      key: com.apple.mouse.tapBehavior
+      type: int
+      value: "{{ trackpad_tap_to_click|int }}"
+    - domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+      key: Clicking
+      type: int
+      value: "{{ trackpad_tap_to_click|int }}"

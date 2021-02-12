@@ -4,14 +4,15 @@
     path: "{{ ansible_env.HOME }}/Downloads/Torrents/Incomplete"
     state: directory
     follow: yes
+  notify: Restart Transmission
 
 - name: "Configure Transmission - Phase 1"
   osx_defaults:
     domain: org.m0k.transmission
     key: "{{ item.key }}"
     type: bool
-    value: "{{ item.value }}"
-  with_items:
+    value: "{{ item.value | bool }}"
+  loop:
     - { name: "Keep incomplete downloads", key: "UseIncompleteDownloadFolder", value: "true" }
     - { name: "Don't prompt for confirmation before downloading (1/2)", key: "DownloadAsk", value: "false" }
     - { name: "Don't prompt for confirmation before downloading (2/2)", key: "MagnetOpenAsk", value: "false" }
@@ -19,6 +20,7 @@
     - { name: "Hide the donate message", key: "WarningDonate", value: "false" }
     - { name: "Hide the legal disclaimer", key: "WarningLegal", value: "false" }
     - { name: "Randomize port on launch", key: "RandomPort", value: "true" }
+  notify: Restart Transmission
 
 - name: "Configure Transmission - Phase 2"
   osx_defaults:
@@ -26,7 +28,7 @@
     key: "{{ item.key }}"
     type: string
     value: "{{ item.value }}"
-  with_items:
+  loop:
     - {
         name: "Set path for incomplete downloads",
         key: "IncompleteDownloadFolder",
@@ -37,3 +39,4 @@
         key: "NSNavLastRootDirectory",
         value: "{{ ansible_env.HOME }}/Downloads/Torrents",
       }
+  notify: Restart Transmission

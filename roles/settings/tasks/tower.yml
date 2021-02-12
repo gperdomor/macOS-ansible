@@ -4,6 +4,7 @@
     path: "{{ ansible_env.HOME }}/Developer"
     state: directory
     follow: yes
+  notify: Restart Tower
 
 - name: Set default Git binary
   osx_defaults:
@@ -11,6 +12,7 @@
     key: GTUserDefaultsGitBinary
     type: string
     value: /usr/local/bin/git
+  notify: Restart Tower
 
 - name: Set default directory for cloned projects
   osx_defaults:
@@ -18,11 +20,13 @@
     key: GTUserDefaultsDefaultCloningDirectory
     type: string
     value: "{{ ansible_env.HOME }}/Developer"
+  notify: Restart Tower
 
 - name: Check if Araxis Merge is installed
   stat:
     path: /Applications/Araxis Merge.app
   register: araxis_merge_check
+  notify: Restart Tower
 
 - name: Set diff tool
   osx_defaults:
@@ -31,11 +35,13 @@
     type: string
     value: araxismerge
   when: "araxis_merge_check.stat.exists == True"
+  notify: Restart Tower
 
 - name: Check if P4Merge is installed
   stat:
     path: /Applications/p4merge.app
   register: p4merge_check
+  notify: Restart Tower
 
 - name: Set merge tool
   osx_defaults:
@@ -44,3 +50,4 @@
     type: string
     value: p4merge
   when: "p4merge_check.stat.exists == True"
+  notify: Restart Tower
