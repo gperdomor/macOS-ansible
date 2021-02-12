@@ -10,6 +10,8 @@
 
 - name: Restart Transmission
   shell: killall Transmission
+  ignore_errors: yes
 
 - name: Restart Tower
   shell: killall Tower
+  ignore_errors: yes
