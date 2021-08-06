@@ -8,7 +8,7 @@ This is the playbook I use after a clean install of MacOS to set everything up.
 
 - Installs Homebrew packages and app casks (Role `homebrew`)
 - Installs App Store apps with [`mas-cli`](https://github.com/mas-cli/mas) (Role `mas`)
-- Installs Node packages (Role `nvm`)
+- Installs Node with NVM or Volta (Role `node`)
 - Modifies MacOS settings (Role `settings`)
 - Changes the user shell, if configured (Role `shell`)
 
@@ -19,7 +19,7 @@ This is the playbook I use after a clean install of MacOS to set everything up.
 1. Install Ansible (`pip3 install ansible`)
 1. Copy `default.config.yml` to `config.yml` and edit the configuration to your likings.
    - **Don't skip this, otherwise your computer will be provisioned like mine :)**
-1. Run `ansible-playbook main.yml`. Enter your account password when prompted.
+1. Run `ansible-playbook main.yml -i inventory.yml`. Enter your account password when prompted.
    - If you have a configuration stored elsewhere (e.g. in a dotfiles folders), run `ansible-playbook main.yml --extra-vars=@/path/to/my/config.yml`
 
 ## Updating a fork with the latest changes from this repository

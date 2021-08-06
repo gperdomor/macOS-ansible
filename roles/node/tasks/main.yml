@@ -52,6 +52,6 @@
 
     - name: Install global npm packages.
       shell: >
-        . {{ ansible_env.HOME }}/.nvm/nvm.sh && {{ ansible_env.HOME }}/.nvm/versions/node/v{{ node_version }}/bin/npm -g i {{ item }}
+        . {{ ansible_env.HOME }}/.nvm/nvm.sh && {{ ansible_env.HOME }}/.nvm/versions/node/v{{ node_version }}/bin/npm -g install {{ item }}
       loop: "{{ npm_packages }}"
       when: (item | string) not in npm_list.stdout

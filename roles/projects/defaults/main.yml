@@ -1,0 +1,6 @@
+---
+projects:
+  - dest: "personal/macOS-ansible"
+    repo_https: "https://github.com/gperdomor/macOS-ansible.git"
+    repo_ssh: "git@github.com:gperdomor/macOS-ansible.git"
+    version: main

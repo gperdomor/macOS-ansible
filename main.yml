@@ -34,6 +34,9 @@
     - role: mas
       when: mas_apps|count > 0
       tags: [mas]
+    - role: projects
+      when: projects|count > 0
+      tags: [projects]
     - role: settings
       tags: [settings]
     - role: geerlingguy.dotfiles

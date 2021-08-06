@@ -3,11 +3,12 @@
 {% for key in ssh_keys %}
 # {{ key.comment or key.host }}
 Host {{ key.host }}
-  {%- if key.hostname %}
+  {%- if key.hostname is defined %}
   Hostname {{ key.hostname }}
   {% endif %}
   AddKeysToAgent yes
   UseKeychain yes
   PreferredAuthentications publickey
   IdentityFile {{ ansible_env.HOME + '/.ssh/' + key.name }}
+
 {% endfor %}

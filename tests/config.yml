@@ -62,9 +62,9 @@ mas_apps: []
 ####################################################################
 ### Role: Node
 
-node_manager: volta
-# nvm_version: 0.38.0
-node_version: 16
+node_manager: nvm
+nvm_version: 0.38.0
+node_version: 16.6.1
 
 npm_packages:
   - eslint
