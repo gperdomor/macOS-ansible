@@ -1,3 +1,5 @@
+[![macOS](https://github.com/gperdomor/macOS-ansible/actions/workflows/ci.yml/badge.svg)](https://github.com/gperdomor/macOS-ansible/actions/workflows/ci.yml)
+
 # Ansible MacOS Playbook
 
 This is the playbook I use after a clean install of MacOS to set everything up.

@@ -1,3 +1,4 @@
+---
 ####################################################################
 ### Role: Settings
 
@@ -26,15 +27,15 @@ system_index_network_storage_with_spotlight: true
 screensaver_ask_for_password: true
 screensaver_ask_for_password_in_seconds: 5
 
-# Trackpad
-trackpad_tap_to_click: true
-
 # Dock
 dock_make_hidden_apps_translucent: true
 dock_show_indicator_lights_for_open_apps: true
 dock_tilesize: 40
 
-# Ssh
+# Trackpad
+trackpad_tap_to_click: true
+
+# Ssh
 configure_ssh: false
 ssh_keys: []
 
@@ -59,10 +60,12 @@ homebrew_packages:
 mas_apps: []
 
 ####################################################################
-### Role: NVM
+### Role: Node
 
-nvm_version: 0.37.2
-node_version: 15.8.0
+node_manager: volta
+# nvm_version: 0.38.0
+node_version: 16
+
 npm_packages:
   - eslint
   - nx

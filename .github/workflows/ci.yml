@@ -19,14 +19,14 @@ jobs:
           python-version: 3.9
       - name: Install dependencies
         run: |
-          pip3 install ansible
+          brew install ansible
           ansible-galaxy install -r requirements.yml --force
-      - name: Checking the playbook's syntax
-        run: ansible-playbook main.yml --syntax-check
       - name: Copy test config.yml into place
         run: cp tests/config.yml config.yml
+      - name: Checking the playbook's syntax
+        run: ansible-playbook main.yml -i inventory.yml --syntax-check
       - name: Run playbook
-        run: ansible-playbook main.yml -i hosts
+        run: ansible-playbook main.yml -i inventory.yml
       # - name: Test the playbook's idempotence
       #   run: |
       #     idempotence=$(mktemp)

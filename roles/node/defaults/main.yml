@@ -1,0 +1,9 @@
+---
+
+node_manager: volta
+
+nvm_version: 0.38.0
+
+node_version: 16
+
+npm_packages: []
