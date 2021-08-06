@@ -1,24 +1,27 @@
-name: Tests
+name: CI for macOS
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
-  tests:
-    name: Test on macOS
-    runs-on: macOS-latest
-
+  playbook:
+    runs-on: macos-latest
+    name: Tests
     steps:
-      - uses: actions/checkout@v1
+      - name: Check out repository
+        uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
-
       - name: Install dependencies
         run: |
           pip3 install ansible
           ansible-galaxy install -r requirements.yml --force
-      - name: Checking the role/playbook's syntax
+      - name: Checking the playbook's syntax
         run: ansible-playbook main.yml --syntax-check
       - name: Copy test config.yml into place
         run: cp tests/config.yml config.yml
