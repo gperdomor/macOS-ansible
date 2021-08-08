@@ -1,15 +1,18 @@
 ---
-- hosts: localhost
+- name: Configure macOS
+  hosts: localhost
 
   vars_files:
-    - default.config.yml
+    - config.yml
 
   pre_tasks:
-    - block:
+    - name: "Verifying playbook requirements"
+      tags: ["always"]
+      block:
         - name: Verify Ansible version.
           assert:
-            that: "ansible_version.full is version_compare('2.10', '>=')"
-            msg: "You must update Ansible to at least 2.10 to use this version of macOS-ansible."
+            that: "ansible_version.full is version_compare('2.11.0', '>=')"
+            msg: "You must update Ansible to at least 2.11.0 to use this version of macOS-ansible."
 
         - name: Verify target system is running macOS.
           assert:
@@ -18,28 +21,22 @@
 
         - name: Verify macOS version.
           assert:
-            that: "ansible_distribution_version is version_compare('10.14', '>=')"
-            msg: "The target system must be running macOS 10.14 or higher to use this version of macOS-setup."
-
-        - name: Include configuration
-          include_vars: "{{ item }}"
-          with_first_found:
-            - files:
-                - config.yml
-                - default.config.yml
-              skip: true
-      tags: ["always"]
+            that: "ansible_distribution_version is version_compare('10.15', '>=')"
+            msg: "The target system must be running macOS 10.15 (Catalina) or higher to use this version of macOS-ansible."
 
   roles:
     - role: homebrew
       tags: [homebrew]
     - role: shell
       tags: [shell]
-    - role: nvm
-      tags: [nvm]
+    - role: node
+      tags: [node]
     - role: mas
       when: mas_apps|count > 0
       tags: [mas]
+    - role: projects
+      when: projects|count > 0
+      tags: [projects]
     - role: settings
       tags: [settings]
     - role: geerlingguy.dotfiles

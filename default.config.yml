@@ -9,7 +9,7 @@ hostname: null
 # finder_proxy_icon_hover_delay: null
 
 # Safari
-safari_show_full_url_in_address_bar: true
+# safari_show_full_url_in_address_bar: true
 safari_open_safe_files_automatically: false
 safari_show_status_bar: true
 safari_show_developer_menu: true
@@ -20,7 +20,7 @@ system_expand_save_panel_by_default: true
 system_expand_print_panel_by_default: true
 system_show_file_extensions_warning: false
 system_warn_before_emptying_the_trash: true
-system_use_f_keys_as_standard_function_keys: null
+# system_use_f_keys_as_standard_function_keys: null
 system_index_network_storage_with_spotlight: false
 
 # Screen
@@ -43,8 +43,9 @@ ssh_keys:
   #   host: "example.com"
   #   type: "ed25519"
   #   comment: "some comment"
-  # - name: "example-2"
-  #   host: "example-2.com"
+  # - name: "gitlab"
+  #   host: "gitlab.com"
+  #   hostname: "username.gitlab.com"
   #   type: "rsa"
   #   comment: "some comment"
 
@@ -61,32 +62,32 @@ homebrew_taps:
   - vapor/tap
 
 homebrew_apps:
-  # - adoptopenjdk/openjdk/adoptopenjdk8
-  # - alfred
+  # - adoptopenjdk/openjdk/adoptopenjdk16
+  - appcleaner
   - araxis-merge
-  # - bartender
-  # - cardhop
+  # - bloomrpc
   # - cleanmymac
   # - daisydisk
+  - datagrip
   # - discord
   - docker
-  # - dropbox
-  # - figma
   - font-cascadia-code
   - font-jetbrains-mono
   - google-chrome
-  - gpg-suite
+  - gpg-suite-no-mail
   - iina
   # - imageoptim
   # - insomnia
-  # - insomnia-designer
+  - keka
   # - knuff
   - microsoft-edge
+  - mongodb-compass
   # - navicat-premium
   - ngrok
   - p4v
   # - parallels
   - postman
+  # - puppet-bolt
   - tableplus
   - tower
   - transmission
@@ -100,12 +101,10 @@ homebrew_packages:
   - git
   - git-lfs
   # - gitlab-runner
-  - heroku
+  # - heroku
   - httpie
   - jq
-  - minikube
-  # - rbenv
-  # - ruby-build
+  # - minikube
   - ssh-copy-id
   # - swiftenv
   # - swiftformat
@@ -121,16 +120,19 @@ mas_apps:
   - { name: "1Password 7", id: 1333542190 }
   # - { name: "Affinity Designer", id: 824171161 }
   # - { name: "Affinity Photo", id: 824183456 }
-  - { name: "Agenda", id: 1287445660 }
+  # - { name: "Agenda", id: 1287445660 }
   - { name: "Amphetamine", id: 937984704 }
-  - { name: "Craft", id: 1487937127 }
+  # - { name: "Craft", id: 1487937127 }
   - { name: "Keynote", id: 409183694 }
   - { name: "Magnet", id: 441258766 }
+  # - { name: "Microsoft Excel", id: 462058435 }
+  # - { name: "Microsoft Word", id: 462054704 }
   - { name: "Money", id: 1185488696 }
   - { name: "Numbers", id: 409203825 }
   - { name: "Pages", id: 409201541 }
   # - { name: "Pixelmator Pro", id: 1289583905 }
   # - { name: "Pixelmator", id: 407963104 }
+  - { name: "Playgrounds", id: 1496833156 }
   - { name: "Reeder", id: 1529448980 }
   - { name: "Slack", id: 803453959 }
   - { name: "Spark", id: 1176895641 }
@@ -139,10 +141,12 @@ mas_apps:
   - { name: "Xcode", id: 497799835 }
 
 ####################################################################
-### Role: NVM
+### Role: Node
 
-nvm_version: 0.37.2
-node_version: 15.8.0
+node_manager: nvm
+nvm_version: 0.38.0
+node_version: 16.6.1
+
 npm_packages:
   - "@angular/cli"
   - "@electron-forge/cli"
@@ -150,8 +154,9 @@ npm_packages:
   - "@nestjs/cli"
   - autocannon
   - create-nx-workspace
-  - devspace
+  - depcheck
   - eslint
+  - npm-check
   - npm-check-updates
   - nx
   - oclif
@@ -163,7 +168,7 @@ npm_packages:
 
 configure_dotfiles: true
 dotfiles_repo: https://github.com/gperdomor/dotfiles.git
-dotfiles_repo_version: master
+dotfiles_repo_version: main
 dotfiles_repo_accept_hostkey: false
 dotfiles_repo_local_destination: ~/.dotfiles
 dotfiles_files:
