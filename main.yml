@@ -1,9 +1,9 @@
 ---
 - name: Configure macOS
-  hosts: localhost
+  hosts: machines
 
   vars_files:
-    - config.yml
+    - default.config.yml
 
   pre_tasks:
     - name: "Verifying playbook requirements"
@@ -11,34 +11,38 @@
       block:
         - name: Verify Ansible version.
           assert:
-            that: "ansible_version.full is version_compare('2.11.0', '>=')"
-            msg: "You must update Ansible to at least 2.11.0 to use this version of macOS-ansible."
-
+            that: "ansible_version.full is version_compare('2.13.0', '>=')"
+            msg: "You must update Ansible to at least 2.13.0 to use this version of macOS-ansible."
         - name: Verify target system is running macOS.
           assert:
             that: "ansible_distribution == 'MacOSX'"
             msg: "The target system is not running macOS."
-
         - name: Verify macOS version.
           assert:
-            that: "ansible_distribution_version is version_compare('10.15', '>=')"
-            msg: "The target system must be running macOS 10.15 (Catalina) or higher to use this version of macOS-ansible."
+            that: "ansible_distribution_version is version_compare('12', '>=')"
+            msg: "The target system must be running macOS 12 (Monterey) or higher to use this version of macOS-ansible."
+    - name: Include playbook configuration.
+      include_vars: "{{ item }}"
+      with_fileglob:
+        - "{{ playbook_dir }}/config.yml"
+      tags: ["always"]
 
   roles:
-    - role: homebrew
-      tags: [homebrew]
+    - role: elliotweiser.osx-command-line-tools
+    - role: geerlingguy.mac.homebrew
+      tags: ["homebrew"]
     - role: shell
       tags: [shell]
+    - role: geerlingguy.dotfiles
+      when: configure_dotfiles
+      tags: ["dotfiles"]
     - role: node
       tags: [node]
-    - role: mas
-      when: mas_apps|count > 0
-      tags: [mas]
+    - role: geerlingguy.mac.mas
+      when: mas_installed_apps or mas_installed_app_ids
+      tags: ["mas"]
+    - role: settings
+      tags: [settings]
     - role: projects
       when: projects|count > 0
       tags: [projects]
-    - role: settings
-      tags: [settings]
-    - role: geerlingguy.dotfiles
-      when: configure_dotfiles
-      tags: [dotfiles]

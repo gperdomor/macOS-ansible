@@ -3,23 +3,23 @@
   when: node_manager == "volta"
   block:
     - name: Install Volta JavaScript Tool Manager.
-      shell: "curl https://get.volta.sh | bash"
+      command: "curl https://get.volta.sh | bash"
       args:
         chdir: "{{ ansible_env.HOME }}"
         creates: "{{ ansible_env.HOME }}/.volta"
 
     - name: Install default node version.
-      shell: "{{ ansible_env.HOME }}/.volta/bin/volta install node@{{ node_version }}"
+      command: "{{ ansible_env.HOME }}/.volta/bin/volta install node@{{ node_version }}"
       changed_when: false
 
     - name: List installed npm packages.
-      shell: "{{ ansible_env.HOME }}/.volta/bin/volta list"
+      command: "{{ ansible_env.HOME }}/.volta/bin/volta list"
       register: npm_list
       check_mode: false
       changed_when: false
 
     - name: Install global npm packages.
-      shell: "{{ ansible_env.HOME }}/.volta/bin/volta install {{ item }}"
+      command: "{{ ansible_env.HOME }}/.volta/bin/volta install {{ item }}"
       loop: "{{ npm_packages }}"
       when: (item | string) not in npm_list.stdout
 
@@ -27,31 +27,97 @@
   when: node_manager == "nvm"
   block:
     - name: Install Node Version Manager (NVM)
-      shell: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v{{ nvm_version }}/install.sh | bash"
+      command: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v{{ nvm_version }}/install.sh | bash"
       args:
         chdir: "{{ ansible_env.HOME }}"
         creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
 
     - name: Install default node version.
-      shell: >
+      command: >
         . {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install {{ node_version }}
       register: node_version_response
       changed_when: "'already installed' not in node_version_response.stderr"
 
     - name: Make Node {{ node_version }} as default.
-      shell: >
+      command: >
         . {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm alias default {{ node_version }}
       changed_when: false
 
     - name: List installed npm packages.
-      shell: >
+      command: >
         . {{ ansible_env.HOME }}/.nvm/nvm.sh && {{ ansible_env.HOME }}/.nvm/versions/node/v{{ node_version }}/bin/npm -g list --depth=0
       register: npm_list
       check_mode: false
       changed_when: false
 
     - name: Install global npm packages.
-      shell: >
+      command: >
         . {{ ansible_env.HOME }}/.nvm/nvm.sh && {{ ansible_env.HOME }}/.nvm/versions/node/v{{ node_version }}/bin/npm -g install {{ item }}
       loop: "{{ npm_packages }}"
       when: (item | string) not in npm_list.stdout
+
+- name: "Running Node Tasks using Fast Node Manager (FNM)"
+  when: node_manager == "fnm"
+  block:
+    - name: Install Fast Node Manager (FNM)
+      homebrew:
+        name: fnm
+        state: present
+
+    - name: Install default node version.
+      command: fnm install {{ node_version }}
+      register: node_version_response
+      changed_when: "'Version already installed' not in node_version_response.stderr"
+
+    - name: Make Node {{ node_version }} as default.
+      command: fnm default {{ node_version }}
+      changed_when: false
+
+    - name: List installed npm packages.
+      command: npm -g list --depth=0
+      register: npm_list
+      check_mode: false
+      changed_when: false
+
+    - name: Install global npm packages.
+      command: npm -g install {{ item }}
+      loop: "{{ npm_packages }}"
+      when: (item | string) not in npm_list.stdout
+
+- name: "Running Node Tasks using ASDF"
+  when: node_manager == "asdf"
+  block:
+    - name: Install ASDF
+      homebrew:
+        name: asdf
+        state: present
+
+    - name: Checking asdf plugins
+      shell: asdf plugin list
+      register: plugins_list
+      changed_when: false
+      check_mode: false
+      ignore_errors: true
+
+    - name: Adding ASDF plugin for nodejs
+      command: asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+      when: "'nodejs' not in plugins_list.stdout"
+
+    - name: Install default node version
+      command: asdf install nodejs {{ node_version }}
+      register: node_version_response
+      check_mode: false
+      changed_when: "'is already installed' not in node_version_response.stdout"
+
+    - name: Make Node {{ node_version }} as default.
+      command: asdf global nodejs {{ node_version }}
+      changed_when: false
+
+    - name: Install global NPM packages.
+      npm:
+        name: "{{ item.name | default(item) }}"
+        state: "{{ item.state | default('present') }}"
+        version: "{{ item.version | default(omit) }}"
+        global: true
+        executable: "{{ ansible_env.HOME }}/.asdf/shims/npm"
+      loop: "{{ npm_packages }}"

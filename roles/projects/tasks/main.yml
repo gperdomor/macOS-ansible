@@ -3,19 +3,21 @@
   file:
     path: ~/Developer
     state: directory
-    follow: yes
+    follow: true
 
 - name: Clone projects repos
   git:
     repo: "{{ item.repo_https }}"
     dest: ~/Developer/{{ item.dest }}
-    accept_hostkey: yes
+    accept_hostkey: true
     version: "{{ item.version | default(master) }}"
+    update: false
   with_items: "{{ projects }}"
 
 - name: Set git remote URL to SSH
-  shell: git remote set-url origin {{ item.repo_ssh }}
+  command: git remote set-url origin {{ item.repo_ssh }}
   with_items: "{{ projects }}"
   args:
     chdir: "~/Developer/{{ item.dest }}"
     warn: false
+  changed_when: false

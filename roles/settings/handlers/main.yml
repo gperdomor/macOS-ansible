@@ -1,17 +1,17 @@
 ---
 - name: Restart Finder
-  shell: killall Finder
+  command: killall Finder
 
 - name: Restart Dock
-  shell: killall Dock
+  command: killall Dock
 
 - name: Restart Safari
-  shell: osascript -e 'quit app "Safari"' && osascript -e 'tell application "Safari" to activate'
+  command: osascript -e 'quit app "Safari"' && osascript -e 'tell application "Safari" to activate'
 
 - name: Restart Transmission
-  shell: killall Transmission
-  ignore_errors: yes
+  command: killall Transmission
+  ignore_errors: true
 
 - name: Restart Tower
-  shell: killall Tower
-  ignore_errors: yes
+  command: killall Tower
+  ignore_errors: true
