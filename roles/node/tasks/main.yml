@@ -92,28 +92,25 @@
         name: asdf
         state: present
 
-    - name: Install default node version.
-      command: >
-        asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-      register: plugin_response
-      changed_when: "'Plugin named nodejs already added' not in plugin_response.stderr"
+    - name: Checking asdf plugins
+      shell: asdf plugin list
+      register: plugins_list
+      changed_when: false
+      check_mode: false
+      ignore_errors: true
 
-    - name: Install default node version.
-      command: >
-        asdf install nodejs {{ node_version }}
+    - name: Adding ASDF plugin for nodejs
+      command: asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+      when: "'nodejs' not in plugins_list.stdout"
+
+    - name: Install default node version
+      command: asdf install nodejs {{ node_version }}
       register: node_version_response
-      changed_when: "'Version already installed' not in node_version_response.stderr"
+      check_mode: false
+      changed_when: "'is already installed' not in node_version_response.stdout"
 
     - name: Make Node {{ node_version }} as default.
-      command: >
-        asdf global nodejs {{ node_version }}
-      changed_when: false
-
-    - name: List installed npm packages.
-      command: >
-        npm -g list --depth=0
-      register: npm_list
-      check_mode: false
+      command: asdf global nodejs {{ node_version }}
       changed_when: false
 
     - name: Install global NPM packages.
@@ -122,5 +119,5 @@
         state: "{{ item.state | default('present') }}"
         version: "{{ item.version | default(omit) }}"
         global: true
-        executable: "{{ item.executable | default(omit) }}"
+        executable: "{{ ansible_env.HOME }}/.asdf/shims/npm"
       loop: "{{ npm_packages }}"
