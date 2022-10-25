@@ -73,16 +73,30 @@
       command: fnm default {{ node_version }}
       changed_when: false
 
-    - name: List installed npm packages.
-      command: npm -g list --depth=0
-      register: npm_list
-      check_mode: false
+    - name: Get default nodejs version via fnm
+      shell:
+        cmd: |
+          eval "$(fnm env)"
+          fnm use {{ node_version }} > /dev/null 2>&1
+          readlink -f $(command -v node) | sed  -E "s%/node$%%g"
+        executable: /bin/bash
+      register: fnm_default_nodejs_path_results
       changed_when: false
 
-    - name: Install global npm packages.
-      command: npm -g install {{ item }}
+    - name: Definde default_nodejs_path
+      set_fact:
+        fnm_default_nodejs_path: "{{ fnm_default_nodejs_path_results.stdout }}"
+
+    - name: Install global NPM packages.
+      npm:
+        name: "{{ item.name | default(item) }}"
+        state: "{{ item.state | default('present') }}"
+        version: "{{ item.version | default(omit) }}"
+        global: true
+        # executable: "{{ ansible_env.HOME }}/.asdf/shims/npm"
+      environment:
+        PATH: "{{ fnm_default_nodejs_path }}:{{ ansible_env.PATH }}"
       loop: "{{ npm_packages }}"
-      when: (item | string) not in npm_list.stdout
 
 - name: "Running Node Tasks using ASDF"
   when: node_manager == "asdf"
