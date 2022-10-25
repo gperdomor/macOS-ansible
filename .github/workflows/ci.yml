@@ -1,34 +1,76 @@
+---
 name: CI for macOS
 
 on:
+  pull_request:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+  schedule:
+    - cron: "0 5 1,15 1-12 *"
 
 jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3.
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+
+      - name: Install test dependencies.
+        run: pip3 install yamllint ansible ansible-lint
+
+      - name: Lint code.
+        run: |
+          yamllint .
+          ansible-lint
+
   playbook:
-    runs-on: macos-latest
-    name: Tests
+    name: Playbook
+    runs-on: macos-12
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
+
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
-          python-version: 3.9
-      - name: Install dependencies
+          python-version: "3.x"
+
+      - name: Uninstall GitHub Actions' built-in browser installs.
         run: |
-          brew install ansible
-          ansible-galaxy install -r requirements.yml --force
-      - name: Copy test config.yml into place
-        run: cp tests/config.yml config.yml
+          sudo rm -rf /Applications/Firefox.app
+          sudo rm -rf /Applications/Google\ Chrome.app
+
+      - name: Install dependencies
+        run: brew install ansible
+
+      - name: Set up the test environment.
+        run: |
+          cp tests/ansible.cfg ./ansible.cfg
+          cp tests/inventory.yml ./inventory.yml
+          cp tests/config.yml ./config.yml
+          ansible-galaxy install -r requirements.yml
+
       - name: Checking the playbook's syntax
         run: ansible-playbook main.yml -i inventory.yml --syntax-check
-      - name: Run playbook
-        run: ansible-playbook main.yml -i inventory.yml
-      # - name: Test the playbook's idempotence
-      #   run: |
-      #     idempotence=$(mktemp)
-      #     ansible-playbook main.yml -i hosts | tee -a ${idempotence}
-      #     tail ${idempotence} | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)
+
+      - name: Test the playbook's syntax.
+        run: ansible-playbook main.yml -i inventory.yml --syntax-check
+
+      - name: Test the playbook.
+        run: ansible-playbook main.yml
+        env:
+          ANSIBLE_FORCE_COLOR: "1"
+
+      - name: Idempotence check.
+        run: |
+          idempotence=$(mktemp)
+          ansible-playbook main.yml | tee -a ${idempotence}
+          tail ${idempotence} | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)
+        env:
+          ANSIBLE_FORCE_COLOR: "1"

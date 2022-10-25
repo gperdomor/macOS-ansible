@@ -53,76 +53,82 @@ ssh_keys:
 ### Role: Homebrew
 
 homebrew_taps:
-  - AdoptOpenJDK/openjdk
-  - aws/tap
   - heroku/brew
+  - homebrew/cask
   - homebrew/cask-fonts
-  - kylef/formulae
-  - mongodb/brew
+  - homebrew/core
   - vapor/tap
 
-homebrew_apps:
-  # - adoptopenjdk/openjdk/adoptopenjdk16
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps:
   - appcleaner
   - araxis-merge
   # - bloomrpc
   # - cleanmymac
   # - daisydisk
-  - datagrip
-  # - discord
   - docker
   - font-cascadia-code
+  - font-fira-code-nerd-font
   - font-jetbrains-mono
   - google-chrome
   - gpg-suite-no-mail
-  - iina
+  # - iina
   # - imageoptim
   # - insomnia
+  - iterm2
   - keka
   # - knuff
   - microsoft-edge
-  - mongodb-compass
   # - navicat-premium
   - ngrok
   - p4v
   # - parallels
   - postman
-  # - puppet-bolt
   - tableplus
+  # - temurin # Java
   - tower
   - transmission
   - visual-studio-code
+  # - visual-studio-code-insiders
+  - vlc
   # - vmware-fusion
   # - xscope
   # - zoom
 
-homebrew_packages:
+homebrew_installed_packages:
+  # - ansible # Installed via Pip.
+  # - asdf
+  - cosign
   - diff-so-fancy
+  - fnm
   - git
   - git-lfs
   # - gitlab-runner
+  # - helm
   # - heroku
   - httpie
   - jq
   # - minikube
+  - openssl
   - ssh-copy-id
-  # - swiftenv
-  # - swiftformat
-  # - swiftlint
+  - starship
   - tree
   - watchman
-  - wget
 
 ####################################################################
 ### Role: MAS
 
-mas_apps:
-  - { name: "1Password 7", id: 1333542190 }
+mas_email: ""
+mas_password: ""
+mas_installed_apps:
+  # - { name: "1Password 7", id: 1333542190 }
+  - { name: "1Password for Safari", id: 1569813296 }
   # - { name: "Affinity Designer", id: 824171161 }
   # - { name: "Affinity Photo", id: 824183456 }
   # - { name: "Agenda", id: 1287445660 }
   - { name: "Amphetamine", id: 937984704 }
-  # - { name: "Craft", id: 1487937127 }
+  - { name: "Bitdefender Virus Scanner", id: 500154009 }
+  - { name: "Craft", id: 1487937127 }
   - { name: "Keynote", id: 409183694 }
   - { name: "Magnet", id: 441258766 }
   # - { name: "Microsoft Excel", id: 462058435 }
@@ -136,32 +142,31 @@ mas_apps:
   - { name: "Reeder", id: 1529448980 }
   - { name: "Slack", id: 803453959 }
   - { name: "Spark", id: 1176895641 }
-  - { name: "The Unarchiver", id: 425424353 }
-  - { name: "Twitter", id: 1482454543 }
+  # - { name: "The Unarchiver", id: 425424353 }
+  # - { name: "Twitter", id: 1482454543 }
   - { name: "Xcode", id: 497799835 }
 
 ####################################################################
 ### Role: Node
 
-node_manager: nvm
-nvm_version: 0.38.0
-node_version: 16.6.1
-
+node_manager: fnm
+node_version: 18.11.0
 npm_packages:
-  - "@angular/cli"
-  - "@electron-forge/cli"
-  - "@maizzle/cli"
-  - "@nestjs/cli"
+  # - "@angular/cli"
+  # - "@electron-forge/cli"
+  # - "@maizzle/cli"
+  # - "@nestjs/cli"
   - autocannon
   - create-nx-workspace
   - depcheck
   - eslint
-  - npm-check
   - npm-check-updates
   - nx
-  - oclif
+  # - oclif
+  - pnpm
   - prettier
-  - verdaccio
+  # - verdaccio
+  - yarn
 
 ####################################################################
 ### Role: dotfiles
@@ -169,10 +174,18 @@ npm_packages:
 configure_dotfiles: true
 dotfiles_repo: https://github.com/gperdomor/dotfiles.git
 dotfiles_repo_version: main
-dotfiles_repo_accept_hostkey: false
-dotfiles_repo_local_destination: ~/.dotfiles
+dotfiles_repo_accept_hostkey: true
+dotfiles_repo_local_destination: ~/Developer/dotfiles
 dotfiles_files:
+  # - .asdfrc
   - .gitconfig
   - .gitignore
   - .npmrc
+  # - .tool-versions
   - .zshrc
+
+projects:
+  - dest: "macOS-ansible"
+    repo_https: "https://github.com/gperdomor/macOS-ansible.git"
+    repo_ssh: "git@github.com:gperdomor/macOS-ansible.git"
+    version: main

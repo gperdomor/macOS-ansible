@@ -3,9 +3,3 @@
   shell: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   args:
     creates: ~/.oh-my-zsh
-
-# We can't restart Terminal via a handler as it will kill the playbook run
-# prematurely. Let's just remind the user to instead.
-# TODO: Let's not presume this. Add condition to handler to help decide.
-- debug:
-    msg: "Please restart Terminal.app to see any change in preferences."

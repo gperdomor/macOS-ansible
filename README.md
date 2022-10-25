@@ -2,36 +2,73 @@
 
 # Ansible MacOS Playbook
 
-This is the playbook I use after a clean install of MacOS to set everything up.
-
-## Roles/Tasks
-
-- Installs Homebrew packages and app casks (Role `homebrew`)
-- Installs App Store apps with [`mas-cli`](https://github.com/mas-cli/mas) (Role `mas`)
-- Installs Node with NVM or Volta (Role `node`)
-- Modifies MacOS settings (Role `settings`)
-- Changes the user shell, if configured (Role `shell`)
+This playbook installs and configures most of the software I use on my Mac for web and software development.
 
 ## Installation
 
-1. Install [Homebrew](https://brew.sh).
-1. Install Python (`brew install python`)
-1. Install Ansible (`pip3 install ansible`)
-1. Copy `default.config.yml` to `config.yml` and edit the configuration to your likings.
-   - **Don't skip this, otherwise your computer will be provisioned like mine :)**
-1. Run `ansible-playbook main.yml -i inventory.yml`. Enter your account password when prompted.
-   - If you have a configuration stored elsewhere (e.g. in a dotfiles folders), run `ansible-playbook main.yml --extra-vars=@/path/to/my/config.yml`
+1. Ensure Apple's command line tools are installed (xcode-select --install to launch the installer).
+2. [Install Ansible](https://docs.ansible.com/ansible/latest/installation_guide/index.html):
+   1. Run the following command to add Python 3 to your $PATH: `export PATH="$HOME/Library/Python/3.8/bin:/opt/homebrew/bin:$PATH"`
+   2. Upgrade Pip: `sudo pip3 install --upgrade pip`
+   3. Install Ansible: `pip3 install ansible`
+3. Clone or download this repository to your local drive.
+4. Run `ansible-galaxy install -r requirements.yml` inside this directory to install required Ansible roles.
+5. Run `ansible-playbook main.yml --ask-become-pass` inside this directory. Enter your macOS account password when prompted for the 'BECOME' password.
 
-## Updating a fork with the latest changes from this repository
+> Note: If some Homebrew commands fail, you might need to agree to Xcode's license or fix some other Brew issue. Run `brew doctor` to see if this is the case.
 
-If you forked this repository and want to include its latest changes without losing your own,
-add this repository as an upstream and rebase it onto your fork:
+### Use with a remote Mac
 
-```bash
-git remote add upstream git@github.com:gperdomor/macos-ansible.git
-git fetch upstream
-git rebase upstream/master
+You can use this playbook to manage other Macs as well; the playbook doesn't even need to be run from a Mac at all! If you want to manage a remote Mac, either another Mac on your network, or a hosted Mac like the ones from [MacStadium](https://www.macstadium.com), you just need to make sure you can connect to it with SSH:
+
+1. (On the Mac you want to connect to:) Go to System Preferences > Sharing.
+2. Enable 'Remote Login'.
+
+> You can also enable remote login on the command line:
+>
+>     sudo systemsetup -setremotelogin on
+
+Then edit the `inventory.yml` file in this repository and change the config to something like this:
+
+```yaml
+---
+machines:
+  hosts:
+    [ip address or hostname of mac]:
+      ansible_user: [mac ssh username]
 ```
+
+If you need to supply an SSH password (if you don't use SSH keys), make sure to pass the `--ask-pass` parameter to the `ansible-playbook` command.
+
+### Running a specific set of tagged tasks
+
+You can filter which part of the provisioning process to run by specifying a set of tags using `ansible-playbook`'s `--tags` flag. The tags available are `dotfiles`, `homebrew`, `mas`, `extra-packages` and `osx`.
+
+    ansible-playbook main.yml -K --tags "dotfiles,homebrew"
+
+## Overriding Defaults
+
+Not everyone's development environment and preferred software configuration is the same.
+
+You can override any of the defaults configured in `default.config.yml` by creating a `config.yml` file and setting the overrides in that file. For example, you can customize the installed packages and apps with something like:
+
+```yaml
+homebrew_installed_packages:
+  - cowsay
+  - git
+  - go
+
+mas_installed_apps:
+  - { id: 443987910, name: "1Password" }
+  - { id: 498486288, name: "Quick Resizer" }
+  - { id: 557168941, name: "Tweetbot" }
+  - { id: 497799835, name: "Xcode" }
+
+npm_packages:
+  - name: webpack
+```
+
+Any variable can be overridden in `config.yml`; see the supporting roles' documentation for a complete list of available variables.
 
 ## Acknowledgements
 

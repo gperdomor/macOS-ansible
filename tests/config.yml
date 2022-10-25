@@ -43,29 +43,32 @@ ssh_keys: []
 ### Role: Homebrew
 
 homebrew_taps:
+  - homebrew/cask
   - homebrew/cask-fonts
+  - homebrew/core
 
-homebrew_apps:
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps:
+  - firefox
   - font-cascadia-code
-  - google-chrome
-  - visual-studio-code
 
-homebrew_packages:
+homebrew_installed_packages:
   - git
+  - readline
+  - sqlite
   - wget
+  - wrk
 
 ####################################################################
 ### Role: MAS
 
-mas_apps: []
+mas_installed_apps: []
 
 ####################################################################
 ### Role: Node
 
-node_manager: nvm
-nvm_version: 0.38.0
-node_version: 16.6.1
-
+node_manager: fnm
+node_version: 18.11.0
 npm_packages:
   - eslint
   - nx
@@ -74,4 +77,15 @@ npm_packages:
 ####################################################################
 ### Role: dotfiles
 
-configure_dotfiles: no
+configure_dotfiles: true
+dotfiles_repo: https://github.com/gperdomor/dotfiles.git
+dotfiles_repo_version: main
+dotfiles_repo_accept_hostkey: true
+dotfiles_repo_local_destination: ~/Developer/dotfiles
+dotfiles_files:
+  - .asdfrc
+  - .gitconfig
+  - .gitignore
+  - .npmrc
+  - .tool-versions
+  - .zshrc

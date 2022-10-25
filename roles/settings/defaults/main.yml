@@ -30,6 +30,6 @@ dock_make_hidden_apps_translucent: null
 dock_show_indicator_lights_for_open_apps: null
 dock_tilesize: null
 
-# Ssh
+# Ssh
 configure_ssh: false
 ssh_keys: []

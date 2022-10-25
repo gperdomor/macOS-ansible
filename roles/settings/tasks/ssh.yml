@@ -23,6 +23,6 @@
   changed_when: false
 
 - name: Add ssh private keys to ssh agent
-  shell: "ssh-add -K {{ ansible_env.HOME }}/.ssh/{{item.name}}"
+  command: "ssh-add -K {{ ansible_env.HOME }}/.ssh/{{item.name}}"
   loop: "{{ ssh_keys }}"
   changed_when: false

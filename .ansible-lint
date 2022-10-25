@@ -1,0 +1,12 @@
+---
+skip_list:
+  - experimental
+  - fqcn-builtins
+  - var-spacing
+
+warn_list:
+  - command-instead-of-module
+  - command-instead-of-shell
+  - fqcn[action]
+  - name[missing]
+  - name[template]

@@ -3,7 +3,7 @@
   file:
     path: "{{ ansible_env.HOME }}/Developer"
     state: directory
-    follow: yes
+    follow: true
   notify: Restart Tower
 
 - name: Set default Git binary
@@ -34,7 +34,7 @@
     key: GTUserDefaultsDiffToolIdentifier
     type: string
     value: araxismerge
-  when: "araxis_merge_check.stat.exists == True"
+  when: "araxis_merge_check.stat.exists"
   notify: Restart Tower
 
 - name: Check if P4Merge is installed
@@ -49,5 +49,5 @@
     key: GTUserDefaultsMergeToolIdentifier
     type: string
     value: p4merge
-  when: "p4merge_check.stat.exists == True"
+  when: "p4merge_check.stat.exists"
   notify: Restart Tower

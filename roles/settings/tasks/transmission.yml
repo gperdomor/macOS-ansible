@@ -1,9 +1,10 @@
+# yamllint disable rule:indentation
 ---
 - name: Ensure location for incomplete downloads exists
   file:
     path: "{{ ansible_env.HOME }}/Downloads/Torrents/Incomplete"
     state: directory
-    follow: yes
+    follow: true
   notify: Restart Transmission
 
 - name: "Configure Transmission - Phase 1"
@@ -13,10 +14,26 @@
     type: bool
     value: "{{ item.value | bool }}"
   loop:
-    - { name: "Keep incomplete downloads", key: "UseIncompleteDownloadFolder", value: "true" }
-    - { name: "Don't prompt for confirmation before downloading (1/2)", key: "DownloadAsk", value: "false" }
-    - { name: "Don't prompt for confirmation before downloading (2/2)", key: "MagnetOpenAsk", value: "false" }
-    - { name: "Trash original torrent files", key: "DeleteOriginalTorrent", value: "true" }
+    - {
+        name: "Keep incomplete downloads",
+        key: "UseIncompleteDownloadFolder",
+        value: "true",
+      }
+    - {
+        name: "Don't prompt for confirmation before downloading (1/2)",
+        key: "DownloadAsk",
+        value: "false",
+      }
+    - {
+        name: "Don't prompt for confirmation before downloading (2/2)",
+        key: "MagnetOpenAsk",
+        value: "false",
+      }
+    - {
+        name: "Trash original torrent files",
+        key: "DeleteOriginalTorrent",
+        value: "true",
+      }
     - { name: "Hide the donate message", key: "WarningDonate", value: "false" }
     - { name: "Hide the legal disclaimer", key: "WarningLegal", value: "false" }
     - { name: "Randomize port on launch", key: "RandomPort", value: "true" }

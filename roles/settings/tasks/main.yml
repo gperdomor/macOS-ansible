@@ -19,11 +19,11 @@
   tags: [settings-trackpad]
 
 - import_tasks: transmission.yml
-  when: '"transmission" in homebrew_apps'
+  when: '"transmission" in homebrew_cask_apps'
   tags: [settings-transmission]
 
 - import_tasks: tower.yml
-  when: '"tower" in homebrew_apps'
+  when: '"tower" in homebrew_cask_apps'
   tags: [settings-tower]
 
 - import_tasks: ssh.yml
