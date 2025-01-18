@@ -149,24 +149,16 @@ mas_installed_apps:
 ####################################################################
 ### Role: Node
 
-node_manager: fnm
-node_version: 18.11.0
+node_version: 22.13.0
 npm_packages:
-  # - "@angular/cli"
-  # - "@electron-forge/cli"
-  # - "@maizzle/cli"
-  # - "@nestjs/cli"
   - autocannon
   - create-nx-workspace
   - depcheck
   - eslint
+  - knip
   - npm-check-updates
   - nx
-  # - oclif
-  - pnpm
   - prettier
-  # - verdaccio
-  - yarn
 
 ####################################################################
 ### Role: dotfiles

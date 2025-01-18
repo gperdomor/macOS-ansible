@@ -1,63 +1,5 @@
 ---
-- name: "Running Node Tasks using Volta"
-  when: node_manager == "volta"
-  block:
-    - name: Install Volta JavaScript Tool Manager.
-      command: "curl https://get.volta.sh | bash"
-      args:
-        chdir: "{{ ansible_env.HOME }}"
-        creates: "{{ ansible_env.HOME }}/.volta"
-
-    - name: Install default node version.
-      command: "{{ ansible_env.HOME }}/.volta/bin/volta install node@{{ node_version }}"
-      changed_when: false
-
-    - name: List installed npm packages.
-      command: "{{ ansible_env.HOME }}/.volta/bin/volta list"
-      register: npm_list
-      check_mode: false
-      changed_when: false
-
-    - name: Install global npm packages.
-      command: "{{ ansible_env.HOME }}/.volta/bin/volta install {{ item }}"
-      loop: "{{ npm_packages }}"
-      when: (item | string) not in npm_list.stdout
-
-- name: "Running Node Tasks using Node Version Manager (NVM)"
-  when: node_manager == "nvm"
-  block:
-    - name: Install Node Version Manager (NVM)
-      command: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v{{ nvm_version }}/install.sh | bash"
-      args:
-        chdir: "{{ ansible_env.HOME }}"
-        creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
-
-    - name: Install default node version.
-      command: >
-        . {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install {{ node_version }}
-      register: node_version_response
-      changed_when: "'already installed' not in node_version_response.stderr"
-
-    - name: Make Node {{ node_version }} as default.
-      command: >
-        . {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm alias default {{ node_version }}
-      changed_when: false
-
-    - name: List installed npm packages.
-      command: >
-        . {{ ansible_env.HOME }}/.nvm/nvm.sh && {{ ansible_env.HOME }}/.nvm/versions/node/v{{ node_version }}/bin/npm -g list --depth=0
-      register: npm_list
-      check_mode: false
-      changed_when: false
-
-    - name: Install global npm packages.
-      command: >
-        . {{ ansible_env.HOME }}/.nvm/nvm.sh && {{ ansible_env.HOME }}/.nvm/versions/node/v{{ node_version }}/bin/npm -g install {{ item }}
-      loop: "{{ npm_packages }}"
-      when: (item | string) not in npm_list.stdout
-
 - name: "Running Node Tasks using Fast Node Manager (FNM)"
-  when: node_manager == "fnm"
   block:
     - name: Install Fast Node Manager (FNM)
       homebrew:
@@ -83,7 +25,7 @@
       register: fnm_default_nodejs_path_results
       changed_when: false
 
-    - name: Definde default_nodejs_path
+    - name: Define default_nodejs_path
       set_fact:
         fnm_default_nodejs_path: "{{ fnm_default_nodejs_path_results.stdout }}"
 
@@ -93,45 +35,6 @@
         state: "{{ item.state | default('present') }}"
         version: "{{ item.version | default(omit) }}"
         global: true
-        # executable: "{{ ansible_env.HOME }}/.asdf/shims/npm"
       environment:
         PATH: "{{ fnm_default_nodejs_path }}:{{ ansible_env.PATH }}"
-      loop: "{{ npm_packages }}"
-
-- name: "Running Node Tasks using ASDF"
-  when: node_manager == "asdf"
-  block:
-    - name: Install ASDF
-      homebrew:
-        name: asdf
-        state: present
-
-    - name: Checking asdf plugins
-      shell: asdf plugin list
-      register: plugins_list
-      changed_when: false
-      check_mode: false
-      ignore_errors: true
-
-    - name: Adding ASDF plugin for nodejs
-      command: asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-      when: "'nodejs' not in plugins_list.stdout"
-
-    - name: Install default node version
-      command: asdf install nodejs {{ node_version }}
-      register: node_version_response
-      check_mode: false
-      changed_when: "'is already installed' not in node_version_response.stdout"
-
-    - name: Make Node {{ node_version }} as default.
-      command: asdf global nodejs {{ node_version }}
-      changed_when: false
-
-    - name: Install global NPM packages.
-      npm:
-        name: "{{ item.name | default(item) }}"
-        state: "{{ item.state | default('present') }}"
-        version: "{{ item.version | default(omit) }}"
-        global: true
-        executable: "{{ ansible_env.HOME }}/.asdf/shims/npm"
       loop: "{{ npm_packages }}"
