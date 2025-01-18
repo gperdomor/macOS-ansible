@@ -10,7 +10,7 @@
     repo: "{{ item.repo_https }}"
     dest: ~/Developer/{{ item.dest }}
     accept_hostkey: true
-    version: "{{ item.version | default(master) }}"
+    version: "{{ item.version | default(main) }}"
     update: false
   with_items: "{{ projects }}"
 
@@ -19,5 +19,4 @@
   with_items: "{{ projects }}"
   args:
     chdir: "~/Developer/{{ item.dest }}"
-    warn: false
   changed_when: false
