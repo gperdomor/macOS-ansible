@@ -52,15 +52,13 @@ ssh_keys:
 ####################################################################
 ### Role: Homebrew
 
-homebrew_taps:
-  - heroku/brew
-  - homebrew/cask
-  - homebrew/cask-fonts
-  - homebrew/core
-  - vapor/tap
+# homebrew_taps:
+#   - heroku/brew
+#   - vapor/tap
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
+  - 1password
   - appcleaner
   - araxis-merge
   # - bloomrpc
@@ -70,12 +68,11 @@ homebrew_cask_apps:
   - font-cascadia-code
   - font-fira-code-nerd-font
   - font-jetbrains-mono
+  - ghostty
   - google-chrome
-  - gpg-suite-no-mail
-  # - iina
+  - iina
   # - imageoptim
   # - insomnia
-  - iterm2
   - keka
   # - knuff
   - microsoft-edge
@@ -83,21 +80,20 @@ homebrew_cask_apps:
   - ngrok
   - p4v
   # - parallels
+  - podman-desktop
   - postman
   - tableplus
   # - temurin # Java
   - tower
   - transmission
   - visual-studio-code
-  # - visual-studio-code-insiders
   - vlc
   # - vmware-fusion
   # - xscope
-  # - zoom
+  - zoom
 
 homebrew_installed_packages:
   # - ansible # Installed via Pip.
-  # - asdf
   - cosign
   - diff-so-fancy
   - fnm
@@ -105,14 +101,11 @@ homebrew_installed_packages:
   - git-lfs
   # - gitlab-runner
   # - helm
-  # - heroku
-  - httpie
-  - jq
-  # - minikube
+  - minikube
   - openssl
+  - podman
   - ssh-copy-id
   - starship
-  - tree
   - watchman
 
 ####################################################################
@@ -121,16 +114,15 @@ homebrew_installed_packages:
 mas_email: ""
 mas_password: ""
 mas_installed_apps:
-  # - { name: "1Password 7", id: 1333542190 }
   - { name: "1Password for Safari", id: 1569813296 }
-  # - { name: "Affinity Designer", id: 824171161 }
-  # - { name: "Affinity Photo", id: 824183456 }
+  - { name: "Affinity Designer", id: 824171161 }
+  - { name: "Affinity Photo", id: 824183456 }
   # - { name: "Agenda", id: 1287445660 }
   - { name: "Amphetamine", id: 937984704 }
   - { name: "Bitdefender Virus Scanner", id: 500154009 }
   - { name: "Craft", id: 1487937127 }
-  - { name: "Keynote", id: 409183694 }
-  - { name: "Magnet", id: 441258766 }
+  # - { name: "Keynote", id: 409183694 }
+  # - { name: "Magnet", id: 441258766 }
   # - { name: "Microsoft Excel", id: 462058435 }
   # - { name: "Microsoft Word", id: 462054704 }
   - { name: "Money", id: 1185488696 }
@@ -169,11 +161,11 @@ dotfiles_repo_version: main
 dotfiles_repo_accept_hostkey: true
 dotfiles_repo_local_destination: ~/Developer/dotfiles
 dotfiles_files:
-  # - .asdfrc
+  - .allowed_signers
   - .gitconfig
   - .gitignore
   - .npmrc
-  # - .tool-versions
+  - .starship.toml
   - .zshrc
 
 projects:
