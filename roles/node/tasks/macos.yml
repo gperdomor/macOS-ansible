@@ -52,13 +52,3 @@
     - name: Definde default_nodejs_path
       set_fact:
         default_nodejs_path: "{{ default_nodejs_path_results.stdout }}"
-
-    - name: Install global NPM packages
-      community.general.npm:
-        name: "{{ item.name | default(item) }}"
-        state: "{{ item.state | default('present') }}"
-        version: "{{ item.version | default(omit) }}"
-        global: true
-      environment:
-        PATH: "{{ default_nodejs_path }}:{{ ansible_env.PATH }}"
-      loop: "{{ npm_packages }}"
