@@ -5,6 +5,7 @@
 homebrew_taps: []
 
 homebrew_casks:
+  - 1password
   - appcleaner
   - araxis-merge
   - docker
