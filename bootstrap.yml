@@ -1,6 +1,6 @@
 ---
 - name: Bootstrap development environment
-  hosts: all
+  hosts: localhost
 
   vars_files:
     - default.config.yml
@@ -24,6 +24,7 @@
     - role: shell
       tags: [shell]
     - role: dotfiles
+      when: configure_dotfiles
       tags: [dotfiles]
     - role: node
       tags: [node]
