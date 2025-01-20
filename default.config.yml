@@ -97,6 +97,7 @@ npm_packages:
 ####################################################################
 ### Role: dotfiles
 
+configure_dotfiles: true
 dotfiles_repo: https://github.com/gperdomor/dotfiles.git
 dotfiles_repo_version: main
 dotfiles_repo_accept_hostkey: true

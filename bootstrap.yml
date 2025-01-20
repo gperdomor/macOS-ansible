@@ -1,6 +1,6 @@
 ---
 - name: Bootstrap development environment
-  hosts: localhost
+  hosts: all
 
   vars_files:
     - default.config.yml

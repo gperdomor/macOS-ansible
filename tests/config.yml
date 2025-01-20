@@ -50,10 +50,7 @@ npm_packages:
 ####################################################################
 ### Role: dotfiles
 
-dotfiles_repo: https://github.com/gperdomor/dotfiles.git
-dotfiles_repo_version: main
-dotfiles_repo_accept_hostkey: true
-dotfiles_repo_local_destination: ~/Developer/dotfiles
+configure_dotfiles: false
 
 ####################################################################
 ### Role: Projects
