@@ -2,7 +2,7 @@
 - name: "Running Node Tasks using Fast Node Manager (FNM)"
   block:
     - name: Install Fast Node Manager (FNM)
-      become: yes
+      become: true
       community.general.homebew:
         name: fnm
         state: present

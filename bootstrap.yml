@@ -1,3 +1,4 @@
+---
 - name: Bootstrap development environment
   hosts: localhost
 
@@ -15,5 +16,7 @@
             msg: "The target system must be running macOS 14 (Sonoma) or higher to use this version of macOS-ansible."
 
   roles:
+    - role: shell
+      tags: [shell]
     - role: node
       tags: [node]
