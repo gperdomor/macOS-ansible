@@ -19,7 +19,7 @@ jobs:
       - name: Run ansible-lint
         uses: ansible/ansible-lint@v24.12.2
         with:
-          requirements_file: requirements.yaml
+          requirements_file: requirements.yml
 
       # - name: Install test dependencies.
       #   run: brew install ansible ansible-lint yamllint
