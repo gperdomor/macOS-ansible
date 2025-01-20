@@ -33,7 +33,7 @@ jobs:
 
       - name: Set up the test environment.
         run: |
-          cp tests/config.yml ./config.yml
+          cp tests/config.yml ./default.config.yml
           ansible-galaxy install -r requirements.yml
 
       - name: Test the playbook's syntax.
