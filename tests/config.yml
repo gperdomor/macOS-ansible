@@ -1,0 +1,65 @@
+---
+####################################################################
+### Role: Homebrew
+
+homebrew_taps: []
+
+homebrew_casks:
+  - appcleaner
+  - font-cascadia-code
+  - font-fira-code-nerd-font
+  - font-jetbrains-mono
+  - font-jetbrains-mono-nerd-font
+  - ghostty
+  - ngrok
+  - visual-studio-code
+
+homebrew_packages:
+  - cosign
+  - diff-so-fancy
+  - fastfetch
+  - fnm
+  - fzf
+  - git
+  - oh-my-posh
+  - starship
+  - stow
+  - zoxide
+
+####################################################################
+### Role: MAS
+
+mas_packages: []
+
+####################################################################
+### Role: Node
+
+nodejs_versions:
+  - 22
+  - 20
+
+npm_packages:
+  - "@gperdomor/cvb"
+  - "@nx-rools/nx-container"
+  - "@nx-rools/nx-prisma"
+  - autocannon
+  - eslint
+  - npm-check-updates
+  - nx
+
+####################################################################
+### Role: dotfiles
+
+dotfiles_repo: https://github.com/gperdomor/dotfiles.git
+dotfiles_repo_version: main
+dotfiles_repo_accept_hostkey: true
+dotfiles_repo_local_destination: ~/Developer/dotfiles
+
+####################################################################
+### Role: Projects
+
+projects:
+  - dest: "macOS-ansible"
+    repo_https: "https://github.com/gperdomor/macOS-ansible.git"
+    repo_ssh: "git@github.com:gperdomor/macOS-ansible.git"
+    version: main
