@@ -18,6 +18,7 @@ homebrew_casks:
   - keka
   - microsoft-edge
   - microsoft-teams
+  - ngrok
   # - notchnook
   - p4v
   - podman-desktop
@@ -38,6 +39,7 @@ homebrew_packages:
   - fzf
   - git
   - git-lfs
+  # - gitlab-runner
   - iperf
   - mas
   - oh-my-posh
