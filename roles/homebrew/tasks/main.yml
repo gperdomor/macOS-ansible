@@ -1,0 +1,6 @@
+---
+- name: Installing Homebrew Formulas
+  import_tasks: install-formulas.yml
+
+- name: Installing Homebrew Casks
+  import_tasks: install-casks.yml

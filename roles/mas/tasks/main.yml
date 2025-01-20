@@ -1,0 +1,14 @@
+---
+- name: "Running Mac Apps Store Tasks"
+  block:
+    - name: Install mas-cli using homebrew
+      community.general.homebrew:
+        name: mas-cli
+        state: present
+        update_homebrew: true
+
+    - name: Install global NPM packages
+      community.general.mas:
+        id: "{{ item.id | default(item) }}"
+        state: "{{ item.state | default('present') }}"
+      loop: "{{ mas_packages }}"

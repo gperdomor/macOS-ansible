@@ -2,6 +2,9 @@
 - name: Bootstrap development environment
   hosts: localhost
 
+  vars_files:
+    - config.yml
+
   pre_tasks:
     - name: "Verifying playbook requirements"
       tags: ["always"]
@@ -16,7 +19,11 @@
             msg: "The target system must be running macOS 14 (Sonoma) or higher to use this version of macOS-ansible."
 
   roles:
+    - role: homebrew
+      tags: [homebrew]
     - role: shell
       tags: [shell]
     - role: node
       tags: [node]
+    - role: mas
+      tags: [mas]
