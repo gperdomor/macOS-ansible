@@ -11,10 +11,16 @@ on:
 jobs:
   lint:
     name: Lint
-    runs-on: macos-15
+    runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
+      - name: Install Ansible
+        run: sudo apt install ansible -y
+
+      - name: Install Ansible-Galaxy Requirements
+        run: ansible-galaxy collection install community.general
 
       - name: Run ansible-lint
         uses: ansible/ansible-lint@v24.12.2
