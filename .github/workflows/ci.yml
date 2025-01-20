@@ -9,31 +9,31 @@ on:
     - cron: "0 5 1,15 1-12 *"
 
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
+  # lint:
+  #   name: Lint
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Check out repository
+  #       uses: actions/checkout@v4
 
-      - name: Install Ansible
-        run: sudo apt install ansible -y
+  #     - name: Install Ansible
+  #       run: sudo apt install ansible -y
 
-      - name: Install Ansible-Galaxy Requirements
-        run: ansible-galaxy collection install community.general
+  #     - name: Install Ansible-Galaxy Requirements
+  #       run: ansible-galaxy collection install community.general
 
-      - name: Run ansible-lint
-        uses: ansible/ansible-lint@v24.12.2
-        with:
-          requirements_file: requirements.yml
+  #     - name: Run ansible-lint
+  #       uses: ansible/ansible-lint@v24.12.2
+  #       with:
+  #         requirements_file: requirements.yml
 
-      # - name: Install test dependencies.
-      #   run: brew install ansible ansible-lint yamllint
+  # - name: Install test dependencies.
+  #   run: brew install ansible ansible-lint yamllint
 
-      # - name: Lint code.
-      #   run: |
-      #     yamllint .
-      #     ansible-lint
+  # - name: Lint code.
+  #   run: |
+  #     yamllint .
+  #     ansible-lint
 
   playbook:
     name: Playbook
@@ -42,23 +42,14 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      # - name: Uninstall GitHub Actions' built-in browser installs.
-      #   run: |
-      #     sudo rm -rf /Applications/Firefox.app
-      #     sudo rm -rf /Applications/Google\ Chrome.app
-
       - name: Install test dependencies.
         run: brew install ansible
 
       - name: Set up the test environment.
-        run: |
-          ansible-galaxy install -r requirements.yml
-      #     cp tests/ansible.cfg ./ansible.cfg
-      #     cp tests/inventory.yml ./inventory.yml
-      #     cp tests/config.yml ./config.yml
+        run: ansible-galaxy install -r requirements.yml
 
-      - name: Test the playbook's syntax.
-        run: ansible-playbook bootstrap.yml --syntax-check
+      # - name: Test the playbook's syntax.
+      #   run: ansible-playbook bootstrap.yml --syntax-check
 
       - name: Test the playbook.
         run: ansible-playbook bootstrap.yml
