@@ -16,7 +16,6 @@ homebrew_casks:
   - google-chrome
   - iina
   - keka
-  - microsoft-auto-update
   - microsoft-edge
   - microsoft-teams
   # - notchnook
