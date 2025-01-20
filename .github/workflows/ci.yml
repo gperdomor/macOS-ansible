@@ -11,18 +11,13 @@ on:
 jobs:
   lint:
     name: Lint
-    runs-on: ubuntu-latest
+    runs-on: macos-15
     steps:
-      - name: Check out the codebase.
-        uses: actions/checkout@v2
-
-      - name: Set up Python 3.
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.10"
+      - name: Check out repository
+        uses: actions/checkout@v4
 
       - name: Install test dependencies.
-        run: pip3 install yamllint ansible ansible-lint
+        run: brew install ansible-lint yamllint
 
       - name: Lint code.
         run: |
@@ -31,7 +26,7 @@ jobs:
 
   playbook:
     name: Playbook
-    runs-on: macos-latest
+    runs-on: macos-15
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -46,8 +41,8 @@ jobs:
       #     sudo rm -rf /Applications/Firefox.app
       #     sudo rm -rf /Applications/Google\ Chrome.app
 
-      # - name: Install test dependencies.
-      #   run: sudo pip3 install ansible
+      - name: Install test dependencies.
+        run: brew install ansible
 
       - name: Set up the test environment.
         run: |
