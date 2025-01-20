@@ -16,18 +16,18 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.
-        uses: actions/setup-python@v5
+      - name: Run ansible-lint
+        uses: ansible/ansible-lint@v24.12.2
         with:
-          python-version: "3.13"
+          requirements_file: requirements.yaml
 
-      - name: Install test dependencies.
-        run: pip3 install yamllint ansible ansible-lint
+      # - name: Install test dependencies.
+      #   run: brew install ansible ansible-lint yamllint
 
-      - name: Lint code.
-        run: |
-          yamllint .
-          ansible-lint
+      # - name: Lint code.
+      #   run: |
+      #     yamllint .
+      #     ansible-lint
 
   playbook:
     name: Playbook
@@ -36,18 +36,13 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.13"
-
       # - name: Uninstall GitHub Actions' built-in browser installs.
       #   run: |
       #     sudo rm -rf /Applications/Firefox.app
       #     sudo rm -rf /Applications/Google\ Chrome.app
 
       - name: Install test dependencies.
-        run: sudo pip3 install ansible
+        run: brew install ansible
 
       - name: Set up the test environment.
         run: |
