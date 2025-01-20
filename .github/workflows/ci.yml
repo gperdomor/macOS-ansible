@@ -32,9 +32,7 @@ jobs:
         run: brew install ansible
 
       - name: Set up the test environment.
-        run: |
-          cp tests/config.yml ./config.yml
-          ansible-galaxy install -r requirements.yml
+        run: ansible-galaxy install -r requirements.yml
 
       - name: Test the playbook's syntax.
         run: ansible-playbook bootstrap.yml --syntax-check
