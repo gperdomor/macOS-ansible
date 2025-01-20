@@ -3,7 +3,7 @@
   hosts: localhost
 
   vars_files:
-    - config.yml
+    - default.config.yml
 
   pre_tasks:
     - name: "Verifying playbook requirements"

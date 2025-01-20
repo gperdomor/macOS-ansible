@@ -1,16 +1,22 @@
 ---
 - name: "Running Homebrew Tasks"
   block:
+    - name: Tap a Homebrew repository, state present
+      community.general.homebrew_tap:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ homebrew_taps }}"
+
     - name: Install Homebrew Formulas
       community.general.homebrew:
         name: "{{ item }}"
         state: present
         update_homebrew: true
-      loop: "{{ brew_packages }}"
+      loop: "{{ homebrew_packages }}"
 
     - name: Install Homebrew Casks
       community.general.homebrew_cask:
         name: "{{ item }}"
         state: present
         update_homebrew: true
-      loop: "{{ brew_casks }}"
+      loop: "{{ homebrew_casks }}"

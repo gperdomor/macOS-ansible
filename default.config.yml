@@ -1,25 +1,10 @@
 ---
-brew_packages:
-  - act
-  - cosign
-  - diff-so-fancy
-  - fastfetch
-  - fnm
-  - fzf
-  - git
-  - git-lfs
-  - iperf
-  - mas
-  - oh-my-posh
-  - openssl
-  - podman
-  - rclone
-  - ssh-copy-id
-  - starship
-  - stow
-  - zoxide
+####################################################################
+### Role: Homebrew
 
-brew_casks:
+homebrew_taps: []
+
+homebrew_casks:
   - appcleaner
   - araxis-merge
   - docker
@@ -45,6 +30,29 @@ brew_casks:
   - vlc
   - zoom
 
+homebrew_packages:
+  - act
+  - cosign
+  - diff-so-fancy
+  - fastfetch
+  - fnm
+  - fzf
+  - git
+  - git-lfs
+  - iperf
+  - mas
+  - oh-my-posh
+  - openssl
+  - podman
+  - rclone
+  - ssh-copy-id
+  - starship
+  - stow
+  - zoxide
+
+####################################################################
+### Role: MAS
+
 mas_packages:
   - { name: "1Password for Safari", id: 1569813296 }
   - { name: "Affinity Designer", id: 824171161 }
@@ -68,6 +76,9 @@ mas_packages:
   # - { name: "Twitter", id: 1482454543 }
   - { name: "Xcode", id: 497799835 }
 
+####################################################################
+### Role: Node
+
 nodejs_versions:
   - 22
   - 20
@@ -81,3 +92,20 @@ npm_packages:
   - npm-check-updates
   - nx
   - prettier
+
+####################################################################
+### Role: dotfiles
+
+dotfiles_repo: https://github.com/gperdomor/dotfiles.git
+dotfiles_repo_version: main
+dotfiles_repo_accept_hostkey: true
+dotfiles_repo_local_destination: ~/Developer/dotfiles
+
+####################################################################
+### Role: Projects
+
+projects:
+  - dest: "macOS-ansible"
+    repo_https: "https://github.com/gperdomor/macOS-ansible.git"
+    repo_ssh: "git@github.com:gperdomor/macOS-ansible.git"
+    version: main
