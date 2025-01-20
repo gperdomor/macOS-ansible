@@ -17,8 +17,8 @@
   ansible.builtin.shell:
     cmd: |
       set -o pipefail
-      stow --dir="files/" --target="$HOME" .
+      stow . --dir files/ --target {{ ansible_env.HOME }} --verbose=2
     executable: /bin/bash
     chdir: "{{ dotfiles_repo_local_destination }}"
-  register: stow_output
-  changed_when: stow_output.rc != 0
+  register: result
+  changed_when: 'result.stderr is search("LINK: ")'
