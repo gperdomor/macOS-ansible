@@ -23,6 +23,8 @@
       tags: [homebrew]
     - role: shell
       tags: [shell]
+    - role: dotfiles
+      tags: [dotfiles]
     - role: node
       tags: [node]
     - role: mas
