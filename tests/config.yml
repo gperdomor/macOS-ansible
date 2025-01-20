@@ -40,8 +40,8 @@ nodejs_versions:
 
 npm_packages:
   - "@gperdomor/cvb"
-  - "@nx-rools/nx-container"
-  - "@nx-rools/nx-prisma"
+  - "@nx-tools/nx-container"
+  - "@nx-tools/nx-prisma"
   - autocannon
   - eslint
   - npm-check-updates
