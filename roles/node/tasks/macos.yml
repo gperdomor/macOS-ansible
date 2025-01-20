@@ -15,7 +15,7 @@
           fnm install {{ item }}
         executable: /bin/bash
       register: fnm_results
-      changed_when: "'successfully downloaded' in fnm_results.stdout"
+      changed_when: "'Installing Node' in fnm_results.stdout"
       loop: "{{ nodejs_versions }}"
 
     - name: Define default_nodejs_version
