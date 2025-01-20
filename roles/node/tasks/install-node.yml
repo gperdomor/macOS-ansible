@@ -1,0 +1,37 @@
+---
+- name: Install Fast Node Manager (FNM)
+  community.general.homebrew:
+    name: fnm
+    state: present
+    update_homebrew: true
+
+- name: Install nodejs via fnm
+  ansible.builtin.shell:
+    cmd: |
+      set -o pipefail
+      eval "$(fnm env)"
+      fnm install {{ item }}
+    executable: /bin/bash
+  register: fnm_results
+  changed_when: "'MiB/s' in fnm_results.stdout"
+  loop: "{{ nodejs_versions }}"
+
+- name: Define default_nodejs_version
+  set_fact:
+    default_nodejs_version: "{{ nodejs_versions|first }}"
+  when:
+    - set_default_nodejs_ver|default(true)
+    - default_nodejs_version is not defined
+
+- name: Set default nodejs version via fnm
+  ansible.builtin.shell:
+    cmd: |
+      set -o pipefail
+      eval "$(fnm env)"
+      fnm use {{ default_nodejs_version }}
+      fnm default $(node --version)
+    executable: /bin/bash
+  args:
+    creates: "{{ ansible_env.HOME }}/.local/share/fnm/aliases/default/bin"
+  when:
+    - set_default_nodejs_ver|default(true)

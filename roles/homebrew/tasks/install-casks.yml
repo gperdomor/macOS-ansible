@@ -1,8 +1,0 @@
----
-- block:
-    - name: Install Homebrew Casks
-      community.general.homebrew_cask:
-        name: "{{ item }}"
-        state: present
-        update_homebrew: true
-      loop: "{{ brew_casks }}"

@@ -1,10 +1,8 @@
 ---
-- name: "Running Node Tasks using Fast Node Manager (FNM)"
-  block:
-    - name: Install global NPM packages
-      community.general.npm:
-        name: "{{ item.name | default(item) }}"
-        state: "{{ item.state | default('present') }}"
-        version: "{{ item.version | default(omit) }}"
-        global: true
-      loop: "{{ npm_packages }}"
+- name: Install global NPM packages
+  community.general.npm:
+    name: "{{ item.name | default(item) }}"
+    state: "{{ item.state | default('present') }}"
+    version: "{{ item.version | default(omit) }}"
+    global: true
+  loop: "{{ npm_packages }}"

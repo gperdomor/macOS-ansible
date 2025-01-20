@@ -1,7 +1,8 @@
 ---
-- name: Running Node Tasks using Fast Node Manager (FNM) in macOS
-  import_tasks: macos.yml
-  when: ansible_distribution == "MacOSX"
+- name: "Running Node Tasks"
+  block:
+    - name: Installing Node
+      import_tasks: install-node.yml
 
-- name: Running Node Tasks using Fast Node Manager (FNM) in macOS
-  import_tasks: install-packages.yml
+    - name: Installing NPM Packages
+      import_tasks: install-packages.yml

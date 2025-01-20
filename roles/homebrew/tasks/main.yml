@@ -1,8 +1,16 @@
 ---
 - name: "Running Homebrew Tasks"
   block:
-    - name: Installing Homebrew Formulas
-      import_tasks: install-formulas.yml
+    - name: Install Homebrew Formulas
+      community.general.homebrew:
+        name: "{{ item }}"
+        state: present
+        update_homebrew: true
+      loop: "{{ brew_packages }}"
 
-    - name: Installing Homebrew Casks
-      import_tasks: install-casks.yml
+    - name: Install Homebrew Casks
+      community.general.homebrew_cask:
+        name: "{{ item }}"
+        state: present
+        update_homebrew: true
+      loop: "{{ brew_casks }}"
