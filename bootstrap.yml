@@ -1,0 +1,19 @@
+- name: Bootstrap development environment
+  hosts: localhost
+
+  pre_tasks:
+    - name: "Verifying playbook requirements"
+      tags: ["always"]
+      block:
+        - name: Verify target system is running macOS.
+          assert:
+            that: "ansible_distribution == 'MacOSX'"
+            msg: "The target system is not running macOS."
+        - name: Verify macOS version.
+          assert:
+            that: "ansible_distribution_version is version_compare('14', '>=')"
+            msg: "The target system must be running macOS 14 (Sonoma) or higher to use this version of macOS-ansible."
+
+  roles:
+    - role: node
+      tags: [node]

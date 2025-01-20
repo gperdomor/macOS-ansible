@@ -31,43 +31,43 @@ jobs:
 
   playbook:
     name: Playbook
-    runs-on: macos-12
+    runs-on: macos-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: Set up Python 3.
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.10"
+      # - name: Set up Python 3.
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: "3.10"
 
-      - name: Uninstall GitHub Actions' built-in browser installs.
-        run: |
-          sudo rm -rf /Applications/Firefox.app
-          sudo rm -rf /Applications/Google\ Chrome.app
+      # - name: Uninstall GitHub Actions' built-in browser installs.
+      #   run: |
+      #     sudo rm -rf /Applications/Firefox.app
+      #     sudo rm -rf /Applications/Google\ Chrome.app
 
-      - name: Install test dependencies.
-        run: sudo pip3 install ansible
+      # - name: Install test dependencies.
+      #   run: sudo pip3 install ansible
 
       - name: Set up the test environment.
         run: |
-          cp tests/ansible.cfg ./ansible.cfg
-          cp tests/inventory.yml ./inventory.yml
-          cp tests/config.yml ./config.yml
           ansible-galaxy install -r requirements.yml
+      #     cp tests/ansible.cfg ./ansible.cfg
+      #     cp tests/inventory.yml ./inventory.yml
+      #     cp tests/config.yml ./config.yml
 
       - name: Test the playbook's syntax.
-        run: ansible-playbook main.yml -i inventory.yml --syntax-check
+        run: ansible-playbook bootstrap.yml --syntax-check
 
       - name: Test the playbook.
-        run: ansible-playbook main.yml
+        run: ansible-playbook bootstrap.yml
         env:
           ANSIBLE_FORCE_COLOR: "1"
 
       - name: Idempotence check.
         run: |
           idempotence=$(mktemp)
-          ansible-playbook main.yml | tee -a ${idempotence}
+          ansible-playbook bootstrap.yml | tee -a ${idempotence}
           tail ${idempotence} | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)
         env:
           ANSIBLE_FORCE_COLOR: "1"

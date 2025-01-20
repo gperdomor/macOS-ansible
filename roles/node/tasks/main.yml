@@ -1,40 +1,7 @@
 ---
-- name: "Running Node Tasks using Fast Node Manager (FNM)"
-  block:
-    - name: Install Fast Node Manager (FNM)
-      homebrew:
-        name: fnm
-        state: present
+- name: Running Node Tasks using Fast Node Manager (FNM) in macOS
+  import_tasks: macos.yml
+  when: ansible_distribution == "MacOSX"
 
-    - name: Install default node version.
-      command: fnm install {{ node_version }}
-      register: node_version_response
-      changed_when: "'Version already installed' not in node_version_response.stderr"
-
-    - name: Make Node {{ node_version }} as default.
-      command: fnm default {{ node_version }}
-      changed_when: false
-
-    - name: Get default nodejs version via fnm
-      shell:
-        cmd: |
-          eval "$(fnm env)"
-          fnm use {{ node_version }} > /dev/null 2>&1
-          readlink -f $(command -v node) | sed  -E "s%/node$%%g"
-        executable: /bin/bash
-      register: fnm_default_nodejs_path_results
-      changed_when: false
-
-    - name: Define default_nodejs_path
-      set_fact:
-        fnm_default_nodejs_path: "{{ fnm_default_nodejs_path_results.stdout }}"
-
-    - name: Install global NPM packages.
-      npm:
-        name: "{{ item.name | default(item) }}"
-        state: "{{ item.state | default('present') }}"
-        version: "{{ item.version | default(omit) }}"
-        global: true
-      environment:
-        PATH: "{{ fnm_default_nodejs_path }}:{{ ansible_env.PATH }}"
-      loop: "{{ npm_packages }}"
+- name: Running Node Tasks using Fast Node Manager (FNM) in macOS
+  import_tasks: install-packages.yml

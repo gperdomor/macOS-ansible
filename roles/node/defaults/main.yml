@@ -1,3 +1,14 @@
 ---
-node_version: 22.13.0
-npm_packages: []
+nodejs_versions:
+  - 22
+  - 20
+
+npm_packages:
+  - autocannon
+  - create-nx-workspace
+  - depcheck
+  - eslint
+  - knip
+  - npm-check-updates
+  - nx
+  - prettier
