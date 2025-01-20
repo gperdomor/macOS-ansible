@@ -16,8 +16,13 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Set up Python 3.
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
       - name: Install test dependencies.
-        run: brew install ansible-lint yamllint
+        run: pip3 install yamllint ansible ansible-lint
 
       - name: Lint code.
         run: |
@@ -31,10 +36,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      # - name: Set up Python 3.
-      #   uses: actions/setup-python@v2
-      #   with:
-      #     python-version: "3.10"
+      - name: Set up Python 3.
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
 
       # - name: Uninstall GitHub Actions' built-in browser installs.
       #   run: |
@@ -42,7 +47,7 @@ jobs:
       #     sudo rm -rf /Applications/Google\ Chrome.app
 
       - name: Install test dependencies.
-        run: brew install ansible
+        run: sudo pip3 install ansible
 
       - name: Set up the test environment.
         run: |
