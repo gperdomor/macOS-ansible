@@ -3,7 +3,7 @@
   block:
     - name: Install mas-cli using homebrew
       community.general.homebrew:
-        name: mas-cli
+        name: mas
         state: present
         update_homebrew: true
 
