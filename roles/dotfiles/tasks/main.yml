@@ -6,7 +6,7 @@
     update_homebrew: true
 
 - name: Ensure dotfiles repository is cloned locally.
-  git:
+  ansible.builtin.git:
     repo: "{{ dotfiles_repo }}"
     dest: "{{ dotfiles_repo_local_destination }}"
     version: "{{ dotfiles_repo_version }}"
@@ -20,3 +20,5 @@
       stow --dir="files/" --target="$HOME" .
     executable: /bin/bash
     chdir: "{{ dotfiles_repo_local_destination }}"
+  register: stow_output
+  changed_when: stow_output.rc != 0

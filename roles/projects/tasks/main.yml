@@ -1,9 +1,9 @@
 ---
 - name: Ensure ~/Developer directory exists
-  file:
+  ansible.builtin.file:
     path: ~/Developer
     state: directory
-    follow: true
+    mode: "0755"
 
 - name: Clone projects repos
   git:
