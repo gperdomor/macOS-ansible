@@ -1,5 +1,0 @@
----
-machines:
-  hosts:
-    mac01:
-      ansible_connection: local

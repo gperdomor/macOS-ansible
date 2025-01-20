@@ -3,7 +3,7 @@
   block:
     - name: Install Fast Node Manager (FNM)
       become: true
-      community.general.homebew:
+      community.general.homebrew:
         name: fnm
         state: present
         update_homebrew: true

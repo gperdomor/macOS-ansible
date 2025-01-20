@@ -5,5 +5,3 @@
 ansible.log
 config.yml
 !tests/config.yml
-/roles/geerlingguy.dotfiles
-/roles/elliotweiser.osx-command-line-tools
