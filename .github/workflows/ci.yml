@@ -40,14 +40,14 @@ jobs:
         run: ansible-playbook bootstrap.yml --syntax-check
 
       - name: Test the playbook.
-        run: ansible-playbook bootstrap.yml -t "homebrew,shell,node"
+        run: ansible-playbook bootstrap.yml
         env:
           ANSIBLE_FORCE_COLOR: "1"
 
       - name: Idempotence check.
         run: |
           idempotence=$(mktemp)
-          ansible-playbook bootstrap.yml -t "homebrew,shell,node" | tee -a ${idempotence}
+          ansible-playbook bootstrap.yml | tee -a ${idempotence}
           tail ${idempotence} | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)
         env:
           ANSIBLE_FORCE_COLOR: "1"
