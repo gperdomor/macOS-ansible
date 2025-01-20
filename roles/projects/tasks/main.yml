@@ -1,0 +1,22 @@
+---
+- name: Ensure ~/Developer directory exists
+  file:
+    path: ~/Developer
+    state: directory
+    follow: true
+
+- name: Clone projects repos
+  git:
+    repo: "{{ item.repo_https }}"
+    dest: ~/Developer/{{ item.dest }}
+    accept_hostkey: true
+    version: "{{ item.version | default(main) }}"
+    update: false
+  loop: "{{ projects }}"
+
+- name: Set git remote URL to SSH
+  command: git remote set-url origin {{ item.repo_ssh }}
+  loop: "{{ projects }}"
+  args:
+    chdir: "~/Developer/{{ item.dest }}"
+  changed_when: false

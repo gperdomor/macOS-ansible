@@ -1,0 +1,9 @@
+---
+- name: Set the icon size of Dock items to {{ dock_tilesize }}px.
+  when: dock_tilesize != None
+  osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    type: int
+    value: "{{ dock_tilesize }}"
+  notify: Restart Dock
