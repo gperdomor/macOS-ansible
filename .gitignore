@@ -3,5 +3,3 @@
 *.retry
 *.vagrant
 ansible.log
-config.yml
-!tests/config.yml

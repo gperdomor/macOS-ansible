@@ -1,0 +1,23 @@
+---
+brew_packages:
+  - git
+
+brew_casks:
+  - ghostty
+
+mas_packages:
+  - { name: "1Password for Safari", id: 1569813296 }
+
+nodejs_versions:
+  - 22
+  - 20
+
+npm_packages:
+  - autocannon
+  - create-nx-workspace
+  - depcheck
+  - eslint
+  - knip
+  - npm-check-updates
+  - nx
+  - prettier
