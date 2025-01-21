@@ -1,0 +1,36 @@
+---
+- name: Set finder view style to {{ finder_view_style }}.
+  when: finder_view_style != None
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: FXPreferredViewStyle
+    type: string
+    value: "{{ finder_view_style }}"
+  notify: Restart Finder
+
+- name: Set show finder path bar to {{ finder_path_bar }}.
+  when: finder_path_bar != None
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowPathbar
+    type: bool
+    value: "{{ finder_path_bar }}"
+  notify: Restart Finder
+
+- name: Set show finder status bar to {{ finder_status_bar }}.
+  when: finder_status_bar != None
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowStatusBar
+    type: bool
+    value: "{{ finder_status_bar }}"
+  notify: Restart Finder
+
+- name: Set show finder folders on top to {{ finder_folder_on_top }}.
+  when: finder_folder_on_top != None
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: _FXSortFoldersFirst
+    type: bool
+    value: "{{ finder_folder_on_top }}"
+  notify: Restart Finder

@@ -1,3 +1,16 @@
 ---
 # Dock
-dock_tilesize: 40
+dock_autohide: true
+dock_position: bottom
+dock_tilesize: 42
+
+# Screenshots
+screenshot_location: ~/Pictures/screenshots
+screenshot_format: png
+screensaver_ask_for_password_in_seconds: 10
+
+# Finder
+finder_view_style: clmv
+finder_path_bar: true
+finder_status_bar: false
+finder_folder_on_top: true

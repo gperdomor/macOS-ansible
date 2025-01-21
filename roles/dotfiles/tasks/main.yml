@@ -17,7 +17,7 @@
   ansible.builtin.shell:
     cmd: |
       set -o pipefail
-      stow . --dir files/ --target {{ ansible_env.HOME }} --verbose=2
+      stow . --dir files/ --target {{ ansible_env.HOME }} --no-folding --verbose=2
     executable: /bin/bash
     chdir: "{{ dotfiles_repo_local_destination }}"
   register: result

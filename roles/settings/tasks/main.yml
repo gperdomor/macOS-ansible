@@ -1,2 +1,4 @@
 ---
 - import_tasks: dock.yml
+- import_tasks: screenshots.yml
+- import_tasks: finder.yml

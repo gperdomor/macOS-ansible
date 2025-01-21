@@ -1,5 +1,10 @@
 ---
 - name: Restart Dock
   command: killall Dock
-  register: my_output
-  changed_when: my_output.rc != 0
+  register: dock_output
+  changed_when: dock_output.rc != 0
+
+- name: Restart Finder
+  command: killall Finder
+  register: finder_output
+  changed_when: finder_output.rc != 0

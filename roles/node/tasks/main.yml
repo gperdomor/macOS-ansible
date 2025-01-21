@@ -1,8 +1,6 @@
 ---
-- name: "Running Node Tasks"
-  block:
-    - name: Installing Node
-      import_tasks: install-node.yml
+- name: Installing Node
+  import_tasks: install-node.yml
 
-    - name: Installing NPM Packages
-      import_tasks: install-packages.yml
+- name: Installing NPM Packages
+  import_tasks: install-packages.yml
