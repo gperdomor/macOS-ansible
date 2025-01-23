@@ -43,7 +43,7 @@ homebrew_packages:
   # - gitlab-runner
   - iperf
   - mas
-  - oh-my-posh
+  # - oh-my-posh
   - openssl
   - podman
   - rclone
