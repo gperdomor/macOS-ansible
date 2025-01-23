@@ -1,11 +1,11 @@
 ---
-- name: Install mas-cli using homebrew
+- name: Install mas using homebrew
   community.general.homebrew:
     name: mas
     state: present
     update_homebrew: true
 
-- name: Install global NPM packages
+- name: Install Mac App Store applications
   community.general.mas:
     id: "{{ item.id | default(item) }}"
     state: "{{ item.state | default('present') }}"
