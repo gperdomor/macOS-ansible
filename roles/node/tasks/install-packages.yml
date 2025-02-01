@@ -1,0 +1,10 @@
+---
+- name: Install global NPM packages
+  community.general.npm:
+    name: "{{ item.name | default(item) }}"
+    state: "{{ item.state | default('present') }}"
+    version: "{{ item.version | default(omit) }}"
+    global: true
+  environment:
+    PATH: "{{ fnm_default_nodejs_path }}:{{ ansible_env.PATH }}"
+  loop: "{{ npm_packages }}"

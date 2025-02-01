@@ -1,23 +1,22 @@
 ---
 - name: Ensure ~/Developer directory exists
-  file:
+  ansible.builtin.file:
     path: ~/Developer
     state: directory
-    follow: true
+    mode: "0755"
 
 - name: Clone projects repos
   git:
     repo: "{{ item.repo_https }}"
     dest: ~/Developer/{{ item.dest }}
     accept_hostkey: true
-    version: "{{ item.version | default(master) }}"
+    version: "{{ item.version | default(main) }}"
     update: false
-  with_items: "{{ projects }}"
+  loop: "{{ projects }}"
 
 - name: Set git remote URL to SSH
   command: git remote set-url origin {{ item.repo_ssh }}
-  with_items: "{{ projects }}"
+  loop: "{{ projects }}"
   args:
     chdir: "~/Developer/{{ item.dest }}"
-    warn: false
   changed_when: false

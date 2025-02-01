@@ -1,19 +1,36 @@
 ---
-# see https://brettterpstra.com/2020/12/02/remove-the-proxy-icon-hover-delay-in-big-sur/
-# - name: Configure the proxy icon hover delay in Finder
-#   when: (finder_proxy_icon_hover_delay != None)
-#     and (ansible_facts['distribution'] == "MacOSX")
-#     and (ansible_facts['distribution_major_version'] == "11")
-#   osx_defaults:
-#     domain: com.apple.finder
-#     key: NSToolbarTitleViewRolloverDelay
-#     type: float
-#     value: "{{ finder_proxy_icon_hover_delay|float }}"
-#   notify: Restart Finder
+- name: Set finder view style to {{ finder_view_style }}.
+  when: finder_view_style != None
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: FXPreferredViewStyle
+    type: string
+    value: "{{ finder_view_style }}"
+  notify: Restart Finder
 
-# - name: Set sidebar icon size to medium
-#   osx_defaults:
-#     domain: NSGlobalDomain
-#     key: NSTableViewDefaultSizeMode
-#     type: int
-#     value: 2
+- name: Set show finder path bar to {{ finder_path_bar }}.
+  when: finder_path_bar != None
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowPathbar
+    type: bool
+    value: "{{ finder_path_bar }}"
+  notify: Restart Finder
+
+- name: Set show finder status bar to {{ finder_status_bar }}.
+  when: finder_status_bar != None
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowStatusBar
+    type: bool
+    value: "{{ finder_status_bar }}"
+  notify: Restart Finder
+
+- name: Set show finder folders on top to {{ finder_folder_on_top }}.
+  when: finder_folder_on_top != None
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: _FXSortFoldersFirst
+    type: bool
+    value: "{{ finder_folder_on_top }}"
+  notify: Restart Finder

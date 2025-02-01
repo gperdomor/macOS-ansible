@@ -10,3 +10,4 @@ warn_list:
   - fqcn[action]
   - name[missing]
   - name[template]
+  - var-naming[no-role-prefix]

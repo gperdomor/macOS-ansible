@@ -1,0 +1,24 @@
+---
+- name: Set default screenshot location to {{ screenshot_location }}.
+  when: screenshot_location != None
+  community.general.osx_defaults:
+    domain: com.apple.screencapture
+    key: location
+    type: string
+    value: "{{ screenshot_location }}"
+
+- name: Set default screenshot format to {{ screenshot_format }}.
+  when: screenshot_format != None
+  community.general.osx_defaults:
+    domain: com.apple.screencapture
+    key: type
+    type: string
+    value: "{{ screenshot_format }}"
+
+- name: "Ask for password delay ({{ screensaver_ask_for_password_in_seconds }})"
+  when: screensaver_ask_for_password_in_seconds != None
+  osx_defaults:
+    domain: com.apple.screensaver
+    key: askForPasswordDelay
+    type: int
+    value: "{{ screensaver_ask_for_password_in_seconds|int }}"

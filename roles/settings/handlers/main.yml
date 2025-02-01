@@ -1,17 +1,10 @@
 ---
-- name: Restart Finder
-  command: killall Finder
-
 - name: Restart Dock
   command: killall Dock
+  register: dock_output
+  changed_when: dock_output.rc != 0
 
-- name: Restart Safari
-  command: osascript -e 'quit app "Safari"' && osascript -e 'tell application "Safari" to activate'
-
-- name: Restart Transmission
-  command: killall Transmission
-  ignore_errors: true
-
-- name: Restart Tower
-  command: killall Tower
-  ignore_errors: true
+- name: Restart Finder
+  command: killall Finder
+  register: finder_output
+  changed_when: finder_output.rc != 0

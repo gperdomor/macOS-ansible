@@ -11,63 +11,43 @@ on:
 jobs:
   lint:
     name: Lint
-    runs-on: ubuntu-latest
+    runs-on: macos-15
     steps:
-      - name: Check out the codebase.
-        uses: actions/checkout@v2
+      - name: Check out repository
+        uses: actions/checkout@v4
 
-      - name: Set up Python 3.
-        uses: actions/setup-python@v2
+      - name: Run ansible-lint
+        uses: ansible/ansible-lint@v24.12.2
         with:
-          python-version: "3.10"
-
-      - name: Install test dependencies.
-        run: pip3 install yamllint ansible ansible-lint
-
-      - name: Lint code.
-        run: |
-          yamllint .
-          ansible-lint
+          requirements_file: requirements.yml
 
   playbook:
     name: Playbook
-    runs-on: macos-12
+    runs-on: macos-15
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
-
-      - name: Set up Python 3.
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.10"
-
-      - name: Uninstall GitHub Actions' built-in browser installs.
-        run: |
-          sudo rm -rf /Applications/Firefox.app
-          sudo rm -rf /Applications/Google\ Chrome.app
+        uses: actions/checkout@v4
 
       - name: Install test dependencies.
-        run: sudo pip3 install ansible
+        run: brew install ansible
 
       - name: Set up the test environment.
         run: |
-          cp tests/ansible.cfg ./ansible.cfg
-          cp tests/inventory.yml ./inventory.yml
-          cp tests/config.yml ./config.yml
+          cp tests/config.yml ./default.config.yml
           ansible-galaxy install -r requirements.yml
 
       - name: Test the playbook's syntax.
-        run: ansible-playbook main.yml -i inventory.yml --syntax-check
+        run: ansible-playbook bootstrap.yml --syntax-check
 
       - name: Test the playbook.
-        run: ansible-playbook main.yml
+        run: ansible-playbook bootstrap.yml
         env:
           ANSIBLE_FORCE_COLOR: "1"
 
       - name: Idempotence check.
         run: |
           idempotence=$(mktemp)
-          ansible-playbook main.yml | tee -a ${idempotence}
+          ansible-playbook bootstrap.yml | tee -a ${idempotence}
           tail ${idempotence} | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)
         env:
           ANSIBLE_FORCE_COLOR: "1"

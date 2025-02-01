@@ -1,0 +1,24 @@
+---
+- name: Ensure stow is installed
+  community.general.homebrew:
+    name: "stow"
+    state: present
+    update_homebrew: true
+
+- name: Ensure dotfiles repository is cloned locally.
+  ansible.builtin.git:
+    repo: "{{ dotfiles_repo }}"
+    dest: "{{ dotfiles_repo_local_destination }}"
+    version: "{{ dotfiles_repo_version }}"
+    accept_hostkey: "{{ dotfiles_repo_accept_hostkey }}"
+  become: false
+
+- name: Ensure all configured dotfiles are links
+  ansible.builtin.shell:
+    cmd: |
+      set -o pipefail
+      stow . --dir files/ --target {{ ansible_env.HOME }} --no-folding --verbose=2
+    executable: /bin/bash
+    chdir: "{{ dotfiles_repo_local_destination }}"
+  register: result
+  changed_when: 'result.stderr is search("LINK: ")'

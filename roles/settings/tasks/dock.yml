@@ -1,34 +1,27 @@
 ---
-- name: Make Dock icons of hidden applications translucent.
-  when: dock_make_hidden_apps_translucent != None
-  osx_defaults:
-    domain: com.apple.dock
-    key: showhidden
-    type: bool
-    value: "{{ dock_make_hidden_apps_translucent | bool }}"
-  notify: Restart Dock
-
-- name: Show indicator lights for open applications in the Dock.
-  when: dock_show_indicator_lights_for_open_apps != None
-  osx_defaults:
-    domain: com.apple.dock
-    key: show-process-indicators
-    type: bool
-    value: "{{ dock_show_indicator_lights_for_open_apps | bool }}"
-  notify: Restart Dock
-
 - name: Set the icon size of Dock items to {{ dock_tilesize }}px.
   when: dock_tilesize != None
-  osx_defaults:
+  community.general.osx_defaults:
     domain: com.apple.dock
     key: tilesize
-    type: int
-    value: "{{ dock_tilesize }}"
+    type: float
+    value: "{{ dock_tilesize|int }}"
   notify: Restart Dock
-# - name: Don’t show recent applications in Dock.
-#   osx_defaults:
-#     domain: com.apple.dock
-#     key: show-recents
-#     type: bool
-#     value: false
-#   notify: Restart Dock
+
+- name: Set Dock Authohide to {{ dock_autohide }}.
+  when: dock_autohide != None
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    type: bool
+    value: "{{ dock_autohide }}"
+  notify: Restart Dock
+
+- name: Set Dock position to {{ dock_position }}.
+  when: dock_position != None
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: orientation
+    type: string
+    value: "{{ dock_position }}"
+  notify: Restart Dock
